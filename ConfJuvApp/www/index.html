@@ -18,6 +18,7 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="js/config.js"></script>
   </head>
   <body ng-app="confjuvapp">
 
@@ -26,7 +27,7 @@
         <h1 class="title">3ª Conferência Nacional de Juventude</h1>
 
         <div class="buttons">
-          <button class="button" ng-click="openModal()">Adicionar proposta</button>
+          <button class="button" ng-click="openModal()">Entrar</button>
         </div>
       </ion-header-bar>
       <ion-content>
@@ -37,5 +38,25 @@
         </ion-list>
       </ion-content>
     </ion-pane>
+
+    <script id="modal.html" type="text/ng-template">
+      <div class="modal">
+        <div class="bar bar-header bar-calm">
+          <button class="button" ng-click="closeModal()">Voltar</button>
+          <h1 class="title">Entrar</h1>
+        </div>
+        <form ng-submit="Login(data)">
+          <div class="list">
+            <div class="list list-inset">
+              <label class="item item-input">
+                <input type="text" placeholder="Nome de usuário" ng-model="data.login">
+              </label>
+            </div>
+            <button class="button button-block button-positive" type="submit">Entrar</button>
+          </div>
+        </form>
+      </div>
+    </script>
+
   </body>
 </html>
