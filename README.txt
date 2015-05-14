@@ -12,3 +12,5 @@ This application is built on top of Ionic, so you need this framework.
 # `cd confjuvapp`
 # `ionic build (android|ios)`
 # `ionic emulate (android|ios)`
+
+In order to compile the theme, you need to run: `gulp sass`
