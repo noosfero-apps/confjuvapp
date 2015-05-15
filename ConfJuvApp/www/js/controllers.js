@@ -1,5 +1,5 @@
 angular.module('confjuvapp.controllers', [])
-  .controller('ProposalCtrl', function($scope, $ionicModal) {
+  .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup) {
 
     // FIXME: This list should come from the server
     $scope.proposalList = [
@@ -38,7 +38,33 @@ angular.module('confjuvapp.controllers', [])
 
     // Function to login
     $scope.Login = function(data) {
-      $scope.closeModal();
+      if (!data || !data.login || !data.password) {
+        return;
+      }
+
+      var req = {
+        method: 'POST',
+        url: ConfJuvAppUtils.pathTo('login'),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        },
+        data: jQuery.param(data)
+      }
+      
+      $http(req)
+      .success(function(data, status, headers, config) {
+        $scope.closeModal();
+        $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
+        ConfJuvAppUtils.loggedIn = true;
+      })
+      .error(function(data, status, headers, config) {
+        $scope.closeModal();
+        var popup = $ionicPopup.alert({ title: 'Login', template: 'Erro ao efetuar login, por favor tente novamente.' });
+        ConfJuvAppUtils.loggedIn = false;
+        popup.then(function() {
+          $scope.openModal();
+        });
+      });
     };
 
   }); // Ends controller
