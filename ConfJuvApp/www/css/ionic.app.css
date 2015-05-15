@@ -7680,6 +7680,18 @@ html ion-content {
   background-size: 100%; }
 html .pane {
   background: transparent; }
+html .loader {
+  display: block;
+  width: 220px;
+  height: 44px;
+  background: transparent url(../img/loader.gif) center center no-repeat;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -110px;
+  z-index: 2; }
+  html .loader em {
+    display: none; }
 
 ion-list {
   padding-top: 44px;

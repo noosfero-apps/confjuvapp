@@ -1,7 +1,9 @@
-<ion-header-bar class="bar-assertive" align-title="left">
+<ion-header-bar class="bar-assertive" align-title="left" id="header">
   <h1 class="title">3ª Conferência Nacional de Juventude</h1>
   
   <div class="buttons">
     <button class="button" ng-click="openModal()">Entrar</button>
   </div>
+
+  <span ng-show="loading" class="loader"><em>Loading</em></span>
 </ion-header-bar>

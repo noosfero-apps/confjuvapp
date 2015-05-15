@@ -1,6 +1,8 @@
 angular.module('confjuvapp.controllers', [])
   .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup) {
 
+    $scope.loading = false;
+
     // FIXME: This list should come from the server
     $scope.proposalList = [
       {
@@ -42,6 +44,8 @@ angular.module('confjuvapp.controllers', [])
         return;
       }
 
+      $scope.loading = true;
+
       var req = {
         method: 'POST',
         url: ConfJuvAppUtils.pathTo('login'),
@@ -56,11 +60,13 @@ angular.module('confjuvapp.controllers', [])
         $scope.closeModal();
         $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
         ConfJuvAppUtils.loggedIn = true;
+        $scope.loading = false;
       })
       .error(function(data, status, headers, config) {
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Erro ao efetuar login, por favor tente novamente.' });
         ConfJuvAppUtils.loggedIn = false;
+        $scope.loading = false;
         popup.then(function() {
           $scope.openModal();
         });
