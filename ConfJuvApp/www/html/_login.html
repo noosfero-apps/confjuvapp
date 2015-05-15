@@ -1,0 +1,22 @@
+<div class="modal" id="login-modal">
+  <div class="bar bar-header bar-energized">
+    <button class="button" ng-click="closeModal()">Voltar</button>
+    <h1 class="title">Entrar</h1>
+  </div>
+  <form ng-submit="Login(data)">
+    <div class="list">
+      <div class="list list-inset">
+
+        <label class="item item-input">
+          <input type="text" placeholder="Nome de usuário" ng-model="data.login">
+        </label>
+
+        <label class="item item-input">
+          <input type="password" placeholder="Senha" ng-model="data.password">
+        </label>
+
+      </div>
+      <button class="button button-block button-royal" type="submit">Entrar</button>
+    </div>
+  </form>
+</div>

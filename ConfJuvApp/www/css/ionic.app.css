@@ -7680,3 +7680,12 @@ html ion-content {
   background-size: 100%; }
 html .pane {
   background: transparent; }
+
+ion-list {
+  padding-top: 44px;
+  display: block; }
+
+#login-modal {
+  padding-top: 44px; }
+  #login-modal .item {
+    margin-top: 11px; }

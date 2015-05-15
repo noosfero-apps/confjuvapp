@@ -14,7 +14,7 @@ angular.module('confjuvapp.controllers', [])
     // Login modal
 
     // Initiate the modal
-    $ionicModal.fromTemplateUrl('modal.html', {
+    $ionicModal.fromTemplateUrl('html/_login.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
