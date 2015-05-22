@@ -50,14 +50,15 @@ angular.module('confjuvapp.controllers', [])
       .then(function(resp) {
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
-        ConfJuvAppUtils.loggedIn = true;
+        $scope.loggedIn = true;
+        $scope.user = resp.data.person;
         popup.then(function() {
           $scope.loadDiscussions(resp.data.private_token);
         });
       }, function(err) {
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Erro ao efetuar login. Verifique usuário e senha e conexão com a internet.' });
-        ConfJuvAppUtils.loggedIn = false;
+        $scope.loggedIn = false;
         $scope.loading = false;
         popup.then(function() {
           $scope.openModal();

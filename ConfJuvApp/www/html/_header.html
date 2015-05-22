@@ -2,7 +2,8 @@
   <h1 class="title">ConfJuv</h1>
   
   <div class="buttons">
-    <button class="button" ng-click="openModal()">Entrar</button>
+    <button class="button" ng-click="openModal()" ng-hide="loggedIn">Entrar</button>
+    <button class="button" ng-show="loggedIn">{{user.name}}</button>
   </div>
 
   <span ng-show="loading" class="loader"><em>Loading</em></span>
