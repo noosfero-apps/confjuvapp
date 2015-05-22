@@ -46,25 +46,22 @@ angular.module('confjuvapp.controllers', [])
 
       $scope.loading = true;
 
-      var req = {
-        method: 'POST',
-        url: ConfJuvAppUtils.pathTo('login'),
+      var config = {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
-        data: jQuery.param(data)
+        timeout: 10000
       }
       
-      $http(req)
-      .success(function(data, status, headers, config) {
+      $http.post(ConfJuvAppUtils.pathTo('login'), jQuery.param(data), config)  
+      .then(function(resp) {
         $scope.closeModal();
         $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
         ConfJuvAppUtils.loggedIn = true;
         $scope.loading = false;
-      })
-      .error(function(data, status, headers, config) {
+      }, function(err) {
         $scope.closeModal();
-        var popup = $ionicPopup.alert({ title: 'Login', template: 'Erro ao efetuar login, por favor tente novamente.' });
+        var popup = $ionicPopup.alert({ title: 'Login', template: 'Erro ao efetuar login. Verifique usuário e senha e conexão com a internet.' });
         ConfJuvAppUtils.loggedIn = false;
         $scope.loading = false;
         popup.then(function() {
