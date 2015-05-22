@@ -4,14 +4,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.loading = false;
 
     // FIXME: This list should come from the server
-    $scope.proposalList = [
-      {
-        title: 'Diminuir os juros do FIES'
-      },
-      {
-        title: 'Desmilitarizar a polícia'
-      }
-    ];
+    $scope.discussionsList = [];
 
     // Login modal
 
@@ -56,9 +49,11 @@ angular.module('confjuvapp.controllers', [])
       $http.post(ConfJuvAppUtils.pathTo('login'), jQuery.param(data), config)  
       .then(function(resp) {
         $scope.closeModal();
-        $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
+        var popup = $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
         ConfJuvAppUtils.loggedIn = true;
-        $scope.loading = false;
+        popup.then(function() {
+          $scope.loadDiscussions(resp.data.private_token);
+        });
       }, function(err) {
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Erro ao efetuar login. Verifique usuário e senha e conexão com a internet.' });
@@ -67,6 +62,28 @@ angular.module('confjuvapp.controllers', [])
         popup.then(function() {
           $scope.openModal();
         });
+      });
+    };
+
+    $scope.loadDiscussions = function(token) {
+      $scope.discussionsList = [];
+
+      var path = '?private_token=' + token + '&fields=title&content_type=ProposalsDiscussionPlugin::Discussion';
+      
+      if (ConfJuvAppConfig.noosferoCommunity == '') {
+        path = 'articles' + path;
+      }
+      else {
+        path = 'communities/' + ConfJuvAppConfig.noosferoCommunity + '/articles' + path;
+      }
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        $scope.loading = false;
+        $scope.discussionsList = resp.data.articles;
+      }, function(err) {
+        var popup = $ionicPopup.alert({ title: 'Discussões', template: 'Não foi possível carregar as discussões' });
+        $scope.loading = false;
       });
     };
 

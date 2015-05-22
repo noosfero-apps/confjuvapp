@@ -1,5 +1,5 @@
 var ConfJuvAppConfig = {
-  noosferoApiHost: '',
-  noosferoApiVersion: '',
-  noosferoApiPrivateToken: ''
+  noosferoApiHost: 'http://juventude.gov.br',
+  noosferoApiVersion: 'v1',
+  noosferoCommunity: 95425
 };
