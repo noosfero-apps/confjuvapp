@@ -16,3 +16,21 @@ This application is built on top of Ionic, so you need this framework.
 In order to compile the theme, you need to run: `gulp sass`
 
 You need to configure the application by creating a file `www/js/config.js` based on `www/js/config.js.example`.
+
+## Connecting to Noosfero
+
+One way to connect with Noosfero API is to set the `Access-Control-Allow-Origin` header on the Noosfero side and thus allow connections.
+
+Another way is to set a reverse proxy on a webserver in front of Noosfero. For example, let's assume there is
+a host called `confjuv`. If you have the following Apache configuration for this site, you can access the front-end
+by going to http://confjuv/www and any other request path will be forwarded to Noosfero running on `localhost:3000`:
+
+```apache
+<VirtualHost *:80>
+  ServerName confjuv
+  DocumentRoot /var/www/confjuvapp # This is the ConfJuvApp directory inside this repository
+  ProxyPass /www !
+  ProxyPass / http://localhost:3000/
+  ProxyPassReverse / http://localhost:3000/
+</VirtualHost>
+```
