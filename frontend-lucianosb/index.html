@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta name="theme-color" content="#E65100" />
+	<title>3confjuv</title>
+
+	<!-- css -->
+	<link href="css/base.css" rel="stylesheet">
+    <link href="css/grumble.min.css" rel="stylesheet">
+    <link href="css/crumble.css" rel="stylesheet">
+
+	<!-- favicon -->
+	<!-- ... -->
+
+	<!-- ie -->
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js" type="text/javascript"></script>
+			<script src="js/respond.js" type="text/javascript"></script>
+		<![endif]-->
+    
+</head>
+<body class="avoid-fout page-home">
+    
+	<div class="avoid-fout-indicator avoid-fout-indicator-fixed">
+		<div class="progress-circular progress-circular-alt progress-circular-center">
+			<div class="progress-circular-wrapper">
+				<div class="progress-circular-inner">
+					<div class="progress-circular-left">
+						<div class="progress-circular-spinner"></div>
+					</div>
+					<div class="progress-circular-gap"></div>
+					<div class="progress-circular-right">
+						<div class="progress-circular-spinner"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<header class="header" style="z-index:1020;">
+		<ul class="nav nav-list pull-left">
+			<li>
+				<a class="menu-toggle" href="#menu">
+					<span class="access-hide">Menu</span>
+					<span class="icon icon-menu icon-lg"></span>
+					<span class="header-close icon icon-close icon-lg"></span>
+				</a>
+			</li>
+		</ul>
+		<a class="header-logo" href="index.html">3confjuv</a>
+		<ul class="nav nav-list pull-right">
+			<li>
+				<a class="menu-toggle" href="#search">
+					<span class="access-hide">Pesquisar</span>
+					<span class="icon icon-search icon-lg"></span>
+					<span class="header-close icon icon-close icon-lg"></span>
+				</a>
+			</li>
+			
+		</ul>
+	</header>
+	<nav class="menu" id="menu">
+		<div class="menu-scroll">
+			<div class="menu-wrap">
+                
+                <div class="menu-top">
+					<div class="menu-top-img" id="menuBG">
+						<!--
+                        <img alt="John Smith" src="images/samples/landscape.jpg">
+                        -->
+					</div>
+					<div class="menu-top-info">
+						<a class="menu-top-user" href="meuperfil.html"><span class="avatar pull-left"><img alt="alt text for John Smith avatar" src="images/users/avatar-001.jpg"></span>John Smith</a>
+					</div>
+				</div>
+                
+				<div class="menu-content">
+					<ul class="nav">
+                        
+						<li>
+							<a href="index.html"><span class="icon icon-star"></span>Destaques</a>
+						</li>
+						<li>
+							<a href="meuperfil.html"><span class="icon icon-person"></span>Meu Perfil</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)"><span class="icon icon-today"></span>Etapas</a>
+							<span class="menu-collapse-toggle collapsed" data-target="#etapas" data-toggle="collapse"><i class="icon icon-close menu-collapse-toggle-close"></i><i class="icon icon-add menu-collapse-toggle-default"></i></span>
+							<ul class="menu-collapse collapse" id="etapas">
+								<li>
+									<a href="lista-perfil.html">Etapas Municipais</a>
+								</li>
+                                <li>
+									<a href="lista-perfil.html">Etapas Estaduais</a>
+								</li>
+                                <li>
+									<a href="lista-perfil.html">Etapa Nacional</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="javascript:void(0)"><span class="icon icon-forum"></span>Propostas</a>
+							<span class="menu-collapse-toggle collapsed" data-target="#propostas" data-toggle="collapse"><i class="icon icon-close menu-collapse-toggle-close"></i><i class="icon icon-add menu-collapse-toggle-default"></i></span>
+							<ul class="menu-collapse collapse" id="propostas">
+								<li>
+									<a href="lista-propostas.html">Tema 1</a>
+								</li>
+                                <li>
+									<a href="lista-propostas.html">Tema 2</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<hr>
+					<ul class="nav">
+                        <li>
+							<a href="ajuda.html"><span class="icon icon-help"></span>Ajuda</a>
+						</li>
+						<li>
+							<a href="configuracoes.html"><span class="icon icon-settings"></span>Configurações</a>
+						</li>
+						
+						<li>
+							<a href="welcome.html"><span class="icon icon-exit-to-app"></span>Sair</a>
+						</li>
+						
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+	</nav>
+	
+	<div class="menu menu-right menu-search" id="search">
+		<div class="menu-scroll">
+			<div class="menu-wrap">
+				<div class="menu-top">
+					<div class="menu-top-info">
+						<form class="form-group-home menu-top-form">
+							<label class="access-hide" for="menu-search">Busca</label>
+							<input class="form-control form-control-inverse menu-search-focus" id="menu-search" placeholder="Pesquisar palavra-chave" type="search">
+							<button class="access-hide" type="submit">Pesquisar</button>
+						</form>
+					</div>
+				</div>
+				<div class="menu-content">
+					<div class="menu-content-inner">
+						<h2 class="content-sub-heading">Filtrar</h2>
+						<nav class="tab-nav tab-nav-home">
+							<ul class="nav nav-justified">
+								<li class="active">
+									<a class="waves-color-home waves-effect" data-toggle="tab" href="#first-tab">Usuários</a>
+								</li>
+								<li>
+									<a class="waves-color-home waves-effect" data-toggle="tab" href="#second-tab">Propostas</a>
+								</li>
+								
+							</ul>
+						</nav>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="first-tab">
+								<fieldset>
+                                    <legend>Tipos de perfil</legend>
+                                    <div class="form-group form-group-home">
+                                        <div class="checkbox checkbox-adv">
+                                            <label for="input-checkbox-1">
+                                                <input class="access-hide" id="input-checkbox-1" name="input-checkbox" type="checkbox">Pessoas
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-adv">
+                                            <label for="input-checkbox-2">
+                                                <input class="access-hide" id="input-checkbox-2" name="input-checkbox" type="checkbox">Etapas da Conferencia
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-adv">
+                                            <label for="input-checkbox-3">
+                                                <input class="access-hide" id="input-checkbox-3" name="input-checkbox" type="checkbox">Delegados
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-adv">
+                                            <label for="input-checkbox-4">
+                                                <input class="access-hide" id="input-checkbox-4" name="input-checkbox" type="checkbox">Conselheiros
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <legend>UF</legend>
+                                    <div class="form-group">
+                                        <label class="floating-label" for="float-select">UF</label>
+                                        <select class="form-control" id="float-select">
+                                            <option value="">&nbsp;</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                    <legend>Cidade</legend>
+                                    <div class="form-group">
+                                        <label class="floating-label" for="float-text">Cidade</label>
+									<input class="form-control" id="float-text" type="text">
+                                    </div>
+                                </fieldset>
+                                <div class="form-group-btn">
+						<button class="btn btn-home waves-button waves-light waves-effect" type="submit">Filtrar</button>
+					</div>
+							</div>
+							<div class="tab-pane fade" id="second-tab">
+								<fieldset>
+                                    <legend>Tema</legend>
+                                    <div class="form-group">
+                                        <label class="floating-label" for="float-select">Tema</label>
+                                        <select class="form-control" id="float-select">
+                                            <option value="">&nbsp;</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </fieldset>
+                                <div class="form-group-btn">
+						<button class="btn btn-home waves-button waves-light waves-effect" type="submit">Filtrar</button>
+					</div>
+                                     
+							</div>
+							
+						</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+    
+	<div class="content">
+		
+		<div class="content-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-lg-push-3 col-sm-10 col-sm-push-1">
+                        
+						<h2 class="content-sub-heading">Dialogue nas propostas</h2>
+                        <div class="cards"></div>
+							<!--<div class="card">
+								<div class="card-main">
+									<div class="card-img">
+										<img alt="alt text" src="images/samples/landscape.jpg">
+										<p class="card-img-heading">Título da Proposta!</p>
+									</div>
+									<div class="card-inner">
+										<p>
+											Lorem ipsum dolor sit amet, eum no viderer molestie percipitur. Ea vis eirmod iuvaret concludaturque, sonet admodum accusamus nec ad. Mea purto sonet te. Ut quo assum nostrum, vel justo suavitate cu, veniam malorum sit no. Eu has vocent quaeque.
+
+										</p>
+									</div>
+									<div class="card-action">
+										
+                                        <ul class="nav nav-list pull-right">
+											<li>
+												<a href="javascript:void(0)"><span class="icon icon-open-in-new text-blue"></span>&nbsp;<span class="text-blue">Acessar</span></a>
+											</li>
+											<li>
+												<a href="javascript:void(0)"><span class="icon icon-comment"></span>&nbsp;Comentar</a>
+											</li>
+                                            <li>
+												<a href="javascript:void(0)"><span class="icon icon-notifications"></span>&nbsp;Seguir</a>
+											</li>
+										</ul>
+									</div>
+                                    
+								</div>
+							</div>-->
+                        <div class="row hidden-xs">
+                            <div class="col-xs-6 hidden-xs">
+                                <div id="swipe_left" class="rate"><a class="btn btn-flat waves-button waves-effect">Anterior</a></div>
+                            </div>
+				
+                            <div class="col-xs-6 hidden-xs">
+				                <div id="swipe_right" class="rate"><a class="pull-right btn btn-flat btn-blue waves-button waves-effect">Próxima</a></div>
+                            </div>
+			</div>
+                        
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="container">
+			<p>3confjuv</p>
+		</div>
+	</footer>
+	<div class="fbtn-container">
+		<div class="fbtn-inner">
+			<a class="fbtn fbtn-pink fbtn-lg" href="cadastrar-proposta.html"><span class="fbtn-text">Nova Proposta</span><span class="fbtn-ori icon icon-create"></span></a>
+			
+		</div>
+	</div>
+
+	<script src="js/base.min.js" type="text/javascript"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/utils/Draggable.min.js"></script>
+<script src="js/cards.js" type="text/javascript"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.2.1/trianglify.min.js"></script>
+<script>
+    var pattern = Trianglify({
+        width: window.innerWidth, 
+        height: window.innerHeight,
+        x_colors: 'YlOrRd',
+        y_colors: 'match_x',
+        cell_size: 90,
+        variance: 0.5
+    });
+    var bg = document.getElementById("menuBG");
+    bg.appendChild(pattern.canvas())
+</script>
+
+
+</script>
+
+</body>
+</html>

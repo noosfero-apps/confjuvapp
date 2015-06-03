@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="initial-scale=1.0, width=device-width" name="viewport">
+    <meta name="theme-color" content="#1A237E" />
+	<title>3confjuv</title>
+
+	<!-- css -->
+	<link href="css/base.css" rel="stylesheet">
+
+	<!-- favicon -->
+	<!-- ... -->
+
+	<!-- ie -->
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js" type="text/javascript"></script>
+			<script src="js/respond.js" type="text/javascript"></script>
+		<![endif]-->
+    
+</head>
+<body class="avoid-fout page-profile">
+	<div class="avoid-fout-indicator avoid-fout-indicator-fixed">
+		<div class="progress-circular progress-circular-alt progress-circular-center">
+			<div class="progress-circular-wrapper">
+				<div class="progress-circular-inner">
+					<div class="progress-circular-left">
+						<div class="progress-circular-spinner"></div>
+					</div>
+					<div class="progress-circular-gap"></div>
+					<div class="progress-circular-right">
+						<div class="progress-circular-spinner"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<header class="header" style="z-index:1020;">
+		<ul class="nav nav-list pull-left">
+			<li>
+				<a class="menu-toggle" href="#menu">
+					<span class="access-hide">Menu</span>
+					<span class="icon icon-menu icon-lg"></span>
+					<span class="header-close icon icon-close icon-lg"></span>
+				</a>
+			</li>
+		</ul>
+		<a class="header-logo" href="index.html">3confjuv</a>
+		<ul class="nav nav-list pull-right">
+			<li>
+				<a class="menu-toggle" href="#search">
+					<span class="access-hide">Pesquisar</span>
+					<span class="icon icon-search icon-lg"></span>
+					<span class="header-close icon icon-close icon-lg"></span>
+				</a>
+			</li>
+			
+		</ul>
+	</header>
+	<nav class="menu" id="menu">
+		<div class="menu-scroll">
+			<div class="menu-wrap">
+                
+                <div class="menu-top">
+					<div class="menu-top-img" id="menuBG">
+						<!--
+                        <img alt="John Smith" src="images/samples/landscape.jpg">
+                        -->
+					</div>
+					<div class="menu-top-info">
+						<a class="menu-top-user" href="meuperfil.html"><span class="avatar pull-left"><img alt="alt text for John Smith avatar" src="images/users/avatar-001.jpg"></span>John Smith</a>
+					</div>
+				</div>
+                
+				<div class="menu-content">
+					<ul class="nav">
+                        
+						<li>
+							<a href="index.html"><span class="icon icon-star"></span>Destaques</a>
+						</li>
+						<li>
+							<a href="meuperfil.html"><span class="icon icon-person"></span>Meu Perfil</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)"><span class="icon icon-today"></span>Etapas</a>
+							<span class="menu-collapse-toggle collapsed" data-target="#etapas" data-toggle="collapse"><i class="icon icon-close menu-collapse-toggle-close"></i><i class="icon icon-add menu-collapse-toggle-default"></i></span>
+							<ul class="menu-collapse collapse" id="etapas">
+								<li>
+									<a href="lista-perfil.html">Etapas Municipais</a>
+								</li>
+                                <li>
+									<a href="lista-perfil.html">Etapas Estaduais</a>
+								</li>
+                                <li>
+									<a href="lista-perfil.html">Etapa Nacional</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="javascript:void(0)"><span class="icon icon-forum"></span>Propostas</a>
+							<span class="menu-collapse-toggle collapsed" data-target="#propostas" data-toggle="collapse"><i class="icon icon-close menu-collapse-toggle-close"></i><i class="icon icon-add menu-collapse-toggle-default"></i></span>
+							<ul class="menu-collapse collapse" id="propostas">
+								<li>
+									<a href="lista-propostas.html">Tema 1</a>
+								</li>
+                                <li>
+									<a href="lista-propostas.html">Tema 2</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<hr>
+					<ul class="nav">
+                        <li>
+							<a href="ajuda.html"><span class="icon icon-help"></span>Ajuda</a>
+						</li>
+						<li>
+							<a href="configuracoes.html"><span class="icon icon-settings"></span>Configurações</a>
+						</li>
+						
+						<li>
+							<a href="welcome.html"><span class="icon icon-exit-to-app"></span>Sair</a>
+						</li>
+						
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+	</nav>
+	
+	<div class="menu menu-right menu-search" id="search">
+		<div class="menu-scroll">
+			<div class="menu-wrap">
+				<div class="menu-top">
+					<div class="menu-top-info">
+						<form class="form-group-home menu-top-form">
+							<label class="access-hide" for="menu-search">Busca</label>
+							<input class="form-control form-control-inverse menu-search-focus" id="menu-search" placeholder="Pesquisar palavra-chave" type="search">
+							<button class="access-hide" type="submit">Pesquisar</button>
+						</form>
+					</div>
+				</div>
+				<div class="menu-content">
+					<div class="menu-content-inner">
+						<h2 class="content-sub-heading">Filtrar</h2>
+						<nav class="tab-nav tab-nav-home">
+							<ul class="nav nav-justified">
+								<li class="active">
+									<a class="waves-color-home waves-effect" data-toggle="tab" href="#first-tab">Usuários</a>
+								</li>
+								<li>
+									<a class="waves-color-home waves-effect" data-toggle="tab" href="#second-tab">Propostas</a>
+								</li>
+								
+							</ul>
+						</nav>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="first-tab">
+								<fieldset>
+                                    <legend>Tipos de perfil</legend>
+                                    <div class="form-group form-group-home">
+                                        <div class="checkbox checkbox-adv">
+                                            <label for="input-checkbox-1">
+                                                <input class="access-hide" id="input-checkbox-1" name="input-checkbox" type="checkbox">Pessoas
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-adv">
+                                            <label for="input-checkbox-2">
+                                                <input class="access-hide" id="input-checkbox-2" name="input-checkbox" type="checkbox">Etapas da Conferencia
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-adv">
+                                            <label for="input-checkbox-3">
+                                                <input class="access-hide" id="input-checkbox-3" name="input-checkbox" type="checkbox">Delegados
+                                            </label>
+                                        </div>
+                                        <div class="checkbox checkbox-adv">
+                                            <label for="input-checkbox-4">
+                                                <input class="access-hide" id="input-checkbox-4" name="input-checkbox" type="checkbox">Conselheiros
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <legend>UF</legend>
+                                    <div class="form-group">
+                                        <label class="floating-label" for="float-select">UF</label>
+                                        <select class="form-control" id="float-select">
+                                            <option value="">&nbsp;</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                    <legend>Cidade</legend>
+                                    <div class="form-group">
+                                        <label class="floating-label" for="float-text">Cidade</label>
+									<input class="form-control" id="float-text" type="text">
+                                    </div>
+                                </fieldset>
+                                <div class="form-group-btn">
+						<button class="btn btn-home waves-button waves-light waves-effect" type="submit">Filtrar</button>
+					</div>
+							</div>
+							<div class="tab-pane fade" id="second-tab">
+								<fieldset>
+                                    <legend>Tema</legend>
+                                    <div class="form-group">
+                                        <label class="floating-label" for="float-select">Tema</label>
+                                        <select class="form-control" id="float-select">
+                                            <option value="">&nbsp;</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </fieldset>
+                                <div class="form-group-btn">
+						<button class="btn btn-home waves-button waves-light waves-effect" type="submit">Filtrar</button>
+					</div>
+                                     
+							</div>
+							
+						</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    
+    
+	<div class="content">
+		
+		<div class="content-inner">
+            
+            
+                <div id="cover">
+
+                      <div id="user-avatar">
+
+                                    <div class="avatar avatar-profile avatar-lg">
+                                       <span class="icon icon-person icon-lg"></span>
+                                    </div>
+
+                                        <p>Nome do Usuário</p>
+                      </div>
+                 </div>
+            
+            
+			<div class="container">
+                <div class="clearfix"></div>
+                <div class="row" id="game-progress">
+                    <div class="col-xs-12 text-center">
+                        <p>Iniciante. 240 pontos.</p>
+                    </div>
+                    
+                </div>
+                <hr />
+                
+                <div class="row">
+                    <div class="col-xs-4">
+                        <img src="https://img.shields.io/badge/perfil-etapa_municipal-4db6ac.svg" />
+                    </div>
+                    <div class="col-xs-4">
+                        
+                    </div>
+                    <div class="col-xs-4">
+                        
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                    
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
+
+                        <p><a class="btn waves-button waves-effect" data-toggle="modal" href="#modal">Leia Mais</a></p>
+
+                        <div aria-hidden="true" class="modal fade" id="modal" role="dialog" tabindex="-1" style="display: none;">
+                            <div class="modal-dialog modal-xs">
+                                <div class="modal-content">
+                                    <div class="modal-heading">
+                                        <a class="modal-close" data-dismiss="modal">×</a>
+                                        <h2 class="modal-title">Informações do Usuário</h2>
+                                    </div>
+                                    <div class="modal-inner">
+                                        <p><strong>Descrição</strong></p>
+                                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                                        <p><strong>Dados</strong></p>
+                                        <ul>
+                                            <li>Estado: </li>
+                                            <li>Cidade: </li>
+                                            <li>Etinia: </li>
+                                            <li>Genero: </li>
+                                            <li>Idade: </li>
+                                            <li>Facebook: </li>
+                                            <li>Twitter: </li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <p class="text-right"><button class="btn btn-flat btn-alt" data-dismiss="modal" type="button">Fechar</button></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr />
+                
+                <h2 class="content-sub-heading">Propostas de NNNN</h2>
+                
+                <div class="tile-wrap" id="resultados">
+					<div class="tile tile-collapse">
+						<div class="tile-toggle" data-target="#tile-collapse-1" data-toggle="tile" data-parent="#resultados">
+							<div class="pull-left tile-side">
+								<div class="avatar avatar-proposal avatar-sm">
+									<span class="icon icon-forum"></span>
+								</div>
+							</div>
+							<div class="tile-action" data-ignore="tile">
+								<ul class="nav nav-list pull-right">
+									<li>
+										<a href="javascript:void(0)"><span class="access-hide">Seguir</span><span class="icon icon-notifications"></span></a>
+									</li>
+									<li>
+										<a href="javascript:void(0)"><span class="access-hide">Commentar</span><span class="icon icon-comment"></span></a>
+									</li>
+									<li class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown"><span class="access-hide">Avaliar</span><span class="icon icon-favorite"></span></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a href="javascript:void(0)"><span class="icon icon-thumb-up margin-right-half"></span>Apoio</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)"><span class="icon icon-thumb-down margin-right-half"></span>Não Apoio</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="tile-inner">
+								<div class="text-overflow">lorem ipsum dolor sit amet</div>
+							</div>
+						</div>
+						<div class="tile-active-show collapse" id="tile-collapse-1">
+							<div class="tile-sub">
+								<p>Descrição da Proposta<br><small>Aliquam in pharetra leo. In congue, massa sed elementum dictum, justo quam efficitur risus, in posuere mi orci ultrices diam.</small></p>
+							</div>
+							<div class="tile-footer">
+								<ul class="nav nav-list pull-left">
+									<li>
+										<a href="javascript:void(0)"><span class="icon icon-open-in-new"></span>&nbsp;Acessar</a>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="tile tile-collapse">
+						<div class="tile-toggle" data-target="#tile-collapse-2" data-toggle="tile" data-parent="#resultados">
+							<div class="pull-left tile-side">
+								<div class="avatar avatar-proposal avatar-sm">
+									<span class="icon icon-forum"></span>
+								</div>
+							</div>
+							<div class="tile-action" data-ignore="tile">
+								<ul class="nav nav-list pull-right">
+									<li>
+										<a href="javascript:void(0)"><span class="access-hide">Seguir</span><span class="icon icon-notifications"></span></a>
+									</li>
+									<li>
+										<a href="javascript:void(0)"><span class="access-hide">Commentar</span><span class="icon icon-comment"></span></a>
+									</li>
+									<li class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown"><span class="access-hide">Avaliar</span><span class="icon icon-favorite"></span></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a href="javascript:void(0)"><span class="icon icon-thumb-up margin-right-half"></span>Apoio</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)"><span class="icon icon-thumb-down margin-right-half"></span>Não Apoio</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="tile-inner">
+								<div class="text-overflow">consectetur adipiscing elit</div>
+							</div>
+						</div>
+						<div class="tile-active-show collapse" id="tile-collapse-2">
+							<div class="tile-sub">
+								<p>Additional information<br><small>Aliquam in pharetra leo. In congue, massa sed elementum dictum, justo quam efficitur risus, in posuere mi orci ultrices diam.</small></p>
+							</div>
+							<div class="tile-footer">
+								<ul class="nav nav-list pull-left">
+									<li>
+										<a href="javascript:void(0)"><span class="icon icon-open-in-new"></span>&nbsp;Acessar</a>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="tile tile-collapse">
+						<div class="tile-toggle" data-target="#tile-collapse-3" data-toggle="tile" data-parent="#resultados">
+							<div class="pull-left tile-side">
+								<div class="avatar avatar-proposal avatar-sm">
+									<span class="icon icon-forum"></span>
+								</div>
+							</div>
+							<div class="tile-action" data-ignore="tile">
+								<ul class="nav nav-list pull-right">
+									<li>
+										<a href="javascript:void(0)"><span class="access-hide">Seguir</span><span class="icon icon-notifications"></span></a>
+									</li>
+									<li>
+										<a href="javascript:void(0)"><span class="access-hide">Commentar</span><span class="icon icon-comment"></span></a>
+									</li>
+									<li class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown"><span class="access-hide">Avaliar</span><span class="icon icon-favorite"></span></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a href="javascript:void(0)"><span class="icon icon-thumb-up margin-right-half"></span>Apoio</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)"><span class="icon icon-thumb-down margin-right-half"></span>Não Apoio</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="tile-inner">
+								<div class="text-overflow">sed ornare orci lorem</div>
+							</div>
+						</div>
+						<div class="tile-active-show collapse" id="tile-collapse-3">
+							<div class="tile-sub">
+								<p>Additional information<br><small>Aliquam in pharetra leo. In congue, massa sed elementum dictum, justo quam efficitur risus, in posuere mi orci ultrices diam.</small></p>
+							</div>
+							<div class="tile-footer">
+								<ul class="nav nav-list pull-left">
+									<li>
+										<a href="javascript:void(0)"><span class="icon icon-open-in-new"></span>&nbsp;Acessar</a>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="container">
+			<p>3confjuv</p>
+		</div>
+	</footer>
+	<div class="fbtn-container">
+		<div class="fbtn-inner">
+			<a class="fbtn fbtn-pink fbtn-lg" href="cadastrar-proposta.html"><span class="fbtn-text">Mais opções</span><span class="fbtn-ori icon icon-create"></span></a>
+            			
+		</div>
+	</div>
+
+	<script src="js/base.min.js" type="text/javascript"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.2.1/trianglify.min.js"></script>
+<script>
+    var pattern = Trianglify({
+        width: window.innerWidth, 
+        height: 300,
+        x_colors: 'Blues',
+        y_colors: 'match_x',
+        cell_size: 90,
+        variance: 0.5
+    });
+    var bg = document.getElementById("menuBG");
+    bg.appendChild(pattern.canvas())
+</script>
+
+
+</body>
+</html>
