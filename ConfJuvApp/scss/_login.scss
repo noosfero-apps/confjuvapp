@@ -32,4 +32,29 @@
     text-transform: uppercase;
     @include box-shadow($lightshadow 1px 1px 3px);
   }
+
+  form {
+    label {
+      border: 0;
+    }
+
+    input {
+      border-bottom: 1px solid $darkgrey;
+      color: $darkgrey;
+      font-size: 16px;
+
+      &:focus {
+        border-bottom: 2px solid $lightblue;
+        color: $black;
+      }
+    }
+
+    p {
+      margin: 20px 10px 20px 26px;
+    }
+
+    .button {
+      width: 100%;
+    }
+  }
 }

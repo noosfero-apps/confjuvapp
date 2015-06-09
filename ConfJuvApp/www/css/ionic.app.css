@@ -7670,7 +7670,7 @@ html .loader {
   display: block;
   width: 220px;
   height: 44px;
-  background: transparent url(../img/loader.gif) center center no-repeat;
+  background: transparent url(../img/loader.gif?1) center center no-repeat;
   position: absolute;
   top: 0;
   left: 50%;
@@ -7715,6 +7715,19 @@ ion-list {
     text-transform: uppercase;
     -webkit-box-shadow: #cccccc 1px 1px 3px;
     box-shadow: #cccccc 1px 1px 3px; }
+  #login-modal form label {
+    border: 0; }
+  #login-modal form input {
+    border-bottom: 1px solid #9e9e9e;
+    color: #9e9e9e;
+    font-size: 16px; }
+    #login-modal form input:focus {
+      border-bottom: 2px solid #2196f3;
+      color: #000000; }
+  #login-modal form p {
+    margin: 20px 10px 20px 26px; }
+  #login-modal form .button {
+    width: 100%; }
 
 #header {
   background: #3f51b5; }
