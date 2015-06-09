@@ -3,22 +3,31 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.loading = false;
 
-    // FIXME: This list should come from the server
-    $scope.discussionsList = [];
+    /******************************************************************************
+     L O G I N
+     ******************************************************************************/
 
-    // Login modal
+     $scope.loginFormDisplayed = false;
 
-    // Initiate the modal
-    $ionicModal.fromTemplateUrl('html/_login.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal = modal;
-    });
+     $scope.displayLoginForm = function() {
+       $scope.loginFormDisplayed = true;
+     };
 
     // Function to open the modal
     $scope.openModal = function() {
-      $scope.modal.show();
+      if ($scope.modal) {
+        $scope.modal.show();
+      }
+      else {
+        // Initiate the modal
+        $ionicModal.fromTemplateUrl('html/_login.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.modal = modal;
+          $scope.modal.show();
+        });
+      }
     };
 
     // Function to close the modal
@@ -65,6 +74,13 @@ angular.module('confjuvapp.controllers', [])
         });
       });
     };
+
+
+    /******************************************************************************
+     D I S C U S S I O N S
+     ******************************************************************************/
+    
+    $scope.discussionsList = [];
 
     $scope.loadDiscussions = function(token) {
       $scope.discussionsList = [];

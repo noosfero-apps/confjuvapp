@@ -1,9 +1,38 @@
 <div class="modal" id="login-modal">
-  <div class="bar bar-header bar-energized">
-    <button class="button" ng-click="closeModal()">Voltar</button>
-    <h1 class="title">Entrar</h1>
+
+  <!-- Title -->
+
+  <h1 class="title">
+    <span>Login</span>
+  </h1>
+
+  <!-- Login first screen -->
+
+  <div ng-hide="loginFormDisplayed">
+    <p class="text-center">
+      <span class="avatar avatar-inline avatar-lg"></span>
+    </p>
+                      
+    <p class="text-center">
+      <a class="button icon-left ion-person-add button-positive">Cadastrar Usuário</a>
+    </p>
+                                 
+    <p class="text-center">
+      <a class="button icon-left ion-person button-stable" ng-click="displayLoginForm()">Já tenho conta</a>
+      <br />
+      <small>são aceitos usuários cadastrados no <em>Juventude.gov.br</em></small>
+    </p>
+    
+    <hr /> 
+    
+    <p class="text-center">
+      <a class="button icon-left ion-person-stalker button-balanced">Cadastrar Conferência</a>
+    </p>
   </div>
-  <form ng-submit="Login(data)">
+
+  <!-- Login form -->
+
+  <form ng-submit="Login(data)" ng-show="loginFormDisplayed">
     <div class="list">
       <div class="list list-inset">
 

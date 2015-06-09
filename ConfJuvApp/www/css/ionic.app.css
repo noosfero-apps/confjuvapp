@@ -7678,20 +7678,48 @@ html .loader {
   z-index: 2; }
   html .loader em {
     display: none; }
+html .text-center {
+  text-align: center; }
+html .hidden {
+  display: none; }
 
 ion-list {
   padding-top: 44px;
   display: block; }
 
 #login-modal {
-  padding-top: 44px; }
+  -webkit-box-shadow: #333333 1px 1px 5px;
+  box-shadow: #333333 1px 1px 5px;
+  width: 90%;
+  min-height: 385px;
+  height: 385px;
+  top: 55px;
+  left: 50%;
+  margin-left: -45%; }
   #login-modal .item {
     margin-top: 11px; }
+  #login-modal h1 {
+    padding: 11px 16.5px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 22px;
+    line-height: 33px;
+    font-weight: 700; }
+  #login-modal .avatar {
+    display: inline-block;
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
+    background: transparent url(../img/avatar.png) center center no-repeat;
+    background-size: 96px 96px; }
+  #login-modal .button {
+    text-transform: uppercase;
+    -webkit-box-shadow: #cccccc 1px 1px 3px;
+    box-shadow: #cccccc 1px 1px 3px; }
 
 #header {
   background: #3f51b5; }
   #header h1 {
     color: #ffffff;
     font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 300; }
