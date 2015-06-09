@@ -1,20 +1,5 @@
 @charset "UTF-8";
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
-*/
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,700,700italic);
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -7675,8 +7660,9 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+html body {
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif; }
 html ion-content {
-  background: transparent url(../img/bg.png) center center no-repeat;
   background-size: 100%; }
 html .pane {
   background: transparent; }
@@ -7701,3 +7687,11 @@ ion-list {
   padding-top: 44px; }
   #login-modal .item {
     margin-top: 11px; }
+
+#header {
+  background: #3f51b5; }
+  #header h1 {
+    color: #ffffff;
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 300; }

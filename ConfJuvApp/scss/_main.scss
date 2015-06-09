@@ -1,7 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,700,700italic);
+
 html {
 
+  body {
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
   ion-content {
-    background: transparent url(../img/bg.png) center center no-repeat;
     background-size: 100%;
   }
 

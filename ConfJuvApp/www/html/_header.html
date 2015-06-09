@@ -1,9 +1,9 @@
-<ion-header-bar class="bar-assertive" align-title="left" id="header">
-  <h1 class="title">ConfJuv</h1>
+<ion-header-bar align-title="left" id="header">
+  <h1 class="title">3confjuv</h1>
   
   <div class="buttons">
     <button class="button" ng-click="openModal()" ng-hide="loggedIn">Entrar</button>
-    <button class="button" ng-show="loggedIn">{{user.name}}</button>
+    <button class="button" ng-click="openProfile()" ng-show="loggedIn">{{user.name}}</button>
   </div>
 
   <span ng-show="loading" class="loader"><em>Loading</em></span>
