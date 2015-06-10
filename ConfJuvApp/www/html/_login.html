@@ -1,85 +1,87 @@
 <div class="modal" id="login-modal">
+  <ion-content>
 
-  <!-- Login first screen -->
+    <!-- Login first screen -->
 
-  <div ng-hide="loginFormDisplayed || registerFormDisplayed">
-    <h1 class="title">
-      <span>Entrar</span>
-    </h1>
-
-    <p class="text-center">
-      <span class="avatar avatar-inline avatar-lg"></span>
-    </p>
-                      
-    <p class="text-center">
-      <a class="button icon-left ion-person-add button-positive" ng-click="displayRegisterForm('user')">Cadastrar Usuário</a>
-    </p>
-                                 
-    <p class="text-center">
-      <a class="button icon-left ion-person button-stable" ng-click="displayLoginForm()">Já tenho conta</a>
-      <br />
-      <small>são aceitos usuários cadastrados no <em>Juventude.gov.br</em></small>
-    </p>
-    
-    <hr /> 
-    
-    <p class="text-center">
-      <a class="button icon-left ion-person-stalker button-balanced" ng-click="displayRegisterForm('conference')">Cadastrar Conferência</a>
-    </p>
-  </div>
-
-  <!-- Login form -->
-
-  <form ng-submit="Login(data)" ng-show="loginFormDisplayed">
-    <h1 class="title">
-      <span>Entrar</span>
-      <a class="login-back icon-left ion-reply" ng-click="backToLoginHome()">Voltar</a>
-    </h1>
-
-    <div class="list">
-      <div class="list list-inset">
-
-        <label class="item item-input">
-          <input type="text" placeholder="Usuário" ng-model="data.login">
-        </label>
-
-        <label class="item item-input">
-          <input type="password" placeholder="Senha" ng-model="data.password">
-        </label>
-
-      </div>
-      <p class="text-center">
-        <button class="button button-calm" type="submit">Entrar</button>
-      </p>
-
-      <div class="login-actions">
-        <a ng-click="forgotPassword(data.login)">Esqueceu a senha?</a>
-        <a ng-click="displayRegisterForm('user')">Criar conta</a></p>
-      </div>
-    </div>
-  </form>
-
-  <!-- Register form -->
-
-  <form ng-submit="Register(data)" ng-show="registerFormDisplayed" class="register-form">
-    <h1 class="title">
-      <span>Registrar</span>
-      <a class="login-back icon-left ion-reply" ng-click="backToLoginHome()">Voltar</a>
-    </h1>
-
-    <div class="list">
-      <div class="list list-inset">
-
-        <label class="item item-input"><input type="text" placeholder="E-mail" ng-model="data.email" required></label>
-        <label class="item item-input"><input type="text" placeholder="Nome de usuário" ng-model="data.login" required></label>
-        <label class="item item-input"><input type="password" placeholder="Senha" ng-model="data.password" required></label>
-        <label class="item item-input"><input type="password" placeholder="Confirmar senha" ng-model="data.password_confirmation" required></label>
-
-      </div>
+    <div ng-hide="loginFormDisplayed || registerFormDisplayed">
+      <h1 class="title">
+        <span>Entrar</span>
+      </h1>
 
       <p class="text-center">
-        <button class="button button-royal" type="submit">Salvar</button>
+        <span class="avatar avatar-inline avatar-lg"></span>
+      </p>
+                        
+      <p class="text-center">
+        <a class="button icon-left ion-person-add button-positive" ng-click="displayRegisterForm('user')">Cadastrar Usuário</a>
+      </p>
+                                   
+      <p class="text-center">
+        <a class="button icon-left ion-person button-stable" ng-click="displayLoginForm()">Já tenho conta</a>
+        <br />
+        <small>são aceitos usuários cadastrados no <em>Juventude.gov.br</em></small>
+      </p>
+      
+      <hr /> 
+      
+      <p class="text-center">
+        <a class="button icon-left ion-person-stalker button-balanced" ng-click="displayRegisterForm('conference')">Cadastrar Conferência</a>
       </p>
     </div>
-  </form>
+
+    <!-- Login form -->
+
+    <form ng-submit="Login(data)" ng-show="loginFormDisplayed">
+      <h1 class="title">
+        <span>Entrar</span>
+        <a class="login-back icon-left ion-reply" ng-click="backToLoginHome()">Voltar</a>
+      </h1>
+
+      <div class="list">
+        <div class="list list-inset">
+
+          <label class="item item-input">
+            <input type="text" placeholder="Usuário" ng-model="data.login">
+          </label>
+
+          <label class="item item-input">
+            <input type="password" placeholder="Senha" ng-model="data.password">
+          </label>
+
+        </div>
+        <p class="text-center">
+          <button class="button button-calm" type="submit">Entrar</button>
+        </p>
+
+        <div class="login-actions">
+          <a ng-click="forgotPassword(data.login)">Esqueceu a senha?</a>
+          <a ng-click="displayRegisterForm('user')">Criar conta</a></p>
+        </div>
+      </div>
+    </form>
+
+    <!-- Register form -->
+
+    <form ng-submit="Register(data)" ng-show="registerFormDisplayed" class="register-form">
+      <h1 class="title">
+        <span>Registrar</span>
+        <a class="login-back icon-left ion-reply" ng-click="backToLoginHome()">Voltar</a>
+      </h1>
+
+      <div class="list">
+        <div class="list list-inset">
+
+          <label class="item item-input"><input type="text" placeholder="E-mail" ng-model="data.email" required></label>
+          <label class="item item-input"><input type="text" placeholder="Nome de usuário" ng-model="data.login" required></label>
+          <label class="item item-input"><input type="password" placeholder="Senha" ng-model="data.password" required></label>
+          <label class="item item-input"><input type="password" placeholder="Confirmar senha" ng-model="data.password_confirmation" required></label>
+
+        </div>
+
+        <p class="text-center">
+          <button class="button button-royal" type="submit">Salvar</button>
+        </p>
+      </div>
+    </form>
+  </ion-content>
 </div>

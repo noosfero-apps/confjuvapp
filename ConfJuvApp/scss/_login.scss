@@ -1,8 +1,6 @@
 #login-modal {
   @include box-shadow($shadow 1px 1px 5px);
   width: 90%;
-  min-height: $unit * 37;
-  height: $unit * 37;
   top: $unit * 5;
   left: 50%;
   margin-left: -45%;
