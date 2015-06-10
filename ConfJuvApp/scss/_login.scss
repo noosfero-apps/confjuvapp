@@ -17,6 +17,7 @@
     font-size: $unit * 2;
     line-height: $unit * 3;
     font-weight: 700;
+    position: relative;
   }
 
   .avatar {
@@ -72,6 +73,25 @@
       }
       a + a {
         float: right;
+      }
+    }
+
+    .login-back {
+      cursor: pointer;
+      font-size: 12px;
+      color: $lightgrey;
+      position: absolute;
+      right: $unit;
+    }
+
+    &.register-form {
+      input {
+        color: $purple;
+        border-bottom: 1px solid $purple;
+
+        &:focus {
+          border-bottom: 2px solid $purple;
+        }
       }
     }
   }

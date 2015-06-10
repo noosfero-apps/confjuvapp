@@ -11,6 +11,7 @@ angular.module('confjuvapp.controllers', [])
 
      $scope.displayLoginForm = function() {
        $scope.loginFormDisplayed = true;
+      $scope.registerFormDisplayed = false;
      };
 
     // Function to open the modal
@@ -76,6 +77,7 @@ angular.module('confjuvapp.controllers', [])
     };
 
     // Function to retrieve password
+
     $scope.forgotPassword = function(email) {
       if (!email) {
         var popup = $ionicPopup.alert({ title: 'Esqueceu a senha?', template: 'Digite seu e-mail no campo "Usuário" e clique novamente neste link' });
@@ -103,6 +105,62 @@ angular.module('confjuvapp.controllers', [])
       });
     };
 
+    // Register as a new user
+
+    $scope.registerFormDisplayed = false;
+
+    $scope.displayRegisterForm = function() {
+      $scope.registerFormDisplayed = true;
+      $scope.loginFormDisplayed = false;
+    };
+
+    // Function to register
+    $scope.Register = function(data) {
+      if (!data || !data.login || !data.email || !data.password || !data.password_confirmation) {
+        $ionicPopup.alert({ title: 'Registrar', template: 'Por favor preencha todos os campos' });
+        return;
+      }
+      else if (data.password != data.password_confirmation) {
+        $ionicPopup.alert({ title: 'Registrar', template: 'Senhas não conferem' });
+        return;
+      }
+
+      $scope.loading = true;
+
+      var config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        timeout: 10000
+      }
+      
+      $http.post(ConfJuvAppUtils.pathTo('register'), jQuery.param(data), config)  
+      .then(function(resp) {
+        var popup = $ionicPopup.alert({ title: 'Registrar', template: 'Usuário registrado com sucesso!' });
+        popup.then(function() {
+          $scope.registerFormDisplayed = false;
+        });
+        $scope.loading = false;
+      }, function(err) {
+        var msg = '';
+
+        try {
+          var errors = JSON.parse(err.data.message);
+          for (var field in errors) {
+            msg += 'Campo "' + field + '" ' + errors[field][0] + '. ';
+          }
+        } catch(e) {
+          // Do nothing
+        }
+        $ionicPopup.alert({ title: 'Registrar', template: 'Erro ao registrar usuário. ' + msg });
+        $scope.loading = false;
+      });
+    };
+
+    $scope.backToLoginHome = function() {
+      $scope.registerFormDisplayed = false;
+      $scope.loginFormDisplayed = false;
+    };
 
     /******************************************************************************
      D I S C U S S I O N S
