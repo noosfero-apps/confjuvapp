@@ -1,5 +1,17 @@
-<ion-list>
-  <ion-item ng-repeat="discussion in discussionsList">
-    {{discussion.title}}
-  </ion-item>
-</ion-list>
+<div id="discussions" ng-show="loggedIn">
+  <h2>Dialogue nas propostas</h2>
+  
+  <ion-list>
+    <ion-item ng-repeat="discussion in discussionsList">
+      <div class="card">
+        <h3>{{discussion.title}}</h3>
+        <div class="card-body">
+          <!-- <div ng-bind-html="discussion.body"></div> -->
+          {{discussion.abstract}}
+        </div>
+        <div class="card-footer">
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</div>

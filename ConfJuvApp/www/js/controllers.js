@@ -171,7 +171,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.loadDiscussions = function(token) {
       $scope.discussionsList = [];
 
-      var path = '?private_token=' + token + '&fields=title&content_type=ProposalsDiscussionPlugin::Discussion';
+      var path = '?private_token=' + token + '&fields=title,image,body,abstract&content_type=ProposalsDiscussionPlugin::Proposal';
       
       if (ConfJuvAppConfig.noosferoCommunity == '') {
         path = 'articles' + path;
