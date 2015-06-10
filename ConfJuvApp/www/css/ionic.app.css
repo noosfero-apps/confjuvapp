@@ -7728,6 +7728,17 @@ ion-list {
     margin: 20px 10px 20px 26px; }
   #login-modal form .button {
     width: 100%; }
+  #login-modal form .login-actions a {
+    float: left;
+    font-size: 16px;
+    color: #2196f3;
+    margin: 0 11px;
+    cursor: pointer; }
+    #login-modal form .login-actions a:hover {
+      text-decoration: underline;
+      color: #3f51b5; }
+  #login-modal form .login-actions a + a {
+    float: right; }
 
 #header {
   background: #3f51b5; }

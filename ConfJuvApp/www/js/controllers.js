@@ -75,6 +75,34 @@ angular.module('confjuvapp.controllers', [])
       });
     };
 
+    // Function to retrieve password
+    $scope.forgotPassword = function(email) {
+      if (!email) {
+        var popup = $ionicPopup.alert({ title: 'Esqueceu a senha?', template: 'Digite seu e-mail no campo "Usuário" e clique novamente neste link' });
+        return;
+      }
+
+      $scope.loading = true;
+
+      var config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        timeout: 10000
+      }
+
+      var data = { value: email };
+      
+      $http.post(ConfJuvAppUtils.pathTo('account/forgot_password', true), jQuery.param(data), config)
+      .then(function(resp) {
+        $ionicPopup.alert({ title: 'Esqueceu a senha?', template: 'Um link para redefinição de senha foi enviado para o seu e-mail.' });
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Esqueceu a senha?', template: 'Erro ao requisitar redefinição de senha.' });
+        $scope.loading = false;
+      });
+    };
+
 
     /******************************************************************************
      D I S C U S S I O N S

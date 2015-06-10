@@ -56,5 +56,23 @@
     .button {
       width: 100%;
     }
+
+    .login-actions {
+      a {
+        float: left;
+        font-size: 16px;
+        color: $lightblue;
+        margin: 0 $unit;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+          color: $blue;
+        }
+      }
+      a + a {
+        float: right;
+      }
+    }
   }
 }
