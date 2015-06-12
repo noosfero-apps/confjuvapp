@@ -186,7 +186,7 @@ angular.module('confjuvapp.controllers', [])
           var topic = topics[i];
           $scope.topics.push(topic);
           $scope.proposalsByTopic[topic.id] = [];
-          $scope.loadProposals(token, topic.id);
+          $scope.loadProposals(token, topic);
         }
       }, function(err) {
         $ionicPopup.alert({ title: 'Tópicos', template: 'Não foi possível carregar os tópicos' });
@@ -196,22 +196,23 @@ angular.module('confjuvapp.controllers', [])
 
     // Load proposals
 
-    $scope.loadProposals = function(token, topic_id) {
+    $scope.loadProposals = function(token, topic) {
       $scope.loading = true;
       var params = '?private_token=' + token + '&fields=title,image,body,abstract,id&content_type=ProposalsDiscussionPlugin::Proposal';
-      var path = 'articles/' + topic_id + '/children' + params;
+      var path = 'articles/' + topic.id + '/children' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
-        $scope.loading = false;
         var proposals = resp.data.articles;
         for (var i = 0; i < proposals.length; i++) {
           var proposal = proposals[i];
+          proposal.topic = topic;
           $scope.proposalList.push(proposal);
-          $scope.proposalsByTopic[topic_id].push(proposal);
+          $scope.proposalsByTopic[topic.id].push(proposal);
         }
+        $scope.loading = false;
       }, function(err) {
-        $ionicPopup.alert({ title: 'Propostas', template: 'Não foi possível carregar as propostas do tópico ' + topic_id });
+        $ionicPopup.alert({ title: 'Propostas', template: 'Não foi possível carregar as propostas do tópico ' + topic.title });
         $scope.loading = false;
       });
     };

@@ -35,4 +35,22 @@
     padding: 2 * $unit;
     white-space: normal;
   }
+
+  .card-footer {
+    border-top: 1px solid $lightgrey;
+
+    a {
+      color: $lightblue;
+      cursor: pointer;
+      padding: $unit;
+      display: inline-block;
+      float: right;
+    }
+
+    img {
+      margin: $unit;
+      display: inline-block;
+      float: left;
+    }
+  }
 }

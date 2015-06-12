@@ -7708,6 +7708,18 @@ html .hidden {
     font-size: 16px;
     padding: 22px;
     white-space: normal; }
+  #proposals .card-footer {
+    border-top: 1px solid #e0e0e0; }
+    #proposals .card-footer a {
+      color: #2196f3;
+      cursor: pointer;
+      padding: 11px;
+      display: inline-block;
+      float: right; }
+    #proposals .card-footer img {
+      margin: 11px;
+      display: inline-block;
+      float: left; }
 
 #login-modal {
   -webkit-box-shadow: #333333 1px 1px 5px;
