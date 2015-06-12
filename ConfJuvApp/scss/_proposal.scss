@@ -1,0 +1,31 @@
+#proposal {
+  background: $ice;
+
+  h1 {
+    position: relative;
+    background: $green-triangles;
+    font-weight: 700;
+    font-size: 36px;
+    color: $white;
+    overflow: hidden;
+    text-align: center;
+    padding: 60px 0;
+  }
+
+  .back {
+    top: $unit;
+    color: $white;
+  }
+
+  img {
+    margin: $unit;
+  }
+
+  p {
+    margin: $unit;
+    font-size: 16px;
+    color: $darkergrey;
+    line-height: 24px;
+    text-align: justify;
+  }
+}

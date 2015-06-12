@@ -10,6 +10,7 @@ $lightblue: #2196f3;
 $purple: #3f51b5;
 $orange: #ff9800;
 $ice: #fafafa;
+$darkergrey: #212121;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -21,6 +22,7 @@ $unit: 11px;
 @import "www/lib/ionic/scss/ionic";
 @import "backgrounds";
 @import "main";
-@import "proposal_list";
 @import "login";
 @import "header";
+@import "proposal_list";
+@import "proposal";

@@ -1,3 +1,5 @@
+// FIXME: Split it into smaller files
+
 angular.module('confjuvapp.controllers', [])
   .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup) {
 
@@ -216,5 +218,39 @@ angular.module('confjuvapp.controllers', [])
         $scope.loading = false;
       });
     };
+
+    /******************************************************************************
+     S I N G L E  P R O P O S A L
+     ******************************************************************************/
+
+    $scope.proposal = null;
+
+    // Function to open the modal
+    $scope.openProposal = function(proposal) {
+      $scope.proposal = proposal;
+      if ($scope.proposalModal) {
+        $scope.proposalModal.show();
+      }
+      else {
+        // Initiate the modal
+        $ionicModal.fromTemplateUrl('html/_proposal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.proposalModal = modal;
+          $scope.proposalModal.show();
+        });
+      }
+    };
+
+    // Function to close the modal
+    $scope.closeProposal = function() {
+      $scope.proposalModal.hide();
+    };
+
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.proposalModal.remove();
+    });
 
   }); // Ends controller
