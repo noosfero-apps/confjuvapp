@@ -1,13 +1,13 @@
-<div id="discussions" ng-show="loggedIn">
+<div id="proposals" ng-show="loggedIn">
   <h2>Dialogue nas propostas</h2>
   
   <ion-list>
-    <ion-item ng-repeat="discussion in discussionsList">
+    <ion-item ng-repeat="proposal in proposalList">
       <div class="card">
-        <h3>{{discussion.title}}</h3>
+        <h3>{{proposal.title}}</h3>
         <div class="card-body">
           <!-- <div ng-bind-html="discussion.body"></div> -->
-          {{discussion.abstract}}
+          {{proposal.abstract}}
         </div>
         <div class="card-footer">
         </div>

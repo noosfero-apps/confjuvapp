@@ -63,7 +63,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.loggedIn = true;
         $scope.user = resp.data.person;
         popup.then(function() {
-          $scope.loadDiscussions(resp.data.private_token);
+          $scope.loadTopics(resp.data.private_token);
         });
       }, function(err) {
         $scope.closeModal();
@@ -163,29 +163,55 @@ angular.module('confjuvapp.controllers', [])
     };
 
     /******************************************************************************
-     D I S C U S S I O N S
+     D I S C U S S I O N S  >  T O P I C S  >  P R O P O S A L S
      ******************************************************************************/
     
-    $scope.discussionsList = [];
+    $scope.proposalList = [];
+    $scope.topics = [];
+    $scope.proposalsByTopic = {};
 
-    $scope.loadDiscussions = function(token) {
-      $scope.discussionsList = [];
+    // Load topics
 
-      var path = '?private_token=' + token + '&fields=title,image,body,abstract&content_type=ProposalsDiscussionPlugin::Proposal';
-      
-      if (ConfJuvAppConfig.noosferoCommunity == '') {
-        path = 'articles' + path;
-      }
-      else {
-        path = 'communities/' + ConfJuvAppConfig.noosferoCommunity + '/articles' + path;
-      }
+    $scope.loadTopics = function(token) {
+      $scope.loading = true;
+      // var path = '?private_token=' + token + '&fields=title,image,body,abstract&content_type=ProposalsDiscussionPlugin::Proposal';
+      var params = '?private_token=' + token + '&fields=title,id&content_type=ProposalsDiscussionPlugin::Topic';
+      var path = 'articles/' + ConfJuvAppConfig.noosferoDiscussion + '/children' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
         $scope.loading = false;
-        $scope.discussionsList = resp.data.articles;
+        var topics = resp.data.articles;
+        for (var i = 0; i < topics.length; i++) {
+          var topic = topics[i];
+          $scope.topics.push(topic);
+          $scope.proposalsByTopic[topic.id] = [];
+          $scope.loadProposals(token, topic.id);
+        }
       }, function(err) {
-        var popup = $ionicPopup.alert({ title: 'Discussões', template: 'Não foi possível carregar as discussões' });
+        $ionicPopup.alert({ title: 'Tópicos', template: 'Não foi possível carregar os tópicos' });
+        $scope.loading = false;
+      });
+    };
+
+    // Load proposals
+
+    $scope.loadProposals = function(token, topic_id) {
+      $scope.loading = true;
+      var params = '?private_token=' + token + '&fields=title,image,body,abstract&content_type=ProposalsDiscussionPlugin::Proposal';
+      var path = 'articles/' + topic_id + '/children' + params;
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        $scope.loading = false;
+        var proposals = resp.data.articles;
+        for (var i = 0; i < proposals.length; i++) {
+          var proposal = proposals[i];
+          $scope.proposalList.push(proposal);
+          $scope.proposalsByTopic[topic_id].push(proposal);
+        }
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Propostas', template: 'Não foi possível carregar as propostas do tópico ' + topic_id });
         $scope.loading = false;
       });
     };
