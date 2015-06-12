@@ -7,6 +7,12 @@
     font-size: $unit * 2;
     font-weight: 300;
   }
+
+  button {
+    position: absolute;
+    right: $unit;
+    color: transparentize($white, 0.5);
+  }
 }
 
 .logged-in #header {

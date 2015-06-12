@@ -1,7 +1,7 @@
 // FIXME: Split it into smaller files
 
 angular.module('confjuvapp.controllers', [])
-  .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup) {
+  .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup, filterFilter) {
 
     $scope.loading = false;
 
@@ -172,6 +172,24 @@ angular.module('confjuvapp.controllers', [])
     $scope.topics = [];
     $scope.proposalsByTopic = {};
 
+    // Selected topics
+
+    $scope.selection = [];
+
+    // Helper method to get selected topics
+
+    $scope.selectedTopics = function selectedTopics() {
+      return filterFilter($scope.topics, { selected: true });
+    };
+
+    // Watch topics for changes
+
+    $scope.$watch('topics|filter:{selected:true}', function (nv) {
+      $scope.selection = nv.map(function (topic) {
+        return topic.title;
+      });
+    }, true);
+
     // Load topics
 
     $scope.loadTopics = function(token) {
@@ -186,6 +204,7 @@ angular.module('confjuvapp.controllers', [])
         var topics = resp.data.articles;
         for (var i = 0; i < topics.length; i++) {
           var topic = topics[i];
+          topic.selected = true;
           $scope.topics.push(topic);
           $scope.proposalsByTopic[topic.id] = [];
           $scope.loadProposals(token, topic);

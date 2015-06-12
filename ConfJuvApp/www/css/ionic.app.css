@@ -7756,6 +7756,10 @@ html hr {
     font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 22px;
     font-weight: 300; }
+  #header button {
+    position: absolute;
+    right: 11px;
+    color: rgba(255, 255, 255, 0.5); }
 
 .logged-in #header {
   background: #ff9800; }
@@ -7820,3 +7824,21 @@ html hr {
     color: #212121;
     line-height: 24px;
     text-align: justify; }
+
+.sidebar h2 {
+  font-size: 16px;
+  color: #ffffff;
+  padding: 50px 10px;
+  background: #00796B; }
+  .sidebar h2 span {
+    line-height: 46px; }
+.sidebar h3 {
+  color: #009688;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 25px 10px; }
+.sidebar label {
+  cursor: pointer; }
+.sidebar button {
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 30px; }

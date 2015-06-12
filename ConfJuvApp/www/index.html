@@ -22,15 +22,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.2.1/trianglify.min.js"></script>
   </head>
   <body ng-app="confjuvapp" ng-controller="ProposalCtrl" ng-init="openModal()" ng-class="{ 'logged-in': loggedIn }">
-    <ng-include src="'html/_header.html'"></ng-include>
-    <ion-pane>
-      <!-- Header -->
+    <ion-side-menus id="body">
+      <ion-side-menu-content>
+        <ng-include src="'html/_header.html'"></ng-include>
+        <ion-pane>
+          <!-- Header -->
 
-      <!-- Main content -->
-      <ion-content>
-        <ng-include src="'html/_proposal_list.html'"></ng-include>
-      </ion-content>
-    </ion-pane>
+          <!-- Main content -->
+          <ion-content>
+            <ng-include src="'html/_proposal_list.html'"></ng-include>
+          </ion-content>
+        </ion-pane>
+      </ion-side-menu-content>
+    
+      <ion-side-menu side="right" is-enabled="true" expose-aside-when="large" ng-show="proposalList.length > 0">
+        <ng-include src="'html/_right_sidebar.html'"></ng-include>
+      </ion-side-menu>
+    </ion-side-menus>
     
     <script src="js/bg.js"></script>
   </body>

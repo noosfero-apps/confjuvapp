@@ -6,7 +6,6 @@ var pattern = Trianglify({
   cell_size: 90,
   variance: 0.5
 });
-//var bg = document.getElementById("loginBG");
-//var canvas = bg.appendChild(pattern.canvas());
 
 document.body.style.background = "url(" + pattern.png() + ") no-repeat fixed";
+document.getElementById('body').style.background = "url(" + pattern.png() + ") no-repeat fixed";
