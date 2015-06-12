@@ -10,6 +10,7 @@
           {{proposal.body | htmlToPlainText | limitTo:140}}...
         </div>
         <div class="card-footer">
+          <a ng-click="showProposal(proposal.id)">Acessar</a>
         </div>
       </div>
     </ion-item>

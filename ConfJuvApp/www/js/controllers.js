@@ -7,12 +7,12 @@ angular.module('confjuvapp.controllers', [])
      L O G I N
      ******************************************************************************/
 
-     $scope.loginFormDisplayed = false;
+    $scope.loginFormDisplayed = false;
 
-     $scope.displayLoginForm = function() {
-       $scope.loginFormDisplayed = true;
+    $scope.displayLoginForm = function() {
+      $scope.loginFormDisplayed = true;
       $scope.registerFormDisplayed = false;
-     };
+    };
 
     // Function to open the modal
     $scope.openModal = function() {
@@ -198,7 +198,7 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.loadProposals = function(token, topic_id) {
       $scope.loading = true;
-      var params = '?private_token=' + token + '&fields=title,image,body,abstract&content_type=ProposalsDiscussionPlugin::Proposal';
+      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id&content_type=ProposalsDiscussionPlugin::Proposal';
       var path = 'articles/' + topic_id + '/children' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
