@@ -7706,7 +7706,8 @@ html .hidden {
   #proposals .card-body {
     color: #000000;
     font-size: 16px;
-    padding: 22px; }
+    padding: 22px;
+    white-space: normal; }
 
 #login-modal {
   -webkit-box-shadow: #333333 1px 1px 5px;

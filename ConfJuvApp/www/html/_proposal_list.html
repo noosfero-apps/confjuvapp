@@ -7,7 +7,7 @@
         <h3>{{proposal.title}}</h3>
         <div class="card-body">
           <!-- <div ng-bind-html="discussion.body"></div> -->
-          {{proposal.abstract}}
+          {{proposal.body | htmlToPlainText | limitTo:140}}...
         </div>
         <div class="card-footer">
         </div>
