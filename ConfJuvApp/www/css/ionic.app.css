@@ -7904,7 +7904,8 @@ html hr {
       border-bottom: 2px solid #009688; }
   #create-proposal form textarea {
     border: 1px solid #009688;
-    display: block; }
+    display: block;
+    width: 97%; }
     #create-proposal form textarea:focus {
       border: 2px solid #009688; }
   #create-proposal form input[type=text], #create-proposal form textarea {
