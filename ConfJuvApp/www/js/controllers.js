@@ -171,6 +171,8 @@ angular.module('confjuvapp.controllers', [])
     $scope.proposalList = [];
     $scope.topics = [];
     $scope.proposalsByTopic = {};
+    $scope.cards = [];
+    $scope.cardIndex = 0;
 
     // Selected topics
 
@@ -230,13 +232,58 @@ angular.module('confjuvapp.controllers', [])
           proposal.topic = topic;
           $scope.proposalList.push(proposal);
           $scope.proposalsByTopic[topic.id].push(proposal);
+          if ($scope.cards.length == 0) {
+            $scope.cards.push(proposal);
+          }
         }
+        fillBackgroundWithColor('#FAFAFA');
         $scope.loading = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Propostas', template: 'Não foi possível carregar as propostas do tópico ' + topic.title });
         $scope.loading = false;
       });
     };
+
+    // Cards
+
+    $scope.cardSwiped = function(index) {
+      var count = 0;
+      var card = $scope.getCard();
+      // FIXME: Try to improve performance
+      while (count < $scope.proposalList.length && !card.topic.selected) {
+        card = $scope.getCard();
+        count++;
+      }
+      $scope.cards.push(angular.extend({}, card));
+    };  
+
+    $scope.cardDestroyed = function(index) {
+      $scope.cards.splice(index, 1); 
+    };
+
+    $scope.getCard = function() {
+      $scope.cardIndex = (($scope.cardIndex + 1) % $scope.proposalList.length);
+      return $scope.proposalList[$scope.cardIndex];
+    };
+
+    $scope.nextCard = function(index) {
+      if (index == -1) {
+        index = $scope.cards.length - 1;
+      }
+      $scope.cardSwiped();
+      $scope.cardDestroyed(index);
+    };
+
+    // Swipe cards when filters are selected
+    $scope.$watch('selection', function() {
+      var n = $scope.cards.length;
+      if (n > 0) {
+        var card = $scope.cards[n - 1];
+        if (card.topic && !card.topic.selected) {
+          $scope.nextCard(n - 1);
+        }
+      }
+    });
 
     /******************************************************************************
      S I N G L E  P R O P O S A L

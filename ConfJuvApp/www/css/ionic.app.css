@@ -7801,6 +7801,13 @@ html hr {
       margin: 11px;
       display: inline-block;
       float: left; }
+  #proposals .cards-footer {
+    text-align: right; }
+    #proposals .cards-footer a {
+      color: #2196f3;
+      text-transform: uppercase;
+      margin: 11px;
+      cursor: pointer; }
 
 #proposal {
   background: #fafafa; }

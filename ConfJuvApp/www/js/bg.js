@@ -7,5 +7,13 @@ var pattern = Trianglify({
   variance: 0.5
 });
 
-document.body.style.background = "url(" + pattern.png() + ") no-repeat fixed";
-document.getElementById('body').style.background = "url(" + pattern.png() + ") no-repeat fixed";
+var fillBackgroundWithTriangles = function() {
+  document.body.style.background = "url(" + pattern.png() + ") no-repeat fixed";
+  document.getElementById('body').style.background = "url(" + pattern.png() + ") no-repeat fixed";
+};
+
+var fillBackgroundWithColor = function(color) {
+  document.body.style.background = document.getElementById('body').style.background = document.getElementById('proposals-container').style.background = color;
+};
+
+fillBackgroundWithTriangles();

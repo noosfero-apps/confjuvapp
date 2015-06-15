@@ -53,4 +53,15 @@
       float: left;
     }
   }
+
+  .cards-footer {
+    text-align: right;
+
+    a {
+      color: $lightblue;
+      text-transform: uppercase;
+      margin: $unit;
+      cursor: pointer;
+    }
+  }
 }
