@@ -6,8 +6,8 @@
         <a class="back icon-left ion-reply" ng-click="closeProposalModal()">Voltar</a>
       </h1>
 
-      <label class="item item-input"><input type="text" placeholder="Título" ng-model="data.title" required></label>
-      <label class="item item-input"><textarea placeholder="Descrição" ng-model="data.description" required></textarea></label>
+      <label class="item item-input"><input type="text" placeholder="Título" ng-model="data.title"></label>
+      <label class="item item-input"><textarea placeholder="Descrição" ng-model="data.description"></textarea></label>
       <label id="proposal-topic">Tópico</label>
       <ion-radio ng-model="data.topic_id" ng-value="topic.id" ng-repeat="topic in topics">{{topic.title}}</ion-radio>
 

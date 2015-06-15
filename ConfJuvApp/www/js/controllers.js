@@ -353,53 +353,70 @@ angular.module('confjuvapp.controllers', [])
 
     // Submit the proposal
     $scope.createProposal = function(data) {
-      $scope.loading = true;
-
-      var config = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        },
-        timeout: 10000
-      };
-
-      var params = {
-        'private_token': $scope.token,
-        'article[body]': data.description,
-        'article[name]': data.title,
-        'article[abstract]': data.description.substring(0, 130) + '...',
-        'fields': 'id',
-        'article[type]': 'ProposalsDiscussionPlugin::Proposal',
-        'content_type': 'ProposalsDiscussionPlugin::Proposal'
-      };
-      
-      $http.post(ConfJuvAppUtils.pathTo('articles/' + data.topic_id + '/children'), jQuery.param(params), config)  
-      .then(function(resp) {
+      if (!data || !data.title || !data.description || !data.topic_id) {
         $scope.closeProposalModal();
-        var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'Proposta criada com sucesso!' });
-        popup.then(function() {
-          var topic = null;
-          for (var i = 0; i < $scope.topics.length; i++) {
-            if (data.topic_id == $scope.topics[i].id) {
-              topic = $scope.topics[i];
-            }
-          }
-          var proposal = {
-            title: data.title,
-            body: data.description,
-            topic: topic
-          };
-          $scope.proposalList.push(proposal);
-          $scope.proposalsByTopic[data.topic_id].push(proposal);
-          $scope.loading = false;
-        });
-      }, function(err) {
-        $scope.closeProposalModal();
-        var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'Erro ao criar proposta!' });
-        $scope.loading = false;
+        var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'Por favor preencha todos os campos!' });
         popup.then(function() {
           $scope.openCreateProposalForm();
         });
-      });
+      }
+      else if (data.description.length > 1000) {
+        $scope.closeProposalModal();
+        var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'A descrição deve ter no máximo 1000 caracteres!' });
+        popup.then(function() {
+          $scope.openCreateProposalForm();
+        });
+      }
+      else {
+        $scope.loading = true;
+
+        var config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+          timeout: 10000
+        };
+
+        var params = {
+          'private_token': $scope.token,
+          'article[body]': data.description,
+          'article[name]': data.title,
+          'article[abstract]': data.description.substring(0, 130) + '...',
+          'fields': 'id',
+          'article[type]': 'ProposalsDiscussionPlugin::Proposal',
+          'content_type': 'ProposalsDiscussionPlugin::Proposal'
+        };
+        
+        $http.post(ConfJuvAppUtils.pathTo('articles/' + data.topic_id + '/children'), jQuery.param(params), config)  
+        .then(function(resp) {
+          $scope.closeProposalModal();
+          var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'Proposta criada com sucesso!' });
+          popup.then(function() {
+            var topic = null;
+            for (var i = 0; i < $scope.topics.length; i++) {
+              if (data.topic_id == $scope.topics[i].id) {
+                topic = $scope.topics[i];
+              }
+            }
+            var proposal = {
+              title: data.title,
+              body: data.description,
+              topic: topic
+            };
+            $scope.proposalList.push(proposal);
+            $scope.proposalsByTopic[data.topic_id].push(proposal);
+            data.title = data.description = data.topic_id = null;
+            $scope.loading = false;
+          });
+        }, function(err) {
+          $scope.closeProposalModal();
+          var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'Erro ao criar proposta!' });
+          $scope.loading = false;
+          popup.then(function() {
+            $scope.openCreateProposalForm();
+          });
+        });
+      }
     };
 
   }); // Ends controller
