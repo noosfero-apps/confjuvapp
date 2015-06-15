@@ -1,0 +1,98 @@
+.button-float {
+  background: $pink;
+  color: $white;
+  z-index: 10;
+  position: absolute;
+  bottom: $unit;
+  right: $unit;
+  border-radius: 50% ;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  -webkit-transition-property: -webkit-transform, all;
+  transition-property: transform, all;
+}
+
+.button-float:hover {
+  -webkit-transform: translate3d(0, -1px, 0);
+  transform: translate3d(0, -1px, 0);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  background: darken($pink, 10%);
+}
+
+#create-proposal {
+  @include box-shadow($shadow 1px 1px 5px);
+  background: $ice;
+  padding: $unit;
+
+  .item {
+    margin-top: $unit;
+  }
+
+  h1 {
+    padding: $unit $unit * 1.5;
+    border-bottom: 1px solid $lightgrey;
+    font-size: $unit * 2;
+    line-height: $unit * 3;
+    font-weight: 700;
+    position: relative;
+    color: $lightgreen;
+  }
+
+  form {
+    label {
+      border: 0;
+      color: $lightgreen;
+    }
+
+    p {
+      margin: 20px 10px 20px 26px;
+    }
+
+    .button {
+      background: $lightgreen;
+      color: $white;
+    }
+
+    .item {
+      background: transparent;
+      border: 0;
+    }
+
+    input[type=text] {
+      border-bottom: 1px solid $lightgreen;
+
+      &:focus {
+        border-bottom: 2px solid $lightgreen;
+      }
+    }
+
+    textarea {
+      border: 1px solid $lightgreen;
+      display: block;
+
+      &:focus {
+        border: 2px solid $lightgreen;
+      }
+    }
+
+    input[type=text], textarea {
+      color: $lightgreen;
+      padding: $unit / 2;
+      background: transparent;
+      margin-right: 16px;
+    }
+
+    label#proposal-topic {
+      margin: 16px;
+      display: block;
+    }
+
+    .item-radio {
+      font-size: 14px;
+      margin: 1px 16px;
+    }
+  }
+}

@@ -37,7 +37,11 @@
         <ng-include src="'html/_right_sidebar.html'"></ng-include>
       </ion-side-menu>
     </ion-side-menus>
-    
+
+    <button class="button button-float" ng-show="loggedIn" ng-click="openCreateProposalForm()">
+      <i class="icon ion-edit"></i>
+    </button>
+
     <script src="js/bg.js"></script>
   </body>
 </html>

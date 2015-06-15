@@ -13,6 +13,7 @@ $ice: #fafafa;
 $darkergrey: #212121;
 $darkgreen: #00796B;
 $lightgreen: #009688;
+$pink: #ff4081;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -29,3 +30,4 @@ $unit: 11px;
 @import "proposal_list";
 @import "proposal";
 @import "sidebar";
+@import "create_proposal";

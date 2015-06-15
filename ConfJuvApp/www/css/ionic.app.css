@@ -7849,3 +7849,72 @@ html hr {
 .sidebar button {
   color: rgba(255, 255, 255, 0.5);
   margin-left: 30px; }
+
+.button-float {
+  background: #ff4081;
+  color: #ffffff;
+  z-index: 10;
+  position: absolute;
+  bottom: 11px;
+  right: 11px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  -webkit-transition-property: -webkit-transform, all;
+  transition-property: transform, all; }
+
+.button-float:hover {
+  -webkit-transform: translate3d(0, -1px, 0);
+  transform: translate3d(0, -1px, 0);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  background: #ff0d5f; }
+
+#create-proposal {
+  -webkit-box-shadow: #333333 1px 1px 5px;
+  box-shadow: #333333 1px 1px 5px;
+  background: #fafafa;
+  padding: 11px; }
+  #create-proposal .item {
+    margin-top: 11px; }
+  #create-proposal h1 {
+    padding: 11px 16.5px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 22px;
+    line-height: 33px;
+    font-weight: 700;
+    position: relative;
+    color: #009688; }
+  #create-proposal form label {
+    border: 0;
+    color: #009688; }
+  #create-proposal form p {
+    margin: 20px 10px 20px 26px; }
+  #create-proposal form .button {
+    background: #009688;
+    color: #ffffff; }
+  #create-proposal form .item {
+    background: transparent;
+    border: 0; }
+  #create-proposal form input[type=text] {
+    border-bottom: 1px solid #009688; }
+    #create-proposal form input[type=text]:focus {
+      border-bottom: 2px solid #009688; }
+  #create-proposal form textarea {
+    border: 1px solid #009688;
+    display: block; }
+    #create-proposal form textarea:focus {
+      border: 2px solid #009688; }
+  #create-proposal form input[type=text], #create-proposal form textarea {
+    color: #009688;
+    padding: 5.5px;
+    background: transparent;
+    margin-right: 16px; }
+  #create-proposal form label#proposal-topic {
+    margin: 16px;
+    display: block; }
+  #create-proposal form .item-radio {
+    font-size: 14px;
+    margin: 1px 16px; }
