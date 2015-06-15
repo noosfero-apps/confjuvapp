@@ -7691,8 +7691,6 @@ html .back {
 html hr {
   border: 0;
   border-top: 1px solid #9e9e9e; }
-html .notice {
-  color: #aa0000; }
 
 #login-modal {
   -webkit-box-shadow: #333333 1px 1px 5px;
@@ -7712,10 +7710,9 @@ html .notice {
     position: relative; }
   #login-modal .avatar {
     display: inline-block;
-    border-radius: 50%;
     width: 96px;
     height: 96px;
-    background: transparent url(../img/avatar.png) center center no-repeat;
+    background: transparent url(../img/avatar.png?1) center center no-repeat;
     background-size: 96px 96px; }
   #login-modal .button {
     text-transform: uppercase;
