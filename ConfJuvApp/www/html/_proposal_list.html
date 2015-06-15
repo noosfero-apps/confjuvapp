@@ -7,7 +7,7 @@
         <h3>{{proposal.title}}</h3>
         <div class="card-body">
           <!-- <div ng-bind-html="discussion.body"></div> -->
-          {{proposal.body | htmlToPlainText | limitTo:140}}...
+          {{proposal.body | htmlToPlainText | limitTo:280}}...
         </div>
         <div class="card-footer">
           <img ng-src="https://img.shields.io/badge/tag-{{proposal.topic.title}}-ff9800.svg" alt="" />
