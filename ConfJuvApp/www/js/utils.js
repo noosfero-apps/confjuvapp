@@ -1,5 +1,9 @@
 var ConfJuvAppUtils = {
-  pathTo: function(endpoint) {
-    return ConfJuvAppConfig.noosferoApiHost + '/api/' + ConfJuvAppConfig.noosferoApiVersion + '/' + endpoint;
+  pathTo: function(endpoint, noPrefix) {
+    var prefix = '/api/' + ConfJuvAppConfig.noosferoApiVersion + '/';
+    if (noPrefix) {
+      prefix = '/';
+    }
+    return ConfJuvAppConfig.noosferoApiHost + prefix + endpoint;
   }
 };

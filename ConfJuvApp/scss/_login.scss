@@ -1,7 +1,87 @@
 #login-modal {
-  padding-top: 4 * $unit;
+  @include box-shadow($shadow 1px 1px 5px);
+  width: 90%;
+  top: $unit * 5;
+  left: 50%;
+  margin-left: -45%;
 
   .item {
     margin-top: $unit;
+  }
+
+  h1 {
+    padding: $unit $unit * 1.5;
+    border-bottom: 1px solid $lightgrey;
+    font-size: $unit * 2;
+    line-height: $unit * 3;
+    font-weight: 700;
+    position: relative;
+  }
+
+  .avatar {
+    display: inline-block;
+    width: 96px;
+    height: 96px;
+    background: transparent url(../img/avatar.png?1) center center no-repeat;
+    background-size: 96px 96px;
+  }
+
+  .button {
+    text-transform: uppercase;
+    @include box-shadow($lightshadow 1px 1px 3px);
+  }
+
+  form {
+    label {
+      border: 0;
+    }
+
+    input {
+      border-bottom: 1px solid $darkgrey;
+      color: $darkgrey;
+      font-size: 16px;
+
+      &:focus {
+        border-bottom: 2px solid $lightblue;
+        color: $black;
+      }
+    }
+
+    p {
+      margin: 20px 10px 20px 26px;
+    }
+
+    .button {
+      width: 100%;
+    }
+
+    .login-actions {
+      a {
+        float: left;
+        font-size: 16px;
+        color: $lightblue;
+        margin: 0 $unit;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+          color: $blue;
+        }
+      }
+      a + a {
+        float: right;
+      }
+    }
+
+    &.register-form {
+      input {
+        color: $purple;
+        border-bottom: 1px solid $purple;
+
+        &:focus {
+          border-bottom: 2px solid $purple;
+        }
+      }
+    }
   }
 }

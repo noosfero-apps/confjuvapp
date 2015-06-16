@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-    <title>ConfJuvApp</title>
+    <title>#3confjuv</title>
 
     <!-- CSS -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -18,16 +18,30 @@
     <script src="js/utils.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/trianglify.min.js"></script>
+    <script src="js/ionic.swipecards.js"></script>
   </head>
-  <body ng-app="confjuvapp" ng-controller="ProposalCtrl">
-    <ng-include src="'html/_header.html'"></ng-include>
-    <ion-pane>
-      <!-- Header -->
+  <body ng-app="confjuvapp" ng-controller="ProposalCtrl" ng-init="openModal()" ng-class="{ 'logged-in': loggedIn }">
+    <ion-side-menus id="body">
+      <ion-side-menu-content>
+        <ng-include src="'html/_header.html'"></ng-include>
+        <ion-pane>
+          <ion-content id="proposals-container">
+            <ng-include src="'html/_proposal_list.html'"></ng-include>
+          </ion-content>
+        </ion-pane>
+      </ion-side-menu-content>
+    
+      <ion-side-menu side="right" is-enabled="true" expose-aside-when="large" ng-show="proposalList.length > 0">
+        <ng-include src="'html/_right_sidebar.html'"></ng-include>
+      </ion-side-menu>
+    </ion-side-menus>
 
-      <!-- Main content -->
-      <ion-content>
-        <ng-include src="'html/_discussions_list.html'"></ng-include>
-      </ion-content>
-    </ion-pane>
+    <button class="button button-float" ng-show="loggedIn" ng-click="openCreateProposalForm()">
+      <i class="icon ion-edit"></i>
+    </button>
+
+    <script src="js/bg.js"></script>
   </body>
 </html>

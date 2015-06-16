@@ -1,0 +1,16 @@
+<div class="modal" id="create-comment">
+  <ion-content>
+    <form ng-submit="createComment(data)">
+      <h1 class="title">
+        <span>Comentar</span>
+        <a class="back icon-left ion-reply" ng-click="closeCommentModal()">Voltar</a>
+      </h1>
+
+      <label class="item item-input"><textarea placeholder="Comentário" ng-model="data.comment"></textarea></label>
+
+      <p class="text-center">
+        <button class="button" type="submit">Enviar</button>
+      </p>
+    </form>
+  </ion-content>
+</div>

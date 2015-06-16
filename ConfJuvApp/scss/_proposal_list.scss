@@ -1,4 +1,67 @@
-ion-list {
-  padding-top: 4 * $unit;
-  display: block;
+#proposals {
+  background: $ice;
+  padding-top: 70px;
+
+  h2 {
+    color: $orange;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 10px;
+  }
+
+  ion-list {
+    display: block;
+
+    .item {
+      border: 0;
+      background: transparent;
+      padding: 0;
+    }
+  }
+
+  .card {
+    padding: 0;
+
+    h3 {
+      font-size: 20px;
+      background: $diamond;
+      padding: 2 * $unit;
+    }
+  }
+
+  .card-body {
+    color: $black;
+    font-size: 16px;
+    padding: 2 * $unit;
+    white-space: normal;
+  }
+
+  .card-footer {
+    border-top: 1px solid $lightgrey;
+
+    a {
+      color: $lightblue;
+      cursor: pointer;
+      padding: $unit;
+      display: inline-block;
+      float: right;
+    }
+
+    img {
+      margin: $unit;
+      display: inline-block;
+      float: left;
+    }
+  }
+
+  .cards-footer {
+    text-align: right;
+
+    a {
+      color: $lightblue;
+      text-transform: uppercase;
+      margin: $unit;
+      cursor: pointer;
+    }
+  }
 }

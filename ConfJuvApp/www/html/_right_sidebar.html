@@ -1,0 +1,17 @@
+<div id="right-sidebar" class="sidebar">
+  <ion-content>
+    <h2>
+      <span>Pesquisa</span>
+      <button menu-toggle="right" class="button button-icon icon ion-close-circled" hide-when="large"></button>
+    </h2>
+    <h3>Filtrar propostas por tema</h2>
+    <label ng-repeat="topic in topics">
+      <ion-checkbox
+        class="checkbox-balanced"
+        name="selectedTopics[]"
+        value="{{topic.title}}"
+        ng-model="topic.selected"
+      >{{topic.title}}</ion-checkbox>
+    </label>
+  </ion-content>
+</div>
