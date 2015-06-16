@@ -6881,6 +6881,18 @@ a.fbtn:focus, a.fbtn:hover {
 .card-wrap {
   margin-top: 24px; }
 
+.card-img-heading {
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7)); }
+
+.card-img-subheading {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%; }
+
 .dropdown {
   position: relative;
   -webkit-transition: z-index 0s 0.3s;
