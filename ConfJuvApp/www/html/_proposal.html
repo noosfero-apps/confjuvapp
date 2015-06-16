@@ -4,6 +4,9 @@
       <span>{{proposal.title}}</span>
       <a class="back icon-left ion-reply" ng-click="closeProposal()">Voltar</a>
     </h1>
+    <button class="button comment" ng-click="openCommentForm()">
+      <i class="icon ion-chatbox-working"></i> Comentar
+    </button>
     <img ng-src="https://img.shields.io/badge/tag-{{proposal.topic.title}}-ff9800.svg" alt="" />
     <p>{{proposal.body | htmlToPlainText}}</p>
   </ion-content>

@@ -7829,7 +7829,16 @@ html hr {
     font-size: 16px;
     color: #212121;
     line-height: 24px;
-    text-align: justify; }
+    text-align: justify;
+    clear: both; }
+  #proposal .comment {
+    background: #ff4081;
+    text-transform: uppercase;
+    color: #ffffff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    margin: 11px;
+    float: right;
+    font-size: 12px; }
 
 .sidebar h2 {
   font-size: 16px;
@@ -7918,3 +7927,40 @@ html hr {
   #create-proposal form .item-radio {
     font-size: 14px;
     margin: 1px 16px; }
+
+#create-comment {
+  -webkit-box-shadow: #333333 1px 1px 5px;
+  box-shadow: #333333 1px 1px 5px;
+  background: #fafafa;
+  padding: 11px; }
+  #create-comment .item {
+    margin-top: 11px; }
+  #create-comment h1 {
+    padding: 11px 16.5px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 22px;
+    line-height: 33px;
+    font-weight: 700;
+    position: relative;
+    color: #009688; }
+  #create-comment form label {
+    border: 0;
+    color: #009688; }
+  #create-comment form p {
+    margin: 20px 10px 20px 26px; }
+  #create-comment form .button {
+    background: #009688;
+    color: #ffffff; }
+  #create-comment form .item {
+    background: transparent;
+    border: 0; }
+  #create-comment form textarea {
+    border: 1px solid #009688;
+    display: block;
+    width: 96%;
+    color: #009688;
+    padding: 5.5px;
+    background: transparent;
+    margin-right: 16px; }
+    #create-comment form textarea:focus {
+      border: 2px solid #009688; }

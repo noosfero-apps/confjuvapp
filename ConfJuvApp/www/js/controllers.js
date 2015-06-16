@@ -300,7 +300,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?1', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -418,5 +418,89 @@ angular.module('confjuvapp.controllers', [])
         });
       }
     };
+
+    /******************************************************************************
+     C R E A T E  C O M M E N T
+     ******************************************************************************/
+
+    // Function to open the modal
+    $scope.openCommentForm = function() {
+      $scope.closeProposal();
+      if ($scope.commentModal) {
+        $scope.commentModal.show();
+      }
+      else {
+        // Initiate the modal
+        $ionicModal.fromTemplateUrl('html/_create_comment.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.commentModal = modal;
+          $scope.commentModal.show();
+        });
+      }
+    };
+
+    // Function to close the modal
+    $scope.closeCommentModal = function() {
+      $scope.commentModal.hide();
+      $scope.openProposal($scope.proposal);
+    };
+
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.commentModal.remove();
+      $scope.openProposal($scope.proposal);
+    });
+
+    // Submit the comment
+    $scope.createComment = function(data) {
+      if (!data || !data.comment) {
+        $scope.closeCommentModal();
+        var popup = $ionicPopup.alert({ title: 'Comentar', template: 'O seu comentário não pode ficar em branco!' });
+        popup.then(function() {
+          $scope.openCommentForm();
+        });
+      }
+      else if (data.comment.length > 1000) {
+        $scope.closeCommentModal();
+        var popup = $ionicPopup.alert({ title: 'Comentar', template: 'O comentário deve ter no máximo 1000 caracteres!' });
+        popup.then(function() {
+          $scope.openCommentForm();
+        });
+      }
+      else {
+        $scope.loading = true;
+
+        var config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+          timeout: 10000
+        };
+
+        var params = {
+          'private_token': $scope.token,
+          'body': data.comment
+        };
+        
+        $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/comments'), jQuery.param(params), config)  
+        .then(function(resp) {
+          $scope.closeCommentModal();
+          var popup = $ionicPopup.alert({ title: 'Comentar', template: 'Comentário criado com sucesso!' });
+          popup.then(function() {
+            $scope.loading = false;
+          });
+        }, function(err) {
+          $scope.closeCommentModal();
+          var popup = $ionicPopup.alert({ title: 'Comentar', template: 'Erro ao criar comentário!' });
+          popup.then(function() {
+            $scope.loading = false;
+            $scope.openCommentForm();
+          });
+        });
+      }
+    };
+
 
   }); // Ends controller

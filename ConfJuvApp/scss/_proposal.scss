@@ -27,5 +27,16 @@
     color: $darkergrey;
     line-height: 24px;
     text-align: justify;
+    clear: both;
+  }
+
+  .comment {
+    background: $pink;
+    text-transform: uppercase;
+    color: $white;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    margin: $unit;
+    float: right;
+    font-size: 12px;
   }
 }
