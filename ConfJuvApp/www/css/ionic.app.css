@@ -7819,6 +7819,10 @@ html hr {
     overflow: hidden;
     text-align: center;
     padding: 60px 0; }
+  #proposal h2 {
+    color: #009688;
+    font-size: 18px;
+    margin: 11px; }
   #proposal .back {
     top: 11px;
     color: #ffffff; }

@@ -295,6 +295,11 @@ angular.module('confjuvapp.controllers', [])
     // Function to open the modal
     $scope.openProposal = function(proposal) {
       $scope.proposal = proposal;
+
+      if (!$scope.proposal.comments || $scope.proposal.comments.length == 0) {
+        loadComments();
+      }
+
       if ($scope.proposalModal) {
         $scope.proposalModal.show();
       }
@@ -488,6 +493,10 @@ angular.module('confjuvapp.controllers', [])
         .then(function(resp) {
           $scope.closeCommentModal();
           var popup = $ionicPopup.alert({ title: 'Comentar', template: 'Comentário criado com sucesso!' });
+          if (!$scope.proposal.comments) {
+            $scope.proposal.comments = [];
+          }
+          $scope.proposal.comments.unshift({ body: params.body, author: { name: $scope.user.name }});
           popup.then(function() {
             $scope.loading = false;
           });
@@ -502,5 +511,32 @@ angular.module('confjuvapp.controllers', [])
       }
     };
 
+    /******************************************************************************
+     L O A D  C O M M E N T S
+     ******************************************************************************/
+
+     var loadComments = function() {
+       $scope.loading = true;
+       var config = {
+         headers: {
+           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+         },
+         timeout: 10000
+       };
+
+       $http.get(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/comments?private_token=' + $scope.token), config)
+       .then(function(resp) {
+         $scope.loading = false;
+         $scope.proposal.comments = resp.data.comments;
+         if ($scope.proposal.comments.length == 0) {
+           $scope.proposal.comments = [{ body: '', skip: true, author: { name: '' }}];
+         }
+       }, function(err) {
+         var popup = $ionicPopup.alert({ title: 'Comentários', template: 'Erro ao carregar comentários da proposta ' + $scope.proposal.id });
+         popup.then(function() {
+           $scope.loading = false;
+         });
+       });
+     };
 
   }); // Ends controller

@@ -9,5 +9,16 @@
     </button>
     <img ng-src="https://img.shields.io/badge/tag-{{proposal.topic.title}}-ff9800.svg" alt="" />
     <p>{{proposal.body | htmlToPlainText}}</p>
+
+    <h2>Comentários</h2>
+
+    <div class="card" ng-repeat="comment in proposal.comments" ng-hide="comment.skip">
+      <div class="item item-divider">
+      {{comment.author.name}}
+      </div>
+      <div class="item item-text-wrap">
+      {{comment.body}}
+      </div>
+    </div>
   </ion-content>
 </div>
