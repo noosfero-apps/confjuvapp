@@ -10,3 +10,20 @@
 	left: 0;
 	width: 100%;
 }
+
+.backcard {
+    position: absolute;
+    z-index: -114;
+    height: 50px;
+    margin-top: -60px;
+    width: 94%;
+    margin-left: 9px;
+}
+
+@media screen and (min-width: 992px) { 
+    .backcard { width: 94%; }
+}
+
+@media screen and (max-width: 768px) { 
+    .backcard { width: 89%; }
+}

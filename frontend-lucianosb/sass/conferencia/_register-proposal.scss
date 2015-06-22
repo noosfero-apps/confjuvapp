@@ -1,0 +1,61 @@
+.tags-input 
+{
+  	list-style : none;   
+  	/*border:1px solid #ccc;*/
+  	display:inline-block;
+  	padding:5px;
+  	/*height: 26px;*/
+    font-size:14px;
+    /*background:#f3f3f3;*/
+    width: 70%;
+    border-radius:2px;
+    overflow:hidden;
+}
+
+.tags-input li
+{
+  	float:left;
+}
+
+.tags
+{
+  	background: $black-sec /*#28343d*/;
+  	padding:5px 20px 5px 8px;
+  	border-radius:2px;
+  	margin-right: 5px;
+  	position: relative;
+    color: #fff;
+}
+
+.tags span.icon
+{
+	position: absolute; 
+	right:6px;
+	top:3px;
+	width: 8px;
+	height: 8px;
+	content:'';
+	cursor:pointer;
+	opacity: .7;
+  font-size:12px;
+}
+
+.tags span.icon:hover
+{
+	opacity: 1;
+}
+
+/*.tags-new input[type="text"]
+{
+  border:0;
+	margin: 0;
+	padding: 0 0 0 3px;
+	font-size: 14px;
+	margin-top: 5px;
+  background:transparent;
+}
+
+.tags-new input[type="text"]:focus
+{
+  	outline:none; 
+}*/

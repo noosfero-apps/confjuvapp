@@ -107,11 +107,11 @@
 							</div>
 				</div>
                 
-                <div class="form-group form-group-label form-group-profile">
+                <div class="form-group form-group-label form-group-profile hidden">
 							<div class="row">
 								<div class="col-lg-6 col-sm-8">
 									<label class="floating-label" for="float-profilekind">Tipo de Perfil</label>
-									<select class="form-control" id="float-profilekind" name="option">
+									<select class="form-control" id="float-profilekind" name="option" disabled>
 										<option value="">&nbsp;</option>
 										<option value="citizen">Cidadão</option>
 										<option value="group">Grupo</option>
@@ -138,16 +138,32 @@
                 <div class="form-group form-group-label form-group-profile option">
 							<div class="row citizen">
 								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-sex">Sexo</label>
-									<select class="form-control" id="float-sex">
+									<label class="floating-label" for="float-gender">Identidade de Gênero</label>
+									<select class="form-control" id="float-gender">
 										<option value="">&nbsp;</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
+										<option value="1">Masculino</option>
+										<option value="2">Feminino</option>
 										
 									</select>
 								</div>
 							</div>
 				</div>
+                    
+                <div class="form-group form-group-label form-group-profile option">
+							<div class="row citizen">
+								<div class="col-lg-6 col-sm-8">
+									<label class="floating-label" for="float-sexuality">Orientação Sexual</label>
+									<select class="form-control" id="float-sexuality">
+										<option value="">&nbsp;</option>
+										<option value="1">Heterossexual</option>
+										<option value="2">Homossexual</option>
+                                        <option value="3">Bissexual</option>
+                                        <option value="4">Outra</option>
+										
+									</select>
+								</div>
+							</div>
+				</div>    
                     
             
                 
@@ -155,7 +171,7 @@
 							<div class="row citizen">
 								<div class="col-lg-6 col-sm-8">
 									<label class="floating-label" for="float-text-age">Idade</label>
-									<input class="form-control" id="float-text-age" type="text">
+									<input aria-owns="datepicker-adv-1_root" aria-readonly="false" aria-expanded="false" aria-haspopup="true" readonly="" class="datepicker-adv datepicker-adv-default form-control picker__input" id="datepicker-adv-1" type="text">
 								</div>
 							</div>
 				</div>
@@ -177,7 +193,28 @@
                 
                 
                     
-        
+                <p>Ao salvar você automaticamente concorda com nossos <a data-toggle="modal" href="#termos">Termos de Uso</a>.</p>
+                    <div aria-hidden="true" class="modal fade" id="termos" role="dialog" tabindex="-1" style="display: none;">
+                            <div class="modal-dialog modal-xs">
+                                <div class="modal-content">
+                                    <div class="modal-heading">
+                                        <a class="modal-close" data-dismiss="modal">×</a>
+                                        <h2 class="modal-title">Termos de Uso</h2>
+                                    </div>
+                                    <div class="modal-inner">
+                                    
+                                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                                        
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <p class="text-right"><button class="btn btn-flat btn-alt" data-dismiss="modal" type="button">Fechar</button></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 
                <div class="form-group-btn">
 						<button class="btn btn-profile waves-button waves-light waves-effect" type="submit">Salvar</button>
@@ -197,7 +234,9 @@
 
 	<script src="js/base.min.js" type="text/javascript"></script>
 
-
+    <div aria-hidden="true" class="picker" id="datepicker-adv-1_root">
+        <div class="picker__holder" tabindex="-1"><div class="picker__frame"><div class="picker__wrap"><div class="picker__box"><div class="picker__date-display"><div class="picker__date-display-top"><span class="picker__year-display">2015</span></div><div class="picker__date-display-bottom"><span class="picker__weekday-display">Fri</span><span class="picker__day-display">19</span><span class="picker__month-display">Jun</span></div></div><div class="picker__header"><div class="picker__month">June</div><div class="picker__year">2015</div><div class="icon picker__nav--prev" data-nav="-1" role="button" aria-controls="datepicker-adv-1_table" title="Previous month"> </div><div class="icon picker__nav--next" data-nav="1" role="button" aria-controls="datepicker-adv-1_table" title="Next month"> </div></div><table class="picker__table" id="datepicker-adv-1_table" role="grid" aria-controls="datepicker-adv-1" aria-readonly="true"><thead><tr><th class="picker__weekday" scope="col" title="Sun">S</th><th class="picker__weekday" scope="col" title="Mon">M</th><th class="picker__weekday" scope="col" title="Tue">T</th><th class="picker__weekday" scope="col" title="Wed">W</th><th class="picker__weekday" scope="col" title="Thu">T</th><th class="picker__weekday" scope="col" title="Fri">F</th><th class="picker__weekday" scope="col" title="Sat">S</th></tr></thead><tbody><tr><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1433041200000" role="gridcell" aria-label="31/5/2015">31</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433127600000" role="gridcell" aria-label="1/6/2015">1</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433214000000" role="gridcell" aria-label="2/6/2015">2</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433300400000" role="gridcell" aria-label="3/6/2015">3</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433386800000" role="gridcell" aria-label="4/6/2015">4</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433473200000" role="gridcell" aria-label="5/6/2015">5</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433559600000" role="gridcell" aria-label="6/6/2015">6</div></td></tr><tr><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433646000000" role="gridcell" aria-label="7/6/2015">7</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433732400000" role="gridcell" aria-label="8/6/2015">8</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433818800000" role="gridcell" aria-label="9/6/2015">9</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433905200000" role="gridcell" aria-label="10/6/2015">10</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1433991600000" role="gridcell" aria-label="11/6/2015">11</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1434078000000" role="gridcell" aria-label="12/6/2015">12</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1434164400000" role="gridcell" aria-label="13/6/2015">13</div></td></tr><tr><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1434250800000" role="gridcell" aria-label="14/6/2015">14</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1434337200000" role="gridcell" aria-label="15/6/2015">15</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1434423600000" role="gridcell" aria-label="16/6/2015">16</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1434510000000" role="gridcell" aria-label="17/6/2015">17</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1434596400000" role="gridcell" aria-label="18/6/2015">18</div></td><td role="presentation"><div class="picker__day picker__day--infocus picker__day--today picker__day--highlighted" data-pick="1434682800000" role="gridcell" aria-label="19/6/2015" aria-activedescendant="true">19</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1434769200000" role="gridcell" aria-label="20/6/2015">20</div></td></tr><tr><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1434855600000" role="gridcell" aria-label="21/6/2015">21</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1434942000000" role="gridcell" aria-label="22/6/2015">22</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1435028400000" role="gridcell" aria-label="23/6/2015">23</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1435114800000" role="gridcell" aria-label="24/6/2015">24</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1435201200000" role="gridcell" aria-label="25/6/2015">25</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1435287600000" role="gridcell" aria-label="26/6/2015">26</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1435374000000" role="gridcell" aria-label="27/6/2015">27</div></td></tr><tr><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1435460400000" role="gridcell" aria-label="28/6/2015">28</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1435546800000" role="gridcell" aria-label="29/6/2015">29</div></td><td role="presentation"><div class="picker__day picker__day--infocus" data-pick="1435633200000" role="gridcell" aria-label="30/6/2015">30</div></td><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1435719600000" role="gridcell" aria-label="1/7/2015">1</div></td><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1435806000000" role="gridcell" aria-label="2/7/2015">2</div></td><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1435892400000" role="gridcell" aria-label="3/7/2015">3</div></td><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1435978800000" role="gridcell" aria-label="4/7/2015">4</div></td></tr><tr><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1436065200000" role="gridcell" aria-label="5/7/2015">5</div></td><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1436151600000" role="gridcell" aria-label="6/7/2015">6</div></td><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1436238000000" role="gridcell" aria-label="7/7/2015">7</div></td><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1436324400000" role="gridcell" aria-label="8/7/2015">8</div></td><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1436410800000" role="gridcell" aria-label="9/7/2015">9</div></td><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1436497200000" role="gridcell" aria-label="10/7/2015">10</div></td><td role="presentation"><div class="picker__day picker__day--outfocus" data-pick="1436583600000" role="gridcell" aria-label="11/7/2015">11</div></td></tr></tbody></table><div class="picker__footer"><button disabled="disabled" class="btn btn-flat btn-alt picker__button--today" type="button" data-pick="1434682800000" aria-controls="datepicker-adv-1">Today</button><button disabled="disabled" class="btn btn-flat btn-alt picker__button--clear" type="button" data-clear="1" aria-controls="datepicker-adv-1">Cancel</button><button disabled="disabled" class="btn btn-flat btn-alt picker__button--close" type="button" data-close="true" aria-controls="datepicker-adv-1">OK</button></div></div></div></div></div>
+    </div>
 
     
 <script>

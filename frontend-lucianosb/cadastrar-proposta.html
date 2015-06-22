@@ -238,9 +238,12 @@
             
 			<div class="container">
                 <div class="clearfix"></div>
+                <div id="form">
                 <form action="proposta.html">
-                <h2 class="content-sub-heading">Preencha todos os campos</h2>
-                
+                    
+                <h3>Informações Básica</h3>
+                <section>
+                <h2 class="content-sub-heading">Campos Obrigatórios</h2>    
                 <div class="form-group form-group-label form-group-proposal">
 							<div class="row">
 								<div class="col-lg-6 col-sm-8">
@@ -249,42 +252,7 @@
 								</div>
 							</div>
 				</div>
-                
-                                
-                <div class="form-group">
-							<div class="row">
-								<div class="col-lg-2 col-md-3 col-sm-4">
-									<label class="form-label" for="input-photo">Enviar Foto</label>
-								</div>
-								<div class="col-lg-4 col-md-6 col-sm-8">
-									<input id="input-file" type="file">
-								</div>
-							</div>
-				</div>    
-                
-                <div class="form-group form-group-label form-group-proposal">
-							<div class="row">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-state">UF</label>
-									<select class="form-control" id="float-state">
-										<option value="">&nbsp;</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-									</select>
-								</div>
-							</div>
-				</div>
-                
-                <div class="form-group form-group-label form-group-proposal">
-							<div class="row">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-text-city">Cidade</label>
-									<input class="form-control" id="float-text-city" type="text">
-								</div>
-							</div>
-				</div>
-                
+                    
                 <div class="form-group form-group-label form-group-proposal">
 							<div class="row">
 								<div class="col-lg-6 col-sm-8">
@@ -294,9 +262,7 @@
 							</div>
 				</div>
                     
-                <hr />
-                
-                <h2>Selecione as Tags</h2>
+                <h2 class="content-sub-heading">Selecione o Eixo</h2>
                 
                 <div class="form-group">
 							<div class="checkbox checkbox-adv checkbox-inline">
@@ -354,17 +320,86 @@
 									<input class="access-hide" id="input-checkbox-inline-11" name="input-checkbox-inline" type="checkbox">Inline Option 11
 								<span class="circle"></span><span class="circle-check"></span><span class="circle-icon icon icon-done"></span></label>
 							</div>
-							<div class="checkbox checkbox-adv checkbox-inline">
-								<label for="input-checkbox-inline-12">
-									<input class="access-hide" id="input-checkbox-inline-12" name="input-checkbox-inline" type="checkbox">Inline Option 12
-								<span class="circle"></span><span class="circle-check"></span><span class="circle-icon icon icon-done"></span></label>
+							
+				</div>
+                    
+                    <hr />
+                
+                <h2 class="content-sub-heading">Campos Opcionais</h2>
+                                
+                <div class="form-group">
+							<div class="row">
+								<div class="col-lg-2 col-md-3 col-sm-4">
+									<label class="form-label" for="input-photo">Enviar Foto</label>
+								</div>
+								<div class="col-lg-4 col-md-6 col-sm-8">
+									<input id="input-file" type="file">
+								</div>
+							</div>
+				</div>
+                    
+                <div class="form-group">
+							<div class="row">
+								<div class="col-lg-2 col-md-3 col-sm-4">
+									<label class="form-label" for="input-photo">Adicionar Tags separando com virgula</label>
+								</div>
+								<ul class="tags-input">
+                                    <li class="tags"><span>Tag teste</span><span class="icon icon-close"></span></li>
+                                    <li class="tags-new">
+                                      
+                                      <input class="form-control" id="float-text-tag" type="text"> 
+                                    </li>
+                                </ul>
+							</div>
+				</div>
+                    
+                <div class="form-group">
+							<div class="checkbox switch">
+								<label for="input-switch-2">
+									<input class="access-hide" id="input-switch-2" name="input-switch" type="checkbox"><span class="switch-toggle switch-toggle-proposal"></span>Esta proposta veio de uma conferência livre?
+								</label>
+							</div>
+				</div>
+                    
+                <hr />
+                </section>
+                    
+                <h3>Geolocalização</h3>
+                <section>
+                <h2 class="content-sub-heading">Para concluir, de onde vem esta proposta?</h2>    
+                <div class="form-group form-group-label form-group-proposal">
+							<div class="row">
+								<div class="col-lg-6 col-sm-8">
+									<label class="floating-label" for="float-state">UF</label>
+									<select class="form-control" id="float-state">
+										<option value="">&nbsp;</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
 							</div>
 				</div>
                 
-               <div class="form-group-btn">
+                <div class="form-group form-group-label form-group-proposal">
+							<div class="row">
+								<div class="col-lg-6 col-sm-8">
+									<label class="floating-label" for="float-text-city">Cidade</label>
+									<input class="form-control" id="float-text-city" type="text">
+								</div>
+							</div>
+				</div>
+                
+                
+                </section>   
+                                
+                
+                
+               <!--<div class="form-group-btn">
 						<button class="btn btn-proposal waves-button waves-light waves-effect" type="submit">Salvar</button>
-					</div>
+					</div>-->
 				</form>
+                </div>    
                
             
 			</div>
@@ -393,7 +428,7 @@
     var bg = document.getElementById("menuBG");
     bg.appendChild(pattern.canvas())
     
-    document.getElementById("cover").style.background = "url(" + pattern.png() + ") no-repeat fixed";
+    
 </script>
 
     
@@ -407,6 +442,18 @@
         $('.'+name+' div.row').hide();
         $('.'+val).show();
     }
+    
+</script>    
+    
+<script src="js/tags.js" type="text/javascript"></script>    
+<script src="js/jquery.steps.js" type="text/javascript"></script>
+<script>
+    
+    $("#form").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft"
+    });
     
 </script>    
 

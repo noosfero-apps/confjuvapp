@@ -6893,6 +6893,20 @@ a.fbtn:focus, a.fbtn:hover {
   left: 0;
   width: 100%; }
 
+.backcard {
+  position: absolute;
+  z-index: -114;
+  height: 50px;
+  margin-top: -60px;
+  width: 94%;
+  margin-left: 9px; }
+
+@media screen and (min-width: 992px) {
+  .backcard {
+    width: 94%; } }
+@media screen and (max-width: 768px) {
+  .backcard {
+    width: 89%; } }
 .dropdown {
   position: relative;
   -webkit-transition: z-index 0s 0.3s;
@@ -10183,5 +10197,70 @@ textarea.picker__select--year {
 
 .comments span.avatar {
   margin-top: 12px; }
+
+.hidden {
+  display: none; }
+
+.tags-input {
+  list-style: none;
+  /*border:1px solid #ccc;*/
+  display: inline-block;
+  padding: 5px;
+  /*height: 26px;*/
+  font-size: 14px;
+  /*background:#f3f3f3;*/
+  width: 70%;
+  border-radius: 2px;
+  overflow: hidden; }
+
+.tags-input li {
+  float: left; }
+
+.tags {
+  background: #616161;
+  padding: 5px 20px 5px 8px;
+  border-radius: 2px;
+  margin-right: 5px;
+  position: relative;
+  color: #fff; }
+
+.tags span.icon {
+  position: absolute;
+  right: 6px;
+  top: 3px;
+  width: 8px;
+  height: 8px;
+  content: '';
+  cursor: pointer;
+  opacity: .7;
+  font-size: 12px; }
+
+.tags span.icon:hover {
+  opacity: 1; }
+
+/*.tags-new input[type="text"]
+{
+  border:0;
+	margin: 0;
+	padding: 0 0 0 3px;
+	font-size: 14px;
+	margin-top: 5px;
+  background:transparent;
+}
+
+.tags-new input[type="text"]:focus
+{
+  	outline:none; 
+}*/
+.progressbar .step {
+  width: 25%;
+  opacity: 0.3; }
+.progressbar .step-first {
+  border-radius: 20px 0 0 20px; }
+.progressbar .step-last {
+  border-radius: 0 20px 20px 0; }
+.progressbar .active {
+  width: 33%;
+  opacity: 1; }
 
 /*# sourceMappingURL=base.css.map */

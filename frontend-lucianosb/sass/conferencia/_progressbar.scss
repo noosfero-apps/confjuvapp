@@ -1,0 +1,11 @@
+.progressbar {
+    
+    .step { width: 25%; opacity: 0.3; }
+    .step-first { border-radius: 20px 0 0 20px; }   
+    .step-last { border-radius: 0 20px 20px 0; }
+    .active { width: 33%; opacity: 1;}
+    
+}
+    
+    
+    
