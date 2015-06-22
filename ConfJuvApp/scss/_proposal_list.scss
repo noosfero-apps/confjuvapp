@@ -28,6 +28,8 @@
       padding: 2 * $unit;
       height: 95px;
       min-height: 95px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
@@ -38,6 +40,8 @@
     white-space: normal;
     height: 100px;
     min-height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .card-footer {

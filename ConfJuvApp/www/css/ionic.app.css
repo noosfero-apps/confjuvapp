@@ -7785,14 +7785,18 @@ html hr {
       background: -webkit-gradient(linear, 16% 84%, 84% 16%, color-stop(37%, rgba(0, 82, 159, 0.05)), color-stop(37%, transparent)), -webkit-gradient(linear, 11% 30%, 89% 70%, color-stop(18%, rgba(230, 128, 227, 0.05)), color-stop(18%, transparent)), -webkit-gradient(linear, 37% 36%, 63% 64%, color-stop(21%, rgba(9, 60, 231, 0.05)), color-stop(21%, transparent)), -webkit-gradient(linear, 93% 87%, 7% 13%, color-stop(28%, rgba(67, 69, 234, 0.05)), color-stop(28%, transparent)), -webkit-gradient(linear, 34% 31%, 66% 69%, color-stop(58%, rgba(163, 170, 205, 0.05)), color-stop(58%, transparent)), -webkit-gradient(linear, 8% 75%, 92% 25%, color-stop(75%, rgba(105, 245, 77, 0.05)), color-stop(75%, transparent)), -webkit-gradient(linear, 29% 44%, 71% 56%, color-stop(44%, rgba(34, 238, 57, 0.05)), color-stop(44%, transparent)), -webkit-gradient(linear, 62% 31%, 38% 69%, color-stop(54%, rgba(251, 185, 140, 0.05)), color-stop(54%, transparent)), -webkit-gradient(linear, 74% 32%, 26% 68%, color-stop(0%, rgba(210, 141, 219, 0.05)), color-stop(0%, transparent)), -webkit-gradient(linear, 57% 31%, 43% 69%, color-stop(18%, rgba(67, 14, 191, 0.05)), color-stop(18%, transparent)), #fff;
       padding: 22px;
       height: 95px;
-      min-height: 95px; }
+      min-height: 95px;
+      overflow: hidden;
+      text-overflow: ellipsis; }
   #proposals .card-body {
     color: #000000;
     font-size: 16px;
     padding: 22px;
     white-space: normal;
     height: 100px;
-    min-height: 100px; }
+    min-height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
   #proposals .card-footer {
     border-top: 1px solid #e0e0e0; }
     #proposals .card-footer a {
