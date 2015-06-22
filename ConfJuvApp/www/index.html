@@ -9,6 +9,7 @@
     <!-- CSS -->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/ionic.app.min.css" rel="stylesheet">
+    <link href="css/ionic.tdcards.css" rel="stylesheet">
 
     <!-- JavaScript -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -20,14 +21,15 @@
     <script src="js/controllers.js"></script>
     <script src="js/filters.js"></script>
     <script src="js/trianglify.min.js"></script>
-    <script src="js/ionic.swipecards.js"></script>
+    <script src="js/ionic.tdcards.js"></script>
+    <script src="js/collide.js"></script>
   </head>
   <body ng-app="confjuvapp" ng-controller="ProposalCtrl" ng-init="openModal()" ng-class="{ 'logged-in': loggedIn }">
     <ion-side-menus id="body">
       <ion-side-menu-content>
         <ng-include src="'html/_header.html'"></ng-include>
         <ion-pane>
-          <ion-content id="proposals-container">
+          <ion-content id="proposals-container" no-scroll>
             <ng-include src="'html/_proposal_list.html'"></ng-include>
           </ion-content>
         </ion-pane>

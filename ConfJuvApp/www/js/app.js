@@ -2,7 +2,7 @@
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // the 2nd parameter is an array of 'requires'
-angular.module('confjuvapp', ['ionic', 'confjuvapp.controllers', 'confjuvapp.filters', 'ionic.contrib.ui.cards'])
+angular.module('confjuvapp', ['ionic', 'confjuvapp.controllers', 'confjuvapp.filters', 'ionic.contrib.ui.tinderCards'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -45,4 +45,15 @@ angular.module('confjuvapp', ['ionic', 'confjuvapp.controllers', 'confjuvapp.fil
       });
     }
   };
-}]);
+}])
+
+.directive('noScroll', function() {
+  return {
+    restrict: 'A',
+    link: function($scope, $element, $attr) {
+      $element.on('touchmove', function(e) {
+        e.preventDefault();
+      });
+    }
+  }
+});

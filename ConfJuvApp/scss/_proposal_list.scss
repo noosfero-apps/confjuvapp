@@ -26,6 +26,8 @@
       font-size: 20px;
       background: $diamond;
       padding: 2 * $unit;
+      height: 95px;
+      min-height: 95px;
     }
   }
 
@@ -34,6 +36,8 @@
     font-size: 16px;
     padding: 2 * $unit;
     white-space: normal;
+    height: 100px;
+    min-height: 100px;
   }
 
   .card-footer {
@@ -54,8 +58,20 @@
     }
   }
 
+  td-cards {
+    position: relative;
+
+    td-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+
   .cards-footer {
-    text-align: right;
+    text-align: center;
+    margin-top: 350px;
 
     a {
       color: $lightblue;

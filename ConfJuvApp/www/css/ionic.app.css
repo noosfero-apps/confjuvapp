@@ -7685,7 +7685,7 @@ html .hidden {
 html .back {
   cursor: pointer;
   font-size: 12px;
-  color: #e0e0e0;
+  color: #9e9e9e;
   position: absolute;
   right: 11px; }
 html hr {
@@ -7754,7 +7754,8 @@ html hr {
     color: #ffffff;
     font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 22px;
-    font-weight: 300; }
+    font-weight: 300;
+    overflow: visible; }
   #header button {
     position: absolute;
     right: 11px;
@@ -7782,12 +7783,16 @@ html hr {
     #proposals .card h3 {
       font-size: 20px;
       background: -webkit-gradient(linear, 16% 84%, 84% 16%, color-stop(37%, rgba(0, 82, 159, 0.05)), color-stop(37%, transparent)), -webkit-gradient(linear, 11% 30%, 89% 70%, color-stop(18%, rgba(230, 128, 227, 0.05)), color-stop(18%, transparent)), -webkit-gradient(linear, 37% 36%, 63% 64%, color-stop(21%, rgba(9, 60, 231, 0.05)), color-stop(21%, transparent)), -webkit-gradient(linear, 93% 87%, 7% 13%, color-stop(28%, rgba(67, 69, 234, 0.05)), color-stop(28%, transparent)), -webkit-gradient(linear, 34% 31%, 66% 69%, color-stop(58%, rgba(163, 170, 205, 0.05)), color-stop(58%, transparent)), -webkit-gradient(linear, 8% 75%, 92% 25%, color-stop(75%, rgba(105, 245, 77, 0.05)), color-stop(75%, transparent)), -webkit-gradient(linear, 29% 44%, 71% 56%, color-stop(44%, rgba(34, 238, 57, 0.05)), color-stop(44%, transparent)), -webkit-gradient(linear, 62% 31%, 38% 69%, color-stop(54%, rgba(251, 185, 140, 0.05)), color-stop(54%, transparent)), -webkit-gradient(linear, 74% 32%, 26% 68%, color-stop(0%, rgba(210, 141, 219, 0.05)), color-stop(0%, transparent)), -webkit-gradient(linear, 57% 31%, 43% 69%, color-stop(18%, rgba(67, 14, 191, 0.05)), color-stop(18%, transparent)), #fff;
-      padding: 22px; }
+      padding: 22px;
+      height: 95px;
+      min-height: 95px; }
   #proposals .card-body {
     color: #000000;
     font-size: 16px;
     padding: 22px;
-    white-space: normal; }
+    white-space: normal;
+    height: 100px;
+    min-height: 100px; }
   #proposals .card-footer {
     border-top: 1px solid #e0e0e0; }
     #proposals .card-footer a {
@@ -7800,8 +7805,16 @@ html hr {
       margin: 11px;
       display: inline-block;
       float: left; }
+  #proposals td-cards {
+    position: relative; }
+    #proposals td-cards td-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; }
   #proposals .cards-footer {
-    text-align: right; }
+    text-align: center;
+    margin-top: 350px; }
     #proposals .cards-footer a {
       color: #2196f3;
       text-transform: uppercase;

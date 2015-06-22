@@ -173,7 +173,6 @@ angular.module('confjuvapp.controllers', [])
     $scope.proposalList = [];
     $scope.proposalsByTopic = {};
     $scope.cards = [];
-    $scope.cardIndex = 0;
 
     // Selected topics
 
@@ -233,9 +232,7 @@ angular.module('confjuvapp.controllers', [])
           proposal.topic = topic;
           $scope.proposalList.push(proposal);
           $scope.proposalsByTopic[topic.id].push(proposal);
-          if ($scope.cards.length == 0) {
-            $scope.cards.push(proposal);
-          }
+          $scope.cards.push(proposal);
         }
         fillBackgroundWithColor('#FAFAFA');
         $scope.loading = false;
@@ -247,41 +244,33 @@ angular.module('confjuvapp.controllers', [])
 
     // Cards
 
-    $scope.cardSwiped = function(index) {
-      var count = 0;
-      var card = $scope.getCard();
-      // FIXME: Try to improve performance
-      while (count < $scope.proposalList.length && !card.topic.selected) {
-        card = $scope.getCard();
-        count++;
-      }
-      $scope.cards.push(angular.extend({}, card));
-    };  
-
     $scope.cardDestroyed = function(index) {
-      $scope.cards.splice(index, 1); 
-    };
-
-    $scope.getCard = function() {
-      $scope.cardIndex = (($scope.cardIndex + 1) % $scope.proposalList.length);
-      return $scope.proposalList[$scope.cardIndex];
-    };
-
-    $scope.nextCard = function(index) {
-      if (index == -1) {
-        index = $scope.cards.length - 1;
+      $scope.cards.splice(index, 1);
+      if ($scope.cards.length === 0) {
+        for (var i = 0; i < $scope.proposalList.length; i++) {
+          var card = $scope.proposalList[i];
+          if (card.topic.selected) {
+            $scope.cards.push(card);
+          }
+        }
       }
-      $scope.cardSwiped();
+    };
+
+    $scope.nextCard = function() {
+      var index = $scope.cards.length - 1;
+      if (index == -1) {
+        index = 0;
+      }
       $scope.cardDestroyed(index);
     };
 
     // Swipe cards when filters are selected
     $scope.$watch('selection', function() {
-      var n = $scope.cards.length;
-      if (n > 0) {
-        var card = $scope.cards[n - 1];
-        if (card.topic && !card.topic.selected) {
-          $scope.nextCard(n - 1);
+      $scope.cards = [];
+      for (var i = 0; i < $scope.proposalList.length; i++) {
+        var card = $scope.proposalList[i];
+        if (card.topic.selected) {
+          $scope.cards.push(card);
         }
       }
     });
@@ -409,6 +398,7 @@ angular.module('confjuvapp.controllers', [])
               topic: topic
             };
             $scope.proposalList.push(proposal);
+            $scope.cards.push(proposal);
             $scope.proposalsByTopic[data.topic_id].push(proposal);
             data.title = data.description = data.topic_id = null;
             $scope.loading = false;
