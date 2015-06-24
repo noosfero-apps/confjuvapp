@@ -153,7 +153,7 @@ angular.module('confjuvapp.controllers', [])
             msg += 'Campo "' + field + '" ' + errors[field][0] + '. ';
           }
         } catch(e) {
-          // Do nothing
+          msg = err.data.message;
         }
         $ionicPopup.alert({ title: 'Registrar', template: 'Erro ao registrar usuário. ' + msg });
         $scope.loading = false;
