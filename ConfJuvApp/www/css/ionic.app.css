@@ -7670,7 +7670,7 @@ html .loader {
   display: block;
   width: 220px;
   height: 44px;
-  background: transparent url(../img/loader.gif?2) center center no-repeat;
+  background: transparent url(../img/loader.gif?4) center center no-repeat;
   position: absolute;
   top: 0;
   left: 50%;
