@@ -3,5 +3,7 @@
   
   <span ng-show="loading" class="loader"><em>Carregando...</em></span>
 
-  <button menu-toggle="right" class="button button-icon icon ion-funnel" hide-when="large"></button>
+  <div ng-show="loggedIn">
+    <button menu-toggle="right" class="button button-icon icon ion-funnel" hide-when="large"></button>
+  </div>
 </ion-header-bar>
