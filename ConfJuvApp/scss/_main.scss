@@ -2,8 +2,9 @@
 
 html {
 
-  body {
+  body, #body {
     font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: $orange-triangles;
   }
 
   ion-content {
@@ -49,5 +50,11 @@ html {
   hr {
     border: 0;
     border-top: 1px solid $darkgrey;
+  }
+
+  .large {
+    .scroll-content, .ionic-scroll {
+      overflow-y: auto;
+    }
   }
 }

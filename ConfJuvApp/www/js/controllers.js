@@ -3,6 +3,8 @@
 angular.module('confjuvapp.controllers', [])
   .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup, filterFilter) {
 
+    $scope.largeScreen = (window.innerWidth >= 768);
+
     $scope.loading = false;
 
     /******************************************************************************
