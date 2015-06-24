@@ -61,7 +61,7 @@ $(document).ready(function(event) {
     	+ '<div class="card-inner"><p>'+descs+'</p></div>' 
     	+ '<div class="card-action">' 
     	+ '<ul class="nav nav-list pull-right">'
-        + '<li><a href="proposta.html"><span class="icon icon-open-in-new text-blue"></span>&nbsp;<span class="text-blue">Leia Mais</span></a></li><li><a href="javascript:void(0)"><span class="icon icon-comment"></span>&nbsp;Comentar</a></li><li><a href="javascript:void(0)"><span class="icon icon-notifications"></span>&nbsp;Seguir</a></li>'
+        + '<li><a href="proposta.html"><span class="icon icon-open-in-new text-blue"></span>&nbsp;<span class="text-blue">Leia Mais</span></a></li><li><a data-toggle="modal" href="#comment-action"><span class="icon icon-comment"></span>&nbsp;Comentar</a></li><li><a href="javascript:void(0)"><span class="icon icon-notifications"></span>&nbsp;Seguir</a></li>'
         + '</ul></div>'
     	+ '</div></div>');
 

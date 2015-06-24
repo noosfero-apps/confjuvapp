@@ -20,7 +20,7 @@
 		<![endif]-->
     
 </head>
-<body class="avoid-fout page-profile">
+<body class="avoid-fout page-proposal">
 	<div class="avoid-fout-indicator avoid-fout-indicator-fixed">
 		<div class="progress-circular progress-circular-alt progress-circular-center">
 			<div class="progress-circular-wrapper">
@@ -213,55 +213,37 @@
 		<div class="content-inner">
             
             
-                <div id="cover">
-
-                      <div id="user-avatar">
-
-                                    <div class="avatar avatar-profile avatar-lg">
-                                       <span class="icon icon-person icon-lg"></span>
-                                    </div>
-
-                                        <p>Editando <br/ >Nome do Usuário</p>
-                      </div>
-                 </div>
-            
             
 			<div class="container">
                 <div class="clearfix"></div>
-                <form action="index.html">
-                <h2 class="content-sub-heading">Dados Básicos</h2>
-                
-                <div class="form-group form-group-label form-group-profile">
-							<div class="row">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-text-name">Nome</label>
-									<input class="form-control" id="float-text-name" type="text" value="John Smith">
-								</div>
-							</div>
-				</div>
-                
-                <div class="form-group form-group-label form-group-profile">
-							<div class="row">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-text-email">Email</label>
-									<input class="form-control" id="float-text-email" type="text" value="john.smith@tard.is">
-								</div>
-							</div>
-				</div>
+                <div id="form">
+                <form action="proposta.html">
                     
-                <div class="form-group">
+                
+                    
+                <h3>Geolocalização</h3>
+                <section>
+                <h2 class="content-sub-heading">Para concluir, de onde vem esta proposta?</h2>
+                
+                <div class="form-group form-group-label form-group-range form-group-proposal">
 							<div class="row">
-								<div class="col-lg-2 col-md-3 col-sm-4">
-									<label class="form-label" for="input-photo">Enviar Foto</label>
-								</div>
-								<div class="col-lg-4 col-md-6 col-sm-8">
-									<input id="input-file" type="file">
+								<div class="col-lg-6 col-sm-8">
+									<label class="floating-label" for="float-range">Abrangência</label>
+									<select class="form-control" id="float-range" name="option">
+										<option value="">&nbsp;</option>
+										<option value="nacional">Nacional</option>
+										<option value="estadual">Estadual</option>
+                                        <option value="regional">Regional</option>
+										<option value="municipal">Municipal</option>
+                                        <option value="tcidadania">Território da Cidadania</option>
+                                        <option value="trural">Território Rural</option>
+									</select>
 								</div>
 							</div>
 				</div>    
-                
-                <div class="form-group form-group-label form-group-profile">
-							<div class="row">
+                    
+                <div class="form-group form-group-label form-group-proposal form-group-range option">
+							<div class="row estadual municipal regional">
 								<div class="col-lg-6 col-sm-8">
 									<label class="floating-label" for="float-state">UF</label>
 									<select class="form-control" id="float-state">
@@ -274,34 +256,29 @@
 							</div>
 				</div>
                 
-                <div class="form-group form-group-label form-group-profile">
-							<div class="row">
+                <div class="form-group form-group-label form-group-proposal form-group-range option">
+							<div class="row municipal">
 								<div class="col-lg-6 col-sm-8">
 									<label class="floating-label" for="float-text-city">Cidade</label>
-									<input class="form-control" id="float-text-city" type="text" value="Brasília">
+									<input class="form-control" id="float-text-city" type="text">
 								</div>
 							</div>
 				</div>
-                
-                <div class="form-group form-group-label form-group-profile">
-							<div class="row">
+                    
+                <div class="form-group form-group-label form-group-proposal form-group-range option">
+							<div class="row regional">
 								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-profilekind">Tipo de Perfil</label>
-									<select class="form-control" id="float-profilekind" name="option">
-										<option value="">&nbsp;</option>
-										<option value="citizen">Cidadão</option>
-										<option value="group">Grupo</option>
-										
-									</select>
+									<label class="floating-label" for="float-text-city">Cidades</label>
+									<input class="form-control" id="float-text-city" type="text">
 								</div>
 							</div>
 				</div>    
                     
-                <div class="form-group form-group-label form-group-profile option">
-							<div class="row citizen">
+                <div class="form-group form-group-label form-group-proposal form-group-range option">
+							<div class="row tcidadania">
 								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-ethnicity">Etnia</label>
-									<select class="form-control" id="float-ethnicity">
+									<label class="floating-label" for="float-state">Escolha um Território da Cidadania</label>
+									<select class="form-control" id="float-state">
 										<option value="">&nbsp;</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -311,106 +288,11 @@
 							</div>
 				</div>
                 
-                <div class="form-group form-group-label form-group-profile option">
-							<div class="row citizen">
+                <div class="form-group form-group-label form-group-proposal form-group-range option">
+							<div class="row trural">
 								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-sex">Sexo</label>
-									<select class="form-control" id="float-sex">
-										<option value="">&nbsp;</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										
-									</select>
-								</div>
-							</div>
-				</div>
-                    
-            
-                
-                <div class="form-group form-group-label form-group-profile option">
-							<div class="row citizen">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-text-age">Idade</label>
-									<input class="form-control" id="float-text-age" type="text" value="22">
-								</div>
-							</div>
-				</div>
-                    
-                <div class="form-group form-group-label form-group-profile option">
-							<div class="row group">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-entity">Tipo da Entidade</label>
-									<select class="form-control" id="float-entity">
-										<option value="">&nbsp;</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										
-									</select>
-								</div>
-							</div>
-				</div>
-                
-                
-                <hr />
-                
-                <h2>Dados Complementares</h2>
-                
-                <div class="form-group form-group-label form-group-profile">
-							<div class="row">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-description">Descrição</label>
-									<textarea class="form-control" id="float-description" rows="5"></textarea>
-								</div>
-							</div>
-				</div>
-                
-                <div class="form-group form-group-label form-group-profile">
-							<div class="row">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-text-phone">Telefone</label>
-									<input class="form-control" id="float-text-phone" type="text">
-								</div>
-							</div>
-				</div>
-                
-                <div class="form-group form-group-label form-group-profile">
-							<div class="row">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-text-facebook">Facebook</label>
-									<input class="form-control" id="float-text-facebook" type="text">
-								</div>
-							</div>
-				</div>
-                
-                <div class="form-group form-group-label form-group-profile">
-							<div class="row">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-text-twitter">Twitter</label>
-									<input class="form-control" id="float-text-twitter" type="text">
-								</div>
-							</div>
-				</div>
-                
-                <div class="form-group form-group-label form-group-profile option">
-							<div class="row citizen">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-gender">Identidade de Gênero</label>
-									<select class="form-control" id="float-gender">
-										<option value="">&nbsp;</option>
-										<option value="1">Feminino</option>
-										<option value="2">Masculino</option>
-										
-									</select>
-								</div>
-							</div>
-				
-                </div>
-                    
-                <div class="form-group form-group-label form-group-profile option">
-							<div class="row citizen">
-								<div class="col-lg-6 col-sm-8">
-									<label class="floating-label" for="float-sexuality">Preferência Sexual</label>
-									<select class="form-control" id="float-sexuality">
+									<label class="floating-label" for="float-state">Escolha um Território Rural</label>
+									<select class="form-control" id="float-state">
 										<option value="">&nbsp;</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -418,12 +300,19 @@
 									</select>
 								</div>
 							</div>
-				</div>
+				</div>    
+                
+                
+                </section>   
+                                
+                
                 
                <div class="form-group-btn">
-						<button class="btn btn-profile waves-button waves-light waves-effect" type="submit">Salvar</button>
+                        <a class="pull-left btn waves-button waves-effect" href="cadastrar-proposta-p2.html"> VOLTAR </a>
+						<button class="pull-right btn btn-proposal waves-button waves-light waves-effect" type="submit">Salvar</button>
 					</div>
 				</form>
+                </div>    
                
             
 			</div>
@@ -434,17 +323,7 @@
 			<p>3confjuv</p>
 		</div>
 	</footer>
-	<div class="fbtn-container">
-		<div class="fbtn-inner">
-			<a class="fbtn fbtn-pink fbtn-lg" data-toggle="dropdown"><span class="fbtn-text">Mais opções</span><span class="fbtn-ori icon icon-add"></span><span class="fbtn-sub icon icon-close"></span></a>
-            <div class="fbtn-dropdown">
-				<a class="fbtn fbtn-profile" href="index.html"><span class="fbtn-text">Cancelar edição</span><span class="icon icon-cancel"></span></a>
-				<a class="fbtn fbtn-proposal" href="cadastrar-proposta.html"><span class="fbtn-text">Nova Proposta</span><span class="icon icon-mode-edit"></span></a>
-
-			</div>
-			
-		</div>
-	</div>
+	
 
 	<script src="js/base.min.js" type="text/javascript"></script>
 
@@ -462,17 +341,20 @@
     var bg = document.getElementById("menuBG");
     bg.appendChild(pattern.canvas())
     
-    document.getElementById("cover").style.background = "url(" + pattern.png() + ") no-repeat fixed";
+    
 </script>
-
+    
+<script src="js/tags.js" type="text/javascript"></script>
     
 <script>
 
-    $('#float-profilekind').change(refresh_inputs);
+ // makes the fields appear dymically according to the chosen value for range
+    
+    $('#float-range').change(refresh_inputs);
     refresh_inputs();
     function refresh_inputs() {
-        var name = $('#float-profilekind').attr('name');
-        var val = $('#float-profilekind').val();
+        var name = $('#float-range').attr('name');
+        var val = $('#float-range').val();
         $('.'+name+' div.row').hide();
         $('.'+val).show();
     }

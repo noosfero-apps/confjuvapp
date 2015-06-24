@@ -69,7 +69,7 @@
                         -->
 					</div>
 					<div class="menu-top-info">
-						<a class="menu-top-user" href="javascript:void(0)"><span class="avatar pull-left"><img alt="alt text for John Smith avatar" src="images/users/avatar-001.jpg"></span>John Smith</a>
+						<a class="menu-top-user" href="meuperfil.html"><span class="avatar pull-left"><img alt="alt text for John Smith avatar" src="images/users/avatar-001.jpg"></span>John Smith</a>
 					</div>
 				</div>
                 
@@ -82,33 +82,11 @@
 						<li>
 							<a href="meuperfil.html"><span class="icon icon-person"></span>Meu Perfil</a>
 						</li>
-						<li>
-							<a href="javascript:void(0)"><span class="icon icon-today"></span>Etapas</a>
-							<span class="menu-collapse-toggle collapsed" data-target="#etapas" data-toggle="collapse"><i class="icon icon-close menu-collapse-toggle-close"></i><i class="icon icon-add menu-collapse-toggle-default"></i></span>
-							<ul class="menu-collapse collapse" id="etapas">
-								<li>
-									<a href="lista-perfil.html">Etapas Municipais</a>
-								</li>
-                                <li>
-									<a href="lista-perfil.html">Etapas Estaduais</a>
-								</li>
-                                <li>
-									<a href="lista-perfil.html">Etapa Nacional</a>
-								</li>
-							</ul>
+                 <li>
+							<a href="meuperfil.html"><span class="icon icon-dashboard"></span>Meu Observatório</a>
 						</li>
-						<li>
-							<a href="javascript:void(0)"><span class="icon icon-forum"></span>Propostas</a>
-							<span class="menu-collapse-toggle collapsed" data-target="#propostas" data-toggle="collapse"><i class="icon icon-close menu-collapse-toggle-close"></i><i class="icon icon-add menu-collapse-toggle-default"></i></span>
-							<ul class="menu-collapse collapse" id="propostas">
-								<li>
-									<a href="lista-propostas.html">Tema 1</a>
-								</li>
-                                <li>
-									<a href="lista-propostas.html">Tema 2</a>
-								</li>
-							</ul>
-						</li>
+						
+						
 					</ul>
 					<hr>
 					<ul class="nav">
@@ -341,7 +319,7 @@
                 <div class="form-group">
 							<div class="row">
 								<div class="col-lg-2 col-md-3 col-sm-4">
-									<label class="form-label" for="input-photo">Adicionar Tags separando com virgula</label>
+									<label class="form-label" for="float-text-tag">Adicionar Tags separando com virgula</label>
 								</div>
 								<ul class="tags-input">
                                     <li class="tags"><span>Tag teste</span><span class="icon icon-close"></span></li>
@@ -366,9 +344,27 @@
                     
                 <h3>Geolocalização</h3>
                 <section>
-                <h2 class="content-sub-heading">Para concluir, de onde vem esta proposta?</h2>    
-                <div class="form-group form-group-label form-group-proposal">
+                <h2 class="content-sub-heading">Para concluir, de onde vem esta proposta?</h2>
+                
+                <div class="form-group form-group-label form-group-range form-group-proposal">
 							<div class="row">
+								<div class="col-lg-6 col-sm-8">
+									<label class="floating-label" for="float-range">Abrangência</label>
+									<select class="form-control" id="float-range" name="option">
+										<option value="">&nbsp;</option>
+										<option value="nacional">Nacional</option>
+										<option value="estadual">Estadual</option>
+                                        <option value="regional">Regional</option>
+										<option value="municipal">Municipal</option>
+                                        <option value="tcidadania">Território da Cidadania</option>
+                                        <option value="trural">Território Rural</option>
+									</select>
+								</div>
+							</div>
+				</div>    
+                    
+                <div class="form-group form-group-label form-group-proposal form-group-range option">
+							<div class="row estadual municipal regional">
 								<div class="col-lg-6 col-sm-8">
 									<label class="floating-label" for="float-state">UF</label>
 									<select class="form-control" id="float-state">
@@ -381,23 +377,60 @@
 							</div>
 				</div>
                 
-                <div class="form-group form-group-label form-group-proposal">
-							<div class="row">
+                <div class="form-group form-group-label form-group-proposal form-group-range option">
+							<div class="row municipal">
 								<div class="col-lg-6 col-sm-8">
 									<label class="floating-label" for="float-text-city">Cidade</label>
 									<input class="form-control" id="float-text-city" type="text">
 								</div>
 							</div>
 				</div>
+                    
+                <div class="form-group form-group-label form-group-proposal form-group-range option">
+							<div class="row regional">
+								<div class="col-lg-6 col-sm-8">
+									<label class="floating-label" for="float-text-city">Cidades</label>
+									<input class="form-control" id="float-text-city" type="text">
+								</div>
+							</div>
+				</div>    
+                    
+                <div class="form-group form-group-label form-group-proposal form-group-range option">
+							<div class="row tcidadania">
+								<div class="col-lg-6 col-sm-8">
+									<label class="floating-label" for="float-state">Escolha um Território da Cidadania</label>
+									<select class="form-control" id="float-state">
+										<option value="">&nbsp;</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
+							</div>
+				</div>
+                
+                <div class="form-group form-group-label form-group-proposal form-group-range option">
+							<div class="row trural">
+								<div class="col-lg-6 col-sm-8">
+									<label class="floating-label" for="float-state">Escolha um Território Rural</label>
+									<select class="form-control" id="float-state">
+										<option value="">&nbsp;</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
+							</div>
+				</div>    
                 
                 
                 </section>   
                                 
                 
                 
-               <!--<div class="form-group-btn">
+               <div class="form-group-btn">
 						<button class="btn btn-proposal waves-button waves-light waves-effect" type="submit">Salvar</button>
-					</div>-->
+					</div>
 				</form>
                 </div>    
                
@@ -430,30 +463,21 @@
     
     
 </script>
-
+    
+<script src="js/tags.js" type="text/javascript"></script>
     
 <script>
 
-    $('#float-profilekind').change(refresh_inputs);
+ // makes the fields appear dymically according to the chosen value for range
+    
+    $('#float-range').change(refresh_inputs);
     refresh_inputs();
     function refresh_inputs() {
-        var name = $('#float-profilekind').attr('name');
-        var val = $('#float-profilekind').val();
+        var name = $('#float-range').attr('name');
+        var val = $('#float-range').val();
         $('.'+name+' div.row').hide();
         $('.'+val).show();
     }
-    
-</script>    
-    
-<script src="js/tags.js" type="text/javascript"></script>    
-<script src="js/jquery.steps.js" type="text/javascript"></script>
-<script>
-    
-    $("#form").steps({
-        headerTag: "h3",
-        bodyTag: "section",
-        transitionEffect: "slideLeft"
-    });
     
 </script>    
 
