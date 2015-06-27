@@ -1,0 +1,15 @@
+<div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Estado
+    </div>
+    <select ng-model="stateChoosed" ng-change="loadCitiesByState(stateChoosed.id)" ng-options="state.name for state in states">
+      <option value="">Selecione um estado...</option>
+    </select>
+  </label>
+
+</div>
+
+<ng-include src="'html/_select_city.html'"></ng-include>
+

@@ -1,0 +1,12 @@
+<div class="list" ng-show="shouldDisplayCities">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Cidade
+    </div>
+    <select ng-model="cityChoosed" ng-options="city.name for city in cities">
+      <option value="">Selecione uma cidade...</option>
+    </select>
+  </label>
+
+</div>

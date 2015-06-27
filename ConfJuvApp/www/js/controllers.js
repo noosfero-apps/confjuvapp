@@ -115,13 +115,17 @@ angular.module('confjuvapp.controllers', [])
     $scope.registerFormDisplayed = false;
 
     $scope.displayRegisterForm = function() {
+      $scope.loadStates();
       $scope.registerFormDisplayed = true;
       $scope.loginFormDisplayed = false;
+      $scope.loading = false;
     };
 
     // Function to register
     $scope.Register = function(data) {
+alert('no registro')
       if (!data || !data.login || !data.email || !data.password || !data.password_confirmation) {
+alert('teste');
         $ionicPopup.alert({ title: 'Registrar', template: 'Por favor preencha todos os campos' });
         return;
       }
@@ -165,6 +169,53 @@ angular.module('confjuvapp.controllers', [])
     $scope.backToLoginHome = function() {
       $scope.registerFormDisplayed = false;
       $scope.loginFormDisplayed = false;
+    };
+
+    /******************************************************************************
+     States > Cities
+     ******************************************************************************/
+    
+    $scope.states = [];
+    $scope.stateChoosed = null;
+    $scope.cities = [];
+    $scope.cityChoosed = null;
+    $scope.shouldDisplayCities = false;
+
+    // Load States
+    $scope.loadStates = function() {
+      $scope.loading = true;
+      $scope.shouldDisplayCities = false;
+      $scope.stateChoosed = null;
+      $scope.cityChoosed = null;
+
+      var path = 'states';
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        $scope.states = resp.data;
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Estados', template: 'Não foi possível carregar os estados' });
+        $scope.loading = false;
+      });
+    };
+
+    // Load Cities
+    $scope.loadCitiesByState = function(state) {
+      $scope.loading = true;
+
+      var path = 'states/' + state + '/cities';
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        $scope.loading = false;
+        $scope.cities = resp.data;
+        $scope.shouldDisplayCities = true;
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Estados', template: 'Não foi possível carregar as cidades' });
+        $scope.loading = false;
+      });
     };
 
     /******************************************************************************
