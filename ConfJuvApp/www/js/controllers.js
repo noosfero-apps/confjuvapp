@@ -123,9 +123,7 @@ angular.module('confjuvapp.controllers', [])
 
     // Function to register
     $scope.Register = function(data) {
-alert('no registro')
       if (!data || !data.login || !data.email || !data.password || !data.password_confirmation) {
-alert('teste');
         $ionicPopup.alert({ title: 'Registrar', template: 'Por favor preencha todos os campos' });
         return;
       }
