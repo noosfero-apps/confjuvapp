@@ -1,0 +1,42 @@
+<div class='signup-person-fields' ng-repeat="field in signupPersonFields">
+
+  <div class="list" ng-if="'identidade_genero' == field">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Identidade de Gênero
+      </div>
+      <select ng-model="data.identidade_genero" required>
+        <option value="">Selecione uma identidade de gênero...</option>
+        <option value="1">Masculino</option>
+        <option value="2">Feminino</option>
+      </select>
+    </label>
+  </div>
+
+  <ul class="list" ng-if="'transgenero' == field">
+    <li class="item item-checkbox">
+       <label class="checkbox">
+         <input type="checkbox" ng-model="data.transgenero">
+       </label>
+       Sou transgênero
+    </li>
+  </ul>
+
+  <div class="list" ng-if="'orientacao_sexual' == field">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Orientação Sexual
+      </div>
+      <select ng-model="data.orientacao_sexual" required>
+        <option value="">Selecione uma orientação sexual...</option>
+        <option value="1">Homosexual</option>
+        <option value="2">Heterosexual</option>
+        <option value="3">Bisexual</option>
+        <option value="4">Assexual</option>
+      </select>
+    </label>
+  </div>
+
+
+
+</div>

@@ -73,6 +73,7 @@
 
           <label class="item item-input"><input type="text" placeholder="E-mail" ng-model="data.email" required></label>
           <label class="item item-input"><input type="text" placeholder="Nome de usuário" ng-model="data.login" required></label>
+          <ng-include src="'html/_signup_person_fields.html'"></ng-include>
           <ng-include src="'html/_select_state.html'"></ng-include>
           <label class="item item-input"><input type="password" placeholder="Senha" ng-model="data.password" required></label>
           <label class="item item-input"><input type="password" placeholder="Confirmar senha" ng-model="data.password_confirmation" required></label>

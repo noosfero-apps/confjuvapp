@@ -116,6 +116,7 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.displayRegisterForm = function() {
       $scope.loadStates();
+      $scope.loadSignupPersonFields();
       $scope.registerFormDisplayed = true;
       $scope.loginFormDisplayed = false;
       $scope.loading = false;
@@ -163,6 +164,24 @@ angular.module('confjuvapp.controllers', [])
         $scope.loading = false;
       });
     };
+
+    // Load Signup Person Fields
+    $scope.signupPersonFields = []
+    $scope.loadSignupPersonFields = function() {
+      $scope.loading = true;
+
+      var path = 'environment/signup_person_fields';
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        $scope.signupPersonFields = resp.data;
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Campos Customizados de Registro', template: 'Não foi possível carregar os campos customizados de cadastro' });
+        $scope.loading = false;
+      });
+    };
+
 
     $scope.backToLoginHome = function() {
       $scope.registerFormDisplayed = false;
