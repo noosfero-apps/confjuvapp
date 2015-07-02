@@ -10,7 +10,7 @@
     <button class="button comment" ng-click="openCommentForm()">
       <i class="icon ion-chatbox-working"></i> Comentar
     </button>
-    <img ng-src="https://img.shields.io/badge/tag-{{proposal.topic.title}}-ff9800.svg" alt="" />
+    <img ng-src="https://img.shields.io/badge/tag-{{proposal.topic.title}} {{proposal.tag_list.join(' ').replace('-', '--')}}-ff9800.svg" alt="" />
     <p>{{proposal.body | htmlToPlainText}}</p>
 
     <h2>Comentários</h2>

@@ -291,7 +291,7 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.loadProposals = function(token, topic) {
       $scope.loading = true;
-      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id&content_type=ProposalsDiscussionPlugin::Proposal';
+      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list&content_type=ProposalsDiscussionPlugin::Proposal';
       var path = 'articles/' + topic.id + '/children' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
