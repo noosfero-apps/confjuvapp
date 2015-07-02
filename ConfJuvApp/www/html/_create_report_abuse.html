@@ -1,0 +1,16 @@
+<div class="modal" id="create-report-abuse">
+  <ion-content>
+    <form ng-submit="createReportAbuse(data)">
+      <h1 class="title">
+        <span>Denunciar</span>
+        <a class="back icon-left ion-reply" ng-click="closeReportAbuseModal()">Voltar</a>
+      </h1>
+
+      <label class="item item-input"><textarea placeholder="Denúncia" ng-model="data.report_abuse"></textarea></label>
+
+      <p class="text-center">
+        <button class="button" type="submit">Enviar</button>
+      </p>
+    </form>
+  </ion-content>
+</div>

@@ -571,6 +571,92 @@ angular.module('confjuvapp.controllers', [])
       }
     };
 
+
+    /******************************************************************************
+     R E P O R T  A B U S E
+     ******************************************************************************/
+    //FIXME see a way to refactor this behavior with comment
+    // Function to open the modal
+    $scope.openReportAbuseForm = function() {
+      $scope.closeProposal();
+      if ($scope.reportAbuseModal) {
+        $scope.reportAbuseModal.show();
+      }
+      else {
+        // Initiate the modal
+        $ionicModal.fromTemplateUrl('html/_create_report_abuse.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.reportAbuseModal = modal;
+          $scope.reportAbuseModal.show();
+        });
+      }
+    };
+
+    // Function to close the modal
+    $scope.closeReportAbuseModal = function() {
+      $scope.reportAbuseModal.hide();
+      $scope.openProposal($scope.proposal);
+    };
+
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.reportAbuseModal.remove();
+      $scope.openProposal($scope.proposal);
+    });
+
+    // Submit the report abuse
+    $scope.createReportAbuse = function(data) {
+      if (!data || !data.report_abuse) {
+        $scope.closeReportAbuseModal();
+        var popup = $ionicPopup.alert({ title: 'Denunciar', template: 'A sua denúncia não pode ficar em branco!' });
+        popup.then(function() {
+          $scope.openReportAbuseForm();
+        });
+      }
+      else if (data.report_abuse.length > 1000) {
+        $scope.closeReportAbuseModal();
+        var popup = $ionicPopup.alert({ title: 'Denunciar', template: 'A denúncia deve ter no máximo 1000 caracteres!' });
+        popup.then(function() {
+          $scope.openReportAbuseForm();
+        });
+      }
+      else {
+        $scope.loading = true;
+
+        var config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+          timeout: 10000
+        };
+
+        var params = {
+          'private_token': $scope.token,
+          'report_abuse': data.report_abuse
+        };
+        
+        $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/report_abuse'), jQuery.param(params), config)  
+        .then(function(resp) {
+          $scope.closeReportAbuseModal();
+          var popup = $ionicPopup.alert({ title: 'Denunciar', template: 'Denúncia criada com sucesso!' });
+          popup.then(function() {
+            $scope.loading = false;
+          });
+        }, function(err) {
+          $scope.closeReportAbuseModal();
+          var popup = $ionicPopup.alert({ title: 'Denunciar', template: 'Erro ao criar denúncia!' });
+          popup.then(function() {
+            $scope.loading = false;
+            $scope.openReportAbuseForm();
+          });
+        });
+      }
+    };
+
+
+
     /******************************************************************************
      L O A D  C O M M E N T S
      ******************************************************************************/

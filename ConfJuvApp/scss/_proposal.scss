@@ -36,13 +36,21 @@
     clear: both;
   }
 
-  .comment {
-    background: $pink;
+  .button {
     text-transform: uppercase;
-    color: $white;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     margin: $unit;
     float: right;
     font-size: 12px;
   }
+  .comment {
+    background: $pink;
+    color: $white;
+  }
+
+  .report-abuse {
+    background: $darkergrey;
+    color: $white;
+  }
+
 }
