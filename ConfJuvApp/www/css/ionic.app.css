@@ -9440,6 +9440,9 @@ html .large .scroll-content, html .large .ionic-scroll {
   #proposal .comment {
     background: #ff4081;
     color: #ffffff; }
+  #proposal .tag {
+    background: #3f51b5;
+    color: #ffffff; }
   #proposal .report-abuse {
     background: #212121;
     color: #ffffff; }
@@ -9535,14 +9538,14 @@ html .large .scroll-content, html .large .ionic-scroll {
     font-size: 14px;
     margin: 1px 16px; }
 
-#create-comment, #create-report-abuse {
+#create-comment, #create-report-abuse, #create-tag {
   -webkit-box-shadow: #333333 1px 1px 5px;
   box-shadow: #333333 1px 1px 5px;
   background: #fafafa;
   padding: 11px; }
-  #create-comment .item, #create-report-abuse .item {
+  #create-comment .item, #create-report-abuse .item, #create-tag .item {
     margin-top: 11px; }
-  #create-comment h1, #create-report-abuse h1 {
+  #create-comment h1, #create-report-abuse h1, #create-tag h1 {
     padding: 11px 16.5px;
     border-bottom: 1px solid #e0e0e0;
     font-size: 22px;
@@ -9550,18 +9553,18 @@ html .large .scroll-content, html .large .ionic-scroll {
     font-weight: 700;
     position: relative;
     color: #009688; }
-  #create-comment form label, #create-report-abuse form label {
+  #create-comment form label, #create-report-abuse form label, #create-tag form label {
     border: 0;
     color: #009688; }
-  #create-comment form p, #create-report-abuse form p {
+  #create-comment form p, #create-report-abuse form p, #create-tag form p {
     margin: 20px 10px 20px 26px; }
-  #create-comment form .button, #create-report-abuse form .button {
+  #create-comment form .button, #create-report-abuse form .button, #create-tag form .button {
     background: #009688;
     color: #ffffff; }
-  #create-comment form .item, #create-report-abuse form .item {
+  #create-comment form .item, #create-report-abuse form .item, #create-tag form .item {
     background: transparent;
     border: 0; }
-  #create-comment form textarea, #create-report-abuse form textarea {
+  #create-comment form textarea, #create-report-abuse form textarea, #create-tag form textarea {
     border: 1px solid #009688;
     display: block;
     width: 96%;
@@ -9569,5 +9572,5 @@ html .large .scroll-content, html .large .ionic-scroll {
     padding: 5.5px;
     background: transparent;
     margin-right: 16px; }
-    #create-comment form textarea:focus, #create-report-abuse form textarea:focus {
+    #create-comment form textarea:focus, #create-report-abuse form textarea:focus, #create-tag form textarea:focus {
       border: 2px solid #009688; }

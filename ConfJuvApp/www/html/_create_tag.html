@@ -1,0 +1,16 @@
+<div class="modal" id="create-tag">
+  <ion-content>
+    <form ng-submit="createTag(data)">
+      <h1 class="title">
+        <span>Adicionar Tag</span>
+        <a class="back icon-left ion-reply" ng-click="closeTagModal()">Voltar</a>
+      </h1>
+
+      <label class="item item-input"><textarea placeholder="Lista de Tags" ng-model="data.tag"></textarea></label>
+
+      <p class="text-center">
+        <button class="button" type="submit">Enviar</button>
+      </p>
+    </form>
+  </ion-content>
+</div>

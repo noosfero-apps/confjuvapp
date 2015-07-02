@@ -1,4 +1,5 @@
-#create-comment, #create-report-abuse {
+//FIXME change this filename to something that make sense
+#create-comment, #create-report-abuse, #create-tag {
   @include box-shadow($shadow 1px 1px 5px);
   background: $ice;
   padding: $unit;
