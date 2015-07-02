@@ -11,7 +11,7 @@
           {{proposal.body | htmlToPlainText | limitTo:280}}...
         </div>
         <div class="card-footer">
-          <img ng-src="https://img.shields.io/badge/tag-{{proposal.topic.title}}-ff9800.svg" alt="" />
+          <img ng-src="https://img.shields.io/badge/tag-{{proposal.topic.title}} {{proposal.tag_list.join(' ').replace('-', '--')}}-ff9800.svg" alt="" />
           <a ng-click="openProposal(proposal)" class="icon-left ion-android-open"> Acessar</a>
         </div>
         <br style="clear: both;" />
