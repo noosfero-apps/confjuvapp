@@ -2,3 +2,4 @@
 *.swo
 *.swp
 ConfJuvApp/www/js/config.js
+node_modules

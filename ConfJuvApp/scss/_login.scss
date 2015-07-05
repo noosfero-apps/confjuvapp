@@ -81,6 +81,10 @@
         &:focus {
           border-bottom: 2px solid $purple;
         }
+
+        &.ckbox {
+          border-bottom: 0;
+        }
       }
     }
   }

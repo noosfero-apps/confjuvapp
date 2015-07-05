@@ -694,7 +694,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.createTag = function(data) {
       if (!data || !data.tag) {
         $scope.closeTagModal();
-        var popup = $ionicPopup.alert({ title: 'Tag', template: 'Sua list de tags não pode ficar em branco!' });
+        var popup = $ionicPopup.alert({ title: 'Tag', template: 'Sua lista de tags não pode ficar em branco!' });
         popup.then(function() {
           $scope.openTagForm();
         });
@@ -718,10 +718,7 @@ angular.module('confjuvapp.controllers', [])
         .then(function(resp) {
           $scope.closeTagModal();
           var popup = $ionicPopup.alert({ title: 'Tag', template: 'Tag adicionada com sucesso!' });
-          if (!$scope.proposal.tags) {
-            $scope.proposal.tags = [];
-          }
-//          $scope.proposal.tags.unshift({ body: params.body, author: { name: $scope.user.name }});
+          $scope.proposal.tag_list = data.tag.split(',');
           popup.then(function() {
             $scope.loading = false;
           });

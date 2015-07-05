@@ -1,12 +1,13 @@
 <div class="modal" id="create-tag">
   <ion-content>
-    <form ng-submit="createTag(data)">
+    <form ng-submit="createTag(data)" ng-init="data.tag = proposal.tag_list.join(',')">
       <h1 class="title">
         <span>Adicionar Tag</span>
         <a class="back icon-left ion-reply" ng-click="closeTagModal()">Voltar</a>
       </h1>
 
       <label class="item item-input"><textarea placeholder="Lista de Tags" ng-model="data.tag"></textarea></label>
+      <p><small>Separe as tags por vírgulas, sem espaços entre elas. Exemplo: tag1,tag2,tag3</small></p>
 
       <p class="text-center">
         <button class="button" type="submit">Enviar</button>
