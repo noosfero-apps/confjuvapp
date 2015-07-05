@@ -5,7 +5,11 @@
     <td-card ng-repeat="proposal in cards" on-destroy="cardDestroyed($index)" ng-style="{top: {{$index * 3}} + 'px'}"
              on-swipe-left="" on-swipe-right="" on-partial-swipe="cardPartialSwipe(amt)">
       <div class="card animate-show" ng-show="proposal.topic.selected">
-        <h3>{{proposal.title}}</h3>
+        <h3>
+          {{proposal.title}}
+          <br />
+          <small>Autor: {{proposal.author.name}}</small>
+        </h3>
         <div class="card-body">
           <!-- <div ng-bind-html="discussion.body"></div> -->
           {{proposal.body | htmlToPlainText | limitTo:280}}...

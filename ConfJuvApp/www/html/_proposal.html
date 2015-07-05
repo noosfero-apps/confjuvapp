@@ -1,7 +1,11 @@
 <div id="proposal" class="modal">
   <ion-content>
     <h1 class="title">
-      <span>{{proposal.title}}</span>
+      <span>
+        {{proposal.title}}
+        <br />
+        <small>Autor: {{proposal.author.name}}</small>
+      </span>
       <a class="back icon-left ion-reply" ng-click="closeProposal()">Voltar</a>
     </h1>
     <button class="button report-abuse" ng-click="openReportAbuseForm()">
