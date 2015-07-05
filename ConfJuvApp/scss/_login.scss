@@ -86,6 +86,17 @@
           border-bottom: 0;
         }
       }
+
+      .register-terms li.disclaimer {
+        margin: 0;
+        margin-top: $unit / 2;
+        margin-bottom: $unit / 2;
+        color: $darkgrey;
+
+        span {
+          cursor: pointer;
+        }
+      }
     }
   }
 }

@@ -73,8 +73,29 @@
 
           <label class="item item-input"><input type="text" placeholder="E-mail" ng-model="data.email" required></label>
           <label class="item item-input"><input type="text" placeholder="Nome de usuário" ng-model="data.login" required></label>
+          
           <ng-include src="'html/_signup_person_fields.html'"></ng-include>
+          
           <ng-include src="'html/_select_state.html'"></ng-include>
+          
+          <ul class="list register-terms">
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="data.agree_terms" class="ckbox">
+              </label>
+              Eu concordo com os Termos de Uso
+            </li>
+            <li class="disclaimer"><i class="ion-android-open icon-right icon"></i> Veja os <span onclick="window.open(ConfJuvAppConfig.noosferoApiHost + '/site/terms', '_system')">Termos de Uso do Juventude.gov.br</span></li>
+
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="data.agree_statute" class="ckbox">
+              </label>
+              Eu concordo com o Regimento da Conferência
+            </li>
+            <li class="disclaimer"><i class="ion-android-open icon-right icon"></i> Veja o <span onclick="window.open(ConfJuvAppConfig.noosferoApiHost + '/' + ConfJuvAppConfig.noosferoStatutePath, '_system')">Regimento da Conferência</span></li>
+          </ul>
+
           <label class="item item-input"><input type="password" placeholder="Senha" ng-model="data.password" required></label>
           <label class="item item-input"><input type="password" placeholder="Confirmar senha" ng-model="data.password_confirmation" required></label>
 

@@ -132,6 +132,10 @@ angular.module('confjuvapp.controllers', [])
         $ionicPopup.alert({ title: 'Registrar', template: 'Senhas não conferem' });
         return;
       }
+      else if (!data.agree_statute || !data.agree_terms) {
+        $ionicPopup.alert({ title: 'Registrar', template: 'Você deve concordar com os termos de uso e regimento da Conferência' });
+        return;
+      }
 
       $scope.loading = true;
 
