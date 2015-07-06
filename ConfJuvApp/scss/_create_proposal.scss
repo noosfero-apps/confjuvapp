@@ -42,9 +42,10 @@
   }
 
   form {
-    label {
+    label, .input-label {
       border: 0;
       color: $lightgreen;
+      font-size: 14px;
     }
 
     p {
@@ -61,7 +62,7 @@
       border: 0;
     }
 
-    input[type=text] {
+    input[type=text], select {
       border-bottom: 1px solid $lightgreen;
 
       &:focus {
@@ -79,7 +80,7 @@
       }
     }
 
-    input[type=text], textarea {
+    input[type=text], textarea, select {
       color: $lightgreen;
       padding: $unit / 2;
       background: transparent;

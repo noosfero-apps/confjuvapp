@@ -3,3 +3,7 @@
 *.swp
 ConfJuvApp/www/js/config.js
 node_modules
+node_modules/
+platforms/
+plugins/
+npm-debug.log
