@@ -197,17 +197,13 @@ angular.module('confjuvapp.controllers', [])
      ******************************************************************************/
     
     $scope.states = [];
-    $scope.stateChoosed = null;
     $scope.cities = [];
-    $scope.cityChoosed = null;
     $scope.shouldDisplayCities = false;
 
     // Load States
     $scope.loadStates = function() {
       $scope.loading = true;
       $scope.shouldDisplayCities = false;
-      $scope.stateChoosed = null;
-      $scope.cityChoosed = null;
 
       var path = 'states';
 
@@ -222,10 +218,10 @@ angular.module('confjuvapp.controllers', [])
     };
 
     // Load Cities
-    $scope.loadCitiesByState = function(state) {
+    $scope.loadCitiesByState = function(state_id) {
       $scope.loading = true;
 
-      var path = 'states/' + state + '/cities';
+      var path = 'states/' + state_id + '/cities';
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
@@ -295,7 +291,7 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.loadProposals = function(token, topic) {
       $scope.loading = true;
-      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,created_by&content_type=ProposalsDiscussionPlugin::Proposal';
+      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal';
       var path = 'articles/' + topic.id + '/children' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
@@ -399,6 +395,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
+        $scope.loadStates();
         $ionicModal.fromTemplateUrl('html/_create_proposal.html', {
           scope: $scope,
           animation: 'slide-in-up'
@@ -444,14 +441,13 @@ angular.module('confjuvapp.controllers', [])
           },
           timeout: 10000
         };
-
         var params = {
           'private_token': $scope.token,
           'article[body]': data.description,
           'article[name]': data.title,
+          'article[category_ids]': [data.state.id, data.city.id],
           'article[abstract]': data.description.substring(0, 130) + '...',
           'fields': 'id',
-          'article[type]': 'ProposalsDiscussionPlugin::Proposal',
           'content_type': 'ProposalsDiscussionPlugin::Proposal'
         };
         

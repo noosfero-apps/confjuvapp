@@ -4,7 +4,7 @@
     <div class="input-label">
       Cidade
     </div>
-    <select ng-model="cityChoosed" ng-options="city.name for city in cities">
+    <select ng-model="data.city" ng-value="city.id"  ng-options="city.name for city in cities track by city.id">
       <option value="">Selecione uma cidade...</option>
     </select>
   </label>

@@ -21,6 +21,7 @@
     <img ng-src="https://img.shields.io/badge/tema-{{proposal.topic.title}}-ff9800.svg" alt="" />
     <img ng-repeat="tag in proposal.tag_list" ng-src="https://img.shields.io/badge/tag-{{tag}}-4db6ac.svg" alt="" />
 
+    <p>{{proposal.categories | categoryType:"state"}} -> {{proposal.categories | categoryType:"city"}}</p>
     <p>{{proposal.body | htmlToPlainText}}</p>
 
     <h2>Comentários</h2>
