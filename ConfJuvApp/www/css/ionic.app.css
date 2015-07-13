@@ -7872,9 +7872,8 @@ html .large .scroll-content, html .large .ionic-scroll {
   #proposal .button {
     text-transform: uppercase;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    margin: 11px;
-    float: right;
-    font-size: 12px; }
+    margin: 5.5px;
+    font-size: 10px; }
   #proposal .comment {
     background: #ff4081;
     color: #ffffff; }
@@ -7884,6 +7883,8 @@ html .large .scroll-content, html .large .ionic-scroll {
   #proposal .report-abuse {
     background: #212121;
     color: #ffffff; }
+  #proposal .proposal-buttons, #proposal .proposal-badges {
+    text-align: center; }
 
 .sidebar h2 {
   font-size: 16px;

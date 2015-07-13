@@ -7,7 +7,7 @@
              on-swipe-left="" on-swipe-right="" on-partial-swipe="cardPartialSwipe(amt)">
       <div class="card animate-show" ng-show="proposal.topic.selected">
         <h3>
-          {{proposal.title}}
+          {{proposal.title | limitTo:20}}
           <br />
           <small>Autor: {{proposal.author.name}}</small>
         </h3>
