@@ -2,7 +2,7 @@
   <h2>Como você vai mudar o Brasil?</h2>
 
   <td-cards>
-    <td-card ng-repeat="proposal in cards" on-destroy="cardDestroyed($index)" ng-style="{top: {{$index * 3}} + 'px'}"
+    <td-card ng-repeat="proposal in cards" on-destroy="cardDestroyed($index)"
              on-swipe-left="" on-swipe-right="" on-partial-swipe="cardPartialSwipe(amt)">
       <div class="card animate-show" ng-show="proposal.topic.selected">
         <h3>
