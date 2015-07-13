@@ -71,6 +71,13 @@
       left: 0;
       width: 100%;
     }
+
+    #loading-cards {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 3 * $unit;
+    }
   }
 
   .cards-footer {

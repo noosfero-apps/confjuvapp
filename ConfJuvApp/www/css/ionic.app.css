@@ -7828,6 +7828,11 @@ html .large .scroll-content, html .large .ionic-scroll {
       top: 0;
       left: 0;
       width: 100%; }
+    #proposals td-cards #loading-cards {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 33px; }
   #proposals .cards-footer {
     text-align: center;
     margin-top: 350px; }
