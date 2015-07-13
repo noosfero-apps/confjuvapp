@@ -496,7 +496,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_create_comment.html', {
+        $ionicModal.fromTemplateUrl('html/_create_comment.html?1', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
