@@ -7759,6 +7759,8 @@ html .large .scroll-content, html .large .ionic-scroll {
     color: #9e9e9e; }
     #login-modal form.register-form .register-terms li.disclaimer span {
       cursor: pointer; }
+  #login-modal form.register-form button {
+    margin-bottom: 55px; }
 
 #header {
   background: #3f51b5; }

@@ -97,6 +97,10 @@
           cursor: pointer;
         }
       }
+
+      button {
+        margin-bottom: $unit * 5;
+      }
     }
   }
 }
