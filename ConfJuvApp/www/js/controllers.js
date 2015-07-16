@@ -113,11 +113,13 @@ angular.module('confjuvapp.controllers', [])
     // Register as a new user
 
     $scope.registerFormDisplayed = false;
+    $scope.registerFormType = '';
 
-    $scope.displayRegisterForm = function() {
+    $scope.displayRegisterForm = function(value) {
       $scope.loadStates();
       $scope.loadSignupPersonFields();
       $scope.registerFormDisplayed = true;
+      $scope.registerFormType = value;
       $scope.loginFormDisplayed = false;
       $scope.loading = false;
     };
@@ -145,8 +147,22 @@ angular.module('confjuvapp.controllers', [])
         },
         timeout: 10000
       }
+
+
+      var params = {
+        'email': data.email,
+        'login': data.login,
+        'password': data.password,
+        'password_confirmation': data.password_confirmation,
+        'tipo': $scope.registerFormType,
+        'orientacao_sexual': data.orientacao_sexual,
+        'identidade_genero': data.identidade_genero,
+        'transgenero': data.transgenero,
+        'etnia': data.etnia,
+        'city': data.city.id
+      };
       
-      $http.post(ConfJuvAppUtils.pathTo('register'), jQuery.param(data), config)  
+      $http.post(ConfJuvAppUtils.pathTo('register'), jQuery.param(params), config)  
       .then(function(resp) {
         var popup = $ionicPopup.alert({ title: 'Registrar', template: 'Usuário registrado com sucesso!' });
         popup.then(function() {
@@ -443,6 +459,7 @@ angular.module('confjuvapp.controllers', [])
         };
         var params = {
           'private_token': $scope.token,
+          'article[free_conference]': data.free_conference,
           'article[body]': data.description,
           'article[name]': data.title,
           'article[category_ids]': [data.state.id, data.city.id],

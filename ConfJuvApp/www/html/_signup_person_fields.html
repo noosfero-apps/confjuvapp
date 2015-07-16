@@ -1,4 +1,4 @@
-<div class='signup-person-fields' ng-repeat="field in signupPersonFields">
+<div class='signup-person-fields' ng-repeat="field in signupPersonFields" ng-show="registerFormType == 'user'">
   <div class="list" ng-if="'identidade_genero' == field">
     <label class="item item-input item-select">
       <div class="input-label">
@@ -20,6 +20,20 @@
        Sou transgênero
     </li>
   </ul>
+  <div class="list" ng-if="'etnia' == field">
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Raça/Etnia
+      </div>
+      <select ng-model="data.etnia" required>
+        <option value="">Selecione uma raça/etnia...</option>
+        <option value="1">Pardo</option>
+        <option value="2">Negro</option>
+        <option value="3">Branco</option>
+        <option value="4">Índio</option>
+      </select>
+    </label>
+  </div>
 
   <div class="list" ng-if="'orientacao_sexual' == field">
     <label class="item item-input item-select">
