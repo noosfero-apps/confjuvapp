@@ -8,10 +8,10 @@
 
       <label class="item item-input"><input type="text" placeholder="Título" ng-model="data.title" maxlength="40"></label>
       <label class="item item-input"><textarea placeholder="Descrição" ng-model="data.description"></textarea></label>
-      <label class="checkbox">
+      <label class="checkbox free-conference-cbox">
         <input  type="checkbox" ng-model="data.free_conference" >
       </label>
-      Esta proposta veio de uma conferência livre?
+      <span class="free-conference-label">Esta proposta veio de uma conferência livre?</span>
 
       <ng-include src="'html/_select_state.html'"></ng-include>
       <label id="proposal-topic">Tópico</label>

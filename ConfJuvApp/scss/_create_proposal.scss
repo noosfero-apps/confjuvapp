@@ -42,7 +42,7 @@
   }
 
   form {
-    label, .input-label {
+    label, .input-label, .free-conference-label {
       border: 0;
       color: $lightgreen;
       font-size: 14px;
@@ -95,6 +95,20 @@
     .item-radio {
       font-size: 14px;
       margin: 1px 16px;
+    }
+
+    .free-conference-cbox {
+      float: left;
+      margin-left: $unit;
+    }
+
+    .free-conference-label {
+      float: left;
+      line-height: 42px;
+    }
+
+    .list {
+      clear: both;
     }
   }
 }
