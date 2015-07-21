@@ -78,6 +78,20 @@
       text-align: center;
       top: 3 * $unit;
     }
+    #force-reload {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 3 * $unit;
+      p {
+        font-size: 24px;
+      }
+      a {
+        color: $lightblue;
+        margin: $unit;
+        cursor: pointer;
+      }
+    }
   }
 
   .cards-footer {

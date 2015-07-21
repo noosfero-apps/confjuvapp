@@ -259,6 +259,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.proposalList = [];
     $scope.proposalsByTopic = {};
     $scope.cards = [];
+    $scope.forceReload = false;
 
     // Selected topics
 
@@ -281,6 +282,7 @@ angular.module('confjuvapp.controllers', [])
     // Load topics
 
     $scope.loadTopics = function(token) {
+      $scope.forceReload = false;
       $scope.loading = true;
       // var path = '?private_token=' + token + '&fields=title,image,body,abstract&content_type=ProposalsDiscussionPlugin::Proposal';
       var params = '?private_token=' + token + '&fields=title,id&content_type=ProposalsDiscussionPlugin::Topic';
@@ -297,6 +299,7 @@ angular.module('confjuvapp.controllers', [])
           $scope.proposalsByTopic[topic.id] = [];
           $scope.loadProposals(token, topic);
         }
+        $scope.loading = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Tópicos', template: 'Não foi possível carregar os tópicos' });
         $scope.loading = false;
@@ -307,12 +310,17 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.loadProposals = function(token, topic) {
       $scope.loading = true;
-      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal';
+      last_proposal = $scope.proposalsByTopic[topic.id][$scope.proposalsByTopic[topic.id].length -1];
+      last_proposal = last_proposal == undefined ? null : last_proposal.id;
+
+      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&limit=10&oldest=younger_than&reference_id=' + last_proposal;
+
       var path = 'articles/' + topic.id + '/children' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
         var proposals = resp.data.articles;
+        $scope.proposalsByTopic[topic.id] = [];
         for (var i = 0; i < proposals.length; i++) {
           var proposal = proposals[i];
           proposal.topic = topic;
@@ -333,6 +341,15 @@ angular.module('confjuvapp.controllers', [])
     $scope.cardDestroyed = function(index) {
       $scope.cards.splice(index, 1);
       if ($scope.cards.length === 0) {
+        for (var i = 0; i < $scope.topics.length; i++) {
+          var topic = $scope.topics[i];
+          topic.selected = true;
+          $scope.proposalList= [];
+          $scope.loadProposals($scope.token, topic);
+        }
+        if($scope.proposalList.length == 0){
+          $scope.forceReload = true;
+        }
         for (var i = 0; i < $scope.proposalList.length; i++) {
           var card = $scope.proposalList[i];
           if (card.topic.selected) {
