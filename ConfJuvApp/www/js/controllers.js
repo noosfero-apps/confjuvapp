@@ -347,8 +347,9 @@ angular.module('confjuvapp.controllers', [])
           $scope.proposalList= [];
           $scope.loadProposals($scope.token, topic);
         }
-        if($scope.proposalList.length == 0){
+        if ($scope.proposalList.length == 0){
           $scope.forceReload = true;
+          $scope.topics = [];
         }
         for (var i = 0; i < $scope.proposalList.length; i++) {
           var card = $scope.proposalList[i];
