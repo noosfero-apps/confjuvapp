@@ -498,9 +498,11 @@ angular.module('confjuvapp.controllers', [])
               }
             }
             var proposal = {
+              id: resp.data.article.id,
               title: data.title,
               body: data.description,
-              topic: topic
+              topic: topic,
+              author: { name: $scope.user.name, id: $scope.user.id }
             };
             $scope.proposalList.push(proposal);
             $scope.cards.push(proposal);
