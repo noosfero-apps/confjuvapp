@@ -164,7 +164,7 @@ angular.module('confjuvapp.controllers', [])
       
       $http.post(ConfJuvAppUtils.pathTo('register'), jQuery.param(params), config)  
       .then(function(resp) {
-        var popup = $ionicPopup.alert({ title: 'Registrar', template: 'Usuário registrado com sucesso!' });
+        var popup = $ionicPopup.alert({ title: 'Registrar', template: 'Registro feito! Um e-mail de ativação foi enviado para o endereço fornecido. Ative sua conta e depois faça login!' });
         popup.then(function() {
           $scope.registerFormDisplayed = false;
         });
