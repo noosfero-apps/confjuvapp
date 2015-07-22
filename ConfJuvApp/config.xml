@@ -2,7 +2,7 @@
 <widget id="com.ionicframework.confjuvapp748431" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>ConfJuvApp</name>
   <description>Aplicativo móvel para 3ª Conferência Nacional de Juventude</description>
-  <author email="contato@juventude.gov.br" href="http://www.juventude.gov.br/"></author>
+  <author email="confjuvapp@gmail.com" href="http://www.juventude.gov.br/"></author>
   <content src="index.html"/>
   <access origin="*"/>
   <allow-navigation href="*" />
