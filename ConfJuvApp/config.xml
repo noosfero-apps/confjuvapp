@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.confjuvapp748431" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>ConfJuvApp</name>
+<widget id="com.ionicframework.confjuvapp748431" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>#3ConfJuv</name>
   <description>Aplicativo móvel para 3ª Conferência Nacional de Juventude</description>
   <author email="confjuvapp@gmail.com" href="http://www.juventude.gov.br/"></author>
   <content src="index.html"/>
