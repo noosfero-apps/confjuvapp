@@ -3,7 +3,7 @@
 angular.module('confjuvapp.controllers', [])
   .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup, filterFilter) {
 
-    $scope.largeScreen = (window.innerWidth >= 768);
+    $scope.largeScreen = (window.innerWidth >= 600);
 
     $scope.loading = false;
 
@@ -136,6 +136,10 @@ angular.module('confjuvapp.controllers', [])
       }
       else if (!data.agree_statute || !data.agree_terms) {
         $ionicPopup.alert({ title: 'Registrar', template: 'Você deve concordar com os termos de uso e regimento da Conferência' });
+        return;
+      }
+      else if (/[A-Z]/.test(data.login)) {
+        $ionicPopup.alert({ title: 'Registrar', template: 'O seu login não deve ter letras maiúsculas' });
         return;
       }
 
@@ -293,9 +297,18 @@ angular.module('confjuvapp.controllers', [])
         $scope.loading = false;
         var topics = resp.data.articles;
         for (var i = 0; i < topics.length; i++) {
-          var topic = topics[i];
-          topic.selected = true;
-          $scope.topics.push(topic);
+          var topic_id = topics[i].id;
+          var topic = null;
+          for (var j = 0; j < $scope.topics.length; j++) {
+            if (topic_id == $scope.topics[j].id) {
+              topic = $scope.topics[j];
+            }
+          }
+          if (topic == null) {
+            topic = topics[i];
+            topic.selected = true;
+            $scope.topics.push(topic);
+          }
           $scope.proposalsByTopic[topic.id] = [];
           $scope.loadProposals(token, topic);
         }
@@ -349,7 +362,6 @@ angular.module('confjuvapp.controllers', [])
         }
         if ($scope.proposalList.length == 0){
           $scope.forceReload = true;
-          $scope.topics = [];
         }
         for (var i = 0; i < $scope.proposalList.length; i++) {
           var card = $scope.proposalList[i];
