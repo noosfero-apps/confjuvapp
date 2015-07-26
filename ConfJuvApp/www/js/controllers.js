@@ -326,7 +326,7 @@ angular.module('confjuvapp.controllers', [])
       last_proposal = $scope.proposalsByTopic[topic.id][$scope.proposalsByTopic[topic.id].length -1];
       last_proposal = last_proposal == undefined ? null : last_proposal.id;
 
-      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&limit=10&oldest=younger_than&reference_id=' + last_proposal;
+      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&limit=' + ConfJuvAppConfig.proposalsPerPageAndTopic + '&oldest=younger_than&reference_id=' + last_proposal;
 
       var path = 'articles/' + topic.id + '/children' + params;
 
