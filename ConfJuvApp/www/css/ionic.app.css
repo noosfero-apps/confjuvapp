@@ -7696,8 +7696,7 @@ html .large .scroll-content, html .large .ionic-scroll {
   overflow-y: auto; }
 
 #login-modal {
-  -webkit-box-shadow: #333333 1px 1px 5px;
-  box-shadow: #333333 1px 1px 5px;
+  border: 1px solid #333333;
   width: 90%;
   top: 55px;
   left: 50%;
@@ -7719,8 +7718,7 @@ html .large .scroll-content, html .large .ionic-scroll {
     background-size: 96px 96px; }
   #login-modal .button {
     text-transform: uppercase;
-    -webkit-box-shadow: #cccccc 1px 1px 3px;
-    box-shadow: #cccccc 1px 1px 3px; }
+    border: 1px solid #333333; }
   #login-modal form label {
     border: 0; }
   #login-modal form input {
@@ -7882,7 +7880,7 @@ html .large .scroll-content, html .large .ionic-scroll {
     clear: both; }
   #proposal .button {
     text-transform: uppercase;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border: 1px solid #333333;
     margin: 5.5px;
     font-size: 10px; }
   #proposal .comment {
@@ -7923,7 +7921,7 @@ html .large .scroll-content, html .large .ionic-scroll {
   bottom: 11px;
   right: 11px;
   border-radius: 50%;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  border: 1px solid #333333;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   -webkit-transition: 0.2s linear;
@@ -7934,14 +7932,13 @@ html .large .scroll-content, html .large .ionic-scroll {
 .button-float:hover {
   -webkit-transform: translate3d(0, -1px, 0);
   transform: translate3d(0, -1px, 0);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  border: 1px solid #333333;
   background: #ff0d5f; }
 
 #create-proposal {
-  -webkit-box-shadow: #333333 1px 1px 5px;
-  box-shadow: #333333 1px 1px 5px;
   background: #fafafa;
-  padding: 11px; }
+  padding: 11px;
+  border: 1px solid #333333; }
   #create-proposal .item {
     margin-top: 11px; }
   #create-proposal h1 {
@@ -7995,10 +7992,9 @@ html .large .scroll-content, html .large .ionic-scroll {
     clear: both; }
 
 #create-comment, #create-report-abuse, #create-tag {
-  -webkit-box-shadow: #333333 1px 1px 5px;
-  box-shadow: #333333 1px 1px 5px;
   background: #fafafa;
-  padding: 11px; }
+  padding: 11px;
+  border: 1px solid #333333; }
   #create-comment .item, #create-report-abuse .item, #create-tag .item {
     margin-top: 11px; }
   #create-comment h1, #create-report-abuse h1, #create-tag h1 {

@@ -1,5 +1,5 @@
 #login-modal {
-  @include box-shadow($shadow 1px 1px 5px);
+  border: 1px solid $shadow;
   width: 90%;
   top: $unit * 5;
   left: 50%;
@@ -28,7 +28,7 @@
 
   .button {
     text-transform: uppercase;
-    @include box-shadow($lightshadow 1px 1px 3px);
+    border: 1px solid $shadow;
   }
 
   form {

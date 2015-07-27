@@ -6,7 +6,7 @@
   bottom: $unit;
   right: $unit;
   border-radius: 50% ;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  border: 1px solid $shadow;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   -webkit-transition: 0.2s linear;
@@ -18,14 +18,14 @@
 .button-float:hover {
   -webkit-transform: translate3d(0, -1px, 0);
   transform: translate3d(0, -1px, 0);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  border: 1px solid $shadow;
   background: darken($pink, 10%);
 }
 
 #create-proposal {
-  @include box-shadow($shadow 1px 1px 5px);
   background: $ice;
   padding: $unit;
+  border: 1px solid $shadow;
 
   .item {
     margin-top: $unit;
