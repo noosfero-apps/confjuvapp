@@ -1,1 +1,115 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="103" height="20"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><mask id="a"><rect width="103" height="20" rx="3" fill="#fff"/></mask><g mask="url(#a)"><path fill="#555" d="M0 0h39v20H0z"/><path fill="#ff9800" d="M39 0h64v20H39z"/><path fill="url(#b)" d="M0 0h103v20H0z"/></g><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11"><text x="19.5" y="15" fill="#010101" fill-opacity=".3">tema</text><text x="19.5" y="14">tema</text><text x="70" y="15" fill="#010101" fill-opacity=".3">Educação</text><text x="70" y="14">Educação</text></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="103"
+   height="20"
+   id="svg4759"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="badge-101569.svg">
+  <metadata
+     id="metadata4791">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4789" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
+     id="namedview4787"
+     showgrid="false"
+     inkscape:zoom="3.7281553"
+     inkscape:cx="14.752604"
+     inkscape:cy="10"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4759" />
+  <linearGradient
+     id="b"
+     x2="0"
+     y2="100%">
+    <stop
+       offset="0"
+       stop-color="#bbb"
+       stop-opacity=".1"
+       id="stop4762" />
+    <stop
+       offset="1"
+       stop-opacity=".1"
+       id="stop4764" />
+  </linearGradient>
+  <mask
+     id="a">
+    <rect
+       width="103"
+       height="20"
+       rx="3"
+       fill="#fff"
+       id="rect4767" />
+  </mask>
+  <g
+     mask="url(#a)"
+     id="g4769">
+    <path
+       fill="#555"
+       d="M0 0h39v20H0z"
+       id="path4771" />
+    <path
+       fill="#ff9800"
+       d="M39 0h64v20H39z"
+       id="path4773" />
+    <path
+       fill="url(#b)"
+       d="M0 0h103v20H0z"
+       id="path4775" />
+  </g>
+  <g
+     fill="#fff"
+     text-anchor="middle"
+     font-family="DejaVu Sans,Verdana,Geneva,sans-serif"
+     font-size="11"
+     id="g4777">
+    <text
+       x="19.5"
+       y="15"
+       id="text4779"
+       style="fill:#010101;fill-opacity:0.3">eixo</text>
+    <text
+       x="19.5"
+       y="14"
+       id="text4781">eixo</text>
+    <text
+       x="70"
+       y="15"
+       fill="#010101"
+       fill-opacity=".3"
+       id="text4783">Educação</text>
+    <text
+       x="70"
+       y="14"
+       id="text4785">Educação</text>
+  </g>
+</svg>

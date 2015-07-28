@@ -14,7 +14,7 @@
         <h3>
           {{proposal.title | limitTo:100}}
           <br />
-          <small>Autor: {{proposal.author.name}}</small>
+          <small>Autoria: {{proposal.author.name}}</small>
         </h3>
         <div class="card-body">
           <!-- <div ng-bind-html="discussion.body"></div> -->
@@ -22,7 +22,7 @@
         </div>
         <div class="card-footer">
           <img ng-src="img/badge-{{proposal.topic.id}}.svg" alt="" />
-          <a ng-click="openProposal(proposal)" class="icon-left ion-android-open"> Acessar</a>
+          <a ng-click="openProposal(proposal)" class="icon-left ion-android-open"> Leia Mais</a>
         </div>
         <br style="clear: both;" />
       </div>
@@ -30,6 +30,6 @@
   </td-cards>
 
   <div class="cards-footer">
-    <a ng-click="nextCard()">Próximo</a>
+    <a ng-click="nextCard()">Próxima</a>
   </div>
 </div>
