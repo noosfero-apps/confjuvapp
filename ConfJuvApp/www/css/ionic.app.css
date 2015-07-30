@@ -6464,7 +6464,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     background: #f8f8f8;
     color: #444; }
   .item-select.item-stable:after, .item-select.item-stable .input-label {
-    color: #656666; }
+    color: #656565; }
   .item-select.item-positive select {
     background: #387ef5;
     color: #fff; }
@@ -7844,7 +7844,7 @@ html .large .scroll-content, html .large .ionic-scroll {
         cursor: pointer; }
   #proposals .cards-footer {
     text-align: center;
-    margin-top: 350px; }
+    margin-top: 320px; }
     #proposals .cards-footer a {
       color: #2196f3;
       text-transform: uppercase;
@@ -8026,3 +8026,67 @@ html .large .scroll-content, html .large .ionic-scroll {
     margin-right: 16px; }
     #create-comment form textarea:focus, #create-report-abuse form textarea:focus, #create-tag form textarea:focus {
       border: 2px solid #009688; }
+
+.stage, .stage:hover {
+  opacity: 0.3;
+  color: white;
+  /*text-transform: uppercase;*/
+  width: 100%;
+  cursor: default; }
+
+.stage-first, .stage-first:hover, .stage-first:active {
+  background-color: #ff9800;
+  width: 100%;
+  border-radius: 20px 0 0 20px;
+  border: 0; }
+
+.stage-second, .stage-second:hover, .stage-second:active {
+  background-color: #9c27b0;
+  width: 100%;
+  border: 0; }
+
+.stage-last, .stage-last:hover, .stage-last:active {
+  background-color: #2196f3;
+  width: 100%;
+  border-radius: 0 20px 20px 0;
+  border: 0; }
+
+.current, .current:hover, .current:active {
+  opacity: 1; }
+
+.waves-button, .waves-circle {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0); }
+
+.waves-effect {
+  overflow: hidden;
+  position: relative;
+  -webkit-tap-highlight-color: transparent; }
+  .waves-effect .waves-ripple {
+    background-color: rgba(0, 0, 0, 0.1);
+    background-image: -webkit-radial-gradient(rgba(0, 0, 0, 0.1) 0, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 255, 0) 60%);
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 0, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 255, 0) 60%);
+    border-radius: 50%;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 100px;
+    -webkit-transition-property: -webkit-transform, opacity;
+    transition-property: transform, opacity;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transition-property: opacity, -webkit-transform;
+    transition-property: opacity, transform; }
+  .waves-effect.waves-light .waves-ripple {
+    background-color: rgba(255, 255, 255, 0.4);
+    background-image: -webkit-radial-gradient(rgba(255, 255, 255, 0.1) 0, rgba(255, 255, 255, 0.2) 30%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 60%);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 0, rgba(255, 255, 255, 0.2) 30%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 60%); }
+
+.waves-notransition {
+  -webkit-transition: none !important;
+  transition: none !important; }
