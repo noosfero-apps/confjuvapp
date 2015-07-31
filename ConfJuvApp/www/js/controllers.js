@@ -59,8 +59,8 @@ angular.module('confjuvapp.controllers', [])
         },
         timeout: 10000
       }
-      
-      $http.post(ConfJuvAppUtils.pathTo('login'), jQuery.param(data), config)  
+
+      $http.post(ConfJuvAppUtils.pathTo('login'), jQuery.param(data), config)
       .then(function(resp) {
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
@@ -99,7 +99,7 @@ angular.module('confjuvapp.controllers', [])
       }
 
       var data = { value: email };
-      
+
       $http.post(ConfJuvAppUtils.pathTo('account/forgot_password', true), jQuery.param(data), config)
       .then(function(resp) {
         $ionicPopup.alert({ title: 'Esqueceu a senha?', template: 'Um link para redefinição de senha foi enviado para o seu e-mail.' });
@@ -165,8 +165,8 @@ angular.module('confjuvapp.controllers', [])
         'etnia': data.etnia,
         'city': data.city.id
       };
-      
-      $http.post(ConfJuvAppUtils.pathTo('register'), jQuery.param(params), config)  
+
+      $http.post(ConfJuvAppUtils.pathTo('register'), jQuery.param(params), config)
       .then(function(resp) {
         var popup = $ionicPopup.alert({ title: 'Registrar', template: 'Registro feito! Agora é só fazer login!' });
         popup.then(function() {
@@ -215,7 +215,7 @@ angular.module('confjuvapp.controllers', [])
     /******************************************************************************
      States > Cities
      ******************************************************************************/
-    
+
     $scope.states = [];
     $scope.cities = [];
     $scope.shouldDisplayCities = false;
@@ -258,7 +258,7 @@ angular.module('confjuvapp.controllers', [])
     /******************************************************************************
      D I S C U S S I O N S  >  T O P I C S  >  P R O P O S A L S
      ******************************************************************************/
-    
+
     $scope.topics = [];
     $scope.proposalList = [];
     $scope.proposalsByTopic = {};
@@ -314,7 +314,7 @@ angular.module('confjuvapp.controllers', [])
         }
         $scope.loading = false;
       }, function(err) {
-        $ionicPopup.alert({ title: 'Tópicos', template: 'Não foi possível carregar os tópicos' });
+        $ionicPopup.alert({ title: 'Eixos', template: 'Não foi possível carregar os eixos' });
         $scope.loading = false;
       });
     };
@@ -497,8 +497,8 @@ angular.module('confjuvapp.controllers', [])
           'fields': 'id',
           'content_type': 'ProposalsDiscussionPlugin::Proposal'
         };
-        
-        $http.post(ConfJuvAppUtils.pathTo('articles/' + data.topic_id + '/children'), jQuery.param(params), config)  
+
+        $http.post(ConfJuvAppUtils.pathTo('articles/' + data.topic_id + '/children'), jQuery.param(params), config)
         .then(function(resp) {
           $scope.closeProposalModal();
           var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'Proposta criada com sucesso!' });
@@ -597,8 +597,8 @@ angular.module('confjuvapp.controllers', [])
           'private_token': $scope.token,
           'body': data.comment
         };
-        
-        $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/comments'), jQuery.param(params), config)  
+
+        $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/comments'), jQuery.param(params), config)
         .then(function(resp) {
           $scope.closeCommentModal();
           var popup = $ionicPopup.alert({ title: 'Comentar', template: 'Comentário criado com sucesso!' });
@@ -685,8 +685,8 @@ angular.module('confjuvapp.controllers', [])
           'private_token': $scope.token,
           'report_abuse': data.report_abuse
         };
-        
-        $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/report_abuse'), jQuery.param(params), config)  
+
+        $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/report_abuse'), jQuery.param(params), config)
         .then(function(resp) {
           $scope.closeReportAbuseModal();
           var popup = $ionicPopup.alert({ title: 'Denunciar', template: 'Denúncia criada com sucesso!' });
@@ -762,8 +762,8 @@ angular.module('confjuvapp.controllers', [])
           'private_token': $scope.token,
           'tags': data.tag
         };
-        
-        $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/tags'), jQuery.param(params), config)  
+
+        $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/tags'), jQuery.param(params), config)
         .then(function(resp) {
           $scope.closeTagModal();
           var popup = $ionicPopup.alert({ title: 'Tag', template: 'Tag adicionada com sucesso!' });

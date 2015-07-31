@@ -2,7 +2,7 @@
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // the 2nd parameter is an array of 'requires'
-angular.module('confjuvapp', ['ionic', 'confjuvapp.controllers', 'confjuvapp.filters', 'ionic.contrib.ui.tinderCards'])
+angular.module('confjuvapp', ['ionic', 'confjuvapp.controllers', 'confjuvapp.filters', 'ionic.contrib.ui.tinderCards', 'ionicRipple'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -27,7 +27,7 @@ angular.module('confjuvapp', ['ionic', 'confjuvapp.controllers', 'confjuvapp.fil
           $element.addClass('ng-hide');
         }
         else {
-          $element.removeClass('ng-hide');   
+          $element.removeClass('ng-hide');
         }
       }
       function onResize() {
