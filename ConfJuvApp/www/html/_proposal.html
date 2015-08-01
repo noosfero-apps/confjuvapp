@@ -23,7 +23,7 @@
 
     <p class="proposal-badges">
       <img ng-src="img/badge-{{proposal.topic.id}}.svg" alt="" />
-      <img ng-repeat="tag in proposal.tag_list" ng-src="https://img.shields.io/badge/tag-{{tag}}-4db6ac.svg" alt="" />
+      <img ng-repeat="tag in proposal.tag_list" ng-src="https://img.shields.io/badge/tag-{{tag | tagFilter}}-4db6ac.svg" alt="" />
     </p>
 
     <p>{{proposal.body | htmlToPlainText}}</p>
