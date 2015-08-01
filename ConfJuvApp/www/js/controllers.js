@@ -124,6 +124,12 @@ angular.module('confjuvapp.controllers', [])
       $scope.loading = false;
     };
 
+    $scope.data = {};
+
+    $scope.setLoginBasedOnEmail = function() {
+      if (!$scope.data.login && $scope.data.email) $scope.data.login = ConfJuvAppUtils.normalizeLogin($scope.data.email);
+    };
+
     // Function to register
     $scope.Register = function(data) {
       if (!data || !data.login || !data.email || !data.password || !data.password_confirmation) {
@@ -132,14 +138,6 @@ angular.module('confjuvapp.controllers', [])
       }
       else if (data.password != data.password_confirmation) {
         $ionicPopup.alert({ title: 'Registrar', template: 'Senhas não conferem' });
-        return;
-      }
-      else if (!data.agree_statute || !data.agree_terms) {
-        $ionicPopup.alert({ title: 'Registrar', template: 'Você deve concordar com os termos de uso e regimento da Conferência' });
-        return;
-      }
-      else if (/[A-Z]/.test(data.login)) {
-        $ionicPopup.alert({ title: 'Registrar', template: 'O seu login não deve ter letras maiúsculas' });
         return;
       }
 
@@ -179,7 +177,7 @@ angular.module('confjuvapp.controllers', [])
         try {
           var errors = JSON.parse(err.data.message);
           for (var field in errors) {
-            msg += 'Campo "' + field + '" ' + errors[field][0] + '. ';
+            msg += 'Campo "' + field + '" ' + ConfJuvAppI18n.t(errors[field][0]) + '. ';
           }
         } catch(e) {
           msg = err.data.message;

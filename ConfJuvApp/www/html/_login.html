@@ -71,31 +71,22 @@
       <div class="list">
         <div class="list list-inset">
 
-          <label class="item item-input"><input type="text" placeholder="E-mail" ng-model="data.email" required></label>
-          <label class="item item-input"><input type="text" placeholder="Nome de usuário" ng-model="data.login" required></label>
-          <p><small>Espaços, letras maiúsculas ou acentos não são permitidos</small></p>
+          <label class="item item-input">
+            <input type="text" placeholder="E-mail" ng-model="data.email" required ng-blur="setLoginBasedOnEmail()"
+                   onblur="var $l=document.getElementById('lf'); if ($l.value == '') $l.value=ConfJuvAppUtils.normalizeLogin(this.value);">
+          </label>
+          
+          <label class="item item-input">
+            <input type="text" id="lf" placeholder="Nome de usuário" required ng-model="data.login"
+                   onchange="this.value=ConfJuvAppUtils.normalizeLogin(this.value)">
+          </label>
+          <p><small>Espaços, letras maiúsculas ou acentos <b>não</b> são permitidos</small></p>
 
           <ng-include src="'html/_signup_person_fields.html'"></ng-include>
 
           <ng-include src="'html/_select_state.html'"></ng-include>
 
-          <ul class="list register-terms">
-            <li class="item item-checkbox">
-              <label class="checkbox">
-                <input type="checkbox" ng-model="data.agree_terms" class="ckbox">
-              </label>
-              Eu concordo com os Termos de Uso
-            </li>
-            <li class="disclaimer"><i class="ion-android-open icon-right icon"></i> Veja os <span onclick="window.open(ConfJuvAppConfig.noosferoApiHost + '/site/terms', '_system')">Termos de Uso do Juventude.gov.br</span></li>
-
-            <li class="item item-checkbox">
-              <label class="checkbox">
-                <input type="checkbox" ng-model="data.agree_statute" class="ckbox">
-              </label>
-              Eu concordo com o Regimento da Conferência
-            </li>
-            <li class="disclaimer"><i class="ion-android-open icon-right icon"></i> Veja o <span onclick="window.open(ConfJuvAppConfig.noosferoApiHost + '/' + ConfJuvAppConfig.noosferoStatutePath, '_system')">Regimento da Conferência</span></li>
-          </ul>
+          <p class="disclaimer">Ao se cadastrar, você concorda com os <span onclick="window.open(ConfJuvAppConfig.noosferoApiHost + '/site/terms', '_system')">Termos de Uso do Juventude.gov.br</span> e com o <span onclick="window.open(ConfJuvAppConfig.noosferoApiHost + '/' + ConfJuvAppConfig.noosferoStatutePath, '_system')">Regimento da Conferência</span></p>
 
           <label class="item item-input"><input type="password" placeholder="Senha" ng-model="data.password" required></label>
           <label class="item item-input"><input type="password" placeholder="Confirmar senha" ng-model="data.password_confirmation" required></label>
