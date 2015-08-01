@@ -517,8 +517,8 @@ angular.module('confjuvapp.controllers', [])
             $scope.proposalList.push(proposal);
             $scope.cards.push(proposal);
             $scope.proposalsByTopic[data.topic_id].push(proposal);
-            data.title = data.description = data.topic_id = null;
             $scope.loading = false;
+            $scope.data.title = $scope.data.description = $scope.data.topic_id = null;
           });
         }, function(err) {
           $scope.closeProposalModal();
@@ -543,7 +543,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_create_comment.html?1', {
+        $ionicModal.fromTemplateUrl('html/_create_comment.html?4', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -555,6 +555,7 @@ angular.module('confjuvapp.controllers', [])
 
     // Function to close the modal
     $scope.closeCommentModal = function() {
+      document.getElementById('createcomment').disabled = false;
       $scope.commentModal.hide();
       $scope.openProposal($scope.proposal);
     };
@@ -600,6 +601,7 @@ angular.module('confjuvapp.controllers', [])
         .then(function(resp) {
           $scope.closeCommentModal();
           var popup = $ionicPopup.alert({ title: 'Comentar', template: 'Comentário criado com sucesso!' });
+          $scope.data.comment = '';
           if (!$scope.proposal.comments) {
             $scope.proposal.comments = [];
           }
@@ -764,14 +766,15 @@ angular.module('confjuvapp.controllers', [])
         $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/tags'), jQuery.param(params), config)
         .then(function(resp) {
           $scope.closeTagModal();
-          var popup = $ionicPopup.alert({ title: 'Tag', template: 'Tag adicionada com sucesso!' });
+          var popup = $ionicPopup.alert({ title: 'Tags', template: 'Tags adicionadas com sucesso!' });
           $scope.proposal.tag_list = data.tag.split(',');
+          $scope.data.tag = '';
           popup.then(function() {
             $scope.loading = false;
           });
         }, function(err) {
           $scope.closeTagModal();
-          var popup = $ionicPopup.alert({ title: 'Tag', template: 'Erro ao adicionar tag!' });
+          var popup = $ionicPopup.alert({ title: 'Tags', template: 'Erro ao adicionar tags!' });
           popup.then(function() {
             $scope.loading = false;
             $scope.openTagForm();

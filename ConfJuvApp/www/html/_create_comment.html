@@ -1,6 +1,6 @@
 <div class="modal" id="create-comment">
   <ion-content>
-    <form ng-submit="createComment(data)">
+    <form ng-submit="createComment(data)" onsubmit="createcomment.disabled = true">
       <h1 class="title">
         <span>Comentar</span>
         <a class="back icon-left ion-reply" ng-click="closeCommentModal()">Voltar</a>
@@ -9,7 +9,7 @@
       <label class="item item-input"><textarea placeholder="Comentário" ng-model="data.comment" rows="15"></textarea></label>
 
       <p class="text-center">
-        <button ripple class="button" type="submit">Enviar</button>
+        <button ripple class="button" type="submit" name="createcomment" id="createcomment">Enviar</button>
       </p>
     </form>
   </ion-content>
