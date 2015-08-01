@@ -8095,5 +8095,6 @@ html .large .scroll-content, html .large .ionic-scroll {
     transform: scale(2.5); } }
 
 .button.flat {
-  border: 0;
-  background-color: transparent; }
+  border: 0 !important;
+  background-color: transparent;
+  color: #2196f3; }

@@ -10,14 +10,12 @@
     </h1>
 
     <p class="proposal-buttons">
-      <button class="button report-abuse" ng-click="openReportAbuseForm()">
-        <i class="icon ion-alert"></i> Denunciar
-      </button>
+
       <button class="button tag" ng-click="openTagForm()" ng-show="proposal.author.id == user.id">
         <i class="icon ion-pricetags"></i> Adicionar Tag
       </button>
-      <button ripple class="button comment" ng-click="openCommentForm()">
-        <i class="icon ion-chatbox-working"></i> Comentar
+      <button ripple class="button icon-left ion-chatbox-working comment" ng-click="openCommentForm()">
+        Comentar
       </button>
     </p>
 
@@ -29,6 +27,12 @@
     </p>
 
     <p>{{proposal.body | htmlToPlainText}}</p>
+
+    <button class="button icon-left ion-alert flat" ng-click="openReportAbuseForm()">
+      Denunciar
+    </button>
+
+    <hr>
 
     <h2>Comentários</h2>
 
