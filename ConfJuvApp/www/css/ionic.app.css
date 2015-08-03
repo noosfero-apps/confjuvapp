@@ -6464,7 +6464,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     background: #f8f8f8;
     color: #444; }
   .item-select.item-stable:after, .item-select.item-stable .input-label {
-    color: #656666; }
+    color: #656565; }
   .item-select.item-positive select {
     background: #387ef5;
     color: #fff; }
@@ -8027,32 +8027,35 @@ html .large .scroll-content, html .large .ionic-scroll {
     #create-comment form textarea:focus, #create-report-abuse form textarea:focus, #create-tag form textarea:focus {
       border: 2px solid #009688; }
 
+.col {
+  padding: 3px; }
+
 .stage, .stage:hover {
-  opacity: 0.3;
   color: white;
   /*text-transform: uppercase;*/
   width: 100%;
-  cursor: default; }
+  cursor: default;
+  font-size: 11px;
+  color: #212121;
+  line-height: 18px;
+  border: 0;
+  background-color: #e0e0e0; }
 
 .stage-first, .stage-first:hover, .stage-first:active {
-  background-color: #ff9800;
-  width: 100%;
-  border-radius: 20px 0 0 20px;
-  border: 0; }
+  border-radius: 20px 0 0 20px; }
 
-.stage-second, .stage-second:hover, .stage-second:active {
-  background-color: #9c27b0;
-  width: 100%;
-  border: 0; }
+.stage-first.current, .stage-first.current:hover, .stage-first.current:active {
+  background-color: #ff9800;
+  color: #fff; }
+
+.stage-second.current, .stage-second.current:hover, .stage-second.current:active {
+  background-color: #9c27b0; }
 
 .stage-last, .stage-last:hover, .stage-last:active {
-  background-color: #2196f3;
-  width: 100%;
-  border-radius: 0 20px 20px 0;
-  border: 0; }
+  border-radius: 0 20px 20px 0; }
 
-.current, .current:hover, .current:active {
-  opacity: 1; }
+.stage-last.current, .stage-last.current:hover, .stage-last.current:active {
+  background-color: #2196f3; }
 
 [ripple] {
   overflow: hidden; }
