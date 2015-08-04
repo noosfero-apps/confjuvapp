@@ -7832,17 +7832,13 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
     overflow: hidden;
     text-overflow: ellipsis; }
   #proposals .card-footer {
-    border-top: 1px solid #e0e0e0; }
+    border-top: 1px solid #e0e0e0;
+    text-align: left; }
     #proposals .card-footer a {
       color: #2196f3;
       cursor: pointer;
       padding: 11px;
-      display: inline-block;
-      float: right; }
-    #proposals .card-footer img {
-      margin: 11px;
-      display: inline-block;
-      float: left; }
+      display: inline-block; }
   #proposals td-cards {
     position: relative; }
     #proposals td-cards td-card {

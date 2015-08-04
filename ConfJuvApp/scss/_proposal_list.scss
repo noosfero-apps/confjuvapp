@@ -46,19 +46,13 @@
 
   .card-footer {
     border-top: 1px solid $lightgrey;
+    text-align: left;
 
     a {
       color: $lightblue;
       cursor: pointer;
       padding: $unit;
       display: inline-block;
-      float: right;
-    }
-
-    img {
-      margin: $unit;
-      display: inline-block;
-      float: left;
     }
   }
 

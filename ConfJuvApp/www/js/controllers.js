@@ -25,7 +25,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_login.html?1', {
+        $ionicModal.fromTemplateUrl('html/_login.html?2', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -544,7 +544,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_create_comment.html?4', {
+        $ionicModal.fromTemplateUrl('html/_create_comment.html?5', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
