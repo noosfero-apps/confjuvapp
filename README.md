@@ -14,7 +14,7 @@ A gente faz aberto, a gente faz colaborativo. Para contribuir com a 3a Conferên
 1. Registrar um bug ou uma sugestão: [Página das "issues"](https://gitlab.com/participa/confjuvapp/issues), basta clicar em "+New Issue"
 2. Contribuir com código, fazendo melhorias, vamos avaliar com carinho os seus "merge requests" ;-)
 
-Tá esperando o que? Faz um fork e vem ajudar mudar a participação social no Brasil!
+Tá esperando o que? Faz um fork e vem ajudar mudar a participação social no Brasil!!
 
 # Informações técnicas (em inglês para facilitar a cooperação internacional)
 
