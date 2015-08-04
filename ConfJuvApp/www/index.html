@@ -24,23 +24,23 @@
     <script src="js/ionic.tdcards.js"></script>
     <script src="js/collide.js"></script>
   </head>
-  <body ng-app="confjuvapp" ng-controller="ProposalCtrl" ng-init="openModal()" ng-class="{ logged-in: loggedIn, large: largeScreen }">
+  <body ng-app="confjuvapp" ng-controller="ProposalCtrl" ng-init="openModal()" ng-class="{ 'logged-in': loggedIn, 'large': largeScreen }">
     <ion-side-menus id="body">
       <ion-side-menu-content>
-        <ng-include src="html/_header.html"></ng-include>
+        <ng-include src="'html/_header.html'"></ng-include>
         <ion-pane>
           <ion-content id="proposals-container" no-scroll="">
-            <ng-include src="html/_proposal_list.html?1"></ng-include>
+            <ng-include src="'html/_proposal_list.html?1'"></ng-include>
           </ion-content>
         </ion-pane>
       </ion-side-menu-content>
 
       <ion-side-menu side="right" is-enabled="true" expose-aside-when="large" ng-show="proposalList.length > 0">
-        <ng-include src="html/_right_sidebar.html"></ng-include>
+        <ng-include src="'html/_right_sidebar.html'"></ng-include>
       </ion-side-menu>
     </ion-side-menus>
 
-    <button ripple="" class="button button-float" ng-show="loggedIn" ng-click="openCreateProposalForm()">
+    <button class="button button-float" ng-show="loggedIn" ng-click="openCreateProposalForm()">
       <i class="icon ion-edit"></i>
     </button>
   </body>
