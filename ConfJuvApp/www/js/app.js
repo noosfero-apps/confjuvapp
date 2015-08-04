@@ -56,4 +56,12 @@ angular.module('confjuvapp', ['ionic', 'confjuvapp.controllers', 'confjuvapp.fil
       });
     }
   }
+})
+
+.config(function ($ionicConfigProvider) {
+  // Enable native scrolls for Android platform only,
+  // as you see, we're disabling jsScrolling to achieve this.
+  if (!ionic.Platform.isIOS()) {
+    $ionicConfigProvider.scrolling.jsScrolling(false);
+  }
 });

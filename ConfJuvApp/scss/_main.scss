@@ -11,6 +11,10 @@ html {
     background-size: 100%;
   }
 
+  ion-content, content {
+    overflow-scroll: true;
+  }
+
   .pane {
     background: transparent;      
   }
@@ -56,5 +60,10 @@ html {
     .scroll-content, .ionic-scroll {
       overflow-y: auto;
     }
+  }
+
+  .backdrop, .modal-backdrop-bg, .active .modal-backdrop-bg {
+    background: url(../img/bgdark.png);
+    opacity: 1;
   }
 }

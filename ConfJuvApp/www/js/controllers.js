@@ -339,7 +339,6 @@ angular.module('confjuvapp.controllers', [])
           $scope.proposalsByTopic[topic.id].push(proposal);
           $scope.cards.push(proposal);
         }
-        fillBackgroundWithColor('#FAFAFA');
         $scope.loading = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Propostas', template: 'Não foi possível carregar as propostas do tópico ' + topic.title });
@@ -440,7 +439,7 @@ angular.module('confjuvapp.controllers', [])
       else {
         // Initiate the modal
         $scope.loadStates();
-        $ionicModal.fromTemplateUrl('html/_create_proposal.html?4', {
+        $ionicModal.fromTemplateUrl('html/_create_proposal.html?8', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {

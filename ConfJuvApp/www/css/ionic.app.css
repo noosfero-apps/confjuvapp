@@ -6464,7 +6464,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     background: #f8f8f8;
     color: #444; }
   .item-select.item-stable:after, .item-select.item-stable .input-label {
-    color: #656565; }
+    color: #656666; }
   .item-select.item-positive select {
     background: #387ef5;
     color: #fff; }
@@ -7665,6 +7665,8 @@ html body, html #body {
   background: url(../img/bg.png); }
 html ion-content {
   background-size: 100%; }
+html ion-content, html content {
+  overflow-scroll: true; }
 html .pane {
   background: transparent; }
 html .loader {
@@ -7694,6 +7696,9 @@ html hr {
   border-top: 1px solid #9e9e9e; }
 html .large .scroll-content, html .large .ionic-scroll {
   overflow-y: auto; }
+html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
+  background: url(../img/bgdark.png);
+  opacity: 1; }
 
 #login-modal {
   border: 1px solid #333333;
@@ -7795,7 +7800,7 @@ html .large .scroll-content, html .large .ionic-scroll {
     padding: 0; }
     #proposals .card h3 {
       font-size: 20px;
-      background: -webkit-gradient(linear, 16% 84%, 84% 16%, color-stop(37%, rgba(0, 82, 159, 0.05)), color-stop(37%, transparent)), -webkit-gradient(linear, 11% 30%, 89% 70%, color-stop(18%, rgba(230, 128, 227, 0.05)), color-stop(18%, transparent)), -webkit-gradient(linear, 37% 36%, 63% 64%, color-stop(21%, rgba(9, 60, 231, 0.05)), color-stop(21%, transparent)), -webkit-gradient(linear, 93% 87%, 7% 13%, color-stop(28%, rgba(67, 69, 234, 0.05)), color-stop(28%, transparent)), -webkit-gradient(linear, 34% 31%, 66% 69%, color-stop(58%, rgba(163, 170, 205, 0.05)), color-stop(58%, transparent)), -webkit-gradient(linear, 8% 75%, 92% 25%, color-stop(75%, rgba(105, 245, 77, 0.05)), color-stop(75%, transparent)), -webkit-gradient(linear, 29% 44%, 71% 56%, color-stop(44%, rgba(34, 238, 57, 0.05)), color-stop(44%, transparent)), -webkit-gradient(linear, 62% 31%, 38% 69%, color-stop(54%, rgba(251, 185, 140, 0.05)), color-stop(54%, transparent)), -webkit-gradient(linear, 74% 32%, 26% 68%, color-stop(0%, rgba(210, 141, 219, 0.05)), color-stop(0%, transparent)), -webkit-gradient(linear, 57% 31%, 43% 69%, color-stop(18%, rgba(67, 14, 191, 0.05)), color-stop(18%, transparent)), #fff;
+      background: #e0e0e0;
       padding: 22px;
       height: 95px;
       min-height: 95px;
@@ -7990,6 +7995,12 @@ html .large .scroll-content, html .large .ionic-scroll {
     line-height: 42px; }
   #create-proposal form .list {
     clear: both; }
+  #create-proposal form #select-topic {
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    float: right;
+    margin-right: 0; }
 
 #create-comment, #create-report-abuse, #create-tag {
   background: #fafafa;

@@ -14,8 +14,13 @@
       <span class="free-conference-label">Esta proposta veio de uma conferência livre?</span>
 
       <ng-include src="'html/_select_state.html'"></ng-include>
-      <label id="proposal-topic">Eixo</label>
-      <ion-radio ng-model="data.topic_id" ng-value="topic.id" ng-repeat="topic in topics">{{topic.title}}</ion-radio>
+      
+      <label id="proposal-topic">
+        <span>Eixo</span>
+        <select ng-model="data.topic_id" ng-value="topic.id" id="select-topic">
+          <option ng-repeat="topic in topics">{{topic.title}}</option>
+        </select>
+      </label>
 
       <p class="text-center">
         <button ripple class="button" type="submit">Salvar</button>
