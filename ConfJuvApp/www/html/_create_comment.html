@@ -6,7 +6,9 @@
         <a class="back icon-left ion-reply" ng-click="closeCommentModal()">Voltar</a>
       </h1>
 
-      <label class="item item-input"><textarea placeholder="Comentário" ng-model="data.comment" rows="15"></textarea></label>
+      <label class="item item-input">
+        <textarea ng-enter="createComment(data)" placeholder="Comentário" ng-model="data.comment" rows="15"></textarea>
+      </label>
 
       <p class="text-center">
         <button ripple class="button" type="submit" name="createcomment" id="createcomment">Enviar</button>
