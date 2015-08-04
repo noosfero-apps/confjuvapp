@@ -439,7 +439,7 @@ angular.module('confjuvapp.controllers', [])
       else {
         // Initiate the modal
         $scope.loadStates();
-        $ionicModal.fromTemplateUrl('html/_create_proposal.html?10', {
+        $ionicModal.fromTemplateUrl('html/_create_proposal.html?11', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -518,11 +518,13 @@ angular.module('confjuvapp.controllers', [])
             $scope.proposalsByTopic[data.topic_id.id].push(proposal);
             $scope.loading = false;
             $scope.data.title = $scope.data.description = $scope.data.topic_id = null;
+            document.getElementById('save-proposal').innerHTML = 'Salvar';
           });
         }, function(err) {
           $scope.closeProposalModal();
           var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'Erro ao criar proposta!' });
           $scope.loading = false;
+          document.getElementById('save-proposal').innerHTML = 'Salvar';
           popup.then(function() {
             $scope.openCreateProposalForm();
           });
