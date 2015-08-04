@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width; height=device-height">
 
     <title>#3confjuv</title>
 
@@ -43,5 +43,7 @@
     <button ripple="" class="button button-float" ng-show="loggedIn" ng-click="openCreateProposalForm()">
       <i class="icon ion-edit"></i>
     </button>
+
+    <script>document.addEventListener('focusout', function(e) { window.scrollTo(0, 0); });</script>
   </body>
 </html>

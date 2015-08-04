@@ -17,13 +17,13 @@
       
       <label id="proposal-topic">
         <span>Eixo</span>
-        <select ng-model="data.topic_id" ng-value="topic.id" id="select-topic">
-          <option ng-repeat="topic in topics">{{topic.title}}</option>
+        <select ng-model="data.topic_id" id="select-topic" ng-value="topic.id"  ng-options="topic.title for topic in topics track by topic.id">
+          <option value="">Selecione um eixo...</option>
         </select>
       </label>
 
       <p class="text-center">
-        <button ripple class="button" type="submit">Salvar</button>
+        <button onclick="this.innerHTML='Criando...'" ripple class="button" type="submit">Salvar</button>
       </p>
     </form>
   </ion-content>

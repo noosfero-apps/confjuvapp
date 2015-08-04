@@ -7665,8 +7665,6 @@ html body, html #body {
   background: url(../img/bg.png); }
 html ion-content {
   background-size: 100%; }
-html ion-content, html content {
-  overflow-scroll: true; }
 html .pane {
   background: transparent; }
 html .loader {
@@ -7802,8 +7800,8 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
       font-size: 20px;
       background: #e0e0e0;
       padding: 22px;
-      height: 95px;
-      min-height: 95px;
+      height: 135px;
+      min-height: 135px;
       overflow: hidden;
       text-overflow: ellipsis; }
   #proposals .card-body {

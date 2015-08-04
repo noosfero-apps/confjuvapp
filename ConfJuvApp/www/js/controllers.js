@@ -439,7 +439,7 @@ angular.module('confjuvapp.controllers', [])
       else {
         // Initiate the modal
         $scope.loadStates();
-        $ionicModal.fromTemplateUrl('html/_create_proposal.html?8', {
+        $ionicModal.fromTemplateUrl('html/_create_proposal.html?10', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -495,14 +495,14 @@ angular.module('confjuvapp.controllers', [])
           'content_type': 'ProposalsDiscussionPlugin::Proposal'
         };
 
-        $http.post(ConfJuvAppUtils.pathTo('articles/' + data.topic_id + '/children'), jQuery.param(params), config)
+        $http.post(ConfJuvAppUtils.pathTo('articles/' + data.topic_id.id + '/children'), jQuery.param(params), config)
         .then(function(resp) {
           $scope.closeProposalModal();
           var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'Proposta criada com sucesso!' });
           popup.then(function() {
             var topic = null;
             for (var i = 0; i < $scope.topics.length; i++) {
-              if (data.topic_id == $scope.topics[i].id) {
+              if (data.topic_id.id == $scope.topics[i].id) {
                 topic = $scope.topics[i];
               }
             }
@@ -515,7 +515,7 @@ angular.module('confjuvapp.controllers', [])
             };
             $scope.proposalList.push(proposal);
             $scope.cards.push(proposal);
-            $scope.proposalsByTopic[data.topic_id].push(proposal);
+            $scope.proposalsByTopic[data.topic_id.id].push(proposal);
             $scope.loading = false;
             $scope.data.title = $scope.data.description = $scope.data.topic_id = null;
           });

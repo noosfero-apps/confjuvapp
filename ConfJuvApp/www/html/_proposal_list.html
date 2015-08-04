@@ -24,13 +24,13 @@
           {{proposal.title | limitTo:100}}
           <br />
           <small>Autoria: {{proposal.author.name}}</small>
+          <p><img ng-src="img/badge-{{proposal.topic.id}}.svg" alt="" /></p>
         </h3>
         <div class="card-body">
           <!-- <div ng-bind-html="discussion.body"></div> -->
           {{proposal.body | htmlToPlainText | limitTo:280}}...
         </div>
         <div class="card-footer">
-          <img ng-src="img/badge-{{proposal.topic.id}}.svg" alt="" />
           <a ng-click="openProposal(proposal)" class="icon-left ion-android-open"> Leia Mais</a>
         </div>
         <br style="clear: both;" />
