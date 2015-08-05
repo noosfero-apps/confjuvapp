@@ -16,7 +16,25 @@ A gente faz aberto, a gente faz colaborativo. Para contribuir com a 3a Conferên
 
 Tá esperando o que? Faz um fork e vem ajudar mudar a participação social no Brasil!
 
-# Informações técnicas (em inglês para facilitar a cooperação internacional)
+
+=====English version======
+
+Application for the third National Youth Conference: How will you change Brazil?
+
+# Social Participation innovation under construction
+
+This application is in beta version and is already online. Next to the days of its launch it already received dozens of proposals from young Brazilians with energy to change Brazil. For the first time in the history of the national conferences, a web application will elect delegates and proposals based on a scoring system that rewards relevance in the network. With this application we make an important step in changing social participation.
+
+# Come build with us?
+
+We do it open, we do it collaboratively. To contribute to the 3rd Youth Conference and the Social Participation you can:
+
+1. Registering bugs or suggestions: [Page of "issues"] (https://gitlab.com/participa/confjuvapp/issues), just click "+ New Issue"
+2. Contributing to code, making improvements, we will look very kindly to your "merge requests" ;-)
+
+What are you waiting for? It makes a fork and comes to help change social participation in Brazil!
+
+# Informações técnicas (em inglês para facilitar a cooperação internacional) - Technical informatiom
 
 An hybric mobile application for "III Conferência Nacional da Juventude".
 
