@@ -1,7 +1,7 @@
 #proposals {
   background: $ice;
   padding-top: 70px;
-  min-heigt:800px;
+  min-height: 800px;
 
   h2 {
     color: $orange;
@@ -22,26 +22,24 @@
 
   .card {
     padding: 0;
+    min-height: 350px;
 
     h3 {
-      font-size: 20px;
-      background: $diamond;
-      padding: 2 * $unit;
-      height: 135px;
-      min-height: 135px;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 20px; 
+      background: $diamond; 
+      overflow: hidden; 
+      text-overflow: ellipsis; 
+      padding: 12px;
+
     }
   }
 
   .card-body {
-    color: $black;
-    font-size: 16px;
-    padding: 2 * $unit;
-    white-space: normal;
-    height: 100px;
-    min-height: 100px;
-    overflow: hidden;
+    color: $black; 
+    font-size: 16px; 
+    padding: 5px 10px 10px 10px; 
+    white-space: normal; 
+    overflow: hidden; 
     text-overflow: ellipsis;
   }
 
@@ -94,6 +92,7 @@
       text-transform: uppercase;
       margin: $unit;
       cursor: pointer;
+      margin-top:80px;
     }
   }
 }
