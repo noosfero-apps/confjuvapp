@@ -4,15 +4,13 @@
 
   .stage, .stage:hover
   {
-  		color: white;
-  		/*text-transform: uppercase;*/
-    	width: 100%;
-      cursor: default;
-      font-size: 11px;
-      color: #212121;
-      line-height: 18px;
-      border: 0;
-      background-color: #e0e0e0;
+  		width: 100%; 
+      cursor: default; 
+      font-size: 11px; 
+      color: #bdbdbd; 
+      line-height: 18px; 
+      border: 0px none; 
+      background-color: #E0E0E0; 
   }
 
   .stage-first, .stage-first:hover, .stage-first:active {
