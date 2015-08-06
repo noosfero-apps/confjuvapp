@@ -43,7 +43,7 @@ An hybric mobile application for "III Conferência Nacional da Juventude".
 This application is built on top of Ionic, so you need this framework.
 
 1. Make sure you have Node.js installed
-2. `npm install -g cordova ionic`
+2. `npm install -g cordova ionic gulp gulp-util gulp-concat gulp-sass gulp-minify-css gulp-rename bower shelljs`
 3. `cd confjuvapp`
 4. `ionic build (android|ios)`
 5. `ionic emulate (android|ios)`
