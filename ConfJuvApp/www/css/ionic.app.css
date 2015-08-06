@@ -7800,7 +7800,8 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
 
 #proposals {
   background: #fafafa;
-  padding-top: 70px; }
+  padding-top: 70px;
+  min-height: 800px; }
   #proposals h2 {
     color: #ff9800;
     font-size: 20px;
@@ -7813,22 +7814,19 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
       background: transparent;
       padding: 0; }
   #proposals .card {
-    padding: 0; }
+    padding: 0;
+    min-height: 350px; }
     #proposals .card h3 {
       font-size: 20px;
       background: #e0e0e0;
-      padding: 22px;
-      height: 135px;
-      min-height: 135px;
       overflow: hidden;
-      text-overflow: ellipsis; }
+      text-overflow: ellipsis;
+      padding: 12px; }
   #proposals .card-body {
     color: #000000;
     font-size: 16px;
-    padding: 22px;
+    padding: 5px 10px 10px 10px;
     white-space: normal;
-    height: 100px;
-    min-height: 100px;
     overflow: hidden;
     text-overflow: ellipsis; }
   #proposals .card-footer {
@@ -7866,7 +7864,8 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
       color: #2196f3;
       text-transform: uppercase;
       margin: 11px;
-      cursor: pointer; }
+      cursor: pointer;
+      margin-top: 80px; }
 
 #proposal {
   background: #fafafa; }
@@ -8054,15 +8053,13 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
   padding: 3px; }
 
 .stage, .stage:hover {
-  color: white;
-  /*text-transform: uppercase;*/
   width: 100%;
   cursor: default;
   font-size: 11px;
-  color: #212121;
+  color: #bdbdbd;
   line-height: 18px;
-  border: 0;
-  background-color: #e0e0e0; }
+  border: 0px none;
+  background-color: #E0E0E0; }
 
 .stage-first, .stage-first:hover, .stage-first:active {
   border-radius: 20px 0 0 20px; }
