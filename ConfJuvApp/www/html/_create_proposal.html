@@ -8,10 +8,6 @@
 
       <label class="item item-input"><input type="text" placeholder="Título" ng-model="data.title" maxlength="40"></label>
       <label class="item item-input"><textarea placeholder="Descrição" ng-model="data.description"></textarea></label>
-      <label class="checkbox free-conference-cbox">
-        <input  type="checkbox" ng-model="data.free_conference" >
-      </label>
-      <span class="free-conference-label">De conferência livre?</span>
 
       <ng-include src="'html/_select_state.html'"></ng-include>
       
@@ -24,7 +20,12 @@
         </select>
       </label>
 
-      <p class="text-center">
+      <label class="checkbox free-conference-cbox">
+        <input  type="checkbox" ng-model="data.free_conference" >
+      </label>
+      <span class="free-conference-label">De conferência livre?</span>
+
+      <p class="text-center" style="clear: both;">
         <button onclick="this.innerHTML='Criando...'" ripple class="button" type="submit" id="save-proposal">Salvar</button>
       </p>
     </form>
