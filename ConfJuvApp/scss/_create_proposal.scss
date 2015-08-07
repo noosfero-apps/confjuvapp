@@ -42,6 +42,10 @@
   }
 
   form {
+    .input-label {
+      display: none;
+    }
+
     label, .input-label, .free-conference-label {
       border: 0;
       color: $lightgreen;
@@ -73,7 +77,8 @@
     textarea {
       border: 1px solid $lightgreen;
       display: block;
-      width: 96%;
+      width: 100%;
+      margin-right: 16px;
 
       &:focus {
         border: 2px solid $lightgreen;
@@ -87,7 +92,7 @@
       margin-right: 16px;
     }
 
-    label#proposal-topic {
+    label {
       margin: 16px;
       display: block;
     }
@@ -97,8 +102,13 @@
       margin: 1px 16px;
     }
 
+    .item-input {
+      padding: 0;
+    }
+
     .free-conference-cbox {
       float: left;
+      margin: 0;
       margin-left: $unit;
     }
 
@@ -111,12 +121,17 @@
       clear: both;
     }
 
-    #select-topic {
+    select {
+      width: 100%;
       border-right: 0;
       border-left: 0;
       border-top: 0;
-      float: right;
-      margin-right: 0;
+      margin-right: 16px !important;
+    }
+
+    select.item {
+      font-size: 14px;
+      border-bottom: 1px solid $lightgreen;
     }
   }
 }

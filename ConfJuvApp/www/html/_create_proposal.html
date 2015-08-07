@@ -11,14 +11,16 @@
       <label class="checkbox free-conference-cbox">
         <input  type="checkbox" ng-model="data.free_conference" >
       </label>
-      <span class="free-conference-label">Esta proposta veio de uma conferência livre?</span>
+      <span class="free-conference-label">De conferência livre?</span>
 
       <ng-include src="'html/_select_state.html'"></ng-include>
       
       <label id="proposal-topic">
-        <span>Eixo</span>
+        <div class="input-label">
+          Eixo
+        </div>
         <select ng-model="data.topic_id" id="select-topic" ng-value="topic.id"  ng-options="topic.title for topic in topics track by topic.id">
-          <option value="">Selecione um eixo...</option>
+          <option value="">Escolha o eixo...</option>
         </select>
       </label>
 

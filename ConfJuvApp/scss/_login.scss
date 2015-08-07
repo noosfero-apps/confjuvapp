@@ -102,6 +102,16 @@
       button {
         margin-bottom: $unit * 5;
       }
+
+      .input-label {
+        display: none;
+      }
+
+      select {
+        border: 1px solid $darkgrey;
+        width: 100%;
+        float: none;
+      }
     }
   }
 }

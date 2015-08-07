@@ -1,11 +1,11 @@
 <div class='signup-person-fields' ng-repeat="field in signupPersonFields" ng-show="registerFormType == 'user'">
-  <div class="list" ng-if="'identidade_genero' == field">
-    <label class="item item-input item-select">
+  <div ng-if="'identidade_genero' == field">
+    <label>
       <div class="input-label">
         Identidade de Gênero
       </div>
-      <select ng-model="data.identidade_genero" required>
-        <option value="">Selecione uma identidade de gênero...</option>
+      <select ng-model="data.identidade_genero" required class="item">
+        <option value="">Identidade de Gênero</option>
         <option value="1">Masculino</option>
         <option value="2">Feminino</option>
       </select>
@@ -20,13 +20,13 @@
        Sou transgênero
     </li>
   </ul>
-  <div class="list" ng-if="'etnia' == field">
-    <label class="item item-input item-select">
+  <div ng-if="'etnia' == field">
+    <label>
       <div class="input-label">
         Raça/Etnia
       </div>
-      <select ng-model="data.etnia" required>
-        <option value="">Selecione uma raça/etnia...</option>
+      <select ng-model="data.etnia" required class="item">
+        <option value="">Raça / Etnia</option>
         <option value="1">Pardo</option>
         <option value="2">Preto</option>
         <option value="3">Branco</option>
@@ -36,13 +36,13 @@
     </label>
   </div>
 
-  <div class="list" ng-if="'orientacao_sexual' == field">
-    <label class="item item-input item-select">
+  <div ng-if="'orientacao_sexual' == field">
+    <label>
       <div class="input-label">
         Orientação Sexual
       </div>
-      <select ng-model="data.orientacao_sexual" required>
-        <option value="">Selecione uma orientação sexual...</option>
+      <select ng-model="data.orientacao_sexual" required class="item">
+        <option value="">Orientação Sexual</option>
         <option value="1">Homosexual</option>
         <option value="2">Heterosexual</option>
         <option value="3">Bisexual</option>
