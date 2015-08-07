@@ -25,6 +25,8 @@ angular.module('confjuvapp.controllers', [])
         $scope.loggedIn = true;
         $scope.loadMe();
         $scope.loadTopics($scope.token);
+
+        $scope.parseURLParams();
       } else if ($scope.modal) {
         $scope.modal.show();
       } else {
@@ -37,6 +39,34 @@ angular.module('confjuvapp.controllers', [])
           $scope.modal.show();
         });
       }
+    };
+
+    $scope.parseURLParams = function() {
+      var params = document.location.search.replace(/^\?/, '').split('&');
+      for (var i=0; i < params.length; i++) {
+        var pair = params[i].split('=');
+
+        if (pair[0] == 'proposal') {
+          $scope.loadSingleProposal(pair[1]);
+        }
+      }
+    };
+
+    $scope.loadSingleProposal = function(pid) {
+      $scope.loading = true;
+
+      var params = '?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal';
+
+      var path = 'articles/' + pid + params;
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        $scope.openProposal(resp.data.article);
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Proposta', template: 'Não foi possível carregar a proposta com id ' + pid });
+        $scope.loading = false;
+      });
     };
 
     // Function to logout

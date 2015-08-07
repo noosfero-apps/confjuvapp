@@ -2,20 +2,28 @@
   <ion-content>
     <h1 class="title">
       <span>
-        {{proposal.title}}
+        <span id="proposal-title">{{proposal.title}}</span>
         <br />
         <small>Autoria: {{proposal.author.name}}</small>
       </span>
       <a class="back icon-left ion-reply" ng-click="closeProposal()">Voltar</a>
     </h1>
 
+    <span id="proposal-id" style="display: none;">{{proposal.id}}</span>
+
     <p class="proposal-buttons">
 
       <button class="button tag" ng-click="openTagForm()" ng-show="proposal.author.id == user.id">
         <i class="icon ion-pricetags"></i> Adicionar Tag
       </button>
-      <button ripple class="button icon-left ion-chatbox-working comment" ng-click="openCommentForm()">
+      <button class="button icon-left ion-chatbox-working comment" ng-click="openCommentForm()">
         Comentar
+      </button>
+      <button class="button icon-left ion-social-twitter" onclick="window.open(ConfJuvAppUtils.shareOnTwitter(), '_system')">
+        Compartilhar no Twitter
+      </button>
+      <button class="button icon-left ion-social-facebook" onclick="window.open(ConfJuvAppUtils.shareOnFacebook(), '_system')">
+        Compartilhar no Facebook
       </button>
     </p>
 
