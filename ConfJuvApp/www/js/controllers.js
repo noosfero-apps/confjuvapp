@@ -21,9 +21,10 @@ angular.module('confjuvapp.controllers', [])
     // Function to open the modal
     $scope.openModal = function() {
       if(ConfJuvAppUtils.getPrivateToken()){
+        $scope.token = ConfJuvAppUtils.getPrivateToken();
         $scope.loggedIn = true;
         $scope.loadMe();
-        $scope.loadTopics(ConfJuvAppUtils.getPrivateToken());
+        $scope.loadTopics($scope.token);
       } else if ($scope.modal) {
         $scope.modal.show();
       } else {
