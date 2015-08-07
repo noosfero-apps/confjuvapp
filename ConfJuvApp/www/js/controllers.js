@@ -20,10 +20,13 @@ angular.module('confjuvapp.controllers', [])
 
     // Function to open the modal
     $scope.openModal = function() {
-      if ($scope.modal) {
+      if(ConfJuvAppUtils.getPrivateToken()){
+        $scope.loggedIn = true;
+        $scope.loadMe();
+        $scope.loadTopics(ConfJuvAppUtils.getPrivateToken());
+      } else if ($scope.modal) {
         $scope.modal.show();
-      }
-      else {
+      } else {
         // Initiate the modal
         $ionicModal.fromTemplateUrl('html/_login.html?2', {
           scope: $scope,
@@ -34,6 +37,13 @@ angular.module('confjuvapp.controllers', [])
         });
       }
     };
+
+    // Function to logout
+    $scope.logout = function() {
+      ConfJuvAppUtils.setPrivateToken(null);
+      $scope.openModal();
+    };
+
 
     // Function to close the modal
     $scope.closeModal = function() {
@@ -60,6 +70,7 @@ angular.module('confjuvapp.controllers', [])
         timeout: 10000
       }
 
+
       $http.post(ConfJuvAppUtils.pathTo('login'), jQuery.param(data), config)
       .then(function(resp) {
         $scope.closeModal();
@@ -68,6 +79,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.user = resp.data.person;
         popup.then(function() {
           $scope.token = resp.data.private_token;
+          ConfJuvAppUtils.setPrivateToken($scope.token);
           $scope.loadTopics(resp.data.private_token);
         });
       }, function(err) {
@@ -203,6 +215,24 @@ angular.module('confjuvapp.controllers', [])
         $scope.loading = false;
       });
     };
+
+    // Load Me
+    $scope.loadMe = function() {
+      $scope.loading = true;
+
+      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken();
+      var path = 'people/me/' +params;
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        $scope.user = resp.data.person;
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Usuário', template: 'Não foi possível carregar o usuário' });
+        $scope.loading = false;
+      });
+    };
+
 
 
     $scope.backToLoginHome = function() {

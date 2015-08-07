@@ -9,11 +9,17 @@
     overflow: visible;
   }
 
-  button {
+  ul {
     position: absolute;
     right: $unit;
-    color: transparentize($white, 0.5);
+    li {
+      float: left;
+      button {
+        color: transparentize($white, 0.5);
+      }
+    }
   }
+
 }
 
 .logged-in #header {

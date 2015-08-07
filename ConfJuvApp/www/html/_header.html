@@ -3,9 +3,10 @@
   
   <span ng-show="loading" class="loader"><em>Carregando...</em></span>
 
-  <div ng-show="loggedIn">
-    <button menu-toggle="right" class="button button-icon icon ion-funnel" hide-when="large"></button>
-  </div>
+  <ul ng-show="loggedIn">
+    <li><button menu-toggle="right" class="button button-icon icon ion-funnel" hide-when="large"></button></li>
+    <li><button  class="button button-icon icon ion-log-out" ng-click="logout()"></button></li>
+  </ul>
   
   <button class="button button-icon icon ion-log-in" ng-hide="loggedIn" ng-click="openModal()"></button>
 </ion-header-bar>
