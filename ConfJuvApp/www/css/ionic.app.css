@@ -7801,8 +7801,8 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
     right: 11px; }
     #header ul li {
       float: left; }
-      #header ul li button {
-        color: rgba(255, 255, 255, 0.5); }
+  #header button {
+    color: #ffcb7f; }
 
 .logged-in #header {
   background: #ff9800; }

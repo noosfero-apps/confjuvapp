@@ -14,10 +14,11 @@
     right: $unit;
     li {
       float: left;
-      button {
-        color: transparentize($white, 0.5);
-      }
     }
+  }
+
+  button {
+    color: $lightorange;
   }
 
 }
