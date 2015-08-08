@@ -500,7 +500,7 @@ angular.module('confjuvapp.controllers', [])
       else {
         // Initiate the modal
         $scope.loadStates();
-        $ionicModal.fromTemplateUrl('html/_create_proposal.html?11', {
+        $ionicModal.fromTemplateUrl('html/_create_proposal.html?12', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -529,15 +529,23 @@ angular.module('confjuvapp.controllers', [])
           $scope.openCreateProposalForm();
         });
       }
-      else if (data.description.length > 1000) {
+      else if (data.description.length > 2000) {
         $scope.closeProposalModal();
-        var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'A descrição deve ter no máximo 1000 caracteres!' });
+        var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'A descrição deve ter no máximo 2000 caracteres!' });
+        popup.then(function() {
+          $scope.openCreateProposalForm();
+        });
+      }
+      else if (data.description.length < 140) {
+        $scope.closeProposalModal();
+        var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'A descrição deve ter no mínimo 140 caracteres! (a sua contém ' + data.description.length + ')'});
         popup.then(function() {
           $scope.openCreateProposalForm();
         });
       }
       else {
         $scope.loading = true;
+        document.getElementById('save-proposal').innerHTML = 'Criando...';
 
         var config = {
           headers: {
@@ -579,7 +587,7 @@ angular.module('confjuvapp.controllers', [])
             $scope.proposalsByTopic[data.topic_id.id].push(proposal);
             $scope.loading = false;
             $scope.data.title = $scope.data.description = $scope.data.topic_id = null;
-            document.getElementById('save-proposal').innerHTML = 'Salvar';
+            document.getElementById('save-proposal').innerHTML = 'Criar';
           });
         }, function(err) {
           $scope.closeProposalModal();
