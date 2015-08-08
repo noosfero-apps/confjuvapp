@@ -63,4 +63,12 @@
     text-align: center;
   }
 
+  .comment-message {
+    margin: $unit;
+
+    span {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
 }

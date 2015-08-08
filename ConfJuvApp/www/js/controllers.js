@@ -468,7 +468,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?4', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?5', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -859,6 +859,7 @@ angular.module('confjuvapp.controllers', [])
      ******************************************************************************/
 
      var loadComments = function() {
+       $scope.commentStatus = '';
        $scope.loading = true;
        var config = {
          headers: {
@@ -872,9 +873,11 @@ angular.module('confjuvapp.controllers', [])
          $scope.loading = false;
          $scope.proposal.comments = resp.data.comments;
          if ($scope.proposal.comments.length == 0) {
+           $scope.commentStatus = 'none';
            $scope.proposal.comments = [{ body: '', skip: true, author: { name: '' }}];
          }
        }, function(err) {
+         $scope.commentStatus = 'fail';
          var popup = $ionicPopup.alert({ title: 'Comentários', template: 'Erro ao carregar comentários da proposta ' + $scope.proposal.id });
          popup.then(function() {
            $scope.loading = false;

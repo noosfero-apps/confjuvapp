@@ -44,6 +44,16 @@
 
     <h2>Comentários</h2>
 
+    <div class="comment-message" ng-show="commentStatus == 'none'">
+      Não há comentários para esta proposta. 
+      <span ng-click="openCommentForm()">Seja o primeiro!</span>
+    </div>
+    
+    <div class="comment-message" ng-show="commentStatus == 'fail'">
+      Não foi possível carregar os comentários desta proposta. 
+      <span ng-click="loadComments()">Tente novamente.</span>
+    </div>
+
     <div class="card" ng-repeat="comment in proposal.comments" ng-hide="comment.skip">
       <div class="item item-divider">
       {{comment.author.name}}

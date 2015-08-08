@@ -7934,6 +7934,11 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
     color: #ffffff; }
   #proposal .proposal-buttons, #proposal .proposal-badges {
     text-align: center; }
+  #proposal .comment-message {
+    margin: 11px; }
+    #proposal .comment-message span {
+      text-decoration: underline;
+      cursor: pointer; }
 
 .sidebar h2 {
   font-size: 16px;
