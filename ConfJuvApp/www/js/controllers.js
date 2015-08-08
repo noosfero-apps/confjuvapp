@@ -45,7 +45,7 @@ angular.module('confjuvapp.controllers', [])
       $scope.stages = {
         one: ConfJuvAppUtils.dateDiff('23/07/2015', '30/09/2015'),
         two: ConfJuvAppUtils.dateDiff('01/10/2015', '31/10/2015'),
-        three: ConfJuvAppUtils.dateDiff('01/11/2015', '16/12/2015')
+        three: ConfJuvAppUtils.dateDiff('01/11/2015', '20/12/2015')
       };
     };
 
