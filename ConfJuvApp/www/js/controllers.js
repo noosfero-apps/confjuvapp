@@ -20,7 +20,7 @@ angular.module('confjuvapp.controllers', [])
 
     // Function to open the modal
     $scope.openModal = function() {
-      if(ConfJuvAppUtils.getPrivateToken()){
+      if (ConfJuvAppUtils.getPrivateToken()) {
         $scope.token = ConfJuvAppUtils.getPrivateToken();
         $scope.loggedIn = true;
         $scope.loadMe();
@@ -251,7 +251,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.signupPersonFields = resp.data;
         $scope.loading = false;
       }, function(err) {
-        $ionicPopup.alert({ title: 'Campos Customizados de Registro', template: 'Não foi possível carregar os campos customizados de cadastro' });
+        $ionicPopup.alert({ title: 'Campos de Registro', template: 'Não foi possível carregar os campos de registro.' });
         $scope.loading = false;
       });
     };
@@ -268,7 +268,11 @@ angular.module('confjuvapp.controllers', [])
         $scope.user = resp.data.person;
         $scope.loading = false;
       }, function(err) {
-        $ionicPopup.alert({ title: 'Usuário', template: 'Não foi possível carregar o usuário' });
+        $scope.token = ConfJuvAppUtils.setPrivateToken(null);
+        var popup = $ionicPopup.alert({ title: 'Usuário', template: 'Sessão expirada. Por favor faça login novamente.' });
+        popup.then(function() {
+          $scope.openModal();
+        });
         $scope.loading = false;
       });
     };
