@@ -1,9 +1,32 @@
 <div id="proposals" ng-show="loggedIn" no-scroll>
 
 	<div class="row stagebar">
-    <div class="col"><button style="width: 100%;" class="button stage stage-first current" href="javascript:void(0)"><i class="icon-left ion-chatboxes"></i> Fase 1<br/>Propostas</button></div>
-    <div class="col"><button style="width: 100%;" class="button stage stage-second" href="javascript:void(0)"><i class="icon-left ion-thumbsup"></i> Fase 2<br/>Aplausos</button></div>
-    <div class="col"><button style="width: 100%;" class="button stage stage-last" href="javascript:void(0)"><i class="icon-left ion-speakerphone"></i> Fase 3<br/>Anúncio</button></div>
+    <div class="col">
+      <button style="width: 100%;" class="button stage stage-first current">
+        <i class="icon-left ion-chatboxes"></i>
+        Fase 1<br/>
+        Propostas<br />
+        <small>{{stages.one}}</small>
+      </button>
+    </div>
+    
+    <div class="col">
+      <button style="width: 100%;" class="button stage stage-second">
+        <i class="icon-left ion-thumbsup"></i>
+        Fase 2<br/>
+        Aplausos<br />
+        <small>{{stages.two}}</small>
+      </button>
+    </div>
+    
+    <div class="col">
+      <button style="width: 100%;" class="button stage stage-last">
+        <i class="icon-left ion-speakerphone"></i>
+        Fase 3<br/>
+        Anúncio<br />
+        <small>{{stages.three}}</small>
+      </button>
+    </div>
 	</div>
 	
   <h2>Como você vai mudar o Brasil?</h2>

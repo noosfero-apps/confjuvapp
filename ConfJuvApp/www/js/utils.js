@@ -37,5 +37,31 @@ var ConfJuvAppUtils = {
         link  = ConfJuvAppConfig.noosferoApiPublicHost + '/?proposal=' + id,
         url   = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(link);
     return url;
+  },
+
+  dateDiff: function(start, end) {
+    var oneday = 24 * 60 * 60 * 1000, // hours * minutes * seconds * milliseconds
+        today = new Date(),
+        msg = '',
+        s = start.split('/'),
+        e = end.split('/');
+
+    start = new Date(s[2], parseInt(s[1]) - 1, s[0]);
+    end = new Date(e[2], parseInt(e[1]) - 1, e[0]);
+
+    if (today > start && today < end) {
+      start = today;
+      var days = Math.round(Math.abs((start.getTime() - end.getTime())/(oneday)));
+      msg = '+ ' + days + ' dia';
+      if (days > 1) {
+        msg += 's';
+      }
+    }
+
+    else {
+      msg = s[0] + '/' + s[1] + ' a ' + e[0] + '/' + e[1];
+    }
+
+    return msg;
   }
 };
