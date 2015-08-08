@@ -120,6 +120,7 @@ angular.module('confjuvapp.controllers', [])
           $scope.token = resp.data.private_token;
           ConfJuvAppUtils.setPrivateToken($scope.token);
           $scope.loadTopics(resp.data.private_token);
+          $scope.parseURLParams();
         });
       }, function(err) {
         $scope.closeModal();
