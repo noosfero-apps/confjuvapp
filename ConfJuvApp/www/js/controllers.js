@@ -31,7 +31,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.modal.show();
       } else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_login.html?2', {
+        $ionicModal.fromTemplateUrl('html/_login.html?3', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -481,7 +481,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?5', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?6', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -513,7 +513,7 @@ angular.module('confjuvapp.controllers', [])
       else {
         // Initiate the modal
         $scope.loadStates();
-        $ionicModal.fromTemplateUrl('html/_create_proposal.html?12', {
+        $ionicModal.fromTemplateUrl('html/_create_proposal.html?13', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -606,7 +606,7 @@ angular.module('confjuvapp.controllers', [])
           $scope.closeProposalModal();
           var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'Erro ao criar proposta!' });
           $scope.loading = false;
-          document.getElementById('save-proposal').innerHTML = 'Salvar';
+          document.getElementById('save-proposal').innerHTML = 'Criar';
           popup.then(function() {
             $scope.openCreateProposalForm();
           });
@@ -626,7 +626,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_create_comment.html?5', {
+        $ionicModal.fromTemplateUrl('html/_create_comment.html?6', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -689,6 +689,7 @@ angular.module('confjuvapp.controllers', [])
             $scope.proposal.comments = [];
           }
           $scope.proposal.comments.unshift({ body: params.body, author: { name: $scope.user.name }});
+          $scope.commentStatus = '';
           popup.then(function() {
             $scope.loading = false;
           });

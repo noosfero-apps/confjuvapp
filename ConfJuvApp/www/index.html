@@ -29,10 +29,10 @@
   <body ng-app="confjuvapp" ng-controller="ProposalCtrl" ng-init="openModal()" ng-class="{ 'logged-in': loggedIn, 'large': largeScreen }">
     <ion-side-menus id="body">
       <ion-side-menu-content>
-        <ng-include src="'html/_header.html'"></ng-include>
+        <ng-include src="'html/_header.html?1'"></ng-include>
         <ion-pane>
           <ion-content id="proposals-container" no-scroll="">
-            <ng-include src="'html/_proposal_list.html?2'"></ng-include>
+            <ng-include src="'html/_proposal_list.html?3'"></ng-include>
           </ion-content>
         </ion-pane>
       </ion-side-menu-content>
