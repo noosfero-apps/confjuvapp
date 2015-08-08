@@ -7809,13 +7809,13 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
 
 #proposals {
   background: #fafafa;
-  padding-top: 70px;
+  padding-top: 44px;
   min-height: 800px; }
   #proposals h2 {
     color: #ff9800;
     font-size: 20px;
     font-weight: 400;
-    margin: 0 10px; }
+    margin: 0 0 -10px 10px; }
   #proposals ion-list {
     display: block; }
     #proposals ion-list .item {
@@ -7826,11 +7826,13 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
     padding: 0;
     min-height: 350px; }
     #proposals .card h3 {
-      font-size: 20px;
+      font-size: 16px;
       background: #e0e0e0;
       overflow: hidden;
       text-overflow: ellipsis;
       padding: 12px; }
+      #proposals .card h3 p {
+        margin: 0; }
   #proposals .card-body {
     color: #000000;
     font-size: 16px;

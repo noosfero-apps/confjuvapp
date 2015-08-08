@@ -1,13 +1,13 @@
 #proposals {
   background: $ice;
-  padding-top: 70px;
+  padding-top: 44px;
   min-height: 800px;
 
   h2 {
     color: $orange;
     font-size: 20px;
     font-weight: 400;
-    margin: 0 10px;
+    margin: 0 0 -10px 10px;
   }
 
   ion-list {
@@ -25,12 +25,15 @@
     min-height: 350px;
 
     h3 {
-      font-size: 20px; 
+      font-size: 16px; 
       background: $diamond; 
       overflow: hidden; 
       text-overflow: ellipsis; 
       padding: 12px;
 
+      p {
+        margin: 0;
+      }
     }
   }
 
