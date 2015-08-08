@@ -15,15 +15,13 @@
   ul {
     position: absolute;
     right: $unit;
-    li {
-      float: left;
-    }
+    top: 4px;
   }
 
   button {
     color: $lightorange;
+    height: 32px;
   }
-
 }
 
 .logged-in #header {

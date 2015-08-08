@@ -9,8 +9,8 @@
     <title>#3confjuv</title>
 
     <!-- CSS -->
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/ionic.app.min.css" rel="stylesheet">
+    <link href="lib/ionic/css/ionic.css?1" rel="stylesheet">
+    <link href="css/ionic.app.min.css?1" rel="stylesheet">
     <link href="css/ionic.tdcards.css" rel="stylesheet">
 
     <!-- JavaScript -->
@@ -29,10 +29,10 @@
   <body ng-app="confjuvapp" ng-controller="ProposalCtrl" ng-init="openModal()" ng-class="{ 'logged-in': loggedIn, 'large': largeScreen }">
     <ion-side-menus id="body">
       <ion-side-menu-content>
-        <ng-include src="'html/_header.html?1'"></ng-include>
+        <ng-include src="'html/_header.html?2'"></ng-include>
         <ion-pane>
           <ion-content id="proposals-container" no-scroll="">
-            <ng-include src="'html/_proposal_list.html?3'"></ng-include>
+            <ng-include src="'html/_proposal_list.html?4'"></ng-include>
           </ion-content>
         </ion-pane>
       </ion-side-menu-content>

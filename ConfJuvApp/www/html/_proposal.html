@@ -51,7 +51,6 @@
     
     <div class="comment-message" ng-show="commentStatus == 'fail'">
       Não foi possível carregar os comentários desta proposta. 
-      <span ng-click="loadComments()">Tente novamente.</span>
     </div>
 
     <div class="card" ng-repeat="comment in proposal.comments" ng-hide="comment.skip">

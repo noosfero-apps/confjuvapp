@@ -120,6 +120,7 @@ angular.module('confjuvapp.controllers', [])
           $scope.token = resp.data.private_token;
           ConfJuvAppUtils.setPrivateToken($scope.token);
           $scope.loadTopics(resp.data.private_token);
+          $scope.loadStages();
           $scope.parseURLParams();
         });
       }, function(err) {
@@ -476,12 +477,18 @@ angular.module('confjuvapp.controllers', [])
         loadComments();
       }
 
+      else {
+        showProposal($scope.proposal);
+      }
+    };
+
+    $scope.showProposal = function(proposal) {
       if ($scope.proposalModal) {
         $scope.proposalModal.show();
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?6', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?11', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -890,11 +897,13 @@ angular.module('confjuvapp.controllers', [])
            $scope.commentStatus = 'none';
            $scope.proposal.comments = [{ body: '', skip: true, author: { name: '' }}];
          }
+         $scope.showProposal($scope.proposal);
        }, function(err) {
          $scope.commentStatus = 'fail';
          var popup = $ionicPopup.alert({ title: 'Comentários', template: 'Erro ao carregar comentários da proposta ' + $scope.proposal.id });
          popup.then(function() {
            $scope.loading = false;
+           $scope.showProposal($scope.proposal);
          });
        });
      };

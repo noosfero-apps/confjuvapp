@@ -7796,11 +7796,11 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
     z-index: 1; }
   #header ul {
     position: absolute;
-    right: 11px; }
-    #header ul li {
-      float: left; }
+    right: 11px;
+    top: 4px; }
   #header button {
-    color: #ffcb7f; }
+    color: #ffcb7f;
+    height: 32px; }
 
 .logged-in #header {
   background: #ff9800; }
@@ -7889,7 +7889,8 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
       cursor: pointer; }
 
 #proposal {
-  background: #fafafa; }
+  background: #fafafa;
+  padding-bottom: 11px; }
   #proposal h1 {
     position: relative;
     background: #00796B;
