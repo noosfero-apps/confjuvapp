@@ -5,6 +5,7 @@ html {
   body, #body {
     font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
     background: $orange-triangles;
+    background-size: 100%;
   }
 
   ion-content {
@@ -59,7 +60,8 @@ html {
   }
 
   .backdrop, .modal-backdrop-bg, .active .modal-backdrop-bg {
-    background: url(../img/bgdark.png);
+    background: $dark-orange-triangles;
+    background-size: 100%;
     opacity: 1;
   }
 }

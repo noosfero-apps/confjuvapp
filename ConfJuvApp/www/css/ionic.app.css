@@ -7680,7 +7680,8 @@ a.button {
 
 html body, html #body {
   font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: url(../img/bg.png); }
+  background: #b76a32;
+  background-size: 100%; }
 html ion-content {
   background-size: 100%; }
 html .pane {
@@ -7713,7 +7714,8 @@ html hr {
 html .large .scroll-content, html .large .ionic-scroll {
   overflow-y: auto; }
 html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
-  background: url(../img/bgdark.png);
+  background: #b76a32;
+  background-size: 100%;
   opacity: 1; }
 
 #login-modal {
@@ -7810,7 +7812,8 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
 #proposals {
   background: #fafafa;
   padding-top: 44px;
-  min-height: 800px; }
+  height: 100%;
+  min-height: 450px; }
   #proposals h2 {
     color: #ff9800;
     font-size: 20px;
@@ -7824,25 +7827,35 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
       padding: 0; }
   #proposals .card {
     padding: 0;
-    min-height: 350px; }
+    min-height: 250px;
+    height: 250px;
+    position: relative; }
     #proposals .card h3 {
       font-size: 16px;
       background: #e0e0e0;
       overflow: hidden;
       text-overflow: ellipsis;
       padding: 12px; }
+      #proposals .card h3 small {
+        font-size: 13px;
+        color: #212121; }
       #proposals .card h3 p {
         margin: 0; }
   #proposals .card-body {
     color: #000000;
-    font-size: 16px;
-    padding: 5px 10px 10px 10px;
+    font-size: 14px;
+    padding: 0 10px 10px 10px;
     white-space: normal;
     overflow: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    height: 100px; }
   #proposals .card-footer {
     border-top: 1px solid #e0e0e0;
-    text-align: left; }
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #efefef; }
     #proposals .card-footer a {
       color: #2196f3;
       cursor: pointer;
@@ -7870,19 +7883,19 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
         cursor: pointer; }
   #proposals .cards-footer {
     text-align: center;
-    margin-top: 320px; }
+    margin-top: 260px; }
     #proposals .cards-footer a {
       color: #2196f3;
       text-transform: uppercase;
       margin: 11px;
-      cursor: pointer;
-      margin-top: 80px; }
+      cursor: pointer; }
 
 #proposal {
   background: #fafafa; }
   #proposal h1 {
     position: relative;
-    background: url(../img/green.png);
+    background: #00796B;
+    background-size: 100%;
     font-weight: 700;
     font-size: 36px;
     color: #ffffff;

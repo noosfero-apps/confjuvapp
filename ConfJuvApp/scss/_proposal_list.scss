@@ -1,7 +1,8 @@
 #proposals {
   background: $ice;
   padding-top: 44px;
-  min-height: 800px;
+  height: 100%;
+  min-height: 450px;
 
   h2 {
     color: $orange;
@@ -22,7 +23,9 @@
 
   .card {
     padding: 0;
-    min-height: 350px;
+    min-height: 250px;
+    height: 250px;
+    position: relative;
 
     h3 {
       font-size: 16px; 
@@ -30,6 +33,11 @@
       overflow: hidden; 
       text-overflow: ellipsis; 
       padding: 12px;
+
+      small {
+        font-size: 13px;
+        color: $darkergrey;
+      }
 
       p {
         margin: 0;
@@ -39,16 +47,21 @@
 
   .card-body {
     color: $black; 
-    font-size: 16px; 
-    padding: 5px 10px 10px 10px; 
+    font-size: 14px; 
+    padding: 0 10px 10px 10px; 
     white-space: normal; 
     overflow: hidden; 
     text-overflow: ellipsis;
+    height: 100px;
   }
 
   .card-footer {
     border-top: 1px solid $lightgrey;
     text-align: left;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: $lightergrey;
 
     a {
       color: $lightblue;
@@ -88,14 +101,13 @@
 
   .cards-footer {
     text-align: center;
-    margin-top: 320px;
+    margin-top: 260px;
 
     a {
       color: $lightblue;
       text-transform: uppercase;
       margin: $unit;
       cursor: pointer;
-      margin-top:80px;
     }
   }
 }
