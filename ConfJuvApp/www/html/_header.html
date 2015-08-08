@@ -1,11 +1,10 @@
 <ion-header-bar align-title="left" id="header">
-  <button class="button button-icon icon ion-log-out" ng-click="logout()" ng-show="loggedIn"></button>
+  <button ng-show="loading" class="button button-icon icon loader"></button>
+  <button class="button button-icon icon ion-log-out" ng-click="logout()" ng-hide="loading" ng-show="loggedIn"></button>
 
   <h1 class="title">
     #3confjuv
   </h1>
-  
-  <span ng-show="loading" class="loader"><em>Carregando...</em></span>
 
   <ul ng-show="loggedIn">
     <li><button menu-toggle="right" class="button button-icon icon ion-funnel" hide-when="large"></button></li>

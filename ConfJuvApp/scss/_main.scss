@@ -17,19 +17,10 @@ html {
   }
 
   .loader {
-    display: block;
-    width: 220px;
-    height: 4 * $unit;
-    background: transparent url(../img/loader.gif?4) center center no-repeat;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    margin-left: -110px;
-    z-index: 2;
-
-    em {
-      display: none;
-    }
+    background: transparent url(../img/loader.gif?5) center center no-repeat;
+    width: 32px;
+    display: inline-block;
+    margin-left: 10px;
   }
 
   .text-center {

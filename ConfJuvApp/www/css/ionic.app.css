@@ -7687,17 +7687,10 @@ html ion-content {
 html .pane {
   background: transparent; }
 html .loader {
-  display: block;
-  width: 220px;
-  height: 44px;
-  background: transparent url(../img/loader.gif?4) center center no-repeat;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  margin-left: -110px;
-  z-index: 2; }
-  html .loader em {
-    display: none; }
+  background: transparent url(../img/loader.gif?5) center center no-repeat;
+  width: 32px;
+  display: inline-block;
+  margin-left: 10px; }
 html .text-center {
   text-align: center; }
 html .hidden {
@@ -7797,7 +7790,10 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
     font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 22px;
     font-weight: 300;
-    overflow: visible; }
+    overflow: visible;
+    left: 45px !important;
+    background: #3f51b5;
+    z-index: 1; }
   #header ul {
     position: absolute;
     right: 11px; }
@@ -7808,6 +7804,8 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
 
 .logged-in #header {
   background: #ff9800; }
+  .logged-in #header h1 {
+    background: #ff9800; }
 
 #proposals {
   background: #fafafa;

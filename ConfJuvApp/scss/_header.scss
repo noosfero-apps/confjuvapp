@@ -7,6 +7,9 @@
     font-size: $unit * 2;
     font-weight: 300;
     overflow: visible;
+    left: 45px !important;
+    background: $blue;
+    z-index: 1;
   }
 
   ul {
@@ -25,4 +28,8 @@
 
 .logged-in #header {
   background: $orange;
+
+  h1 {
+    background: $orange;
+  }
 }
