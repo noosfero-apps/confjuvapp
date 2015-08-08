@@ -42,7 +42,7 @@
 
     <hr>
 
-    <h2>Comentários</h2>
+    <h2>Comentários ({{commentStatus == 'none' ? 0 : proposal.comments.length}})</h2>
 
     <div class="comment-message" ng-show="commentStatus == 'none'">
       Não há comentários para esta proposta. 
