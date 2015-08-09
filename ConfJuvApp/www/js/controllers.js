@@ -474,11 +474,11 @@ angular.module('confjuvapp.controllers', [])
       $scope.proposal = proposal;
 
       if (!$scope.proposal.comments || $scope.proposal.comments.length == 0) {
-        loadComments();
+        $scope.loadComments();
       }
 
       else {
-        showProposal($scope.proposal);
+        $scope.showProposal($scope.proposal);
       }
     };
 
@@ -633,7 +633,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_create_comment.html?6', {
+        $ionicModal.fromTemplateUrl('html/_create_comment.html?7', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -879,7 +879,7 @@ angular.module('confjuvapp.controllers', [])
      L O A D  C O M M E N T S
      ******************************************************************************/
 
-     var loadComments = function() {
+     $scope.loadComments = function() {
        $scope.commentStatus = '';
        $scope.loading = true;
        var config = {
