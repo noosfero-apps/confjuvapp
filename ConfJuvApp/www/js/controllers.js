@@ -21,12 +21,7 @@ angular.module('confjuvapp.controllers', [])
     // Function to open the modal
     $scope.openModal = function() {
       if (ConfJuvAppUtils.getPrivateToken()) {
-        $scope.token = ConfJuvAppUtils.getPrivateToken();
-        $scope.loggedIn = true;
         $scope.loadMe();
-        $scope.loadTopics($scope.token);
-        $scope.loadStages();
-        $scope.parseURLParams();
       } else if ($scope.modal) {
         $scope.modal.show();
       } else {
@@ -83,7 +78,6 @@ angular.module('confjuvapp.controllers', [])
       $scope.openModal();
     };
 
-
     // Function to close the modal
     $scope.closeModal = function() {
       $scope.modal.hide();
@@ -109,19 +103,13 @@ angular.module('confjuvapp.controllers', [])
         timeout: 10000
       }
 
-
       $http.post(ConfJuvAppUtils.pathTo('login'), jQuery.param(data), config)
       .then(function(resp) {
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
-        $scope.loggedIn = true;
         $scope.user = resp.data.person;
         popup.then(function() {
-          $scope.token = resp.data.private_token;
-          ConfJuvAppUtils.setPrivateToken($scope.token);
-          $scope.loadTopics(resp.data.private_token);
-          $scope.loadStages();
-          $scope.parseURLParams();
+          $scope.loginCallback(resp.data.private_token);
         });
       }, function(err) {
         $scope.closeModal();
@@ -132,6 +120,15 @@ angular.module('confjuvapp.controllers', [])
           $scope.openModal();
         });
       });
+    };
+
+    $scope.loginCallback = function(token) {
+      $scope.loggedIn = true;
+      $scope.token = token;
+      ConfJuvAppUtils.setPrivateToken(token);
+      $scope.loadTopics(token);
+      $scope.loadStages();
+      $scope.parseURLParams();
     };
 
     // Function to retrieve password
@@ -261,15 +258,17 @@ angular.module('confjuvapp.controllers', [])
     $scope.loadMe = function() {
       $scope.loading = true;
 
-      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken();
-      var path = 'people/me/' +params;
+      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken(),
+          path = 'people/me/' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
         $scope.user = resp.data.person;
+        $scope.loginCallback(ConfJuvAppUtils.getPrivateToken());
         $scope.loading = false;
       }, function(err) {
         $scope.token = ConfJuvAppUtils.setPrivateToken(null);
+        $scope.loggedIn = false;
         var popup = $ionicPopup.alert({ title: 'Usuário', template: 'Sessão expirada. Por favor faça login novamente.' });
         popup.then(function() {
           $scope.openModal();
@@ -277,8 +276,6 @@ angular.module('confjuvapp.controllers', [])
         $scope.loading = false;
       });
     };
-
-
 
     $scope.backToLoginHome = function() {
       $scope.registerFormDisplayed = false;
