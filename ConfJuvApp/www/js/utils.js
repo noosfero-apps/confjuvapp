@@ -26,7 +26,7 @@ var ConfJuvAppUtils = {
   shareOnTwitter: function() {
     var title = document.getElementById('proposal-title').innerHTML,
         id    = document.getElementById('proposal-id').innerHTML,
-        text  = 'Apoie a minha proposta para a #3ConfJuv: ' + title + ' ' + ConfJuvAppConfig.noosferoApiPublicHost + '/?proposal=' + id,
+        text  = 'Comente minha proposta para a #3ConfJuv: ' + title + ' ' + ConfJuvAppConfig.noosferoApiPublicHost + '/?proposal=' + id,
         url   = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
     return url;
   },
