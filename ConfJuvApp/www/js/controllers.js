@@ -283,6 +283,33 @@ angular.module('confjuvapp.controllers', [])
       });
     };
 
+    // Submit the profile
+    $scope.updateProfile = function(data) {
+        $scope.loading = true;
+        var config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+          timeout: 10000
+        };
+        var params = {
+          'private_token': $scope.token,
+          'person[region_id]': data.city.id
+        };
+
+        $http.post(ConfJuvAppUtils.pathTo('people/' + $scope.user.id), jQuery.param(params), config)
+        .then(function(resp) {
+          $scope.user = resp.data.person;
+          var popup = $ionicPopup.alert({ title: 'Atualizar Usuário', template: 'Usuário atualizado com sucesso!' });
+          popup.then(function() {
+            $scope.loading = false;
+          });
+        }, function(err) {
+          var popup = $ionicPopup.alert({ title: 'Atualizar Usuário', template: 'Erro ao atualizar usuário!' });
+          $scope.loading = false;
+        });
+    };
+
     $scope.backToLoginHome = function() {
       $scope.registerFormDisplayed = false;
       $scope.loginFormDisplayed = false;

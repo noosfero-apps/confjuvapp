@@ -4,18 +4,23 @@
       <span>Filtros</span>
       <button menu-toggle="right" class="button button-icon icon ion-close-circled" hide-when="large"></button>
     </h2>
-    <!-- Uncomment when backend is ready
-    <h3>
+    <h3 ng-show="user.region">
       Mostrar apenas propostas de {{user.region.full_name}}
       <label class="checkbox my-city-cbox checkbox-balanced">
         <input type="checkbox" ng-click="loadProposalsOfMyCity()" />
       </label>
     </h3>
-    <h3 ng-show="!user.region" class="choose-city">
-      <a ng-click="loadStates()">Escolha a sua cidade</a>
-      <ng-include ng-show="states.length != 0" src="'html/_select_state.html'"></ng-include>
-    </h3>
-    -->
+    <form ng-submit="updateProfile(data)">
+      <h3 ng-show="!user.region" class="choose-city">
+        <a ng-click="loadStates()">Escolha a sua cidade</a>
+        <ng-include ng-show="states.length != 0" src="'html/_select_state.html'"></ng-include>
+      </h3>
+
+      <p class="text-center" style="clear: both;" ng-show="!user.region && (cities.length != 0)">
+        <button class="button" type="submit">Save</button>
+      </p>
+
+    </form>
     <h3>Mostrar apenas propostas do eixo:</h3>
     <ion-radio class="radio-balanced" ng-value="'all'" ng-model="topicFilter.value" ng-click="$parent.reloadProposals()">Todos</ion-radio>
     <label ng-repeat="topic in topics">
