@@ -331,14 +331,14 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.topics = [];
     $scope.cards = [];
-    $scope.emptyTopicsCount = 0;
-    $scope.topicFilter = { value: 'all' };
+    $scope.topicFilter = { value: ConfJuvAppUtils.getTopicFilter() };
+    $scope.emptyTopicsCount = $scope.topicFilter.value == 'all' ? 0 : 10;
 
     $scope.reloadTopics = function() {
       $scope.emptyTopicsCount = 0;
 
       if ($scope.topicFilter.value != 'all') {
-        $scope.emptyTopicsCount = $scope.topics.length - 1;
+        $scope.emptyTopicsCount = 10;
       }
 
       $scope.topics = [];
@@ -346,6 +346,7 @@ angular.module('confjuvapp.controllers', [])
     };
 
     $scope.reloadProposals = function() {
+      ConfJuvAppUtils.setTopicFilter($scope.topicFilter.value);
       $scope.cards = [];
       $scope.reloadTopics();
     };

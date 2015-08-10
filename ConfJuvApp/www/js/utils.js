@@ -12,9 +12,10 @@ var ConfJuvAppUtils = {
   },
 
   setPrivateToken: function(value) {
-    if(value == undefined || value == '' || value == null){
+    if (value == undefined || value == '' || value == null) {
       window.localStorage.removeItem('private_token');
-    }else{
+    }
+    else {
       window.localStorage['private_token'] = value;
     }
   },
@@ -63,5 +64,22 @@ var ConfJuvAppUtils = {
     }
 
     return msg;
+  },
+
+  setTopicFilter: function(value) {
+    if (value == undefined || value == '' || value == null) {
+      window.localStorage.removeItem('topic_filter');
+    }
+    else {
+      window.localStorage['topic_filter'] = value;
+    }
+  },
+
+  getTopicFilter: function() {
+    var value = window.localStorage['topic_filter'];
+    if (value == null) {
+      value = 'all';
+    }
+    return value;
   }
 };
