@@ -32,15 +32,15 @@
   <h2>Como você vai mudar o Brasil?</h2>
 
   <td-cards>
-    <p id="loading-cards" ng-show="!forceReload">
-    </p>
-    <div id='force-reload' ng-show="forceReload">
+    <p id="loading-cards" ng-show="loading">Carregando propostas...</p>
+    <div id="force-reload" ng-show="(emptyTopicsCount == topics.length) && !loading">
       <p>Você já visualizou todas as propostas.</p>
-      <p>Deseja <a ng-click="loadTopics()">Carregar novamente</a>? </p>
+      <p>Deseja <a ng-click="reloadTopics()">Carregar novamente</a>?</p>
     </div>
+ 
     <td-card ng-repeat="proposal in cards" on-destroy="cardDestroyed($index)"
              on-swipe-left="" on-swipe-right="" on-partial-swipe="cardPartialSwipe(amt)">
-      <div class="card animate-show" ng-show="proposal.topic.selected">
+      <div class="card animate-show">
         <h3>
           <a ng-click="openProposal(proposal)">{{proposal.title | limitTo:100}}</a>
           <br />
@@ -58,6 +58,6 @@
   </td-cards>
 
   <div class="cards-footer">
-    <a ng-click="nextCard()" class="button flat">Próxima</a>
+    <a ng-click="nextCard()" ng-show="cards.length > 0" class="button flat">Próxima</a>
   </div>
 </div>

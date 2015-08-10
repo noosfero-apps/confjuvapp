@@ -4,14 +4,12 @@
       <span>Filtros</span>
       <button menu-toggle="right" class="button button-icon icon ion-close-circled" hide-when="large"></button>
     </h2>
-    <h3>Filtrar propostas por tema</h2>
+    <h3>Mostrar apenas propostas do eixo:</h2>
+    <ion-radio class="radio-balanced" ng-value="'all'" ng-model="topicFilter.value" ng-click="$parent.reloadProposals()">Todos</ion-radio>
     <label ng-repeat="topic in topics">
-      <ion-checkbox
-        class="checkbox-balanced"
-        name="selectedTopics[]"
-        value="{{topic.title}}"
-        ng-model="topic.selected"
-      >{{topic.title}}</ion-checkbox>
+      <ion-radio class="radio-balanced" ng-value="topic.id" ng-model="topicFilter.value" ng-click="$parent.reloadProposals()">
+        {{topic.title}}
+      </ion-radio>
     </label>
   </ion-content>
 </div>

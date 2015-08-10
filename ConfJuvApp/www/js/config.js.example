@@ -3,6 +3,5 @@ var ConfJuvAppConfig = {
   noosferoApiPublicHost: 'http://app.juventude.gov.br',
   noosferoApiVersion: 'v1',
   noosferoDiscussion: 99895,
-  noosferoStatutePath: 'articles/participatorio/0010/2309/Resolucao-01-2015-etapa-digital.pdf',
-  proposalsPerPageAndTopic: 1
+  noosferoStatutePath: 'articles/participatorio/0010/2309/Resolucao-01-2015-etapa-digital.pdf'
 };

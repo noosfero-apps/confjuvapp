@@ -330,35 +330,30 @@ angular.module('confjuvapp.controllers', [])
      ******************************************************************************/
 
     $scope.topics = [];
-    $scope.proposalList = [];
-    $scope.proposalsByTopic = {};
     $scope.cards = [];
-    $scope.forceReload = false;
+    $scope.emptyTopicsCount = 0;
+    $scope.topicFilter = { value: 'all' };
 
-    // Selected topics
+    $scope.reloadTopics = function() {
+      $scope.emptyTopicsCount = 0;
 
-    $scope.selection = [];
+      if ($scope.filterTopic != 'all') {
+        $scope.emptyTopicsCount = $scope.topics.length - 1;
+      }
 
-    // Helper method to get selected topics
-
-    $scope.selectedTopics = function selectedTopics() {
-      return filterFilter($scope.topics, { selected: true });
+      $scope.topics = [];
+      $scope.loadTopics($scope.token);
     };
 
-    // Watch topics for changes
-
-    $scope.$watch('topics|filter:{selected:true}', function (nv) {
-      $scope.selection = nv.map(function (topic) {
-        return topic.title;
-      });
-    }, true);
+    $scope.reloadProposals = function() {
+      $scope.cards = [];
+      $scope.reloadTopics();
+    };
 
     // Load topics
 
     $scope.loadTopics = function(token) {
-      $scope.forceReload = false;
       $scope.loading = true;
-      // var path = '?private_token=' + token + '&fields=title,image,body,abstract&content_type=ProposalsDiscussionPlugin::Proposal';
       var params = '?private_token=' + token + '&fields=title,id&content_type=ProposalsDiscussionPlugin::Topic';
       var path = 'articles/' + ConfJuvAppConfig.noosferoDiscussion + '/children' + params;
 
@@ -367,19 +362,11 @@ angular.module('confjuvapp.controllers', [])
         $scope.loading = false;
         var topics = resp.data.articles;
         for (var i = 0; i < topics.length; i++) {
-          var topic_id = topics[i].id;
-          var topic = null;
-          for (var j = 0; j < $scope.topics.length; j++) {
-            if (topic_id == $scope.topics[j].id) {
-              topic = $scope.topics[j];
-            }
-          }
-          if (topic == null) {
-            topic = topics[i];
-            topic.selected = true;
-            $scope.topics.push(topic);
-          }
-          $scope.proposalsByTopic[topic.id] = [];
+          var topic = topics[i];
+          topic = topics[i];
+          topic.lastProposalId = null;
+          topic.empty = false;
+          $scope.topics.push(topic);
           $scope.loadProposals(token, topic);
         }
         $scope.loading = false;
@@ -392,25 +379,36 @@ angular.module('confjuvapp.controllers', [])
     // Load proposals
 
     $scope.loadProposals = function(token, topic) {
-      $scope.loading = true;
-      last_proposal = $scope.proposalsByTopic[topic.id][$scope.proposalsByTopic[topic.id].length -1];
-      last_proposal = last_proposal == undefined ? null : last_proposal.id;
+      if ($scope.topicFilter.value != 'all' && topic.id != $scope.topicFilter.value) {
+        return;
+      }
 
-      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&limit=' + ConfJuvAppConfig.proposalsPerPageAndTopic + '&oldest=younger_than&reference_id=' + last_proposal;
+      $scope.loading = true;
+
+      var perPage = 1;
+      if ($scope.topicFilter.value != 'all') {
+        perPage = 11;
+      }
+
+      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&limit=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId;
 
       var path = 'articles/' + topic.id + '/children' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
         var proposals = resp.data.articles;
-        $scope.proposalsByTopic[topic.id] = [];
+
         for (var i = 0; i < proposals.length; i++) {
           var proposal = proposals[i];
           proposal.topic = topic;
-          $scope.proposalList.push(proposal);
-          $scope.proposalsByTopic[topic.id].push(proposal);
           $scope.cards.push(proposal);
         }
+
+        if (proposals.length == 0 && !topic.empty) {
+          topic.empty = true;
+          $scope.emptyTopicsCount++;
+        }
+
         $scope.loading = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Propostas', template: 'Não foi possível carregar as propostas do tópico ' + topic.title });
@@ -421,21 +419,17 @@ angular.module('confjuvapp.controllers', [])
     // Cards
 
     $scope.cardDestroyed = function(index) {
+      var thisProposal = $scope.cards[index];
+      var topic = thisProposal.topic;
+      if (topic.lastProposalId == null || topic.lastProposalId > thisProposal.id) {
+        topic.lastProposalId = thisProposal.id;
+      }
       $scope.cards.splice(index, 1);
       if ($scope.cards.length === 0) {
         for (var i = 0; i < $scope.topics.length; i++) {
           var topic = $scope.topics[i];
-          topic.selected = true;
-          $scope.proposalList= [];
-          $scope.loadProposals($scope.token, topic);
-        }
-        if ($scope.proposalList.length == 0){
-          $scope.forceReload = true;
-        }
-        for (var i = 0; i < $scope.proposalList.length; i++) {
-          var card = $scope.proposalList[i];
-          if (card.topic.selected) {
-            $scope.cards.push(card);
+          if (!topic.empty) {
+            $scope.loadProposals($scope.token, topic);
           }
         }
       }
@@ -448,17 +442,6 @@ angular.module('confjuvapp.controllers', [])
       }
       $scope.cardDestroyed(index);
     };
-
-    // Swipe cards when filters are selected
-    $scope.$watch('selection', function() {
-      $scope.cards = [];
-      for (var i = 0; i < $scope.proposalList.length; i++) {
-        var card = $scope.proposalList[i];
-        if (card.topic.selected) {
-          $scope.cards.push(card);
-        }
-      }
-    });
 
     /******************************************************************************
      S I N G L E  P R O P O S A L
@@ -599,9 +582,7 @@ angular.module('confjuvapp.controllers', [])
               topic: topic,
               author: { name: $scope.user.name, id: $scope.user.id }
             };
-            $scope.proposalList.push(proposal);
             $scope.cards.push(proposal);
-            $scope.proposalsByTopic[data.topic_id.id].push(proposal);
             $scope.loading = false;
             $scope.data.title = $scope.data.description = $scope.data.topic_id = null;
             document.getElementById('save-proposal').innerHTML = 'Criar';
