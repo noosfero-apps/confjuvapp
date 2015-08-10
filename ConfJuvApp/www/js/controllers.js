@@ -337,7 +337,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.reloadTopics = function() {
       $scope.emptyTopicsCount = 0;
 
-      if ($scope.filterTopic != 'all') {
+      if ($scope.topicFilter.value != 'all') {
         $scope.emptyTopicsCount = $scope.topics.length - 1;
       }
 
