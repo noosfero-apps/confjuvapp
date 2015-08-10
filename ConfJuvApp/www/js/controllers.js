@@ -124,6 +124,11 @@ angular.module('confjuvapp.controllers', [])
     };
 
     $scope.loginCallback = function(token) {
+      $scope.topics = [];
+      $scope.cards = [];
+      $scope.topicFilter = { value: ConfJuvAppUtils.getTopicFilter() };
+      $scope.emptyTopicsCount = $scope.topicFilter.value == 'all' ? 0 : 10;
+
       $scope.loggedIn = true;
       $scope.token = token;
       ConfJuvAppUtils.setPrivateToken(token);
@@ -332,11 +337,11 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.topics = [];
     $scope.cards = [];
-    $scope.emptyTopicsCount = 0;
-    //FIXME refatoring this variable to make the proposals filters more generic
-    $scope.proposalsFilter = '';
     $scope.topicFilter = { value: ConfJuvAppUtils.getTopicFilter() };
     $scope.emptyTopicsCount = $scope.topicFilter.value == 'all' ? 0 : 10;
+
+    // FIXME Make the proposals filters more generic
+    $scope.proposalsFilter = '';
 
     $scope.reloadTopics = function() {
       $scope.emptyTopicsCount = 0;
