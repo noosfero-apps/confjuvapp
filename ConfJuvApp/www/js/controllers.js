@@ -116,6 +116,7 @@ angular.module('confjuvapp.controllers', [])
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Erro ao efetuar login. Verifique usuário e senha e conexão com a internet.' });
         $scope.loggedIn = false;
         $scope.loading = false;
+        $scope.data.password = '';
         popup.then(function() {
           $scope.openModal();
         });
