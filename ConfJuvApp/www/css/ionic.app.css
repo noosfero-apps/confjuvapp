@@ -7950,12 +7950,19 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
   color: #009688;
   font-size: 20px;
   font-weight: 400;
-  padding: 25px 10px; }
+  padding: 3px 10px; }
 .sidebar label {
   cursor: pointer; }
 .sidebar button {
   color: rgba(255, 255, 255, 0.5);
   margin-left: 30px; }
+.sidebar .my-city-cbox {
+  padding: 0;
+  margin-bottom: -6px; }
+.sidebar .choose-city a {
+  cursor: pointer; }
+.sidebar .choose-city select {
+  width: 100%; }
 
 .button-float {
   background: #ff4081;
@@ -8113,48 +8120,3 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
 
 .stage-last.current, .stage-last.current:hover, .stage-last.current:active {
   background-color: #2196f3; }
-
-[ripple] {
-  overflow: hidden; }
-
-.rip {
-  display: block;
-  position: absolute;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 100%;
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -o-transform: scale(0);
-  transform: scale(0); }
-
-.animate-ripple {
-  -webkit-animation: ripple 0.65s linear;
-  -moz-animation: ripple 0.65s linear;
-  -ms-animation: ripple 0.65s linear;
-  -o-animation: ripple 0.65s linear;
-  animation: ripple 0.65s linear; }
-
-@-webkit-keyframes ripple {
-  100% {
-    opacity: 0;
-    -webkit-transform: scale(2.5); } }
-
-@-moz-keyframes ripple {
-  100% {
-    opacity: 0;
-    -moz-transform: scale(2.5); } }
-
-@-o-keyframes ripple {
-  100% {
-    opacity: 0;
-    -o-transform: scale(2.5); } }
-
-@keyframes ripple {
-  100% {
-    opacity: 0;
-    transform: scale(2.5); } }
-
-.button.flat {
-  border: 0 !important;
-  background-color: transparent;
-  color: #2196f3; }

@@ -14,7 +14,7 @@
     color: $lightgreen;
     font-size: 20px;
     font-weight: 400;
-    padding: 25px 10px;
+    padding: 3px 10px;
   }
 
   label {
@@ -24,5 +24,20 @@
   button {
     color: transparentize($white, 0.5);
     margin-left: 30px;
+  }
+
+  .my-city-cbox {
+    padding: 0;
+    margin-bottom: -6px;
+  }
+
+  .choose-city {
+    a {
+      cursor: pointer;
+    }
+
+    select {
+      width: 100%;
+    }
   }
 }
