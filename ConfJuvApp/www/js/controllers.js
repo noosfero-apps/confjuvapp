@@ -332,6 +332,8 @@ angular.module('confjuvapp.controllers', [])
     $scope.topics = [];
     $scope.cards = [];
     $scope.emptyTopicsCount = 0;
+    //FIXME refatoring this variable to make the proposals filters more generic
+    $scope.proposalsFilter = '';
     $scope.topicFilter = { value: 'all' };
 
     $scope.reloadTopics = function() {
@@ -376,8 +378,19 @@ angular.module('confjuvapp.controllers', [])
       });
     };
 
-    // Load proposals
+    // Load Proposals of My City
+    $scope.loadProposalsOfMyCity = function() {
+      $scope.loading = true;
+      if($scope.proposalsFilter == ''){
+        $scope.proposalsFilter = '&categories_ids=' + $scope.user.region.id;
+      }else{
+        $scope.proposalsFilter = '';
+      }
+      $scope.reloadProposals();
+      $scope.loading = false;
+    }
 
+    // Load proposals
     $scope.loadProposals = function(token, topic) {
       if ($scope.topicFilter.value != 'all' && topic.id != $scope.topicFilter.value) {
         return;
@@ -390,7 +403,7 @@ angular.module('confjuvapp.controllers', [])
         perPage = 11;
       }
 
-      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&limit=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId;
+      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&limit=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
 
       var path = 'articles/' + topic.id + '/children' + params;
 
