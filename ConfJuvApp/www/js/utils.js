@@ -84,6 +84,6 @@ var ConfJuvAppUtils = {
   },
 
   sawIntro: function() {
-    return false; //window.localStorage['saw_intro'];
+    return window.localStorage['saw_intro'];
   }
 };
