@@ -26,8 +26,13 @@
     <script src="js/ionic.tdcards.js"></script>
     <script src="js/collide.js"></script>
   </head>
-  <body ng-app="confjuvapp" ng-controller="ProposalCtrl" ng-init="openModal()" ng-class="{ 'logged-in': loggedIn, 'large': largeScreen }">
-    <ion-side-menus id="body">
+  <body ng-app="confjuvapp" ng-controller="ProposalCtrl" ng-init="init()" ng-class="{ 'logged-in': loggedIn, 'large': largeScreen }"  animation="slide-left-right-ios7">
+
+    <ion-view ng-show="introDisplayed">
+      <ng-include src="'html/_intro.html'"></ng-include>
+    </ion-view>
+
+    <ion-side-menus id="body" ng-show="!introDisplayed">
       <ion-side-menu-content>
         <ng-include src="'html/_header.html?2'"></ng-include>
         <ion-pane>

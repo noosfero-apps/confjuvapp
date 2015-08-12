@@ -1,0 +1,59 @@
+#intro {
+  height: 100%;
+
+  .slider {
+    height: 100%;
+  }
+  
+  .slider-slide {
+    padding-top: $unit;
+    color: #fff;
+    text-align: center;
+    height: 100%;
+  }
+
+  p {
+    font-size: 16px;
+    margin: $unit;
+    margin-top: 0;
+  }
+
+  h3 {
+    color: $white;
+  }
+  
+  img {
+    display: block;
+    height: 30%;
+    width: auto;
+    margin: 0 auto;
+  }
+  
+  #intro-1 {
+    background: #ffb74d;
+
+    p {
+      color: $black;
+    }
+
+    h3 {
+      width: 200px;
+      height: 98px;
+      background: url(../img/intro/header.png);
+      display: block;
+      margin: 0 auto;
+
+      span {
+        display: none;
+      }
+    }
+  }
+  
+  #intro-2 {
+    background: #009688;
+  }
+  
+  #intro-3 {
+    background: #3f51b5;
+  }
+}

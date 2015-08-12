@@ -7,6 +7,15 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.loading = false;
 
+    $scope.init = function() {
+      if (ConfJuvAppUtils.sawIntro() || document.location.search != '') {
+        $scope.skipIntro();
+      }
+      else {
+        $scope.showIntro();
+      }
+    };
+
     /******************************************************************************
      L O G I N
      ******************************************************************************/
@@ -932,6 +941,24 @@ angular.module('confjuvapp.controllers', [])
            $scope.showProposal($scope.proposal);
          });
        });
+     };
+
+    /******************************************************************************
+     I N T R O D U C T I O N
+     ******************************************************************************/
+
+     $scope.showIntro = function() {
+       $scope.introDisplayed = true;
+       window.localStorage['saw_intro'] = true;
+     }
+
+     $scope.next = function() {
+       $scope.$broadcast('slideBox.nextSlide');
+     };
+
+     $scope.skipIntro = function() {
+       $scope.introDisplayed = false;
+       $scope.openModal();    
      };
 
   }); // Ends controller
