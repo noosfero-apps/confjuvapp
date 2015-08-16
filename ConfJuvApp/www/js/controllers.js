@@ -1,7 +1,7 @@
 // FIXME: Split it into smaller files
 
 angular.module('confjuvapp.controllers', [])
-  .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup, filterFilter) {
+  .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup, filterFilter, $cordovaSocialSharing) {
 
     $scope.largeScreen = (window.innerWidth >= 600);
 
@@ -960,5 +960,31 @@ angular.module('confjuvapp.controllers', [])
        $scope.introDisplayed = false;
        $scope.openModal();    
      };
+
+    /******************************************************************************
+     S H A R I N G
+     ******************************************************************************/
+
+     $scope.share = function(proposal) {
+       var message = 'Comente minha proposta na #3ConfJuv: ' + proposal.title,
+           subject = 'Comente minha proposta na #3ConfJuv!',
+           file    = null,
+           link    = ConfJuvAppConfig.noosferoApiPublicHost + '/?proposal=' + proposal.id; 
+
+       try {
+         $cordovaSocialSharing.share(message, subject, file, link) // Share via native share sheet
+         .then(
+           function(result) {
+             // Success!
+           },
+           function(err) {
+             $ionicPopup.alert({ title: 'Compartilhar', template: 'Não foi possível compartilhar' });
+           }
+         );
+       }
+       catch (e) {
+         $ionicPopup.alert({ title: 'Compartilhar', template: 'Esta funcionalidade está disponível apenas no celular' });
+       }
+     }
 
   }); // Ends controller
