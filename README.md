@@ -1,20 +1,20 @@
 ConfJuvApp
 ==========
 
-Aplicativo da 3a Conferência Nacional da Juventude: Como você vai mudar o Brasil?  
+Aplicativo da 3a Conferência Nacional da Juventude: Como você vai mudar o Brasil?
 
 # A inovação na participação social em construção
 
-Esse aplicativo é beta e já está em operação. Nos dias do seu lançamento já recebeu dezenas de propostas da Juventude Brasileira com energia pra mudar o Brasil. Pela primeira vez na história das conferências nacionais, um aplicativo web elegerá delegados e propostas baseado num sistema de pontuação que premia a relevância na rede. Com essa aplicativo damos um passo importante para mudar a participação social.
+Esse aplicativo é beta e já está em operação. Nos dias do seu lançamento já recebeu dezenas de propostas da Juventude Brasileira com energia pra mudar o Brasil. Pela primeira vez na história das conferências nacionais, um aplicativo web elegerá delegados e propostas baseado num sistema de pontuação que premia a relevância na rede. Com esse aplicativo damos um passo importante para mudar a participação social.
 
 # Vem construir com a gente?
 
-A gente faz aberto, a gente faz colaborativo. Para contribuir com a 3a Conferência da Juventude e com a Participação Social você pode:
+A gente faz abertamente, a gente faz colaborativamente. Para contribuir com a 3a Conferência da Juventude e com a Participação Social você pode:
 
 1. Registrar um bug ou uma sugestão: [Página das "issues"](https://gitlab.com/participa/confjuvapp/issues), basta clicar em "+New Issue"
-2. Contribuir com código, fazendo melhorias, vamos avaliar com carinho os seus "merge requests" ;-)
+2. Contribuir com código, fazendo melhorias. Vamos avaliar com carinho os seus "merge requests" ;-)
 
-Tá esperando o que? Faz um fork e vem ajudar mudar a participação social no Brasil!!
+Tá esperando o que? Faça um fork e venha ajudar mudar a participação social no Brasil!!
 
 
 =====English version======
@@ -23,16 +23,16 @@ Application for the third National Youth Conference: How will you change Brazil?
 
 # Social Participation innovation under construction
 
-This application is in beta version and is already online. Next to the days of its launch it already received dozens of proposals from young Brazilians with energy to change Brazil. For the first time in the history of the national conferences, a web application will elect delegates and proposals based on a scoring system that rewards relevance in the network. With this application we make an important step in changing social participation.
+This application is in beta version and is already online. After the first days of its launch it already received dozens of proposals from young Brazilians with energy to change Brazil. For the first time in the history of the national conferences, a web application will elect delegates and proposals based on a scoring system that rewards relevance in the network. With this application we make an important step in changing social participation.
 
 # Come build with us?
 
-We do it open, we do it collaboratively. To contribute to the 3rd Youth Conference and the Social Participation you can:
+We do it openly, we do it collaboratively. To contribute to the 3rd Youth Conference and the Social Participation you can:
 
-1. Registering bugs or suggestions: [Page of "issues"] (https://gitlab.com/participa/confjuvapp/issues), just click "+ New Issue"
-2. Contributing to code, making improvements, we will look very kindly to your "merge requests" ;-)
+1. Register bugs or suggestions: [Issues page](https://gitlab.com/participa/confjuvapp/issues), just click "+ New Issue"
+2. Contribute to code, making improvements. We will look very kindly to your _merge requests_ ;-)
 
-What are you waiting for? It makes a fork and comes to help change social participation in Brazil!
+What are you waiting for? Just fork and come help changing social participation in Brazil!
 
 # Informações técnicas (em inglês para facilitar a cooperação internacional) - Technical informatiom
 
