@@ -87,3 +87,10 @@ var ConfJuvAppUtils = {
     return window.localStorage['saw_intro'];
   }
 };
+
+document.addEventListener('backbutton', function(event) {
+  if ($('#login-modal').is(':visible')) {
+    event.preventDefault();
+    navigator.app.exitApp();
+  }
+});

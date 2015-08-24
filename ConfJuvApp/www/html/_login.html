@@ -3,7 +3,7 @@
 
     <!-- Login first screen -->
 
-    <div ng-hide="loginFormDisplayed || registerFormDisplayed">
+    <div ng-hide="loginFormDisplayed || registerFormDisplayed" id="home-screen">
       <h1 class="title">
         <span>Entrar</span>
       </h1>
@@ -31,7 +31,7 @@
 
     <!-- Login form -->
 
-    <form ng-submit="Login(data)" ng-show="loginFormDisplayed">
+    <form ng-submit="Login(data)" ng-show="loginFormDisplayed" id="login-form">
       <h1 class="title">
         <span>Entrar</span>
         <a class="back icon-left ion-reply" ng-click="backToLoginHome()">Voltar</a>
@@ -62,7 +62,7 @@
 
     <!-- Register form -->
 
-    <form ng-submit="Register(data)" ng-show="registerFormDisplayed" class="register-form" novalidate>
+    <form ng-submit="Register(data)" ng-show="registerFormDisplayed" class="register-form" novalidate id="register-form">
       <h1 class="title">
         <span>Registrar</span>
         <a class="back icon-left ion-reply" ng-click="backToLoginHome()">Voltar</a>
