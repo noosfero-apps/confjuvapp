@@ -1,10 +1,4 @@
-*~
-*.swo
-*.swp
-*.keystore
-ConfJuvApp/www/js/config.js
-node_modules
-node_modules/
-platforms/
-plugins/
-npm-debug.log
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+
