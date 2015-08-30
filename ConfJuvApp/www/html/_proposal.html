@@ -12,21 +12,23 @@
     <span id="proposal-id" style="display: none;">{{proposal.id}}</span>
 
     <p class="proposal-buttons">
-
       <button class="button tag" ng-click="openTagForm()" ng-show="proposal.author.id == user.id">
-        <i class="icon ion-pricetags"></i> Adicionar Tag
+        <i class="icon ion-pricetags"></i> <span>Adicionar Tag</span>
       </button>
-      <button class="button icon-left ion-chatbox-working comment" ng-click="openCommentForm()">
-        Comentar
+      <button class="button edit" ng-click="openEditProposalForm()" ng-show="proposal.author.id == user.id">
+        <i class="icon ion-edit"></i> <span>Editar</span>
       </button>
-      <button class="button icon-left ion-social-twitter" onclick="window.open(ConfJuvAppUtils.shareOnTwitter(), '_system')">
-        Compartilhar no Twitter
+      <button class="button comment" ng-click="openCommentForm()">
+        <i class="icon ion-chatbox-working"></i> <span>Comentar</span>
       </button>
-      <button class="button icon-left ion-social-facebook" onclick="window.open(ConfJuvAppUtils.shareOnFacebook(), '_system')">
-        Compartilhar no Facebook
+      <button class="button" onclick="window.open(ConfJuvAppUtils.shareOnTwitter(), '_system')">
+        <i class="icon ion-social-twitter"></i> <span>Compartilhar no Twitter</span>
       </button>
-      <button class="button icon-left ion-shuffle" ng-click="share(proposal)">
-        Compartilhar
+      <button class="button" onclick="window.open(ConfJuvAppUtils.shareOnFacebook(), '_system')">
+        <i class="icon ion-social-facebook"></i> <span>Compartilhar no Facebook</span>
+      </button>
+      <button class="button" ng-click="share(proposal)">
+        <i class="icon ion-shuffle"></i> <span>Compartilhar</span>
       </button>
     </p>
 

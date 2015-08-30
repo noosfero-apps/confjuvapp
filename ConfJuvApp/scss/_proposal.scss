@@ -60,8 +60,17 @@
     color: $white;
   }
 
+  .edit {
+    background: $darkblue;
+    color: $white;
+  }
+
   .proposal-buttons, .proposal-badges {
     text-align: center;
+  }
+
+  .proposal-buttons span {
+    display: none;
   }
 
   .comment-message {

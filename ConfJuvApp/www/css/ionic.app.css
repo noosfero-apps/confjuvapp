@@ -7931,8 +7931,13 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
   #proposal .report-abuse {
     background: #212121;
     color: #ffffff; }
+  #proposal .edit {
+    background: #3f51b5;
+    color: #ffffff; }
   #proposal .proposal-buttons, #proposal .proposal-badges {
     text-align: center; }
+  #proposal .proposal-buttons span {
+    display: none; }
   #proposal .comment-message {
     margin: 11px; }
     #proposal .comment-message span {

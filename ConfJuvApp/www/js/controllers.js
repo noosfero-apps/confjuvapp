@@ -525,7 +525,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?11', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?14', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -602,7 +602,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         $scope.loading = true;
-        document.getElementById('save-proposal').innerHTML = 'Criando...';
+        document.getElementById('save-proposal').innerHTML = 'Salvando...';
 
         var config = {
           headers: {
@@ -637,6 +637,7 @@ angular.module('confjuvapp.controllers', [])
               title: data.title,
               body: data.description,
               topic: topic,
+              categories: [data.city, data.state],
               author: { name: $scope.user.name, id: $scope.user.id }
             };
             $scope.cards.push(proposal);
@@ -985,6 +986,129 @@ angular.module('confjuvapp.controllers', [])
        catch (e) {
          $ionicPopup.alert({ title: 'Compartilhar', template: 'Esta funcionalidade está disponível apenas no celular' });
        }
-     }
+     };
+
+    /******************************************************************************
+     E D I T  P R O P O S A L
+     ******************************************************************************/
+    //FIXME see a way to refactor this behavior with comment and report abuse
+
+    // Function to open the modal
+    $scope.openEditProposalForm = function() {
+      $scope.closeProposal();
+
+      $scope.data.city = $scope.proposal.categories[0];
+      $scope.data.state = $scope.proposal.categories[1];
+      $scope.data.title = $scope.proposal.title;
+      $scope.data.description = $scope.proposal.body;
+      $scope.data.topic_id = $scope.proposal.topic;
+
+      if ($scope.editProposalModal) {
+        $scope.editProposalModal.show();
+        $scope.loadCitiesByState($scope.data.state.id);
+      }
+      else {
+        $scope.loadStates();
+        $scope.loadCitiesByState($scope.data.state.id);
+        // Initiate the modal
+        $ionicModal.fromTemplateUrl('html/_edit_proposal.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.editProposalModal = modal;
+          $scope.editProposalModal.show();
+        });
+      }
+    };
+
+    // Function to close the modal
+    $scope.closeEditProposalModal = function() {
+      $scope.editProposalModal.hide();
+      $scope.openProposal($scope.proposal);
+      $scope.data.city = $scope.data.state = $scope.data.title = $scope.data.description = $scope.data.topic_id = null;
+    };
+
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.editProposalModal.remove();
+      $scope.openProposal($scope.proposal);
+    });
+
+    // Submit the updated proposal
+    $scope.updateProposal = function(data) {
+      if (!data || !data.title || !data.description || !data.topic_id) {
+        $scope.closeEditProposalModal();
+        var popup = $ionicPopup.alert({ title: 'Alterar proposta', template: 'Por favor preencha todos os campos!' });
+        popup.then(function() {
+          $scope.openEditProposalForm();
+        });
+      }
+      else if (data.description.length > 2000) {
+        $scope.closeEditProposalModal();
+        var popup = $ionicPopup.alert({ title: 'Alterar proposta', template: 'A descrição deve ter no máximo 2000 caracteres!' });
+        popup.then(function() {
+          $scope.openEditProposalForm();
+        });
+      }
+      else if (data.description.length < 140) {
+        $scope.closeEditProposalModal();
+        var popup = $ionicPopup.alert({ title: 'Alterar proposta', template: 'A descrição deve ter no mínimo 140 caracteres! (a sua contém ' + data.description.length + ')'});
+        popup.then(function() {
+          $scope.openEditProposalForm();
+        });
+      }
+      else {
+        $scope.loading = true;
+        document.getElementById('save-proposal').innerHTML = 'Salvando...';
+
+        var config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+          timeout: 10000
+        };
+        var params = {
+          'private_token': $scope.token,
+          'article[free_conference]': data.free_conference,
+          'article[body]': data.description,
+          'article[name]': data.title,
+          'article[category_ids]': [data.state.id, data.city.id],
+          'article[abstract]': data.description.substring(0, 130) + '...',
+          'fields': 'id',
+          'content_type': 'ProposalsDiscussionPlugin::Proposal'
+        };
+
+        $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id), jQuery.param(params), config)
+        .then(function(resp) {
+          $scope.closeEditProposalModal();
+          var popup = $ionicPopup.alert({ title: 'Alterar proposta', template: 'Proposta alterada com sucesso!' });
+          popup.then(function() {
+            var topic = null;
+            for (var i = 0; i < $scope.topics.length; i++) {
+              if (data.topic_id.id == $scope.topics[i].id) {
+                topic = $scope.topics[i];
+              }
+            }
+            
+            $scope.proposal.categories[0] = data.city;
+            $scope.proposal.categories[1] = data.state;
+            $scope.proposal.title = data.title;
+            $scope.proposal.body = data.description;
+            $scope.proposal.topic = data.topic_id;
+            
+            $scope.loading = false;
+            document.getElementById('save-proposal').innerHTML = 'Salvar';
+          });
+        }, function(err) {
+          $scope.closeEditProposalModal();
+          var popup = $ionicPopup.alert({ title: 'Alterar proposta', template: 'Erro ao alterar proposta!' });
+          $scope.loading = false;
+          document.getElementById('save-proposal').innerHTML = 'Salvar';
+          popup.then(function() {
+            $scope.openEditProposalForm();
+          });
+        });
+      }
+    };
 
   }); // Ends controller

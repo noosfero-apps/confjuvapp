@@ -1,0 +1,33 @@
+<div class="modal" id="create-proposal">
+  <ion-content>
+    <form ng-submit="updateProposal(data)">
+      <h1 class="title">
+        <span>Alterar proposta</span>
+        <a class="back icon-left ion-reply" ng-click="closeEditProposalModal()">Voltar</a>
+      </h1>
+
+      <label class="item item-input"><input type="text" placeholder="Título" ng-model="data.title" maxlength="40"></label>
+      <label class="item item-input"><textarea placeholder="Descrição" ng-model="data.description"></textarea></label>
+
+      <ng-include src="'html/_select_state.html'"></ng-include>
+      
+      <label id="proposal-topic">
+        <div class="input-label">
+          Eixo
+        </div>
+        <select ng-model="data.topic_id" id="select-topic" ng-value="topic.id"  ng-options="topic.title for topic in topics track by topic.id">
+          <option value="">Escolha o eixo...</option>
+        </select>
+      </label>
+
+      <label class="checkbox free-conference-cbox">
+        <input  type="checkbox" ng-model="data.free_conference" >
+      </label>
+      <span class="free-conference-label">De conferência livre?</span>
+
+      <p class="text-center" style="clear: both;">
+        <button class="button" type="submit" id="save-proposal">Salvar</button>
+      </p>
+    </form>
+  </ion-content>
+</div>
