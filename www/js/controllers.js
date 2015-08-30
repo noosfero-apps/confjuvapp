@@ -1125,14 +1125,16 @@ angular.module('confjuvapp.controllers', [])
         timeout: 10000
       };
 
-      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?fields=id&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
+      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
       .then(function(resp) {
-        $scope.loading = false;
         $scope.following = [];
+        $scope.followingIds = [];
         var followed = resp.data.articles;
         for (var i = 0; i < followed.length; i++) {
-          $scope.following.push(followed[i].id);
+          $scope.following.push(followed[i]);
+          $scope.followingIds.push(followed[i].id);
         }
+        $scope.loading = false;
       }, function(err) {
         $scope.loading = false;
         $ionicPopup.alert({ title: 'Propostas seguidas', template: 'Erro ao carregar propostas seguidas' });
@@ -1140,8 +1142,8 @@ angular.module('confjuvapp.controllers', [])
     };
 
     $scope.isFollowing = function(proposal) {
-      if ($scope.hasOwnProperty('following')) {
-        return ($scope.following.indexOf(proposal.id) > -1);
+      if ($scope.hasOwnProperty('followingIds')) {
+        return ($scope.followingIds.indexOf(proposal.id) > -1);
       }
       else {
         return false;
@@ -1161,7 +1163,8 @@ angular.module('confjuvapp.controllers', [])
       $http.post(ConfJuvAppUtils.pathTo('articles/' + proposal.id + '/follow'), jQuery.param({ private_token: $scope.token }), config)
       .then(function(resp) {
         $ionicPopup.alert({ title: 'Seguir proposta', template: 'Pronto! Você pode acompanhar suas propostas seguidas através do menu lateral esquerdo.' });
-        $scope.following.push(proposal.id);
+        $scope.following.push(proposal);
+        $scope.followingIds.push(proposal.id);
         $scope.loading = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Seguir proposta', template: 'Erro ao seguir proposta.' });
