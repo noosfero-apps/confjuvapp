@@ -144,6 +144,7 @@ angular.module('confjuvapp.controllers', [])
       $scope.loadTopics(token);
       $scope.loadStages();
       $scope.parseURLParams();
+      $scope.loadFollowedProposals();
     };
 
     // Function to retrieve password
@@ -1109,6 +1110,63 @@ angular.module('confjuvapp.controllers', [])
           });
         });
       }
+    };
+
+    /******************************************************************************
+     F O L L O W  P R O P O S A L
+     ******************************************************************************/
+
+    $scope.loadFollowedProposals = function() {
+      $scope.loading = true;
+      var config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        timeout: 10000
+      };
+
+      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?fields=id&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
+      .then(function(resp) {
+        $scope.loading = false;
+        $scope.following = [];
+        var followed = resp.data.articles;
+        for (var i = 0; i < followed.length; i++) {
+          $scope.following.push(followed[i].id);
+        }
+      }, function(err) {
+        $scope.loading = false;
+        $ionicPopup.alert({ title: 'Propostas seguidas', template: 'Erro ao carregar propostas seguidas' });
+      });
+    };
+
+    $scope.isFollowing = function(proposal) {
+      if ($scope.hasOwnProperty('following')) {
+        return ($scope.following.indexOf(proposal.id) > -1);
+      }
+      else {
+        return false;
+      }
+    };
+
+    $scope.follow = function(proposal) {
+      $scope.loading = true;
+
+      var config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        timeout: 10000
+      }
+
+      $http.post(ConfJuvAppUtils.pathTo('articles/' + proposal.id + '/follow'), jQuery.param({ private_token: $scope.token }), config)
+      .then(function(resp) {
+        $ionicPopup.alert({ title: 'Seguir proposta', template: 'Pronto! Você pode acompanhar suas propostas seguidas através do menu lateral esquerdo.' });
+        $scope.following.push(proposal.id);
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Seguir proposta', template: 'Erro ao seguir proposta.' });
+        $scope.loading = false;
+      });
     };
 
   }); // Ends controller
