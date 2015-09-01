@@ -7968,6 +7968,10 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
 .sidebar .choose-city select {
   width: 100%; }
 
+#left-sidebar h2 {
+  background: #00796B url(../img/profile.png) right center no-repeat;
+  background-size: contain; }
+
 .button-float {
   background: #ff4081;
   color: #ffffff;

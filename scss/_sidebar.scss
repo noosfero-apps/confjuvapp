@@ -40,3 +40,10 @@
     }
   }
 }
+
+#left-sidebar {
+  h2 {
+    background: $darkgreen url(../img/profile.png) right center no-repeat;
+    background-size: contain;
+  }
+}

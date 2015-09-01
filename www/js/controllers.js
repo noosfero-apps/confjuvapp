@@ -1,7 +1,7 @@
 // FIXME: Split it into smaller files
 
 angular.module('confjuvapp.controllers', [])
-  .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup, filterFilter, $cordovaSocialSharing) {
+  .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup, filterFilter, $cordovaSocialSharing, $ionicSideMenuDelegate) {
 
     $scope.largeScreen = (window.innerWidth >= 600);
 
@@ -14,6 +14,10 @@ angular.module('confjuvapp.controllers', [])
       else {
         $scope.showIntro();
       }
+    };
+
+    $scope.toggleLeft = function() {
+      $ionicSideMenuDelegate.toggleLeft();
     };
 
     /******************************************************************************
@@ -479,17 +483,29 @@ angular.module('confjuvapp.controllers', [])
     $scope.cardDestroyed = function(index) {
       var thisProposal = $scope.cards[index];
       var topic = thisProposal.topic;
-      if (topic.lastProposalId == null || topic.lastProposalId > thisProposal.id) {
+      if (topic && (topic.lastProposalId == null || topic.lastProposalId > thisProposal.id)) {
         topic.lastProposalId = thisProposal.id;
       }
       $scope.cards.splice(index, 1);
       if ($scope.cards.length === 0) {
-        for (var i = 0; i < $scope.topics.length; i++) {
-          var topic = $scope.topics[i];
-          if (!topic.empty) {
-            $scope.loadProposals($scope.token, topic);
+
+        // Browsing all proposals
+
+        if (topic) {
+          for (var i = 0; i < $scope.topics.length; i++) {
+            var topic = $scope.topics[i];
+            if (!topic.empty) {
+              $scope.loadProposals($scope.token, topic);
+            }
           }
         }
+
+        // Browsing followed proposals only
+
+        else {
+          $scope.showFollowedProposals();
+        }
+
       }
     };
 
@@ -1116,6 +1132,10 @@ angular.module('confjuvapp.controllers', [])
      F O L L O W  P R O P O S A L
      ******************************************************************************/
 
+    $scope.showFollowedProposals = function() {
+      $scope.cards = $scope.following.slice();
+    }
+
     $scope.loadFollowedProposals = function() {
       $scope.loading = true;
       var config = {
@@ -1125,14 +1145,15 @@ angular.module('confjuvapp.controllers', [])
         timeout: 10000
       };
 
-      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
+      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
       .then(function(resp) {
         $scope.following = [];
         $scope.followingIds = [];
         var followed = resp.data.articles;
         for (var i = 0; i < followed.length; i++) {
-          $scope.following.push(followed[i]);
-          $scope.followingIds.push(followed[i].id);
+          var p = followed[i];
+          $scope.following.push(p);
+          $scope.followingIds.push(p.id);
         }
         $scope.loading = false;
       }, function(err) {

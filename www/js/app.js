@@ -64,4 +64,35 @@ angular.module('confjuvapp', ['ionic', 'confjuvapp.controllers', 'confjuvapp.fil
   if (!ionic.Platform.isIOS()) {
     $ionicConfigProvider.scrolling.jsScrolling(false);
   }
+})
+
+.directive('asideExposeRight', function($window) {
+  return {
+    restrict: 'A',
+    require: '^ionSideMenus',
+    link: function($scope, $element, $attr, sideMenuCtrl) {
+      function checkAsideExpose() {
+        var mq = $attr.asideExposeRight == 'large' ? '(min-width:768px)' : $attr.asideExposeRight;
+        var exposeRight = $window.matchMedia(mq).matches;
+        var rightWidth  = $attr.width || sideMenuCtrl.right.width;
+        $element.css({width : rightWidth.toString() + 'px'});
+        var width = $window.innerWidth - (exposeRight ? rightWidth : 0);
+        $element.parent().find('ion-side-menu-content').css({ width : width.toString() + 'px'});
+        if (exposeRight) {
+          // TODO: Disable any Nav-Buttons with menu-toggle="right"
+        }
+      }
+      function onResize() {
+        debouncedCheck();
+      }
+      var debouncedCheck = ionic.debounce(function() {
+        $scope.$apply(checkAsideExpose);
+      }, 300, false);
+      $scope.$evalAsync(checkAsideExpose);
+      ionic.on('resize', onResize, $window);
+      $scope.$on('$destroy', function() {
+        ionic.off('resize', onResize, $window);
+      });
+    }
+  };
 });

@@ -1,0 +1,13 @@
+<div id="left-sidebar" class="sidebar">
+  <ion-content>
+    <h2>
+      <span>{{user.name}}</span>
+      <button menu-toggle="left" class="button button-icon icon ion-close-circled"></button>
+    </h2>
+    <ul class="list">
+      <li class="item" ng-click="showFollowedProposals()"><i class="icon ion-eye"></i> Seguindo</li>
+      <li class="item" ng-click="reloadProposals()"><i class="icon ion-earth"></i> Todas as Propostas</li>
+      <li class="item" ng-click="logout()"><i class="icon ion-log-out"></i> Sair</li>
+    </ul>
+  </ion-content>
+</div>

@@ -1,6 +1,7 @@
 <ion-header-bar align-title="left" id="header">
   <button ng-show="loading" class="button button-icon icon loader"></button>
-  <button class="button button-icon icon ion-log-out" ng-click="logout()" ng-hide="loading" ng-show="loggedIn"></button>
+  
+  <button class="button button-icon icon ion-navicon" ng-click="toggleLeft()" ng-hide="loading || $exposeAside.active" ng-show="loggedIn"></button>
 
   <h1 class="title">
     #3confjuv
