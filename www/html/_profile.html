@@ -1,0 +1,17 @@
+<div id="profile" class="modal">
+  <ion-content>
+    <h1 class="title">
+      {{profile.name}}
+      <a class="back icon-left ion-reply" ng-click="closeProfile()">Voltar</a>
+    </h1>
+
+    <h2>Nome</h2>
+    <p>{{profile.name}}</p>
+
+    <h2>Login</h2>
+    <p>{{profile.user.login}}</p>
+
+    <h2>Região</h2>
+    <p>{{profile.region.full_name}}</p>
+  </ion-content>
+</div>

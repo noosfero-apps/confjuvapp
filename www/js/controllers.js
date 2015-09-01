@@ -1193,4 +1193,57 @@ angular.module('confjuvapp.controllers', [])
       });
     };
 
+    /******************************************************************************
+     P R O F I L E
+     ******************************************************************************/
+
+    $scope.profile = null;
+
+    $scope.loadProfile = function() {
+      $scope.loading = true;
+
+      var path = 'people/me?private_token=' + ConfJuvAppUtils.getPrivateToken();
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        $scope.profile = resp.data.person;
+        console.log($scope.profile);
+        console.log($scope.user);
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Perfil', template: 'Não foi possível carregar o perfil' });
+        $scope.loading = false;
+      });
+    };
+
+    $scope.showProfile = function() {
+      if (!$scope.profile) {
+        $scope.loadProfile();
+      }
+      $scope.displayProfile();
+    };
+
+    $scope.displayProfile = function() {
+      if ($scope.profileModal) {
+        $scope.profileModal.show();
+      }
+      else {
+        $ionicModal.fromTemplateUrl('html/_profile.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.profileModal = modal;
+          $scope.profileModal.show();
+        });
+      }
+    };
+
+    $scope.closeProfile = function() {
+      $scope.profileModal.hide();
+    };
+
+    $scope.$on('$destroy', function() {
+      $scope.profileModal.remove();
+    });
+
   }); // Ends controller
