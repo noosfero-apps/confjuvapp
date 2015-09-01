@@ -220,7 +220,6 @@ angular.module('confjuvapp.controllers', [])
         timeout: 10000
       }
 
-
       var params = {
         'email': data.email,
         'login': data.login,
@@ -1207,8 +1206,8 @@ angular.module('confjuvapp.controllers', [])
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
         $scope.profile = resp.data.person;
-        console.log($scope.profile);
-        console.log($scope.user);
+        if ($scope.data == null) $scope.data = {};
+        $scope.data.name = $scope.profile.name;
         $scope.loading = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Perfil', template: 'Não foi possível carregar o perfil' });
@@ -1245,5 +1244,64 @@ angular.module('confjuvapp.controllers', [])
     $scope.$on('$destroy', function() {
       $scope.profileModal.remove();
     });
+
+    $scope.editProfile = function() {
+      if ($scope.editProfileModal) {
+        $scope.editProfileModal.show();
+      }
+      else {
+        if (!$scope.profile) {
+          $scope.loadProfile();
+        }
+        if ($scope.states.length == 0) $scope.loadStates();
+        if ($scope.signupPersonFields.length == 0) $scope.loadSignupPersonFields();
+        $ionicModal.fromTemplateUrl('html/_edit_profile.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.editProfileModal = modal;
+          $scope.editProfileModal.show();
+        });
+      }
+    };
+
+    $scope.closeEditProfile = function() {
+      $scope.editProfileModal.hide();
+    };
+
+    $scope.$on('$destroy', function() {
+      $scope.editProfileModal.remove();
+    });
+
+    $scope.updateProfile = function(data) {
+      $scope.loading = true;
+
+      var config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        timeout: 10000
+      }
+
+      var params = {
+        'private_token': $scope.token,
+        'person[name]': data.name,
+        'person[orientacao_sexual]': data.orientacao_sexual,
+        'person[identidade_genero]': data.identidade_genero,
+        'person[transgenero]': data.transgenero,
+        'person[etnia]': data.etnia,
+        'person[city]': data.city.id
+      };
+
+      $http.post(ConfJuvAppUtils.pathTo('people'), jQuery.param(params), config)
+      .then(function(resp) {
+        $scope.profile = { name: data.name };
+        $ionicPopup.alert({ title: 'Perfil', template: 'Perfil atualizado com sucesso' });
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Perfil', template: 'Erro ao atualizar perfil' });
+        $scope.loading = false;
+      });
+    };
 
   }); // Ends controller

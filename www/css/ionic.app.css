@@ -8194,3 +8194,11 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
     line-height: 24px;
     text-align: justify;
     clear: both; }
+  #profile select {
+    width: 100%; }
+  #profile .input-label {
+    display: none; }
+  #profile select, #profile #transgender {
+    margin: 11px 0; }
+  #profile .text-center {
+    text-align: center; }

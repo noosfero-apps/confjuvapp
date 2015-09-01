@@ -1,5 +1,5 @@
-<div class='signup-person-fields' ng-repeat="field in signupPersonFields" ng-show="registerFormType == 'user'">
-  <div ng-if="'identidade_genero' == field">
+<div class='signup-person-fields' ng-show="registerFormType == 'user' || loggedIn">
+  <div>
     <label>
       <div class="input-label">
         Identidade de Gênero
@@ -12,15 +12,18 @@
     </label>
   </div>
 
-  <ul class="list" ng-if="'transgenero' == field">
-    <li class="item item-checkbox">
-       <label class="checkbox">
-         <input type="checkbox" ng-model="data.transgenero" class="ckbox">
-       </label>
-       Sou transgênero
-    </li>
-  </ul>
-  <div ng-if="'etnia' == field">
+  <div>
+    <ul class="list" id="transgender">
+      <li class="item item-checkbox">
+         <label class="checkbox">
+           <input type="checkbox" ng-model="data.transgenero" class="ckbox">
+         </label>
+         Sou transgênero
+      </li>
+    </ul>
+  </div>
+
+  <div>
     <label>
       <div class="input-label">
         Raça/Etnia
@@ -36,7 +39,7 @@
     </label>
   </div>
 
-  <div ng-if="'orientacao_sexual' == field">
+  <div>
     <label>
       <div class="input-label">
         Orientação Sexual

@@ -34,4 +34,20 @@
     text-align: justify;
     clear: both;
   }
+
+  select {
+    width: 100%;
+  }
+
+  .input-label {
+    display: none;
+  }
+
+  select, #transgender {
+    margin: $unit 0;
+  }
+
+  .text-center {
+    text-align: center;
+  }
 }

@@ -1,0 +1,26 @@
+<div id="profile" class="modal">
+  <ion-content>
+    <form ng-submit="updateProfile(data)" novalidate>
+      <h1 class="title">
+        <span>Editar Perfil</span>
+        <a class="back icon-left ion-reply" ng-click="closeEditProfile()">Voltar</a>
+      </h1>
+
+      <div class="list">
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" placeholder="Nome" ng-model="data.name" />
+          </label>
+
+          <ng-include src="'html/_signup_person_fields.html'"></ng-include>
+
+          <ng-include src="'html/_select_state.html'"></ng-include>
+        </div>
+
+        <p class="text-center">
+          <button class="button button-royal" type="submit">Salvar</button>
+        </p>
+      </div>
+    </form>
+  </ion-content>
+</div>
