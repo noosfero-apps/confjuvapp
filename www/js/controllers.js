@@ -498,13 +498,6 @@ angular.module('confjuvapp.controllers', [])
             }
           }
         }
-
-        // Browsing followed proposals only
-
-        else {
-          $scope.showFollowedProposals();
-        }
-
       }
     };
 
@@ -657,6 +650,7 @@ angular.module('confjuvapp.controllers', [])
               author: { name: $scope.user.name, id: $scope.user.id }
             };
             $scope.cards.push(proposal);
+            $scope.myProposals.push(proposal);
             $scope.loading = false;
             $scope.data.title = $scope.data.description = $scope.data.topic_id = null;
             document.getElementById('save-proposal').innerHTML = 'Criar';
@@ -1302,6 +1296,49 @@ angular.module('confjuvapp.controllers', [])
         $ionicPopup.alert({ title: 'Perfil', template: 'Erro ao atualizar perfil' });
         $scope.loading = false;
       });
+    };
+
+    /******************************************************************************
+     M Y  P R O P O S A L S
+     ******************************************************************************/
+
+    $scope.myProposals = [];
+
+    $scope.showMyProposals = function() {
+      if ($scope.myProposals.length == 0) {
+        $scope.cards = [];
+
+        var config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+          timeout: 10000
+        };
+
+        var path = 'articles?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&parent_id=';
+          
+        for (var i = 0; i < $scope.topics.length; i++) {
+          $scope.loading = true;
+          
+          $http.get(ConfJuvAppUtils.pathTo(path + $scope.topics[i].id), config)
+          .then(function(resp) {
+            var articles = resp.data.articles;
+            for (var j = 0; j < articles.length; j++) {
+              var article = articles[j];
+              if (article.author.id === $scope.user.id) {
+                $scope.myProposals.push(article);
+                $scope.cards = $scope.myProposals.slice();
+              }
+            }
+            $scope.loading = false;
+          }, function(err) {
+            $scope.loading = false;
+          });
+        }
+      }
+      else {
+        $scope.cards = $scope.myProposals.slice();
+      }
     };
 
   }); // Ends controller
