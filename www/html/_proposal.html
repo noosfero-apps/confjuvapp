@@ -21,6 +21,10 @@
       <button class="button comment" ng-click="openCommentForm()">
         <i class="icon ion-chatbox-working"></i> <span>Comentar</span>
       </button>
+      <button class="button follow" ng-click="follow(proposal)" ng-hide="isFollowing(proposal) || proposal.author.id == user.id">
+        <i class="icon ion-eye"></i> <span>Seguir</span>
+      </button>
+      <br />
       <button class="button" onclick="window.open(ConfJuvAppUtils.shareOnTwitter(), '_system')">
         <i class="icon ion-social-twitter"></i> <span>Compartilhar no Twitter</span>
       </button>
@@ -29,9 +33,6 @@
       </button>
       <button class="button" ng-click="share(proposal)">
         <i class="icon ion-shuffle"></i> <span>Compartilhar</span>
-      </button>
-      <button class="button" ng-click="follow(proposal)" ng-hide="isFollowing(proposal)">
-        <i class="icon ion-eye"></i> <span>Seguir</span>
       </button>
     </p>
 

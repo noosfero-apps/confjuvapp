@@ -534,7 +534,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?14', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?15', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
