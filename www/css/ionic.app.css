@@ -7946,6 +7946,8 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
     #proposal .comment-message span {
       text-decoration: underline;
       cursor: pointer; }
+  #proposal #comments {
+    overflow: auto; }
 
 .sidebar h2 {
   font-size: 16px;

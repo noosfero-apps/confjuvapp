@@ -534,7 +534,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?15', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?16', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -935,10 +935,17 @@ angular.module('confjuvapp.controllers', [])
          timeout: 10000
        };
 
-       $http.get(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id + '/comments?private_token=' + $scope.token), config)
+       if (!$scope.proposal.comments) $scope.proposal.comments = [];
+
+       var last = $scope.proposal.lastCommentId || 0;
+           path = 'articles/' + $scope.proposal.id + '/comments?oldest&reference_id=' + last + '&private_token=' + $scope.token;
+
+       $http.get(ConfJuvAppUtils.pathTo(path), config)
        .then(function(resp) {
          $scope.loading = false;
-         $scope.proposal.comments = resp.data.comments;
+         var comments = resp.data.comments;
+         $scope.proposal.comments = $scope.proposal.comments.concat(comments);
+         $scope.proposal.lastCommentId = comments[comments.length - 1].id;
          if ($scope.proposal.comments.length == 0) {
            $scope.commentStatus = 'none';
            $scope.proposal.comments = [{ body: '', skip: true, author: { name: '' }}];

@@ -51,24 +51,30 @@
 
     <hr>
 
-    <h2>Comentários ({{commentStatus == 'none' ? 0 : proposal.comments.length}})</h2>
+    <div id="comments">
+      <h2>Comentários ({{commentStatus == 'none' ? 0 : (proposal.comments.length >= 20 ? '+20' : proposal.comments.length)}})</h2>
 
-    <div class="comment-message" ng-show="commentStatus == 'none'">
-      Não há comentários para esta proposta. 
-      <span ng-click="openCommentForm()">Seja o primeiro!</span>
-    </div>
-    
-    <div class="comment-message" ng-show="commentStatus == 'fail'">
-      Não foi possível carregar os comentários desta proposta. 
-    </div>
+      <div class="comment-message" ng-show="commentStatus == 'none'">
+        Não há comentários para esta proposta. 
+        <span ng-click="openCommentForm()">Seja o primeiro!</span>
+      </div>
+      
+      <div class="comment-message" ng-show="commentStatus == 'fail'">
+        Não foi possível carregar os comentários desta proposta. 
+      </div>
 
-    <div class="card" ng-repeat="comment in proposal.comments" ng-hide="comment.skip">
-      <div class="item item-divider">
-      {{comment.author.name}}
+      <div class="card" ng-repeat="comment in proposal.comments" ng-hide="comment.skip">
+        <div class="item item-divider">
+        {{comment.author.name}}
+        </div>
+        <div class="item item-text-wrap">
+        {{comment.body}}
+        </div>
       </div>
-      <div class="item item-text-wrap">
-      {{comment.body}}
-      </div>
+
+      <p style="text-align: center;">
+        <button class="button icon-left ion-plus-circled" ng-click="loadComments()">Mais comentários</button>
+      </p>
     </div>
   </ion-content>
 </div>
