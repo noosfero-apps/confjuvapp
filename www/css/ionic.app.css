@@ -7710,6 +7710,8 @@ html .backdrop, html .modal-backdrop-bg, html .active .modal-backdrop-bg {
   background: #b76a32;
   background-size: 100%;
   opacity: 1; }
+html .modal, html .scroll-content {
+  overflow: auto; }
 
 #login-modal {
   border: 1px solid #333333;
