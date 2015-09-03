@@ -13,5 +13,17 @@
 
     <h2>Região</h2>
     <p>{{profile.region.full_name}}</p>
+
+    <h2>Orientação Sexual</h2>
+    <p>{{profile.orientacao_sexual | orientacaoSexualFilter }}</p>
+
+    <h2>Identidade de Gênero</h2>
+    <p>{{profile.identidade_genero | generoFilter }}</p>
+
+    <h2>Etnia</h2>
+    <p>{{profile.etnia | etniaFilter}}</p>
+
+    <h2><span ng-show="profile.transgenero == 'false'">Não</span> Sou transgênero</h2>
+
   </ion-content>
 </div>

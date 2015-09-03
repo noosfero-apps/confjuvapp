@@ -1,6 +1,6 @@
 <div id="profile" class="modal">
   <ion-content>
-    <form ng-submit="updateProfile(data)" novalidate>
+    <form ng-submit="updateProfile(profile)" novalidate>
       <h1 class="title">
         <span>Editar Perfil</span>
         <a class="back icon-left ion-reply" ng-click="closeEditProfile()">Voltar</a>
@@ -9,7 +9,7 @@
       <div class="list">
         <div class="list list-inset">
           <label class="item item-input">
-            <input type="text" placeholder="Nome" ng-model="data.name" />
+            <input type="text" placeholder="Nome" ng-model="profile.name" />
           </label>
 
           <ng-include src="'html/_signup_person_fields.html'"></ng-include>

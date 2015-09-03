@@ -2,12 +2,12 @@
   <div>
     <label>
       <div class="input-label">
-        Identidade de Gênero
+       Identidade de Gênero
       </div>
-      <select ng-model="data.identidade_genero" required class="item">
+      <select ng-model="profile.identidade_genero" required class="item">
         <option value="">Identidade de Gênero</option>
-        <option value="1">Masculino</option>
-        <option value="2">Feminino</option>
+        <option value="1">{{ 1 | generoFilter }}</option>
+        <option value="2">{{ 2 | generoFilter }}</option>
       </select>
     </label>
   </div>
@@ -16,7 +16,7 @@
     <ul class="list" id="transgender">
       <li class="item item-checkbox">
          <label class="checkbox">
-           <input type="checkbox" ng-model="data.transgenero" class="ckbox">
+           <input type="checkbox" ng-model="profile.transgenero" ng-true-value="'true'" class="ckbox">
          </label>
          Sou transgênero
       </li>
@@ -28,13 +28,13 @@
       <div class="input-label">
         Raça/Etnia
       </div>
-      <select ng-model="data.etnia" required class="item">
+      <select ng-model="profile.etnia" required class="item" >
         <option value="">Raça / Etnia</option>
-        <option value="1">Pardo</option>
-        <option value="2">Preto</option>
-        <option value="3">Branco</option>
-        <option value="4">Indígena</option>
-        <option value="5">Amarelo</option>
+        <option value="1">{{ 1 | etniaFilter}}</option>
+        <option value="2">{{ 2 | etniaFilter}}</option>
+        <option value="3">{{ 3 | etniaFilter}}</option>
+        <option value="4">{{ 4 | etniaFilter}}</option>
+        <option value="5">{{ 5 | etniaFilter}}</option>
       </select>
     </label>
   </div>
@@ -44,12 +44,12 @@
       <div class="input-label">
         Orientação Sexual
       </div>
-      <select ng-model="data.orientacao_sexual" required class="item">
+      <select ng-model="profile.orientacao_sexual" required class="item">
         <option value="">Orientação Sexual</option>
-        <option value="1">Homosexual</option>
-        <option value="2">Heterosexual</option>
-        <option value="3">Bisexual</option>
-        <option value="4">Assexual</option>
+        <option value="1">{{ 1 | orientacaoSexualFilter}}</option>
+        <option value="2">{{ 2 | orientacaoSexualFilter}}</option>
+        <option value="3">{{ 3 | orientacaoSexualFilter}}</option>
+        <option value="4">{{ 4 | orientacaoSexualFilter}}</option>
       </select>
     </label>
   </div>

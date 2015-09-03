@@ -34,7 +34,7 @@ angular.module('confjuvapp.controllers', [])
     // Function to open the modal
     $scope.openModal = function() {
       if (ConfJuvAppUtils.getPrivateToken()) {
-        $scope.loadMe();
+        $scope.loadProfile();
       } else if ($scope.modal) {
         $scope.modal.show();
       } else {
@@ -88,6 +88,7 @@ angular.module('confjuvapp.controllers', [])
     // Function to logout
     $scope.logout = function() {
       ConfJuvAppUtils.setPrivateToken(null);
+      $scope.profile = null;
       $scope.openModal();
     };
 
@@ -120,7 +121,7 @@ angular.module('confjuvapp.controllers', [])
       .then(function(resp) {
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
-        $scope.user = resp.data.person;
+        $scope.profile = resp.data.person;
         popup.then(function() {
           $scope.loginCallback(resp.data.private_token);
         });
@@ -219,7 +220,6 @@ angular.module('confjuvapp.controllers', [])
         },
         timeout: 10000
       }
-
       var params = {
         'email': data.email,
         'login': data.login,
@@ -273,56 +273,6 @@ angular.module('confjuvapp.controllers', [])
       });
     };
 
-    // Load Me
-    $scope.loadMe = function() {
-      $scope.loading = true;
-
-      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken(),
-          path = 'people/me/' + params;
-
-      $http.get(ConfJuvAppUtils.pathTo(path))
-      .then(function(resp) {
-        $scope.user = resp.data.person;
-        $scope.loginCallback(ConfJuvAppUtils.getPrivateToken());
-        $scope.loading = false;
-      }, function(err) {
-        $scope.token = ConfJuvAppUtils.setPrivateToken(null);
-        $scope.loggedIn = false;
-        var popup = $ionicPopup.alert({ title: 'Usuário', template: 'Sessão expirada. Por favor faça login novamente.' });
-        popup.then(function() {
-          $scope.openModal();
-        });
-        $scope.loading = false;
-      });
-    };
-
-    // Submit the profile
-    $scope.updateProfile = function(data) {
-        $scope.loading = true;
-        var config = {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          },
-          timeout: 10000
-        };
-        var params = {
-          'private_token': $scope.token,
-          'person[region_id]': data.city.id
-        };
-
-        $http.post(ConfJuvAppUtils.pathTo('people/' + $scope.user.id), jQuery.param(params), config)
-        .then(function(resp) {
-          $scope.user = resp.data.person;
-          var popup = $ionicPopup.alert({ title: 'Atualizar Usuário', template: 'Usuário atualizado com sucesso!' });
-          popup.then(function() {
-            $scope.loading = false;
-          });
-        }, function(err) {
-          var popup = $ionicPopup.alert({ title: 'Atualizar Usuário', template: 'Erro ao atualizar usuário!' });
-          $scope.loading = false;
-        });
-    };
-
     $scope.backToLoginHome = function() {
       $scope.registerFormDisplayed = false;
       $scope.loginFormDisplayed = false;
@@ -346,6 +296,9 @@ angular.module('confjuvapp.controllers', [])
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
         $scope.states = resp.data;
+        if($scope.profile && $scope.profile.state){
+          $scope.loadCitiesByState($scope.profile.state.id) 
+        }
         $scope.loading = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Estados', template: 'Não foi possível carregar os estados' });
@@ -356,7 +309,6 @@ angular.module('confjuvapp.controllers', [])
     // Load Cities
     $scope.loadCitiesByState = function(state_id) {
       $scope.loading = true;
-
       var path = 'states/' + state_id + '/cities';
 
       $http.get(ConfJuvAppUtils.pathTo(path))
@@ -430,7 +382,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.loadProposalsOfMyCity = function() {
       $scope.loading = true;
       if($scope.proposalsFilter == ''){
-        $scope.proposalsFilter = '&categories_ids=' + $scope.user.region.id;
+        $scope.proposalsFilter = '&categories_ids=' + $scope.profile.region.id;
       }else{
         $scope.proposalsFilter = '';
       }
@@ -647,7 +599,7 @@ angular.module('confjuvapp.controllers', [])
               body: data.description,
               topic: topic,
               categories: [data.city, data.state],
-              author: { name: $scope.user.name, id: $scope.user.id }
+              author: { name: $scope.profile.name, id: $scope.profile.id }
             };
             $scope.cards.push(proposal);
             $scope.myProposals.push(proposal);
@@ -741,7 +693,7 @@ angular.module('confjuvapp.controllers', [])
           if (!$scope.proposal.comments) {
             $scope.proposal.comments = [];
           }
-          $scope.proposal.comments.unshift({ body: params.body, author: { name: $scope.user.name }});
+          $scope.proposal.comments.unshift({ body: params.body, author: { name: $scope.profile.name }});
           $scope.commentStatus = '';
           popup.then(function() {
             $scope.loading = false;
@@ -1199,19 +1151,25 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.profile = null;
 
+    // Load Profile
     $scope.loadProfile = function() {
       $scope.loading = true;
 
-      var path = 'people/me?private_token=' + ConfJuvAppUtils.getPrivateToken();
+      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken(),
+          path = 'people/me/' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
         $scope.profile = resp.data.person;
-        if ($scope.data == null) $scope.data = {};
-        $scope.data.name = $scope.profile.name;
+        $scope.loginCallback(ConfJuvAppUtils.getPrivateToken());
         $scope.loading = false;
       }, function(err) {
-        $ionicPopup.alert({ title: 'Perfil', template: 'Não foi possível carregar o perfil' });
+        $scope.token = ConfJuvAppUtils.setPrivateToken(null);
+        $scope.loggedIn = false;
+        var popup = $ionicPopup.alert({ title: 'Usuário', template: 'Sessão expirada. Por favor faça login novamente.' });
+        popup.then(function() {
+          $scope.openModal();
+        });
         $scope.loading = false;
       });
     };
@@ -1274,7 +1232,7 @@ angular.module('confjuvapp.controllers', [])
       $scope.editProfileModal.remove();
     });
 
-    $scope.updateProfile = function(data) {
+    $scope.updateProfile = function(profile) {
       $scope.loading = true;
 
       var config = {
@@ -1282,22 +1240,25 @@ angular.module('confjuvapp.controllers', [])
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
         timeout: 10000
-      }
+      };
 
       var params = {
         'private_token': $scope.token,
-        'person[name]': data.name,
-        'person[orientacao_sexual]': data.orientacao_sexual,
-        'person[identidade_genero]': data.identidade_genero,
-        'person[transgenero]': data.transgenero,
-        'person[etnia]': data.etnia,
-        'person[city]': data.city.id
+        'person[name]': profile.name,
+        'person[orientacao_sexual]': profile.orientacao_sexual,
+        'person[identidade_genero]': profile.identidade_genero,
+        'person[transgenero]': profile.transgenero,
+        'person[etnia]': profile.etnia,
+        'person[city]': profile.city.id
       };
 
-      $http.post(ConfJuvAppUtils.pathTo('people'), jQuery.param(params), config)
+      $http.post(ConfJuvAppUtils.pathTo('people/' + $scope.profile.id), jQuery.param(params), config)
       .then(function(resp) {
-        $scope.profile = { name: data.name };
-        $ionicPopup.alert({ title: 'Perfil', template: 'Perfil atualizado com sucesso' });
+        $scope.profile = resp.data.person;
+        var popup = $ionicPopup.alert({ title: 'Perfil', template: 'Perfil atualizado com sucesso' });
+        popup.then(function() {
+          $scope.loading = false;
+        });
         $scope.loading = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Perfil', template: 'Erro ao atualizar perfil' });
@@ -1322,26 +1283,21 @@ angular.module('confjuvapp.controllers', [])
           timeout: 10000
         };
 
-        var path = 'articles?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&parent_id=';
+        var path = 'articles?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&author_id=' + $scope.profile.id + '&parent_id[]=';
           
         for (var i = 0; i < $scope.topics.length; i++) {
-          $scope.loading = true;
-          
-          $http.get(ConfJuvAppUtils.pathTo(path + $scope.topics[i].id), config)
-          .then(function(resp) {
-            var articles = resp.data.articles;
-            for (var j = 0; j < articles.length; j++) {
-              var article = articles[j];
-              if (article.author.id === $scope.user.id) {
-                $scope.myProposals.push(article);
-                $scope.cards = $scope.myProposals.slice();
-              }
-            }
-            $scope.loading = false;
-          }, function(err) {
-            $scope.loading = false;
-          });
-        }
+          path += '&parent_id[]=' +  $scope.topics[i].id;
+        } 
+        $scope.loading = true;
+        
+        $http.get(ConfJuvAppUtils.pathTo(path), config)
+        .then(function(resp) {
+          $scope.myProposals = resp.data.articles;
+          $scope.cards = $scope.myProposals.slice();
+          $scope.loading = false;
+        }, function(err) {
+          $scope.loading = false;
+        });
       }
       else {
         $scope.cards = $scope.myProposals.slice();

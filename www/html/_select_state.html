@@ -2,7 +2,7 @@
   <div class="input-label">
     Estado
   </div>
-  <select ng-model="data.state" ng-value="state.id" ng-change="loadCitiesByState(data.state.id)" ng-options="state.name for state in states track by state.id" class="item">
+  <select ng-model="profile.state" ng-value="state" ng-change="loadCitiesByState(profile.state.id)" ng-options="state.name for state in states track by state.id" class="item">
     <option value="">Escolha o estado...</option>
   </select>
 </label>

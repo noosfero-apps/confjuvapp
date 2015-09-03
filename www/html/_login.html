@@ -31,7 +31,7 @@
 
     <!-- Login form -->
 
-    <form ng-submit="Login(data)" ng-show="loginFormDisplayed" id="login-form">
+    <form ng-submit="Login(profile)" ng-show="loginFormDisplayed" id="login-form">
       <h1 class="title">
         <span>Entrar</span>
         <a class="back icon-left ion-reply" ng-click="backToLoginHome()">Voltar</a>
@@ -41,11 +41,11 @@
         <div class="list list-inset">
 
           <label class="item item-input">
-            <input type="text" placeholder="Usuário" ng-model="data.login">
+            <input type="text" placeholder="Usuário" ng-model="profile.login">
           </label>
 
           <label class="item item-input">
-            <input type="password" placeholder="Senha" ng-model="data.password">
+            <input type="password" placeholder="Senha" ng-model="profile.password">
           </label>
 
         </div>
@@ -54,7 +54,7 @@
         </p>
 
         <div class="login-actions">
-          <a ng-click="forgotPassword(data.login)">Esqueceu a senha?</a>
+          <a ng-click="forgotPassword(profile.login)">Esqueceu a senha?</a>
           <a ng-click="displayRegisterForm('user')">Criar conta</a></p>
         </div>
       </div>
@@ -62,7 +62,7 @@
 
     <!-- Register form -->
 
-    <form ng-submit="Register(data)" ng-show="registerFormDisplayed" class="register-form" novalidate id="register-form">
+    <form ng-submit="Register(profile)" ng-show="registerFormDisplayed" class="register-form" novalidate id="register-form">
       <h1 class="title">
         <span>Registrar</span>
         <a class="back icon-left ion-reply" ng-click="backToLoginHome()">Voltar</a>
@@ -72,12 +72,12 @@
         <div class="list list-inset">
 
           <label class="item item-input">
-            <input type="text" placeholder="E-mail" ng-model="data.email" required ng-blur="setLoginBasedOnEmail()"
+            <input type="text" placeholder="E-mail" ng-model="profile.email" required ng-blur="setLoginBasedOnEmail()"
                    onblur="var $l=document.getElementById('lf'); if ($l.value == '') $l.value=ConfJuvAppUtils.normalizeLogin(this.value);">
           </label>
           
           <label class="item item-input">
-            <input type="text" id="lf" placeholder="Nome de usuário" required ng-model="data.login"
+            <input type="text" id="lf" placeholder="Nome de usuário" required ng-model="profile.login"
                    onchange="this.value=ConfJuvAppUtils.normalizeLogin(this.value)">
           </label>
           <p><small>Espaços, letras maiúsculas ou acentos <b>não</b> são permitidos</small></p>
@@ -88,8 +88,8 @@
 
           <p class="disclaimer">Ao se cadastrar, você concorda com os <span onclick="window.open(ConfJuvAppConfig.noosferoApiHost + '/site/terms', '_system')">Termos de Uso do Juventude.gov.br</span> e com o <span onclick="window.open(ConfJuvAppConfig.noosferoApiHost + '/' + ConfJuvAppConfig.noosferoStatutePath, '_system')">Regimento da Conferência</span></p>
 
-          <label class="item item-input"><input type="password" placeholder="Senha" ng-model="data.password"></label>
-          <label class="item item-input"><input type="password" placeholder="Confirmar senha" ng-model="data.password_confirmation"></label>
+          <label class="item item-input"><input type="password" placeholder="Senha" ng-model="profile.password"></label>
+          <label class="item item-input"><input type="password" placeholder="Confirmar senha" ng-model="profile.password_confirmation"></label>
 
         </div>
 
