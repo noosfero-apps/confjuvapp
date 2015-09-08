@@ -122,6 +122,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
         $scope.profile = resp.data.person;
+        $scope.setStateAndCityOfProfile();
         popup.then(function() {
           $scope.loginCallback(resp.data.private_token);
         });
