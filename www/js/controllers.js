@@ -306,6 +306,49 @@ angular.module('confjuvapp.controllers', [])
       });
     };
 
+    //FIXME Refactor this code
+    // Load State
+    $scope.setStateAndCityOfProfile = function() {
+      $scope.loading = true;
+
+      var path = 'states/';
+      if($scope.profile && $scope.profile.region){
+        path += $scope.profile.region.parent_id;
+      }
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        $scope.profile.state = resp.data;
+        if($scope.profile.state){
+          $scope.setCityOfProfile();
+        }
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Estados', template: 'Não foi possível atribuir o estado ao perfil' });
+        $scope.loading = false;
+      });
+    };
+
+    //FIXME Refactor this code
+    // Load City
+    $scope.setCityOfProfile = function() {
+      $scope.loading = true;
+      var path = 'states/';
+
+      if($scope.profile && $scope.profile.region){
+        path += $scope.profile.region.parent_id + '/cities/' + $scope.profile.region.id;
+      }
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        $scope.profile.city = resp.data;
+        $scope.loading = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Cidade', template: 'Não foi possível atribuir a cidade ao perfil' });
+        $scope.loading = false;
+      });
+    };
+
     // Load Cities
     $scope.loadCitiesByState = function(state_id) {
       $scope.loading = true;
@@ -313,7 +356,6 @@ angular.module('confjuvapp.controllers', [])
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
-        $scope.loading = false;
         $scope.cities = resp.data;
         $scope.shouldDisplayCities = true;
         $scope.loading = false;
@@ -1162,6 +1204,7 @@ angular.module('confjuvapp.controllers', [])
       .then(function(resp) {
         $scope.profile = resp.data.person;
         $scope.loginCallback(ConfJuvAppUtils.getPrivateToken());
+        $scope.setStateAndCityOfProfile();
         $scope.loading = false;
       }, function(err) {
         $scope.token = ConfJuvAppUtils.setPrivateToken(null);
