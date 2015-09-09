@@ -940,7 +940,9 @@ angular.module('confjuvapp.controllers', [])
          $scope.loading = false;
          var comments = resp.data.comments;
          $scope.proposal.comments = $scope.proposal.comments.concat(comments);
-         $scope.proposal.lastCommentId = comments[comments.length - 1].id;
+         if(comments.length > 0){
+           $scope.proposal.lastCommentId = comments[comments.length - 1].id;
+         }
          if ($scope.proposal.comments.length == 0) {
            $scope.commentStatus = 'none';
            $scope.proposal.comments = [{ body: '', skip: true, author: { name: '' }}];
