@@ -446,7 +446,7 @@ angular.module('confjuvapp.controllers', [])
         perPage = 11;
       }
 
-      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&limit=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
+      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&per_page=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
 
       var path = 'articles/' + topic.id + '/children' + params;
 
