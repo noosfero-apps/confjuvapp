@@ -455,9 +455,11 @@ angular.module('confjuvapp.controllers', [])
         var proposals = resp.data.articles;
 
         for (var i = 0; i < proposals.length; i++) {
-          var proposal = proposals[i];
-          proposal.topic = topic;
-          $scope.cards.push(proposal);
+          if (i < perPage) {
+            var proposal = proposals[i];
+            proposal.topic = topic;
+            $scope.cards.push(proposal);
+          }
         }
 
         if (proposals.length == 0 && !topic.empty) {
