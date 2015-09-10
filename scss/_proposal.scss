@@ -88,10 +88,6 @@
   }
 
   #comments {
-    height: 1500px;
+    overflow: auto;
   }
-}
-.large #proposal #comments {
-  height: auto;
-  overflow: hidden;
 }
