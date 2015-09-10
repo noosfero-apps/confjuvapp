@@ -288,7 +288,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.shouldDisplayCities = false;
 
     // Load States
-    $scope.loadStates = function() {
+    $scope.loadStates = function(selected) {
       $scope.loading = true;
       $scope.shouldDisplayCities = false;
 
@@ -297,8 +297,11 @@ angular.module('confjuvapp.controllers', [])
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
         $scope.states = resp.data;
-        if($scope.profile && $scope.profile.state){
-          $scope.loadCitiesByState($scope.profile.state.id) 
+        if (selected) {
+          $scope.loadCitiesByState(selected);
+        }
+        else if ($scope.profile && $scope.profile.state && !selected) {
+          $scope.loadCitiesByState($scope.profile.state.id);
         }
         $scope.loading = false;
       }, function(err) {
@@ -450,7 +453,7 @@ angular.module('confjuvapp.controllers', [])
         perPage = 11;
       }
 
-      var params = '?private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&per_page=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
+      var params = '?t=' + (new Date().getTime()) + '&private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&per_page=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
 
       var path = 'articles/' + topic.id + '/children' + params;
 
@@ -535,7 +538,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?16', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?17', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -1028,8 +1031,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.loadCitiesByState($scope.data.state.id);
       }
       else {
-        $scope.loadStates();
-        $scope.loadCitiesByState($scope.data.state.id);
+        $scope.loadStates($scope.data.state.id);
         // Initiate the modal
         $ionicModal.fromTemplateUrl('html/_edit_proposal.html', {
           scope: $scope,
@@ -1056,7 +1058,7 @@ angular.module('confjuvapp.controllers', [])
 
     // Submit the updated proposal
     $scope.updateProposal = function(data) {
-      if (!data || !data.title || !data.description || !data.topic_id) {
+      if (!data || !data.title || !data.description) {
         $scope.closeEditProposalModal();
         var popup = $ionicPopup.alert({ title: 'Alterar proposta', template: 'Por favor preencha todos os campos!' });
         popup.then(function() {
@@ -1100,24 +1102,16 @@ angular.module('confjuvapp.controllers', [])
 
         $http.post(ConfJuvAppUtils.pathTo('articles/' + $scope.proposal.id), jQuery.param(params), config)
         .then(function(resp) {
-          $scope.closeEditProposalModal();
           var popup = $ionicPopup.alert({ title: 'Alterar proposta', template: 'Proposta alterada com sucesso!' });
           popup.then(function() {
-            var topic = null;
-            for (var i = 0; i < $scope.topics.length; i++) {
-              if (data.topic_id.id == $scope.topics[i].id) {
-                topic = $scope.topics[i];
-              }
-            }
-            
             $scope.proposal.categories[0] = data.city;
             $scope.proposal.categories[1] = data.state;
             $scope.proposal.title = data.title;
             $scope.proposal.body = data.description;
-            $scope.proposal.topic = data.topic_id;
             
             $scope.loading = false;
             document.getElementById('save-proposal').innerHTML = 'Salvar';
+            $scope.closeEditProposalModal();
           });
         }, function(err) {
           $scope.closeEditProposalModal();
