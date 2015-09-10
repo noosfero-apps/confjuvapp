@@ -538,7 +538,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?17', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?18', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -942,7 +942,7 @@ angular.module('confjuvapp.controllers', [])
        if (!$scope.proposal.comments) $scope.proposal.comments = [];
 
        var last = $scope.proposal.lastCommentId || 0;
-           path = 'articles/' + $scope.proposal.id + '/comments?oldest&reference_id=' + last + '&private_token=' + $scope.token;
+           path = 'articles/' + $scope.proposal.id + '/comments?oldest&reference_id=' + last + '&private_token=' + $scope.token + '&t=' + (new Date().getTime());
 
        $http.get(ConfJuvAppUtils.pathTo(path), config)
        .then(function(resp) {

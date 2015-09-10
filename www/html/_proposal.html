@@ -73,7 +73,7 @@
       </div>
 
       <p style="text-align: center;">
-        <button class="button icon-left ion-plus-circled" ng-click="loadComments()">Mais comentários</button>
+        <button class="button icon-left ion-plus-circled" ng-click="loadComments()" ng-show="proposal.comments.length >= 20">Mais comentários</button>
       </p>
     </div>
   </ion-content>
