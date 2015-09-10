@@ -51,7 +51,7 @@
 
     <hr>
 
-    <div id="comments">
+    <ion-scroll direction="y" id="comments">
       <h2>Comentários ({{commentStatus == 'none' ? 0 : (proposal.comments.length >= 20 ? '+20' : proposal.comments.length)}})</h2>
 
       <div class="comment-message" ng-show="commentStatus == 'none'">
@@ -75,6 +75,6 @@
       <p style="text-align: center;">
         <button class="button icon-left ion-plus-circled" ng-click="loadComments()" ng-show="proposal.comments.length >= 20">Mais comentários</button>
       </p>
-    </div>
+    </ion-scroll>
   </ion-content>
 </div>

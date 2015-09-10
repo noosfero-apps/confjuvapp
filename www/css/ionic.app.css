@@ -7949,7 +7949,11 @@ html .modal, html .scroll-content {
       text-decoration: underline;
       cursor: pointer; }
   #proposal #comments {
-    overflow: auto; }
+    height: 1500px; }
+
+.large #proposal #comments {
+  height: auto;
+  overflow: hidden; }
 
 .sidebar h2 {
   font-size: 16px;
