@@ -199,7 +199,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.data = {};
 
     $scope.setLoginBasedOnEmail = function() {
-      if (!$scope.data.login && $scope.data.email) $scope.data.login = ConfJuvAppUtils.normalizeLogin($scope.data.email);
+      if (!$scope.profile.login && $scope.profile.email) $scope.profile.login = ConfJuvAppUtils.normalizeLogin($scope.profile.email);
     };
 
     // Function to register
