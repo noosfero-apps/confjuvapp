@@ -1200,7 +1200,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.loadProfile = function() {
       $scope.loading = true;
 
-      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken(),
+      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken() + '&t=' + (new Date().getTime()),
           path = 'people/me/' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
@@ -1252,13 +1252,23 @@ angular.module('confjuvapp.controllers', [])
 
     $scope.editProfile = function() {
       if ($scope.editProfileModal) {
+        if ($scope.profile.state) {
+          $scope.loadCitiesByState($scope.profile.state.id);
+        }
         $scope.editProfileModal.show();
       }
       else {
         if (!$scope.profile) {
           $scope.loadProfile();
         }
-        if ($scope.states.length == 0) $scope.loadStates();
+        
+        if ($scope.states.length == 0) {
+          $scope.loadStates();
+        }
+        else if ($scope.profile.state) {
+          $scope.loadCitiesByState($scope.profile.state.id);
+        }
+
         if ($scope.signupPersonFields.length == 0) $scope.loadSignupPersonFields();
         $ionicModal.fromTemplateUrl('html/_edit_profile.html', {
           scope: $scope,
