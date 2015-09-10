@@ -315,6 +315,8 @@ angular.module('confjuvapp.controllers', [])
       var path = 'states/';
       if($scope.profile && $scope.profile.region){
         path += $scope.profile.region.parent_id;
+      }else{
+        return;
       }
 
       $http.get(ConfJuvAppUtils.pathTo(path))
@@ -338,6 +340,8 @@ angular.module('confjuvapp.controllers', [])
 
       if($scope.profile && $scope.profile.region){
         path += $scope.profile.region.parent_id + '/cities/' + $scope.profile.region.id;
+      }else{
+        return;
       }
 
       $http.get(ConfJuvAppUtils.pathTo(path))
@@ -1296,13 +1300,17 @@ angular.module('confjuvapp.controllers', [])
         'person[orientacao_sexual]': profile.orientacao_sexual,
         'person[identidade_genero]': profile.identidade_genero,
         'person[transgenero]': profile.transgenero,
-        'person[etnia]': profile.etnia,
-        'person[city]': profile.city.id
+        'person[etnia]': profile.etnia
       };
+
+      if(profile.city){
+        params['person[region_id]'] = profile.city.id;
+      }
 
       $http.post(ConfJuvAppUtils.pathTo('people/' + $scope.profile.id), jQuery.param(params), config)
       .then(function(resp) {
         $scope.profile = resp.data.person;
+        $scope.setStateAndCityOfProfile();
         var popup = $ionicPopup.alert({ title: 'Perfil', template: 'Perfil atualizado com sucesso' });
         popup.then(function() {
           $scope.loading = false;

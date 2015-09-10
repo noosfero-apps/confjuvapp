@@ -1,0 +1,11 @@
+<label>
+  <div class="input-label">
+    Estado
+  </div>
+  <select ng-model="data.state" ng-value="state.id" ng-change="loadCitiesByState(data.state.id)" ng-options="state.name for state in states track by state.id" class="item">
+    <option value="">Escolha o estado...</option>
+  </select>
+</label>
+
+<ng-include src="'html/_select_proposal_city.html'"></ng-include>
+

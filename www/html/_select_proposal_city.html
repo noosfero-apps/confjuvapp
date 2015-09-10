@@ -1,0 +1,8 @@
+<label>
+  <div class="input-label">
+    Cidade
+  </div>
+  <select ng-model="data.city" ng-value="data.city.id"  ng-options="city.name for city in cities track by city.id" class="item">
+    <option value="">Escolha a cidade...</option>
+  </select>
+</label>
