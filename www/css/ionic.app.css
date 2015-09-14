@@ -7949,7 +7949,8 @@ html .modal, html .scroll-content {
       text-decoration: underline;
       cursor: pointer; }
   #proposal #comments {
-    overflow: auto; }
+    overflow: auto;
+    height: 6000px; }
 
 .sidebar h2 {
   font-size: 16px;

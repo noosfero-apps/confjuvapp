@@ -538,7 +538,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?18', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?19', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -939,6 +939,8 @@ angular.module('confjuvapp.controllers', [])
          timeout: 10000
        };
 
+       $scope.proposal.hasMoreComments = true;
+
        if (!$scope.proposal.comments) $scope.proposal.comments = [];
 
        var last = $scope.proposal.lastCommentId || 0;
@@ -947,15 +949,24 @@ angular.module('confjuvapp.controllers', [])
        $http.get(ConfJuvAppUtils.pathTo(path), config)
        .then(function(resp) {
          $scope.loading = false;
+         
          var comments = resp.data.comments;
-         $scope.proposal.comments = $scope.proposal.comments.concat(comments);
-         if(comments.length > 0){
+         
+         if (comments.length > 0) {
            $scope.proposal.lastCommentId = comments[comments.length - 1].id;
          }
+         
+         if (comments.length < 20) {
+           $scope.proposal.hasMoreComments = false;
+         }
+         
+         $scope.proposal.comments = $scope.proposal.comments.concat(comments);
+         
          if ($scope.proposal.comments.length == 0) {
            $scope.commentStatus = 'none';
            $scope.proposal.comments = [{ body: '', skip: true, author: { name: '' }}];
          }
+         
          $scope.showProposal($scope.proposal);
        }, function(err) {
          $scope.commentStatus = 'fail';
