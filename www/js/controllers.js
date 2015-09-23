@@ -397,6 +397,8 @@ angular.module('confjuvapp.controllers', [])
     };
 
     $scope.reloadProposals = function() {
+      $scope.cardsBackup = [];
+      $scope.showBackupProposalsLink = false;
       ConfJuvAppUtils.setTopicFilter($scope.topicFilter.value);
       $scope.cards = [];
       $scope.reloadTopics();
@@ -483,16 +485,33 @@ angular.module('confjuvapp.controllers', [])
 
     // Cards
 
+    $scope.cardsBackup = [];
+
     $scope.cardDestroyed = function(index) {
-      var thisProposal = $scope.cards[index];
-      var topic = thisProposal.topic;
+      var thisProposal = $scope.cards[index],
+          topic = thisProposal.topic;
+
+      // When viewing all proposals, store the last one (needed for pagination)
+
       if (topic && (topic.lastProposalId == null || topic.lastProposalId > thisProposal.id)) {
         topic.lastProposalId = thisProposal.id;
       }
+
+      // When viewing followed or own proposals, store them
+
+      if (!topic && $scope.cardsBackup.length === 0) {
+        $scope.cardsBackup = $scope.cards.slice();
+      }
+
+      // Remove the card
+
       $scope.cards.splice(index, 1);
+
+      // Ups, no more cards left
+
       if ($scope.cards.length === 0) {
 
-        // Browsing all proposals
+        // Browsing all proposals: go to the next page
 
         if (topic) {
           for (var i = 0; i < $scope.topics.length; i++) {
@@ -502,7 +521,19 @@ angular.module('confjuvapp.controllers', [])
             }
           }
         }
+
+        // Browsing own or followed proposals: show link to reload
+
+        else {
+          $scope.showBackupProposalsLink = true;
+        }
       }
+    };
+
+    $scope.showBackupProposals = function() {
+      $scope.cards = $scope.cardsBackup.slice();
+      $scope.cardsBackup = [];
+      $scope.showBackupProposalsLink = false;
     };
 
     $scope.nextCard = function() {
@@ -1141,6 +1172,9 @@ angular.module('confjuvapp.controllers', [])
      ******************************************************************************/
 
     $scope.showFollowedProposals = function() {
+      $scope.cardsBackup = [];
+      $scope.showBackupProposalsLink = false;
+
       $scope.cards = $scope.following.slice();
     }
 
@@ -1345,6 +1379,9 @@ angular.module('confjuvapp.controllers', [])
     $scope.myProposals = [];
 
     $scope.showMyProposals = function() {
+      $scope.cardsBackup = [];
+      $scope.showBackupProposalsLink = false;
+
       if ($scope.myProposals.length == 0) {
         $scope.cards = [];
 

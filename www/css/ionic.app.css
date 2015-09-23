@@ -7873,12 +7873,12 @@ html .modal, html .scroll-content {
       width: 100%;
       text-align: center;
       top: 33px; }
-    #proposals td-cards #force-reload {
+    #proposals td-cards .force-reload {
       position: absolute;
       width: 100%;
       text-align: center;
       top: 33px; }
-      #proposals td-cards #force-reload a {
+      #proposals td-cards .force-reload a {
         color: #2196f3;
         cursor: pointer; }
   #proposals .cards-footer {

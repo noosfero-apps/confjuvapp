@@ -33,9 +33,13 @@
 
   <td-cards>
     <p id="loading-cards" ng-show="loading">Carregando propostas...</p>
-    <div id="force-reload" ng-show="(emptyTopicsCount == topics.length) && !loading">
+    <div id="force-reload" ng-show="(emptyTopicsCount == topics.length) && !loading" class="force-reload">
       <p>Você já visualizou todas as propostas.</p>
       <p>Deseja <a ng-click="reloadTopics()">Carregar novamente</a>?</p>
+    </div>
+    <div ng-show="showBackupProposalsLink" class="force-reload">
+      <p>Você já visualizou todas as propostas.</p>
+      <p>Deseja <a ng-click="showBackupProposals()">Carregar novamente</a>?</p>
     </div>
  
     <td-card ng-repeat="proposal in cards" on-destroy="cardDestroyed($index)"
