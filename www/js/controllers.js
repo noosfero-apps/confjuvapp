@@ -1315,7 +1315,7 @@ angular.module('confjuvapp.controllers', [])
         }
 
         if ($scope.signupPersonFields.length == 0) $scope.loadSignupPersonFields();
-        $ionicModal.fromTemplateUrl('html/_edit_profile.html', {
+        $ionicModal.fromTemplateUrl('html/_edit_profile.html?1', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {

@@ -5,7 +5,7 @@
        Identidade de Gênero
       </div>
       <select ng-model="profile.identidade_genero" required class="item">
-        <option value="">Identidade de Gênero</option>
+        <option value="" ng-selected="!profile.identidade_genero">Identidade de Gênero</option>
         <option value="1">{{ 1 | generoFilter }}</option>
         <option value="2">{{ 2 | generoFilter }}</option>
       </select>
@@ -29,7 +29,7 @@
         Raça/Etnia
       </div>
       <select ng-model="profile.etnia" required class="item" >
-        <option value="">Raça / Etnia</option>
+        <option value="" ng-selected="!profile.etnia">Raça / Etnia</option>
         <option value="1">{{ 1 | etniaFilter}}</option>
         <option value="2">{{ 2 | etniaFilter}}</option>
         <option value="3">{{ 3 | etniaFilter}}</option>
@@ -45,7 +45,7 @@
         Orientação Sexual
       </div>
       <select ng-model="profile.orientacao_sexual" required class="item">
-        <option value="">Orientação Sexual</option>
+        <option value="" ng-selected="!profile.orientacao_sexual">Orientação Sexual</option>
         <option value="1">{{ 1 | orientacaoSexualFilter}}</option>
         <option value="2">{{ 2 | orientacaoSexualFilter}}</option>
         <option value="3">{{ 3 | orientacaoSexualFilter}}</option>
