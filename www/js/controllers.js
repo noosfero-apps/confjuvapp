@@ -1329,6 +1329,7 @@ angular.module('confjuvapp.controllers', [])
         var popup = $ionicPopup.alert({ title: 'Perfil', template: 'Perfil atualizado com sucesso' });
         popup.then(function() {
           $scope.loading = false;
+          $scope.closeEditProfile();
         });
         $scope.loading = false;
       }, function(err) {
