@@ -434,7 +434,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.loadProposalsOfMyCity = function() {
       $scope.loading = true;
       if($scope.proposalsFilter == ''){
-        $scope.proposalsFilter = '&categories_ids=' + $scope.profile.region.id;
+        $scope.proposalsFilter = '&category_ids=' + $scope.profile.region.id;
       }else{
         $scope.proposalsFilter = '';
       }
