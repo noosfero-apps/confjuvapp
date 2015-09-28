@@ -121,10 +121,10 @@ angular.module('confjuvapp.controllers', [])
       .then(function(resp) {
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
-        $scope.profile = resp.data.person;
+        $scope.profile = resp.data.user.person;
         $scope.setStateAndCityOfProfile();
         popup.then(function() {
-          $scope.loginCallback(resp.data.private_token);
+          $scope.loginCallback(resp.data.user.private_token);
         });
       }, function(err) {
         $scope.closeModal();
@@ -1391,7 +1391,7 @@ console.log($scope.profile);
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
-        $scope.profile = resp.data.person;
+        $scope.profile = resp.data.user.person;
         $scope.loginCallback(ConfJuvAppUtils.getPrivateToken());
         $scope.loadMyBadges();
         $scope.setStateAndCityOfProfile();
@@ -1500,7 +1500,7 @@ console.log($scope.profile);
 
       $http.post(ConfJuvAppUtils.pathTo('people/' + $scope.profile.id), jQuery.param(params), config)
       .then(function(resp) {
-        $scope.profile = resp.data.person;
+        $scope.profile = resp.data.user.person;
         $scope.setStateAndCityOfProfile();
         var popup = $ionicPopup.alert({ title: 'Perfil', template: 'Perfil atualizado com sucesso' });
         popup.then(function() {
