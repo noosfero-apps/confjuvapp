@@ -5,6 +5,20 @@
       <a class="back icon-left ion-reply" ng-click="closeProfile()">Voltar</a>
     </h1>
 
+    <h2> Nível {{profile.level}} Você possui {{profile.points}} pontos </h2>
+    <div>{{profile.gamification_plugin_level_percent}} %</div>
+
+    <h1> Suas Medalhas</h1>
+    <div class="list">
+
+      <a ng-repeat="badge in profile.badges" href="#/" class="item item-thumbnail-left">
+        <img ng-src="{{ badge.name }}">
+        <h2>{{ badge.level }}</h2>
+        <h4>{{ badge.title }}</h4>
+        <h4>{{ badge.description }}</h4>
+      </a>
+    </div>
+
     <h2>Nome</h2>
     <p>{{profile.name}}</p>
 
@@ -24,6 +38,5 @@
     <p>{{profile.etnia | etniaFilter}}</p>
 
     <h2><span ng-show="profile.transgenero == 'false'">Não</span> Sou Transgênero</h2>
-
   </ion-content>
 </div>
