@@ -24,9 +24,6 @@
       <button class="button follow" ng-click="follow(proposal)" ng-hide="isFollowing(proposal) || proposal.author.id == profile.id">
         <i class="icon ion-eye"></i> <span>Seguir</span>
       </button>
-      <button class="button vote" ng-click="vote(proposal)" ng-hide="alreadyVoted(proposal) || proposal.author.id == profile.id">
-        <i class="icon ion-thumbsup"></i> <span>Votar</span>
-      </button>
       <br />
       <button class="button" onclick="window.open(ConfJuvAppUtils.shareOnTwitter(), '_system')">
         <i class="icon ion-social-twitter"></i> <span>Compartilhar no Twitter</span>

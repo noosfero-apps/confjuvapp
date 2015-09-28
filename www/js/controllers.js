@@ -569,7 +569,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?20', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?19', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -1168,76 +1168,6 @@ angular.module('confjuvapp.controllers', [])
     };
 
     /******************************************************************************
-     V O T E  P R O P O S A L
-     ******************************************************************************/
-
-//FIXME Adapt this method for votes
-    $scope.showVotedProposals = function() {
-//      $scope.cardsBackup = [];
-//      $scope.showBackupProposalsLink = false;
-//FIXME put this to works
-//      $scope.cards = $scope.following.slice();
-    }
-
-//FIXME Adapt this method for votes
-    $scope.loadVotedProposals = function() {
-      $scope.loading = true;
-      var config = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        },
-        timeout: 10000
-      };
-
-      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
-      .then(function(resp) {
-        $scope.following = [];
-        $scope.followingIds = [];
-        var followed = resp.data.articles;
-        for (var i = 0; i < followed.length; i++) {
-          var p = followed[i];
-          $scope.following.push(p);
-          $scope.followingIds.push(p.id);
-        }
-        $scope.loading = false;
-      }, function(err) {
-        $scope.loading = false;
-        $ionicPopup.alert({ title: 'Propostas seguidas', template: 'Erro ao carregar propostas seguidas' });
-      });
-    };
-
-//FIXME adapt this method for votes
-    $scope.alreadyVoted = function(proposal) {
-//      if ($scope.hasOwnProperty('followingIds')) {
-//        return ($scope.followingIds.indexOf(proposal.id) > -1);
-//      }
-//      else {
-        return false;
-//      }
-    };
-
-    $scope.vote = function(proposal) {
-      $scope.loading = true;
-
-      var config = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        },
-        timeout: 10000
-      }
-
-      $http.post(ConfJuvAppUtils.pathTo('articles/' + proposal.id + '/vote'), jQuery.param({ private_token: $scope.token}), config)
-      .then(function(resp) {
-        $ionicPopup.alert({ title: 'Votar em proposta', template: 'Pronto! Você já votou nesta proposta.' });
-        $scope.loading = false;
-      }, function(err) {
-        $ionicPopup.alert({ title: 'Votar em proposta', template: 'Erro ao votar na proposta.' });
-        $scope.loading = false;
-      });
-    };
-
-
-    /******************************************************************************
      F O L L O W  P R O P O S A L
      ******************************************************************************/
 
@@ -1304,7 +1234,6 @@ angular.module('confjuvapp.controllers', [])
         $scope.loading = false;
       });
     };
-
 
     /******************************************************************************
      P R O F I L E
