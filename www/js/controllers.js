@@ -1250,7 +1250,7 @@ angular.module('confjuvapp.controllers', [])
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
-        $scope.profile = resp.data.user.person;
+        $scope.profile = resp.data.person;
         $scope.loginCallback(ConfJuvAppUtils.getPrivateToken());
         $scope.setStateAndCityOfProfile();
         $scope.loading = false;
@@ -1358,7 +1358,7 @@ angular.module('confjuvapp.controllers', [])
 
       $http.post(ConfJuvAppUtils.pathTo('people/' + $scope.profile.id), jQuery.param(params), config)
       .then(function(resp) {
-        $scope.profile = resp.data.user.person;
+        $scope.profile = resp.data.person;
         $scope.setStateAndCityOfProfile();
         var popup = $ionicPopup.alert({ title: 'Perfil', template: 'Perfil atualizado com sucesso' });
         popup.then(function() {
