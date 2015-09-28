@@ -199,12 +199,12 @@ angular.module('confjuvapp.controllers', [])
     $scope.data = {};
 
     $scope.setLoginBasedOnEmail = function() {
-      if (!$scope.profile.login && $scope.profile.email) $scope.profile.login = ConfJuvAppUtils.normalizeLogin($scope.profile.email);
+      // if (!$scope.profile.login && $scope.profile.email) $scope.profile.login = ConfJuvAppUtils.normalizeLogin($scope.profile.email);
     };
 
     // Function to register
     $scope.Register = function(data) {
-      if (!data || !data.login || !data.email || !data.password || !data.password_confirmation) {
+      if (!data || !data.email || !data.password || !data.password_confirmation) {
         $ionicPopup.alert({ title: 'Registrar', template: 'Por favor preencha todos os campos' });
         return;
       }
@@ -212,7 +212,7 @@ angular.module('confjuvapp.controllers', [])
         $ionicPopup.alert({ title: 'Registrar', template: 'Senhas não conferem' });
         return;
       }
-
+       
       $scope.loading = true;
 
       var config = {
@@ -223,7 +223,7 @@ angular.module('confjuvapp.controllers', [])
       }
       var params = {
         'email': data.email,
-        'login': data.login,
+        'login': data.login || ConfJuvAppUtils.normalizeLogin(data.email),
         'password': data.password,
         'password_confirmation': data.password_confirmation,
         'tipo': $scope.registerFormType,
