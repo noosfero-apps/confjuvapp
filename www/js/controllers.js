@@ -151,6 +151,7 @@ angular.module('confjuvapp.controllers', [])
       $scope.loadStages();
       $scope.parseURLParams();
       $scope.loadFollowedProposals();
+      $scope.loadVotedProposals();
     };
 
     // Function to retrieve password
@@ -1171,15 +1172,12 @@ angular.module('confjuvapp.controllers', [])
      V O T E  P R O P O S A L
      ******************************************************************************/
 
-//FIXME Adapt this method for votes
     $scope.showVotedProposals = function() {
-//      $scope.cardsBackup = [];
-//      $scope.showBackupProposalsLink = false;
-//FIXME put this to works
-//      $scope.cards = $scope.following.slice();
+      $scope.cardsBackup = [];
+      $scope.showBackupProposalsLink = false;
+      $scope.cards = $scope.voted.slice();
     }
 
-//FIXME Adapt this method for votes
     $scope.loadVotedProposals = function() {
       $scope.loading = true;
       var config = {
@@ -1189,31 +1187,30 @@ angular.module('confjuvapp.controllers', [])
         timeout: 10000
       };
 
-      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
+      $http.get(ConfJuvAppUtils.pathTo('/articles/voted_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
       .then(function(resp) {
-        $scope.following = [];
-        $scope.followingIds = [];
-        var followed = resp.data.articles;
-        for (var i = 0; i < followed.length; i++) {
-          var p = followed[i];
-          $scope.following.push(p);
-          $scope.followingIds.push(p.id);
+        $scope.voted = [];
+        $scope.votedIds = [];
+        var voted_articles = resp.data.articles;
+        for (var i = 0; i < voted_articles.length; i++) {
+          var p = voted_articles[i];
+          $scope.voted.push(p);
+          $scope.votedIds.push(p.id);
         }
         $scope.loading = false;
       }, function(err) {
         $scope.loading = false;
-        $ionicPopup.alert({ title: 'Propostas seguidas', template: 'Erro ao carregar propostas seguidas' });
+        $ionicPopup.alert({ title: 'Propostas votadas', template: 'Erro ao carregar propostas votadas' });
       });
     };
 
-//FIXME adapt this method for votes
     $scope.alreadyVoted = function(proposal) {
-//      if ($scope.hasOwnProperty('followingIds')) {
-//        return ($scope.followingIds.indexOf(proposal.id) > -1);
-//      }
-//      else {
+      if ($scope.hasOwnProperty('votedIds')) {
+        return ($scope.votedIds.indexOf(proposal.id) > -1);
+      }
+      else {
         return false;
-//      }
+      }
     };
 
     $scope.vote = function(proposal) {
