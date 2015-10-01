@@ -57,6 +57,7 @@
         <div class="card-footer">
           <a ng-click="openProposal(proposal)" class="icon-left ion-android-open"> Leia Mais</a>
           <a ng-click="follow(proposal)" class="icon-left ion-eye" ng-hide="isFollowing(proposal) || proposal.author.id == profile.id"> Seguir</a>
+          <a class="icon-left ion-thumbsup" ng-click="vote(proposal)" ng-hide="alreadyVoted(proposal) || proposal.author.id == profile.id"> Apoiar</a>
         </div>
       </div>
     </td-card>

@@ -1200,7 +1200,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.loading = false;
       }, function(err) {
         $scope.loading = false;
-        $ionicPopup.alert({ title: 'Propostas votadas', template: 'Erro ao carregar propostas votadas' });
+        $ionicPopup.alert({ title: 'Propostas apoiadas', template: 'Erro ao carregar propostas apoiadas' });
       });
     };
 
@@ -1223,12 +1223,14 @@ angular.module('confjuvapp.controllers', [])
         timeout: 10000
       }
 
-      $http.post(ConfJuvAppUtils.pathTo('articles/' + proposal.id + '/vote'), jQuery.param({ private_token: $scope.token}), config)
+      $http.post(ConfJuvAppUtils.pathTo('articles/' + proposal.id + '/vote'), jQuery.param({ private_token: $scope.token }), config)
       .then(function(resp) {
-        $ionicPopup.alert({ title: 'Votar em proposta', template: 'Pronto! Você já votou nesta proposta.' });
+        $ionicPopup.alert({ title: 'Apoiar proposta', template: 'Pronto! Proposta apoiada. Você pode acompanhar suas propostas apoiadas no menu lateral esquerdo.' });
+        $scope.voted.push(proposal);
+        $scope.votedIds.push(proposal.id);
         $scope.loading = false;
       }, function(err) {
-        $ionicPopup.alert({ title: 'Votar em proposta', template: 'Erro ao votar na proposta.' });
+        $ionicPopup.alert({ title: 'Apoiar proposta', template: 'Erro ao apoiar proposta.' });
         $scope.loading = false;
       });
     };
