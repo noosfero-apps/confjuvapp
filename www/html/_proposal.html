@@ -21,8 +21,11 @@
       <button class="button comment" ng-click="openCommentForm()">
         <i class="icon ion-chatbox-working"></i> <span>Comentar</span>
       </button>
-      <button class="button follow" ng-click="follow(proposal)" ng-hide="isFollowing(proposal) || proposal.author.id == profile.id">
+      <button class="button follow" ng-click="follow(proposal)" ng-hide="clicked || isFollowing(proposal) || proposal.author.id == profile.id">
         <i class="icon ion-eye"></i> <span>Seguir</span>
+      </button>
+      <button class="button vote" ng-click="vote(proposal)" ng-hide="clicked || alreadyVoted(proposal) || proposal.author.id == profile.id">
+        <i class="icon ion-thumbsup"></i> <span>Votar</span>
       </button>
       <br />
       <button class="button" onclick="window.open(ConfJuvAppUtils.shareOnTwitter(), '_system')">

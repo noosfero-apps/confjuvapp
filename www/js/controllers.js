@@ -121,10 +121,10 @@ angular.module('confjuvapp.controllers', [])
       .then(function(resp) {
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
-        $scope.profile = resp.data.person;
+        $scope.profile = resp.data.user.person;
         $scope.setStateAndCityOfProfile();
         popup.then(function() {
-          $scope.loginCallback(resp.data.private_token);
+          $scope.loginCallback(resp.data.user.private_token);
         });
       }, function(err) {
         $scope.closeModal();
@@ -151,6 +151,7 @@ angular.module('confjuvapp.controllers', [])
       $scope.loadStages();
       $scope.parseURLParams();
       $scope.loadFollowedProposals();
+      $scope.loadVotedProposals();
     };
 
     // Function to retrieve password
@@ -199,12 +200,12 @@ angular.module('confjuvapp.controllers', [])
     $scope.data = {};
 
     $scope.setLoginBasedOnEmail = function() {
-      if (!$scope.profile.login && $scope.profile.email) $scope.profile.login = ConfJuvAppUtils.normalizeLogin($scope.profile.email);
+      // if (!$scope.profile.login && $scope.profile.email) $scope.profile.login = ConfJuvAppUtils.normalizeLogin($scope.profile.email);
     };
 
     // Function to register
     $scope.Register = function(data) {
-      if (!data || !data.login || !data.email || !data.password || !data.password_confirmation) {
+      if (!data || !data.email || !data.password || !data.password_confirmation) {
         $ionicPopup.alert({ title: 'Registrar', template: 'Por favor preencha todos os campos' });
         return;
       }
@@ -212,7 +213,7 @@ angular.module('confjuvapp.controllers', [])
         $ionicPopup.alert({ title: 'Registrar', template: 'Senhas não conferem' });
         return;
       }
-
+       
       $scope.loading = true;
 
       var config = {
@@ -223,7 +224,7 @@ angular.module('confjuvapp.controllers', [])
       }
       var params = {
         'email': data.email,
-        'login': data.login,
+        'login': data.login || ConfJuvAppUtils.normalizeLogin(data.email),
         'password': data.password,
         'password_confirmation': data.password_confirmation,
         'tipo': $scope.registerFormType,
@@ -434,7 +435,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.loadProposalsOfMyCity = function() {
       $scope.loading = true;
       if($scope.proposalsFilter == ''){
-        $scope.proposalsFilter = '&categories_ids=' + $scope.profile.region.id;
+        $scope.proposalsFilter = '&category_ids=' + $scope.profile.region.id;
       }else{
         $scope.proposalsFilter = '';
       }
@@ -569,7 +570,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?19', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?21', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -1168,6 +1169,80 @@ angular.module('confjuvapp.controllers', [])
     };
 
     /******************************************************************************
+     V O T E  P R O P O S A L
+     ******************************************************************************/
+
+    $scope.showVotedProposals = function() {
+      $scope.cardsBackup = [];
+      $scope.showBackupProposalsLink = false;
+      $scope.cards = $scope.voted.slice();
+    }
+
+    $scope.loadVotedProposals = function() {
+      $scope.loading = true;
+      var config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        timeout: 10000
+      };
+
+      $http.get(ConfJuvAppUtils.pathTo('/articles/voted_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
+      .then(function(resp) {
+        $scope.voted = [];
+        $scope.votedIds = [];
+        var voted_articles = resp.data.articles;
+        for (var i = 0; i < voted_articles.length; i++) {
+          var p = voted_articles[i];
+          $scope.voted.push(p);
+          $scope.votedIds.push(p.id);
+        }
+        $scope.loading = false;
+      }, function(err) {
+        $scope.loading = false;
+        $ionicPopup.alert({ title: 'Propostas apoiadas', template: 'Erro ao carregar propostas apoiadas' });
+      });
+    };
+
+    $scope.alreadyVoted = function(proposal) {
+      if ($scope.hasOwnProperty('votedIds')) {
+        return ($scope.votedIds.indexOf(proposal.id) > -1);
+      }
+      else {
+        return false;
+      }
+    };
+
+    $scope.vote = function(proposal) {
+      if ($scope.clicked) {
+        return;
+      }
+      $scope.clicked = true;
+      $scope.loading = true;
+
+      var config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        timeout: 10000
+      }
+
+      $http.post(ConfJuvAppUtils.pathTo('articles/' + proposal.id + '/vote'), jQuery.param({ private_token: $scope.token }), config)
+      .then(function(resp) {
+        $ionicPopup.alert({ title: 'Apoiar proposta', template: 'Pronto! Proposta apoiada. Você pode acompanhar suas propostas apoiadas no menu lateral esquerdo.' });
+        $scope.voted.push(proposal);
+        $scope.votedIds.push(proposal.id);
+        $scope.loading = false;
+        $scope.clicked = false;
+      }, function(err) {
+        $ionicPopup.alert({ title: 'Apoiar proposta', template: 'Erro ao apoiar proposta.' });
+        $scope.loading = false;
+        $scope.clicked = false;
+      });
+    };
+
+
+    /******************************************************************************
      F O L L O W  P R O P O S A L
      ******************************************************************************/
 
@@ -1214,6 +1289,10 @@ angular.module('confjuvapp.controllers', [])
     };
 
     $scope.follow = function(proposal) {
+      if ($scope.clicked) {
+        return;
+      }
+      $scope.clicked = true;
       $scope.loading = true;
 
       var config = {
@@ -1229,11 +1308,14 @@ angular.module('confjuvapp.controllers', [])
         $scope.following.push(proposal);
         $scope.followingIds.push(proposal.id);
         $scope.loading = false;
+        $scope.clicked = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Seguir proposta', template: 'Erro ao seguir proposta.' });
         $scope.loading = false;
+        $scope.clicked = false;
       });
     };
+
 
     /******************************************************************************
      P R O F I L E

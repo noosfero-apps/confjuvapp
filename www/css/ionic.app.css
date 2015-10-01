@@ -7939,6 +7939,9 @@ html .modal, html .scroll-content {
   #proposal .follow {
     background: #00796B;
     color: #ffffff; }
+  #proposal .vote {
+    background: #52D64B;
+    color: #ffffff; }
   #proposal .proposal-buttons, #proposal .proposal-badges {
     text-align: center; }
   #proposal .proposal-buttons span {
