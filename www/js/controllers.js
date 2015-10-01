@@ -570,7 +570,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?20', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?21', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -1214,6 +1214,10 @@ angular.module('confjuvapp.controllers', [])
     };
 
     $scope.vote = function(proposal) {
+      if ($scope.clicked) {
+        return;
+      }
+      $scope.clicked = true;
       $scope.loading = true;
 
       var config = {
@@ -1229,9 +1233,11 @@ angular.module('confjuvapp.controllers', [])
         $scope.voted.push(proposal);
         $scope.votedIds.push(proposal.id);
         $scope.loading = false;
+        $scope.clicked = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Apoiar proposta', template: 'Erro ao apoiar proposta.' });
         $scope.loading = false;
+        $scope.clicked = false;
       });
     };
 
@@ -1283,6 +1289,10 @@ angular.module('confjuvapp.controllers', [])
     };
 
     $scope.follow = function(proposal) {
+      if ($scope.clicked) {
+        return;
+      }
+      $scope.clicked = true;
       $scope.loading = true;
 
       var config = {
@@ -1298,9 +1308,11 @@ angular.module('confjuvapp.controllers', [])
         $scope.following.push(proposal);
         $scope.followingIds.push(proposal.id);
         $scope.loading = false;
+        $scope.clicked = false;
       }, function(err) {
         $ionicPopup.alert({ title: 'Seguir proposta', template: 'Erro ao seguir proposta.' });
         $scope.loading = false;
+        $scope.clicked = false;
       });
     };
 
