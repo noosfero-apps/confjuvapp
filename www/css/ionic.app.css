@@ -8132,7 +8132,8 @@ html .modal, html .scroll-content {
   color: #fff; }
 
 .stage-second.current, .stage-second.current:hover, .stage-second.current:active {
-  background-color: #9c27b0; }
+  background-color: #ff9800;
+  color: #fff; }
 
 .stage-last, .stage-last:hover, .stage-last:active {
   border-radius: 0 20px 20px 0; }
