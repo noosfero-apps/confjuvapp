@@ -1316,6 +1316,76 @@ angular.module('confjuvapp.controllers', [])
       });
     };
 
+    /******************************************************************************
+     B A D G E S
+     ******************************************************************************/
+
+//    $scope.showFollowedProposals = function() {
+//      $scope.cardsBackup = [];
+//      $scope.showBackupProposalsLink = false;
+//
+//      $scope.cards = $scope.following.slice();
+//    }
+//
+//    $scope.loadFollowedProposals = function() {
+//      $scope.loading = true;
+//      var config = {
+//        headers: {
+//          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+//        },
+//        timeout: 10000
+//      };
+//
+//      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
+//      .then(function(resp) {
+//        $scope.following = [];
+//        $scope.followingIds = [];
+//        var followed = resp.data.articles;
+//        for (var i = 0; i < followed.length; i++) {
+//          var p = followed[i];
+//          $scope.following.push(p);
+//          $scope.followingIds.push(p.id);
+//        }
+//        $scope.loading = false;
+//      }, function(err) {
+//        $scope.loading = false;
+//        $ionicPopup.alert({ title: 'Propostas seguidas', template: 'Erro ao carregar propostas seguidas' });
+//      });
+//    };
+
+    // Load Badges
+    $scope.loadMyBadges = function() {
+      $scope.loading = true;
+
+      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken();
+      var path = 'gamification_plugin/my/badges' + params;
+
+      $http.get(ConfJuvAppUtils.pathTo(path))
+      .then(function(resp) {
+        var data = resp.data['badges'];
+        var badges =[];
+        var badge_type_loaded = {};
+        for (var i = 0; i < data.length; i++) {
+          if(badge_type_loaded[data[i]['name']]){
+            for (var j = 0; j < badges.length; j++) {
+              if(badges[j]['name'] == data[i]['name']){
+                badges[j] = data[i];
+                break;
+              }
+            }
+          }else{
+            badge_type_loaded[data[i]['name']] = true;
+            badges.push(data[i]);
+          }
+        }
+        $scope.profile['badges'] = badges;
+console.log($scope.profile);
+        $scope.loading = false;
+      }, function(err) {
+        var popup = $ionicPopup.alert({ title: 'Meus Badges', template: 'Não foi possível carregar os badges.' });
+        $scope.loading = false;
+      });
+    };
 
     /******************************************************************************
      P R O F I L E
@@ -1334,6 +1404,7 @@ angular.module('confjuvapp.controllers', [])
       .then(function(resp) {
         $scope.profile = resp.data.person;
         $scope.loginCallback(ConfJuvAppUtils.getPrivateToken());
+        $scope.loadMyBadges();
         $scope.setStateAndCityOfProfile();
         $scope.loading = false;
       }, function(err) {
