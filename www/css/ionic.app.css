@@ -8183,13 +8183,27 @@ html .modal, html .scroll-content {
   padding-bottom: 11px; }
   #profile h1 {
     position: relative;
-    background: #3f51b5;
+    background: url(../img/blue.png);
     font-weight: 700;
     font-size: 36px;
+    height: 184px;
+    overflow: hidden;
     color: #ffffff;
     text-align: center;
-    padding: 60px 0;
-    overflow: visible; }
+    padding: 30px 0; }
+    #profile h1 span {
+      margin: 0 auto;
+      display: inline-block; }
+      #profile h1 span span {
+        text-align: center;
+        float: left;
+        margin-left: 11px;
+        margin-top: 11px; }
+    #profile h1 img {
+      float: left; }
+    #profile h1 h2 {
+      color: #ffffff;
+      cursor: pointer; }
   #profile h2 {
     color: #3f51b5;
     font-size: 20px;
@@ -8214,3 +8228,28 @@ html .modal, html .scroll-content {
     margin: 11px 0; }
   #profile .text-center {
     text-align: center; }
+  #profile .level-and-points {
+    color: #212121;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold; }
+  #profile #game-bar {
+    border-radius: 12px;
+    height: 22px;
+    width: 90%;
+    background: #EDEFF9;
+    position: relative;
+    margin: 0 auto; }
+  #profile #game-bar-inner {
+    border-radius: 12px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: #4E65C4;
+    padding-right: 11px;
+    font-weight: bold;
+    text-align: right;
+    color: #ffffff; }
+  #profile hr {
+    margin-top: 22px; }

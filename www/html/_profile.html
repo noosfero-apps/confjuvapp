@@ -1,23 +1,32 @@
 <div id="profile" class="modal">
   <ion-content>
     <h1 class="title">
-      {{profile.name}}
+      <span>
+        <img src="img/user.png" alt="" width="120" />
+        <span>
+          {{profile.name}}
+          <h2 ng-click="editProfile()">editar perfil</h2>
+        </span>
+      </span>
       <a class="back icon-left ion-reply" ng-click="closeProfile()">Voltar</a>
     </h1>
 
-    <h2> Nível {{profile.level}} Você possui {{profile.points}} pontos </h2>
-    <div>{{profile.gamification_plugin_level_percent}} %</div>
+    <p class="level-and-points">Nível {{profile.level}}. Você possui {{profile.points}} pontos.</p>
+    <div id="game-bar"><div id="game-bar-inner" ng-style="{ 'width': profile.gamification_plugin_level_percent + '%' }">{{profile.gamification_plugin_level_percent}}%</div></div>
 
-    <h1> Suas Medalhas</h1>
-    <div class="list">
+    <hr />
 
-      <a ng-repeat="badge in profile.badges" href="#/" class="item item-thumbnail-left">
-        <img ng-src="{{ badge.name }}">
-        <h2>{{ badge.level }}</h2>
-        <h4>{{ badge.title }}</h4>
-        <h4>{{ badge.description }}</h4>
-      </a>
+    <h2>Suas Medalhas</h2>
+
+    <!-- FIXME Need some badges in order to add style to this
+    <div id="badges">
+      <div ng-repeat="badge in profile.badges" class="badge">
+        <span>{{badge.level}}</span>
+        <img ng-src="img/badges/{{badge.name}}.png" />
+        <p>Level {{badge.level}}</p>
+      </div>
     </div>
+    -->
 
     <h2>Nome</h2>
     <p>{{profile.name}}</p>
