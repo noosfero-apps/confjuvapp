@@ -46,4 +46,12 @@ filter('generoFilter', function() {
     genero[2] = 'Feminino';
     return genero[type];
   };
+}).
+filter('membroConselhoFilter', function() {
+  return function(type) {
+    var membro = {};
+    membro[1] = 'Sim';
+    membro[2] = 'Não';
+    return membro[type];
+  };
 });

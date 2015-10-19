@@ -53,4 +53,17 @@
       </select>
     </label>
   </div>
+
+  <div>
+    <label>
+      <div class="input-label">
+        É membro de conselho municipal ou estadual da juventude?
+      </div>
+      <select ng-model="profile.membro_conselho" required class="item">
+        <option value="" ng-selected="!profile.membro_conselho">É membro de conselho municipal ou estadual da juventude?</option>
+        <option value="1">{{ 1 | membroConselhoFilter}}</option>
+        <option value="2">{{ 2 | membroConselhoFilter}}</option>
+      </select>
+    </label>
+  </div>
 </div>

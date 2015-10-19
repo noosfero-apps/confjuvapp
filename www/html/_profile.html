@@ -46,6 +46,9 @@
     <h2>Etnia</h2>
     <p>{{profile.etnia | etniaFilter}}</p>
 
+    <h2>É membro de conselho municipal ou estadual da juventude?</h2>
+    <p>{{profile.membro_conselho | membroConselhoFilter}}</p>
+
     <h2><span ng-show="profile.transgenero == 'false'">Não</span> Sou Transgênero</h2>
   </ion-content>
 </div>

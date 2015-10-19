@@ -229,6 +229,7 @@ angular.module('confjuvapp.controllers', [])
         'password_confirmation': data.password_confirmation,
         'tipo': $scope.registerFormType,
         'orientacao_sexual': data.orientacao_sexual,
+        'membro_conselho': data.membro_conselho,
         'identidade_genero': data.identidade_genero,
         'transgenero': data.transgenero,
         'etnia': data.etnia,
@@ -1472,6 +1473,7 @@ angular.module('confjuvapp.controllers', [])
         'private_token': $scope.token,
         'person[name]': profile.name,
         'person[orientacao_sexual]': profile.orientacao_sexual,
+        'person[membro_conselho]': profile.membro_conselho,
         'person[identidade_genero]': profile.identidade_genero,
         'person[transgenero]': profile.transgenero,
         'person[etnia]': profile.etnia
@@ -1500,7 +1502,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.profileComplete = true;
     $scope.hideProfileWarning = !!window.localStorage['hide_profile_warning'];
     $scope.checkCompleteness = function(p) {
-      if (!!!p.name || !!!p.orientacao_sexual || !!!p.identidade_genero || !!!p.etnia || !!!p.city) {
+      if (!!!p.name || !!!p.orientacao_sexual || !!!p.identidade_genero || !!!p.etnia || !!!p.city || !!!p.membro_conselho) {
         $scope.profileComplete = false;
       }
     };
