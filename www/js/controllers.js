@@ -529,6 +529,8 @@ angular.module('confjuvapp.controllers', [])
           $scope.showBackupProposalsLink = true;
         }
       }
+        
+      $scope.changingCard = false;
     };
 
     $scope.showBackupProposals = function() {
@@ -537,12 +539,16 @@ angular.module('confjuvapp.controllers', [])
       $scope.showBackupProposalsLink = false;
     };
 
+    $scope.changingCard = false;
     $scope.nextCard = function() {
-      var index = $scope.cards.length - 1;
-      if (index == -1) {
-        index = 0;
+      if (!$scope.changingCard) {
+        $scope.changingCard = true;
+        var index = $scope.cards.length - 1;
+        if (index == -1) {
+          index = 0;
+        }
+        $scope.cardDestroyed(index);
       }
-      $scope.cardDestroyed(index);
     };
 
     /******************************************************************************
