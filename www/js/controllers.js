@@ -1371,6 +1371,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.loginCallback(ConfJuvAppUtils.getPrivateToken());
         $scope.loadMyBadges();
         $scope.setStateAndCityOfProfile();
+        $scope.checkCompleteness($scope.profile);
         $scope.loading = false;
       }, function(err) {
         $scope.token = ConfJuvAppUtils.setPrivateToken(null);
@@ -1488,6 +1489,18 @@ angular.module('confjuvapp.controllers', [])
         $ionicPopup.alert({ title: 'Perfil', template: 'Erro ao atualizar perfil' });
         $scope.loading = false;
       });
+    };
+
+    $scope.profileComplete = true;
+    $scope.hideProfileWarning = !!window.localStorage['hide_profile_warning'];
+    $scope.checkCompleteness = function(p) {
+      console.log(p);
+      if (!!!p.name || !!!p.orientacao_sexual || !!!p.identidade_genero || !!!p.etnia || !!!p.city) {
+        $scope.profileComplete = false;
+      }
+    };
+    $scope.ignoreProfileWarning = function() {
+      $scope.hideProfileWarning = window.localStorage['hide_profile_warning'] = true;
     };
 
     /******************************************************************************

@@ -106,3 +106,43 @@
     margin-top: $unit * 2;
   }
 }
+
+#profile-warning {
+  background: #FFF4DA url(../img/warning.png) left center no-repeat;
+  border-top: 3px solid #F1E1BE;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+  p {
+    color: $darkergrey;
+    padding-left: 64px;
+    margin: $unit;
+
+    b {
+      text-decoration: underline;
+    }
+  }
+
+  p + p {
+    color: $gold;
+    font-weight: bold;
+  }
+
+  span {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background: url(../img/close.png);
+    position: absolute;
+    top: $unit;
+    right: 100px;
+    cursor: pointer;
+
+    span {
+      display: none;
+    }
+  }
+}

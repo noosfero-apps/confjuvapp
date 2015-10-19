@@ -8253,3 +8253,31 @@ html .modal, html .scroll-content {
     color: #ffffff; }
   #profile hr {
     margin-top: 22px; }
+
+#profile-warning {
+  background: #FFF4DA url(../img/warning.png) left center no-repeat;
+  border-top: 3px solid #F1E1BE;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2; }
+  #profile-warning p {
+    color: #212121;
+    padding-left: 64px;
+    margin: 11px; }
+    #profile-warning p b {
+      text-decoration: underline; }
+  #profile-warning p + p {
+    color: #B0964C;
+    font-weight: bold; }
+  #profile-warning span {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background: url(../img/close.png);
+    position: absolute;
+    top: 11px;
+    right: 100px; }
+    #profile-warning span span {
+      display: none; }
