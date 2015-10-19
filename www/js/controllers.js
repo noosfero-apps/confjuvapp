@@ -570,7 +570,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?21', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?22', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -1396,7 +1396,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.profileModal.show();
       }
       else {
-        $ionicModal.fromTemplateUrl('html/_profile.html', {
+        $ionicModal.fromTemplateUrl('html/_profile.html?1', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
