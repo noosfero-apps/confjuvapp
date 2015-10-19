@@ -1016,7 +1016,7 @@ angular.module('confjuvapp.controllers', [])
 
      $scope.showIntro = function() {
        $scope.introDisplayed = true;
-       window.localStorage['saw_intro'] = true;
+       window.localStorage['saw_intro_2'] = true;
      }
 
      $scope.next = function() {
@@ -1494,7 +1494,6 @@ angular.module('confjuvapp.controllers', [])
     $scope.profileComplete = true;
     $scope.hideProfileWarning = !!window.localStorage['hide_profile_warning'];
     $scope.checkCompleteness = function(p) {
-      console.log(p);
       if (!!!p.name || !!!p.orientacao_sexual || !!!p.identidade_genero || !!!p.etnia || !!!p.city) {
         $scope.profileComplete = false;
       }

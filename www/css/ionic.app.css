@@ -8177,6 +8177,8 @@ html .modal, html .scroll-content {
     background: #009688; }
   #intro #intro-3 {
     background: #3f51b5; }
+  #intro #intro-4 {
+    background: #329C9A; }
 
 #profile {
   background: #fafafa;
@@ -8278,6 +8280,7 @@ html .modal, html .scroll-content {
     background: url(../img/close.png);
     position: absolute;
     top: 11px;
-    right: 100px; }
+    right: 100px;
+    cursor: pointer; }
     #profile-warning span span {
       display: none; }
