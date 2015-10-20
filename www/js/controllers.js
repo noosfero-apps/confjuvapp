@@ -678,17 +678,11 @@ angular.module('confjuvapp.controllers', [])
           $scope.closeProposalModal();
           var popup = $ionicPopup.alert({ title: 'Criar proposta', template: 'Proposta criada com sucesso!' });
           popup.then(function() {
-            var topic = null;
-            for (var i = 0; i < $scope.topics.length; i++) {
-              if (data.topic_id.id == $scope.topics[i].id) {
-                topic = $scope.topics[i];
-              }
-            }
             var proposal = {
               id: resp.data.article.id,
               title: data.title,
               body: data.description,
-              topic: topic,
+              topic: null,
               categories: [data.city, data.state],
               author: { name: $scope.profile.name, id: $scope.profile.id }
             };
@@ -1237,6 +1231,7 @@ angular.module('confjuvapp.controllers', [])
       $http.post(ConfJuvAppUtils.pathTo('articles/' + proposal.id + '/vote'), jQuery.param({ private_token: $scope.token }), config)
       .then(function(resp) {
         $ionicPopup.alert({ title: 'Apoiar proposta', template: 'Pronto! Proposta apoiada. Você pode acompanhar suas propostas apoiadas no menu lateral esquerdo.' });
+        proposal.topic = null;
         $scope.voted.push(proposal);
         $scope.votedIds.push(proposal.id);
         $scope.loading = false;
@@ -1311,11 +1306,12 @@ angular.module('confjuvapp.controllers', [])
 
       $http.post(ConfJuvAppUtils.pathTo('articles/' + proposal.id + '/follow'), jQuery.param({ private_token: $scope.token }), config)
       .then(function(resp) {
-        $ionicPopup.alert({ title: 'Seguir proposta', template: 'Pronto! Você pode acompanhar suas propostas seguidas através do menu lateral esquerdo.' });
+        proposal.topic = false;
         $scope.following.push(proposal);
         $scope.followingIds.push(proposal.id);
         $scope.loading = false;
         $scope.clicked = false;
+        $ionicPopup.alert({ title: 'Seguir proposta', template: 'Pronto! Você pode acompanhar suas propostas seguidas através do menu lateral esquerdo.' });
       }, function(err) {
         $ionicPopup.alert({ title: 'Seguir proposta', template: 'Erro ao seguir proposta.' });
         $scope.loading = false;
