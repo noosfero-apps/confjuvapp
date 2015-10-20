@@ -105,6 +105,35 @@
   hr {
     margin-top: $unit * 2;
   }
+
+  .badge {
+    position: relative;
+
+    img {
+      width: 128px;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    span {
+      border-radius: 50%;
+      border: 2px solid $black;
+      background: $white;
+      color: $black;
+      position: absolute;
+      right: $unit;
+      top: $unit;
+      font-size: 22px;
+      padding-top: 7px;
+      padding-bottom: 5px;
+      display: block;
+      width: 32px;
+      text-align: center;
+      overflow: hidden;
+    }
+  }
 }
 
 #profile-warning {
