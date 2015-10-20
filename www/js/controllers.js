@@ -122,7 +122,6 @@ angular.module('confjuvapp.controllers', [])
         $scope.closeModal();
         var popup = $ionicPopup.alert({ title: 'Login', template: 'Login efetuado com sucesso!' });
         $scope.profile = resp.data.user.person;
-        $scope.setStateAndCityOfProfile();
         popup.then(function() {
           $scope.loginCallback(resp.data.user.private_token);
         });
@@ -152,6 +151,8 @@ angular.module('confjuvapp.controllers', [])
       $scope.parseURLParams();
       $scope.loadFollowedProposals();
       $scope.loadVotedProposals();
+      $scope.setStateAndCityOfProfile();
+      $scope.loadMyBadges();
     };
 
     // Function to retrieve password
@@ -1372,8 +1373,6 @@ angular.module('confjuvapp.controllers', [])
       .then(function(resp) {
         $scope.profile = resp.data.person;
         $scope.loginCallback(ConfJuvAppUtils.getPrivateToken());
-        $scope.loadMyBadges();
-        $scope.setStateAndCityOfProfile();
         $scope.checkCompleteness($scope.profile);
         $scope.loading = false;
       }, function(err) {
