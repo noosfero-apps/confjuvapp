@@ -1441,7 +1441,7 @@ angular.module('confjuvapp.controllers', [])
         }
 
         if ($scope.signupPersonFields.length == 0) $scope.loadSignupPersonFields();
-        $ionicModal.fromTemplateUrl('html/_edit_profile.html?1', {
+        $ionicModal.fromTemplateUrl('html/_edit_profile.html?2', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -1491,6 +1491,7 @@ angular.module('confjuvapp.controllers', [])
         popup.then(function() {
           $scope.loading = false;
           $scope.closeEditProfile();
+          $scope.checkCompleteness(profile);
         });
         $scope.loading = false;
       }, function(err) {
@@ -1502,7 +1503,10 @@ angular.module('confjuvapp.controllers', [])
     $scope.profileComplete = true;
     $scope.hideProfileWarning = !!window.localStorage['hide_profile_warning'];
     $scope.checkCompleteness = function(p) {
-      if (!!!p.name || !!!p.orientacao_sexual || !!!p.identidade_genero || !!!p.etnia || !!!p.city || !!!p.membro_conselho) {
+      if (!!p.name && !!p.orientacao_sexual && !!p.identidade_genero && !!p.etnia && !!p.membro_conselho && (!!p.region || !!p.city)) {
+        $scope.profileComplete = true;
+      }
+      else {
         $scope.profileComplete = false;
       }
     };
