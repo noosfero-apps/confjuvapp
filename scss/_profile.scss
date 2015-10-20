@@ -143,7 +143,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 100;
 
   p {
     color: $darkergrey;
@@ -166,8 +166,8 @@
     height: 26px;
     background: url(../img/close.png);
     position: absolute;
-    top: $unit;
-    right: 100px;
+    top: 2px;
+    right: 2px;
     cursor: pointer;
 
     span {

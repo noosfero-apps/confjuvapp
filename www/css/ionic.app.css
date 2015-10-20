@@ -8284,7 +8284,7 @@ html .modal, html .scroll-content {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2; }
+  z-index: 100; }
   #profile-warning p {
     color: #212121;
     padding-left: 64px;
@@ -8300,8 +8300,8 @@ html .modal, html .scroll-content {
     height: 26px;
     background: url(../img/close.png);
     position: absolute;
-    top: 11px;
-    right: 100px;
+    top: 2px;
+    right: 2px;
     cursor: pointer; }
     #profile-warning span span {
       display: none; }
