@@ -1348,7 +1348,7 @@ angular.module('confjuvapp.controllers', [])
             badges.push(data[i]);
           }
         }
-        $scope.profile['badges'] = badges;
+        $scope.profile['badges'] = $scope.badges = badges;
         $scope.loading = false;
       }, function(err) {
         var popup = $ionicPopup.alert({ title: 'Meus Badges', template: 'Não foi possível carregar os badges.' });
@@ -1481,6 +1481,7 @@ angular.module('confjuvapp.controllers', [])
       $http.post(ConfJuvAppUtils.pathTo('people/' + $scope.profile.id), jQuery.param(params), config)
       .then(function(resp) {
         $scope.profile = resp.data.person;
+        $scope.profile.badges = $scope.badges;
         $scope.setStateAndCityOfProfile();
         var popup = $ionicPopup.alert({ title: 'Perfil', template: 'Perfil atualizado com sucesso' });
         popup.then(function() {
