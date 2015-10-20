@@ -12,7 +12,7 @@
     </h1>
 
     <p class="level-and-points">Nível {{profile.level}}. Você possui {{profile.points}} pontos.</p>
-    <div id="game-bar"><div id="game-bar-inner" ng-style="{ 'width': profile.gamification_plugin_level_percent + '%' }">{{profile.gamification_plugin_level_percent}}%</div></div>
+    <div id="game-bar"><div id="game-bar-inner" ng-style="{ 'width': profile.gamification_plugin_level_percent + '%' }">{{profile.gamification_plugin_level_percent.toFixed(2)}}%</div></div>
 
     <hr />
 
