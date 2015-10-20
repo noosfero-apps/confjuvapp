@@ -1509,6 +1509,11 @@ angular.module('confjuvapp.controllers', [])
       $scope.hideProfileWarning = window.localStorage['hide_profile_warning'] = true;
     };
 
+    $scope.ignoreAndEditProfile = function() {
+      $scope.ignoreProfileWarning();
+      $scope.editProfile();
+    };
+
     /******************************************************************************
      M Y  P R O P O S A L S
      ******************************************************************************/
