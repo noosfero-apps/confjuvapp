@@ -1387,9 +1387,8 @@ angular.module('confjuvapp.controllers', [])
     };
 
     $scope.showProfile = function() {
-      if (!$scope.profile) {
-        $scope.loadProfile();
-      }
+      $scope.loadProfile();
+      $scope.loadMyBadges();
       $scope.displayProfile();
     };
 
