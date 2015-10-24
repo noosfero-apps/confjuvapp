@@ -126,8 +126,16 @@ angular.module('confjuvapp.controllers', [])
           $scope.loginCallback(resp.data.user.private_token);
         });
       }, function(err) {
+        console.log(err);
         $scope.closeModal();
-        var popup = $ionicPopup.alert({ title: 'Login', template: 'Erro ao efetuar login. Verifique usuário e senha e conexão com a internet.' });
+        var msg = 'Erro ao efetuar login: ';
+        if (err.hasOwnProperty('data') && err.data.hasOwnProperty('message')) {
+          msg += err.data.message;
+        }
+        else {
+          msg += 'Verifique usuário e senha e conexão com a internet.';
+        }
+        var popup = $ionicPopup.alert({ title: 'Login', template: msg });
         $scope.loggedIn = false;
         $scope.loading = false;
         $scope.data.password = '';
