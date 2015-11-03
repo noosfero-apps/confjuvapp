@@ -8134,6 +8134,9 @@ html .modal, html .scroll-content {
 .stage-last, .stage-last:hover, .stage-last:active {
   border-radius: 0 20px 20px 0; }
 
+.stage-last small {
+  visibility: hidden; }
+
 #intro {
   height: 100%; }
   #intro .slider {
@@ -8173,15 +8176,19 @@ html .modal, html .scroll-content {
   #intro #intro-4 {
     background: #329C9A; }
   #intro #intro-5 {
-    background: #fafafa; }
+    background: #fafafa;
+    padding-top: 0; }
     #intro #intro-5 h3 {
       color: #000; }
     #intro #intro-5 .img {
-      height: 250px;
-      background: #329b9a url(../img/intro/5.png) center bottom no-repeat;
-      background-size: contain; }
+      height: 200px;
+      background: #329b9a url(../img/intro/5.png?1) center bottom no-repeat;
+      background-size: contain;
+      padding: 0; }
     #intro #intro-5 p {
-      color: #4c6070; }
+      color: #4c6070;
+      font-size: 13px;
+      margin: 2px; }
   #intro .slider-pager {
     display: none; }
 

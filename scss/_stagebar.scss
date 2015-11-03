@@ -1,31 +1,32 @@
-  .col {
-    padding: 3px;
-  }
+.col {
+  padding: 3px;
+}
 
-  .stage, .stage:hover
-  {
-  		width: 100%; 
-      cursor: default; 
-      font-size: 11px; 
-      color: #bdbdbd; 
-      line-height: 18px; 
-      border: 0px none; 
-      background-color: #E0E0E0; 
-  }
+.stage, .stage:hover {
+  width: 100%; 
+  cursor: default; 
+  font-size: 11px; 
+  color: #bdbdbd; 
+  line-height: 18px; 
+  border: 0px none; 
+  background-color: #E0E0E0; 
+}
 
-  .stage-first, .stage-first:hover, .stage-first:active {
-    border-radius: 20px 0 0 20px;
-  }
+.stage-first, .stage-first:hover, .stage-first:active {
+  border-radius: 20px 0 0 20px;
+}
 
-  .stage-first.current, .stage-first.current:hover, .stage-first.current:active,
-  .stage-second.current, .stage-second.current:hover, .stage-second.current:active,
-  .stage-last.current, .stage-last.current:hover, .stage-last.current:active
-  {
-    background-color: #ff9800;
-    color: #fff;
-  }
+.stage-first.current, .stage-first.current:hover, .stage-first.current:active,
+.stage-second.current, .stage-second.current:hover, .stage-second.current:active,
+.stage-last.current, .stage-last.current:hover, .stage-last.current:active {
+  background-color: #ff9800;
+  color: #fff;
+}
 
-  .stage-last, .stage-last:hover, .stage-last:active
-  {
-    border-radius: 0 20px 20px 0;
-  }
+.stage-last, .stage-last:hover, .stage-last:active {
+  border-radius: 0 20px 20px 0;
+}
+
+.stage-last small {
+  visibility: hidden;
+}

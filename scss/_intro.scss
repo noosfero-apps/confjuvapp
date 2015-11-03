@@ -63,19 +63,23 @@
 
   #intro-5 {
     background: #fafafa;
+    padding-top: 0;
 
     h3 {
       color: #000;
     }
 
     .img {
-      height: 250px;
+      height: 200px;
       background: #329b9a url(../img/intro/5.png?1) center bottom no-repeat;
       background-size: contain;
+      padding: 0;
     }
 
     p {
       color: #4c6070;
+      font-size: 13px;
+      margin: 2px;
     }
   }
 
