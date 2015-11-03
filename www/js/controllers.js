@@ -1026,7 +1026,7 @@ angular.module('confjuvapp.controllers', [])
 
      $scope.showIntro = function() {
        $scope.introDisplayed = true;
-       window.localStorage['saw_intro_2'] = true;
+       window.localStorage['saw_intro_3'] = true;
      }
 
      $scope.next = function() {

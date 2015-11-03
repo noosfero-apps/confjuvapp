@@ -8172,6 +8172,18 @@ html .modal, html .scroll-content {
     background: #3f51b5; }
   #intro #intro-4 {
     background: #329C9A; }
+  #intro #intro-5 {
+    background: #fafafa; }
+    #intro #intro-5 h3 {
+      color: #000; }
+    #intro #intro-5 .img {
+      height: 250px;
+      background: #329b9a url(../img/intro/5.png) center bottom no-repeat;
+      background-size: contain; }
+    #intro #intro-5 p {
+      color: #4c6070; }
+  #intro .slider-pager {
+    display: none; }
 
 #profile {
   background: #fafafa;

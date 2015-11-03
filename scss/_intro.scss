@@ -60,4 +60,26 @@
   #intro-4 {
     background: #329C9A;
   }
+
+  #intro-5 {
+    background: #fafafa;
+
+    h3 {
+      color: #000;
+    }
+
+    .img {
+      height: 250px;
+      background: #329b9a url(../img/intro/5.png?1) center bottom no-repeat;
+      background-size: contain;
+    }
+
+    p {
+      color: #4c6070;
+    }
+  }
+
+  .slider-pager {
+    display: none;
+  }
 }
