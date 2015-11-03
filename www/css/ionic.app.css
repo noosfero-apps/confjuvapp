@@ -8127,19 +8127,12 @@ html .modal, html .scroll-content {
 .stage-first, .stage-first:hover, .stage-first:active {
   border-radius: 20px 0 0 20px; }
 
-.stage-first.current, .stage-first.current:hover, .stage-first.current:active {
-  background-color: #ff9800;
-  color: #fff; }
-
-.stage-second.current, .stage-second.current:hover, .stage-second.current:active {
+.stage-first.current, .stage-first.current:hover, .stage-first.current:active, .stage-second.current, .stage-second.current:hover, .stage-second.current:active, .stage-last.current, .stage-last.current:hover, .stage-last.current:active {
   background-color: #ff9800;
   color: #fff; }
 
 .stage-last, .stage-last:hover, .stage-last:active {
   border-radius: 0 20px 20px 0; }
-
-.stage-last.current, .stage-last.current:hover, .stage-last.current:active {
-  background-color: #2196f3; }
 
 #intro {
   height: 100%; }
