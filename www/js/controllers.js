@@ -1405,7 +1405,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.profileModal.show();
       }
       else {
-        $ionicModal.fromTemplateUrl('html/_profile.html?2', {
+        $ionicModal.fromTemplateUrl('html/_profile.html?1', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
