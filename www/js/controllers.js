@@ -1582,10 +1582,17 @@ angular.module('confjuvapp.controllers', [])
      N A T I O N A L  P H A S E   P R O P O S A L S
      ******************************************************************************/
 
-    $scope.nationalProposals = [];
-
     $scope.showNationalProposals = function() {
       $scope.proposalFilters = { 'author_id': ConfJuvAppConfig.noosferoNationalPhaseProfileId };
+      $scope.reloadProposals();
+    };
+
+    /******************************************************************************
+     A L L   P R O P O S A L S
+     ******************************************************************************/
+
+    $scope.loadAllProposals = function() {
+      $scope.proposalFilters = null;
       $scope.reloadProposals();
     };
 
