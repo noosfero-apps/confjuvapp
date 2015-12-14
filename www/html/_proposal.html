@@ -5,6 +5,8 @@
         <span id="proposal-title">{{proposal.title}}</span>
         <br />
         <small>Autoria: {{proposal.author.name}}</small>
+        <br />
+        <small><b>{{proposal.votes_count}}</b> apoios | <b>{{proposal.comments_count}}</b> comentários | <b>{{proposal.followers_count}}</b> seguidores</small>
       </span>
       <a class="back icon-left ion-reply" ng-click="closeProposal()">Voltar</a>
     </h1>
@@ -55,7 +57,7 @@
     <hr>
 
     <div id="comments">
-      <h2>Comentários ({{commentStatus == 'none' ? 0 : (proposal.comments.length >= 20 ? '+20' : proposal.comments.length)}})</h2>
+      <h2>Comentários ({{proposal.comments_count}})</h2>
 
       <div class="comment-message" ng-show="commentStatus == 'none'">
         Não há comentários para esta proposta. 

@@ -3,6 +3,8 @@
 angular.module('confjuvapp.controllers', [])
   .controller('ProposalCtrl', function($scope, $ionicModal, $http, $ionicPopup, filterFilter, $cordovaSocialSharing, $ionicSideMenuDelegate) {
 
+    var defaultTimeout = 30000;
+
     $scope.largeScreen = (window.innerWidth >= 600);
 
     $scope.loading = false;
@@ -71,7 +73,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.loadSingleProposal = function(pid) {
       $scope.loading = true;
 
-      var params = '?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal';
+      var params = '?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal';
 
       var path = 'articles/' + pid + params;
 
@@ -114,7 +116,7 @@ angular.module('confjuvapp.controllers', [])
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
-        timeout: 10000
+        timeout: defaultTimeout
       }
 
       $http.post(ConfJuvAppUtils.pathTo('login'), jQuery.param(data), config)
@@ -177,7 +179,7 @@ angular.module('confjuvapp.controllers', [])
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
-        timeout: 10000
+        timeout: defaultTimeout
       }
 
       var data = { value: email };
@@ -229,7 +231,7 @@ angular.module('confjuvapp.controllers', [])
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
-        timeout: 10000
+        timeout: defaultTimeout
       }
       var params = {
         'email': data.email,
@@ -466,7 +468,7 @@ angular.module('confjuvapp.controllers', [])
         perPage = 11;
       }
 
-      var params = '?t=' + (new Date().getTime()) + '&private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&per_page=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
+      var params = '?t=' + (new Date().getTime()) + '&private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal&per_page=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
 
       var path = 'articles/' + topic.id + '/children' + params;
 
@@ -586,7 +588,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?22', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?23', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -669,7 +671,7 @@ angular.module('confjuvapp.controllers', [])
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
           },
-          timeout: 10000
+          timeout: defaultTimeout
         };
         var params = {
           'private_token': $scope.token,
@@ -771,7 +773,7 @@ angular.module('confjuvapp.controllers', [])
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
           },
-          timeout: 10000
+          timeout: defaultTimeout
         };
 
         var params = {
@@ -861,7 +863,7 @@ angular.module('confjuvapp.controllers', [])
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
           },
-          timeout: 10000
+          timeout: defaultTimeout
         };
 
         var params = {
@@ -938,7 +940,7 @@ angular.module('confjuvapp.controllers', [])
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
           },
-          timeout: 10000
+          timeout: defaultTimeout
         };
 
         var params = {
@@ -978,7 +980,7 @@ angular.module('confjuvapp.controllers', [])
          headers: {
            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
          },
-         timeout: 10000
+         timeout: defaultTimeout
        };
 
        $scope.proposal.hasMoreComments = true;
@@ -1140,7 +1142,7 @@ angular.module('confjuvapp.controllers', [])
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
           },
-          timeout: 10000
+          timeout: defaultTimeout
         };
         var params = {
           'private_token': $scope.token,
@@ -1194,10 +1196,10 @@ angular.module('confjuvapp.controllers', [])
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
-        timeout: 10000
+        timeout: defaultTimeout
       };
 
-      $http.get(ConfJuvAppUtils.pathTo('/articles/voted_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
+      $http.get(ConfJuvAppUtils.pathTo('/articles/voted_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
       .then(function(resp) {
         $scope.voted = [];
         $scope.votedIds = [];
@@ -1234,7 +1236,7 @@ angular.module('confjuvapp.controllers', [])
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
-        timeout: 10000
+        timeout: defaultTimeout
       }
 
       $http.post(ConfJuvAppUtils.pathTo('articles/' + proposal.id + '/vote'), jQuery.param({ private_token: $scope.token }), config)
@@ -1270,10 +1272,10 @@ angular.module('confjuvapp.controllers', [])
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
-        timeout: 10000
+        timeout: defaultTimeout
       };
 
-      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
+      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
       .then(function(resp) {
         $scope.following = [];
         $scope.followingIds = [];
@@ -1310,7 +1312,7 @@ angular.module('confjuvapp.controllers', [])
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
-        timeout: 10000
+        timeout: defaultTimeout
       }
 
       $http.post(ConfJuvAppUtils.pathTo('articles/' + proposal.id + '/follow'), jQuery.param({ private_token: $scope.token }), config)
@@ -1338,22 +1340,29 @@ angular.module('confjuvapp.controllers', [])
       var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken();
       var path = 'gamification_plugin/my/badges' + params;
 
+      $scope.profile.delegate = false;
+
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
         var data = resp.data['badges'];
         var badges =[];
         var badge_type_loaded = {};
         for (var i = 0; i < data.length; i++) {
-          if(badge_type_loaded[data[i]['name']]){
-            for (var j = 0; j < badges.length; j++) {
-              if(badges[j]['name'] == data[i]['name']){
-                badges[j] = data[i];
-                break;
+          if (data[i]['name'] === 'delegado') {
+            $scope.profile.delegate = true;
+          }
+          else {
+            if (badge_type_loaded[data[i]['name']]) {
+              for (var j = 0; j < badges.length; j++) {
+                if (badges[j]['name'] == data[i]['name']) {
+                  badges[j] = data[i];
+                  break;
+                }
               }
+            } else {
+              badge_type_loaded[data[i]['name']] = true;
+              badges.push(data[i]);
             }
-          }else{
-            badge_type_loaded[data[i]['name']] = true;
-            badges.push(data[i]);
           }
         }
         $scope.profile['badges'] = $scope.badges = badges;
@@ -1374,7 +1383,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.loadProfile = function() {
       $scope.loading = true;
 
-      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken() + '&t=' + (new Date().getTime()),
+      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken() + '&t=' + (new Date().getTime()) + '&fields=vote_count,comments_count,following_articles_count,articles_count,id,identifier,name,region,user,login,full_name,orientacao_sexual,identidade_genero,transgenero,etnia,membro_conselho,points,level,gamification_plugin_level_percent',
           path = 'people/me/' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
@@ -1405,7 +1414,7 @@ angular.module('confjuvapp.controllers', [])
         $scope.profileModal.show();
       }
       else {
-        $ionicModal.fromTemplateUrl('html/_profile.html?1', {
+        $ionicModal.fromTemplateUrl('html/_profile.html?2', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {
@@ -1468,7 +1477,7 @@ angular.module('confjuvapp.controllers', [])
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
-        timeout: 10000
+        timeout: defaultTimeout
       };
 
       var params = {
@@ -1539,10 +1548,10 @@ angular.module('confjuvapp.controllers', [])
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
           },
-          timeout: 10000
+          timeout: defaultTimeout
         };
 
-        var path = 'articles?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&author_id=' + $scope.profile.id + '&parent_id[]=';
+        var path = 'articles?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&author_id=' + $scope.profile.id + '&parent_id[]=';
           
         for (var i = 0; i < $scope.topics.length; i++) {
           path += '&parent_id[]=' +  $scope.topics[i].id;

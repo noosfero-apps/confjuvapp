@@ -4,7 +4,8 @@
       <span>
         <img src="img/user.png" alt="" width="120" />
         <span>
-          {{profile.name}}
+          {{profile.name}}<br />
+          <img ng-show="profile.delegate" src="img/badges/delegate.png" class="delegate" /><br />
           <h2 ng-click="editProfile()">editar perfil</h2>
         </span>
       </span>
@@ -12,6 +13,7 @@
     </h1>
 
     <p class="level-and-points">Nível {{profile.level}}. Você possui {{profile.points}} pontos.</p>
+    <p style="text-align: center;"><b>{{profile.vote_count}}</b> apoios | <b>{{profile.following_articles_count}}</b> seguidas | <b>{{profile.comments_count}}</b> comentários | <b>{{profile.articles_count}}</b> propostas</p>
     <div id="game-bar"><div id="game-bar-inner" ng-style="{ 'width': profile.gamification_plugin_level_percent + '%' }">{{profile.gamification_plugin_level_percent.toFixed(2)}}%</div></div>
 
     <hr />
