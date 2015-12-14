@@ -9233,6 +9233,8 @@ html .modal, html .scroll-content {
         color: #212121; }
       #proposals .card h3 p {
         margin: 0; }
+      #proposals .card h3.national {
+        background: #fc3; }
   #proposals .card-body {
     color: #000000;
     font-size: 14px;
@@ -9295,6 +9297,8 @@ html .modal, html .scroll-content {
     text-align: center;
     padding: 60px 0;
     overflow: visible; }
+    #proposal h1.national {
+      background: #fc3; }
   #proposal h2 {
     color: #009688;
     font-size: 18px;

@@ -468,7 +468,7 @@ angular.module('confjuvapp.controllers', [])
         perPage = 11;
       }
 
-      var params = '?t=' + (new Date().getTime()) + '&private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal&per_page=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
+      var params = '?t=' + (new Date().getTime()) + '&private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count,author.id&content_type=ProposalsDiscussionPlugin::Proposal&per_page=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
 
       if ($scope.hasOwnProperty('proposalFilters')) {
         for (var filter in $scope.proposalFilters) {
@@ -485,6 +485,10 @@ angular.module('confjuvapp.controllers', [])
         for (var i = 0; i < proposals.length; i++) {
           if (i < perPage) {
             var proposal = proposals[i];
+            proposal.national = false;
+            if (parseInt(proposal.author.id) === parseInt(ConfJuvAppConfig.noosferoNationalPhaseProfileId)) {
+              proposal.national = true;
+            }
             proposal.topic = topic;
             $scope.cards.push(proposal);
           }
@@ -594,7 +598,7 @@ angular.module('confjuvapp.controllers', [])
       }
       else {
         // Initiate the modal
-        $ionicModal.fromTemplateUrl('html/_proposal.html?23', {
+        $ionicModal.fromTemplateUrl('html/_proposal.html?24', {
           scope: $scope,
           animation: 'slide-in-up'
         }).then(function(modal) {

@@ -45,7 +45,7 @@
     <td-card ng-repeat="proposal in cards" on-destroy="cardDestroyed($index)"
              on-swipe-left="" on-swipe-right="" on-partial-swipe="cardPartialSwipe(amt)">
       <div class="card animate-show">
-        <h3>
+        <h3 ng-class="{national: proposal.national}">
           <a ng-click="openProposal(proposal)">{{proposal.title | limitTo:100}}</a>
           <br />
           <small>Autoria: {{proposal.author.name}}</small>
