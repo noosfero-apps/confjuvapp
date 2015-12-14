@@ -329,21 +329,22 @@ angular.module('confjuvapp.controllers', [])
       $scope.loading = true;
 
       var path = 'states/';
-      if($scope.profile && $scope.profile.region){
+      if ($scope.profile && $scope.profile.region) {
         path += $scope.profile.region.parent_id;
-      }else{
+      }
+      else {
         return;
       }
 
       $http.get(ConfJuvAppUtils.pathTo(path))
       .then(function(resp) {
         $scope.profile.state = resp.data;
-        if($scope.profile.state){
+        if ($scope.profile.state) {
           $scope.setCityOfProfile();
         }
         $scope.loading = false;
       }, function(err) {
-        $ionicPopup.alert({ title: 'Estados', template: 'Não foi possível atribuir o estado ao perfil' });
+        // $ionicPopup.alert({ title: 'Estados', template: 'Não foi possível atribuir o estado ao perfil' });
         $scope.loading = false;
       });
     };
@@ -1571,5 +1572,48 @@ angular.module('confjuvapp.controllers', [])
         $scope.cards = $scope.myProposals.slice();
       }
     };
+
+    /******************************************************************************
+     N A T I O N A L  P H A S E   P R O P O S A L S
+     ******************************************************************************/
+
+    $scope.nationalProposals = [];
+
+    $scope.showNationalProposals = function() {
+      $scope.cardsBackup = [];
+      $scope.showBackupProposalsLink = false;
+
+      if ($scope.nationalProposals.length == 0) {
+        $scope.cards = [];
+
+        var config = {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          },
+          timeout: defaultTimeout
+        };
+
+        var path = 'articles?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&author_id=' + ConfJuvAppConfig.noosferoNationalPhaseProfileId + '&per_page=400&parent_id[]=';
+          
+        for (var i = 0; i < $scope.topics.length; i++) {
+          path += '&parent_id[]=' +  $scope.topics[i].id;
+        } 
+        $scope.loading = true;
+        
+        $http.get(ConfJuvAppUtils.pathTo(path), config)
+        .then(function(resp) {
+          console.log('NATIONAL PROPOSALS: ' + resp.data.articles.length);
+          $scope.nationalProposals = resp.data.articles;
+          $scope.cards = $scope.nationalProposals.slice();
+          $scope.loading = false;
+        }, function(err) {
+          $scope.loading = false;
+        });
+      }
+      else {
+        $scope.cards = $scope.nationalProposals.slice();
+      }
+    };
+
 
   }); // Ends controller
