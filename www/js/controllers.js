@@ -128,7 +128,6 @@ angular.module('confjuvapp.controllers', [])
           $scope.loginCallback(resp.data.user.private_token);
         });
       }, function(err) {
-        console.log(err);
         $scope.closeModal();
         var msg = 'Erro ao efetuar login: ';
         if (err.hasOwnProperty('data') && err.data.hasOwnProperty('message')) {
@@ -1384,7 +1383,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.loadProfile = function() {
       $scope.loading = true;
 
-      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken() + '&t=' + (new Date().getTime()) + '&fields=vote_count,comments_count,following_articles_count,articles_count,id,identifier,name,region,user,login,full_name,orientacao_sexual,identidade_genero,transgenero,etnia,membro_conselho,points,level,gamification_plugin_level_percent',
+      var params = '?private_token=' + ConfJuvAppUtils.getPrivateToken() + '&t=' + (new Date().getTime()) + '&fields=vote_count,comments_count,following_articles_count,articles_count,id,identifier,name,region,user,login,full_name,orientacao_sexual,identidade_genero,transgenero,etnia,membro_conselho,points,level,gamification_plugin_level_percent,region.parent_id',
           path = 'people/me/' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
@@ -1593,7 +1592,7 @@ angular.module('confjuvapp.controllers', [])
           timeout: defaultTimeout
         };
 
-        var path = 'articles?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&author_id=' + ConfJuvAppConfig.noosferoNationalPhaseProfileId + '&per_page=400&parent_id[]=';
+        var path = 'articles?private_token=' + $scope.token + '&fields=title,body,id,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&author_id=' + ConfJuvAppConfig.noosferoNationalPhaseProfileId + '&per_page=400&parent_id[]=';
           
         for (var i = 0; i < $scope.topics.length; i++) {
           path += '&parent_id[]=' +  $scope.topics[i].id;
