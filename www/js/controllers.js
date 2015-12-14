@@ -470,6 +470,12 @@ angular.module('confjuvapp.controllers', [])
 
       var params = '?t=' + (new Date().getTime()) + '&private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal&per_page=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
 
+      if ($scope.hasOwnProperty('proposalFilters')) {
+        for (var filter in $scope.proposalFilters) {
+          params += '&' + filter + '=' + $scope.proposalFilters[filter];
+        }
+      }
+
       var path = 'articles/' + topic.id + '/children' + params;
 
       $http.get(ConfJuvAppUtils.pathTo(path))
@@ -1579,40 +1585,8 @@ angular.module('confjuvapp.controllers', [])
     $scope.nationalProposals = [];
 
     $scope.showNationalProposals = function() {
-      $scope.cardsBackup = [];
-      $scope.showBackupProposalsLink = false;
-
-      if ($scope.nationalProposals.length == 0) {
-        $scope.cards = [];
-
-        var config = {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          },
-          timeout: defaultTimeout
-        };
-
-        var path = 'articles?private_token=' + $scope.token + '&fields=title,body,id,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&author_id=' + ConfJuvAppConfig.noosferoNationalPhaseProfileId + '&per_page=400&parent_id[]=';
-          
-        for (var i = 0; i < $scope.topics.length; i++) {
-          path += '&parent_id[]=' +  $scope.topics[i].id;
-        } 
-        $scope.loading = true;
-        
-        $http.get(ConfJuvAppUtils.pathTo(path), config)
-        .then(function(resp) {
-          console.log('NATIONAL PROPOSALS: ' + resp.data.articles.length);
-          $scope.nationalProposals = resp.data.articles;
-          $scope.cards = $scope.nationalProposals.slice();
-          $scope.loading = false;
-        }, function(err) {
-          $scope.loading = false;
-        });
-      }
-      else {
-        $scope.cards = $scope.nationalProposals.slice();
-      }
+      $scope.proposalFilters = { 'author_id': ConfJuvAppConfig.noosferoNationalPhaseProfileId };
+      $scope.reloadProposals();
     };
-
 
   }); // Ends controller
