@@ -73,7 +73,7 @@ angular.module('confjuvapp.controllers', [])
     $scope.loadSingleProposal = function(pid) {
       $scope.loading = true;
 
-      var params = '?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal';
+      var params = '?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal';
 
       var path = 'articles/' + pid + params;
 
@@ -468,7 +468,7 @@ angular.module('confjuvapp.controllers', [])
         perPage = 11;
       }
 
-      var params = '?t=' + (new Date().getTime()) + '&private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count,author.id&content_type=ProposalsDiscussionPlugin::Proposal&per_page=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
+      var params = '?t=' + (new Date().getTime()) + '&private_token=' + token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author,votes_count,comments_count,followers_count,author&content_type=ProposalsDiscussionPlugin::Proposal&per_page=' + perPage + '&oldest=younger_than&reference_id=' + topic.lastProposalId + $scope.proposalsFilter;
 
       if ($scope.hasOwnProperty('proposalFilters')) {
         for (var filter in $scope.proposalFilters) {
@@ -1209,7 +1209,7 @@ angular.module('confjuvapp.controllers', [])
         timeout: defaultTimeout
       };
 
-      $http.get(ConfJuvAppUtils.pathTo('/articles/voted_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
+      $http.get(ConfJuvAppUtils.pathTo('/articles/voted_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by,author,votes_count,comments_count,followers_count&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
       .then(function(resp) {
         $scope.voted = [];
         $scope.votedIds = [];
@@ -1285,7 +1285,7 @@ angular.module('confjuvapp.controllers', [])
         timeout: defaultTimeout
       };
 
-      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
+      $http.get(ConfJuvAppUtils.pathTo('/articles/followed_by_me?fields=title,image,body,abstract,id,tag_list,categories,created_by,author,votes_count,comments_count,followers_count&private_token=' + $scope.token + '&_=' + new Date().getTime()), config)
       .then(function(resp) {
         $scope.following = [];
         $scope.followingIds = [];
@@ -1561,7 +1561,7 @@ angular.module('confjuvapp.controllers', [])
           timeout: defaultTimeout
         };
 
-        var path = 'articles?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author.name,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&author_id=' + $scope.profile.id + '&parent_id[]=';
+        var path = 'articles?private_token=' + $scope.token + '&fields=title,image,body,abstract,id,tag_list,categories,created_by,author,votes_count,comments_count,followers_count&content_type=ProposalsDiscussionPlugin::Proposal&_=' + (new Date().getTime()) + '&author_id=' + $scope.profile.id + '&parent_id[]=';
           
         for (var i = 0; i < $scope.topics.length; i++) {
           path += '&parent_id[]=' +  $scope.topics[i].id;
